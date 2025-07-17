@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Filter } from "lucide-react"
 
 const StudyMaterials: React.FC = () => {
   const [showFilter, setShowFilter] = useState(false);
@@ -8,8 +9,9 @@ const StudyMaterials: React.FC = () => {
       {/*Button */}
       <button
         onClick={() => setShowFilter(!showFilter)}
-        className="bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700 transition"
+        className="bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700 transition flex items-center gap-2"
       >
+        <Filter size={16} />
         {showFilter ? "Hide Filter" : "Show Filter"}
       </button>
 

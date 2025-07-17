@@ -1,25 +1,12 @@
 import React, { useState } from "react";
-import { Filter, MoreVertical, Bell } from "lucide-react";
-import bgImage from "../../assets/bg.png";
-import img1 from '../../assets/nav/img1.png'
-import img2 from '../../assets/nav/img2.png'
-import img3 from '../../assets/nav/img3.png'
-import img4 from '../../assets/nav/img4.png'
-import img5 from '../../assets/nav/img5.png'
-import img6 from '../../assets/nav/img6.png'
-import img7 from '../../assets/nav/img7.png'
-import img8 from '../../assets/nav/img8.png'
-import img9 from '../../assets/nav/img9.png'
-import img10 from '../../assets/nav/img10.png'
-import img11 from '../../assets/nav/img11.png'
-import img12 from '../../assets/nav/img12.png'
-import profile from '../../assets/nav/profile.png'
+import { MoreVertical } from "lucide-react";
+import bgImage from "../../assets/bgg.png";
 import StudyFilter from "../ContentManagement/StudyFilter";
-import StudyMaterialDrawer from './StudyCard';
+import StudyCard from './StudyCard';
 
 const StudyMaterials: React.FC = () => {
-  const [showFilter, setShowFilter] = useState(true);
-  const [showDrawer, setShowDrawer] = useState(false);
+  const [showFilter] = useState(true);
+  const [showCard, setCard] = useState(false);
 
   return (
     <div
@@ -30,46 +17,9 @@ const StudyMaterials: React.FC = () => {
         backgroundPosition: "center",
       }}
     >
-      {/* Sidebar */}
-      <aside className="w-16 md:w-20 lg:w-24 bg-gradient-to-b from-pink-300 via-white to-pink-200 p-2 flex flex-col items-center space-y-4 shadow-lg">
-        {/* Example sidebar icons */}
-        <img src={img1} alt="Sidebar Logo" className="w-10 h-10 rounded-full" />
-        <img src={img2} alt="Sidebar Logo" className="w-10 h-10 rounded-full" />
-        <img src={img3} alt="Sidebar Logo" className="w-10 h-10 rounded-full" />
-        <img src={img4} alt="Sidebar Logo" className="w-10 h-10 rounded-full" />
-        <img src={img5} alt="Sidebar Logo" className="w-10 h-10 rounded-full" />
-        <img src={img6} alt="Sidebar Logo" className="w-10 h-10 rounded-full" />
-        <img src={img7} alt="Sidebar Logo" className="w-10 h-10 rounded-full" />
-        <img src={img8} alt="Sidebar Logo" className="w-10 h-10 rounded-full" />
-        <img src={img9} alt="Sidebar Logo" className="w-10 h-10 rounded-full" />
-        <img src={img10} alt="Sidebar Logo" className="w-10 h-10 rounded-full" />
-        <img src={img11} alt="Sidebar Logo" className="w-10 h-10 rounded-full" />
-        <img src={img12} alt="Sidebar Logo" className="w-10 h-10 rounded-full" />
-      </aside>
-
-      {/* Main Content Area */}
-      <main className="flex-1 flex flex-col">
-        {/* Header */}
-        <header className="h-20 px-6 py-4 flex items-center bg-gradient-to-r from-pink-200 via-white to-pink-200 shadow">
-          <div className="flex items-center gap-4 ml-auto">
-            {/* Notification Bell */}
-            <div className="w-10 h-10 rounded-full bg-[#0400FF] flex items-center justify-center relative">
-              <Bell size={18} className="text-white" />
-            </div>
-
-            {/* Profile Avatar */}
-            <div className="w-10 h-10 rounded-full overflow-hidden border border-white shadow">
-              <img
-                src={profile}
-                alt="User Avatar"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-        </header>
-
+      <main className="flex-1 flex flex-col mt-5 ml-5">
         {/* Content*/}
-        <h1 className="text-xl font-semibold mt-4 ml-5 text-gray-700">Study Materials</h1>
+        <h1 className="text-xl font-semibold mt-4 ml-5 text-[#716F6F]">Study Materials</h1>
         <section className="p-6 space-y-6">
           <div className="flex justify-between items-center">
             {/* Filter button */}
@@ -77,11 +27,11 @@ const StudyMaterials: React.FC = () => {
 
 
             {/* Add Button */}
-            <button onClick={() => setShowDrawer(true)}
+            <button onClick={() => setCard(true)}
               className="bg-[#d81b60] hover:bg-[#c2185b] text-white px-5 py-2.5 rounded-md shadow-md">
               + Add Study Material
             </button>
-            {showDrawer && <StudyMaterialDrawer onClose={() => setShowDrawer(false)} />}
+            {showCard && <StudyCard onClose={() => setCard(false)} />}
           </div>
 
 
@@ -101,7 +51,7 @@ const StudyMaterials: React.FC = () => {
               {/* Card body */}
               <div className="flex flex-col gap-2">
                 <span className="text-gray-700 flex items-center gap-2">
-                  <span className="text-xl">📘</span>
+                  <span className="text-xl text-[#7D7D7D]">📘</span>
                   Manual Testing Basic
                 </span>
                 <div className="flex justify-between items-center mt-2">

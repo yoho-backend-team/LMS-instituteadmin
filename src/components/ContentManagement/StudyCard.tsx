@@ -5,9 +5,9 @@ interface DrawerProps {
     onClose: () => void;
 }
 
-const StudyMaterialDrawer: React.FC<DrawerProps> = ({ onClose }) => {
+const StudyCard: React.FC<DrawerProps> = ({ onClose }) => {
     return (
-        <div className="fixed right-0 top-0 w-[350px] sm:w-[400px] h-full bg-white shadow-lg z-50 p-6 transition-all">
+        <div className="fixed right-0 top-0 w-[350px] sm:w-[400px] h-[700px] bg-white shadow-lg z-50 p-6 transition-all">
             <div className="flex justify-between items-center mb-4">
                 <h2 className="text-lg font-semibold">Edit Study Material</h2>
                 <button onClick={onClose}>
@@ -15,7 +15,7 @@ const StudyMaterialDrawer: React.FC<DrawerProps> = ({ onClose }) => {
                 </button>
             </div>
 
-            <div className="border-2 border-dashed border-gray-300 p-4 rounded-md text-center text-sm text-gray-500 mb-4">
+            <div className=" border border-gray-300 p-4 rounded-md text-center text-sm text-gray-500 mb-4">
                 <span className="text-blue-600">⬆</span> Drop Files Here Or Click To Upload
             </div>
             <input
@@ -46,4 +46,4 @@ const StudyMaterialDrawer: React.FC<DrawerProps> = ({ onClose }) => {
     );
 };
 
-export default StudyMaterialDrawer;
+export default StudyCard;
