@@ -57,7 +57,6 @@ const BranchPage = () => {
       style={{ backgroundImage: `url(${bg})` }}
     >
       <div className="max-w-[1200px] mx-auto px-4 py-6">
-        {/* Search & Add Button */}
         <div className="flex items-center justify-between mb-8">
           <Input
             type="text"

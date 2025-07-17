@@ -1,82 +1,114 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import dollar from "../../assets/dollar.png";
+import classimg from "../../assets/classimg (1).png";
+import img from "../../assets/arr.png";
+import rightarrow from "../../assets/arrow-right.png";
+import leftarrow from "../../assets/arrow-left.png";
+import EarningsChart from "./charts";
 
+const activities = new Array(8).fill({
+  title: "Notes Created",
+  desc: "Create | Rev - Study Material Created",
+});
+
+const metrics = [
+  { label: "Profits", value: "12345", img: dollar, bg: "from-[#DB55D2] to-[#7A69FE]" },
+  { label: "Payouts", value: "1234", img: img, bg: "from-[#7ED74F] to-[#3EDFEB]" },
+  { label: "Courses", value: "098", img: classimg, bg: "from-[#E3418F] to-[#E6E321]" },
+  { label: "Instructor", value: "8734", img: dollar, bg: "from-[#4181E3] to-[#21BBE6]" },
+  { label: "Student", value: "4567", img: img, bg: "from-[#BDE341] to-[#749019]" },
+  { label: "Batches", value: "65", img: classimg, bg: "from-[#FBA0A6] to-[#FE6991]" },
+];
 
 const BranchOverview = () => {
-  const activities = new Array(8).fill({
-    title: "Notes Created",
-    desc: "Create | Rev - Study Material Created",
-  });
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const scrollAmount = scrollRef.current.offsetWidth / 3;
+      scrollRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-100 via-white to-pink-100 px-6 py-6">
       <h2 className="text-2xl font-semibold text-[#ca406f] mb-6">Branch Overview</h2>
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="col-span-2 space-y-6">
-          <div className="flex flex-wrap gap-4">
-            <Card className="flex-1 min-w-[180px] h-[120px] rounded-xl p-4 bg-gradient-to-br from-[#9747FF] to-[#7B61FF] text-white shadow-md">
-              <h4 className="text-sm font-medium">Profits</h4>
-              <p className="text-2xl font-bold mt-2">12345</p>
-            </Card>
+       
+          <Card className="p-4 rounded-xl shadow-md bg-white relative overflow-hidden">
+            <h4 className="text-sm font-semibold text-[#ca406f] ">Key Metrics</h4>
 
-            <Card className="flex-1 min-w-[180px] h-[120px] rounded-xl p-4 bg-gradient-to-br from-[#2FD9B9] to-[#64D864] text-white shadow-md">
-              <h4 className="text-sm font-medium">Payouts</h4>
-              <p className="text-2xl font-bold mt-2">1234</p>
-            </Card>
-
-            <Card className="flex-1 min-w-[180px] h-[120px] rounded-xl p-4 bg-gradient-to-br from-[#F96363] to-[#FFD700] text-white shadow-md">
-              <h4 className="text-sm font-medium">Courses</h4>
-              <p className="text-2xl font-bold mt-2">098</p>
-            </Card>
-          </div>
-
-        
-          <Card className="p-4 rounded-xl shadow-md bg-white">
-            <h4 className="text-lg font-semibold text-gray-800 mb-4">Statistics</h4>
+          
+            <button
+              onClick={() => scroll("left")}
+              className="absolute left-0 top-1/2 ml-3 transform -translate-y-1/2 z-10 bg-[#ca406f] w-8 h-8 rounded-full flex items-center justify-center"
+            >
+              <img src={leftarrow} className="w-4 h-4" alt="left" />
+            </button>
 
             
-            <div className="flex gap-6 text-sm font-medium text-gray-500 border-b pb-2 mb-4">
-              <span className="text-[#2FD9B9] border-b-2 border-[#2FD9B9] pb-1">Fee</span>
-              <span>Salary</span>
-              <span>Pendings</span>
-              <span>Total Income</span>
+            <div
+              ref={scrollRef}
+              className="flex gap-4 overflow-x-auto no-scrollbar scroll-smooth px-10"
+            >
+              {metrics.map((item, index) => (
+                <div
+                  key={index}
+                  className={`flex-shrink-0 w-1/3 min-w-[250px] rounded-lg p-1 flex flex-col bg-gradient-to-br ${item.bg} text-white `}
+                >
+                  <img src={item.img} className="w-20 h-20" alt={item.label} />
+                  <p className="text-md ml-3">{item.label}</p>
+                  <p className="text-2xl font-bold ml-3 mt-8 mb-5">{item.value}</p>
+                </div>
+              ))}
             </div>
 
-            
-            <div className="text-gray-400 text-sm italic">[Graph Placeholder]</div>
+          
+            <button
+              onClick={() => scroll("right")}
+              className="absolute right-0 top-1/2 mr-3 transform -translate-y-1/2 z-10 bg-[#ca406f] w-8 h-8 rounded-full flex items-center justify-center"
+            >
+              <img src={rightarrow} className="w-4 h-4" alt="right" />
+            </button>
           </Card>
-        </div>
 
         
-        <Card className="rounded-xl shadow-md bg-white max-h-[500px]">
-          <CardContent className="p-4">
-            <h4 className="text-lg font-semibold text-gray-800 mb-4">Recent Activities</h4>
+          <EarningsChart />
+        </div>
 
-            <ScrollArea className="h-[420px] pr-2">
-              <div className="space-y-3">
-                {activities.map((item, idx) => (
-                  <div
-                    key={idx}
-                    className={`flex items-start gap-3 rounded-lg p-3 ${
-                      idx === 2 ? "bg-[#ca406f] text-white" : "bg-[#f7f7f7] "
-                    }`}
-                  >
-                    <div className="w-10 h-10 mt-1 rounded-full bg-[#ca406f]" />
-                    <div>
-                      <p className="font-medium text-sm">
-                        {item.title}
-                      </p>
-                      <p className="text-xs text-muted-foreground">
-                        {item.desc}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </ScrollArea>
-          </CardContent>
-        </Card>
+       
+        <Card className="rounded-xl shadow-md bg-white max-h-[720px]">
+  <CardContent className="p-4">
+    <h4 className="text-lg font-semibold text-gray-800 mb-4">Recent Activities</h4>
+    <ScrollArea className="h-[600px] pr-2">
+      <div className="space-y-3">
+        {activities.map((item, idx) => (
+          <div
+            key={idx}
+            className="group flex items-start gap-3 rounded-xl p-4 border border-gray-200 shadow-md bg-white transition-all duration-300 transform hover:translate-y-[-2px] hover:shadow-lg hover:bg-gradient-to-r hover:from-[#f68aab] hover:to-[#ca406f] hover:text-white"
+            style={{ willChange: "transform" }}
+          >
+            <div className="w-10 h-10 mt-1 rounded-full bg-[#ca406f] group-hover:bg-white transition-all duration-300 flex-shrink-0" />
+            <div className="flex flex-col">
+              <p className="font-semibold text-sm">{item.title}</p>
+              <p className="text-xs mt-3 text-muted-foreground group-hover:text-white">
+                {item.desc}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </ScrollArea>
+  </CardContent>
+</Card>
+
       </div>
     </div>
   );
