@@ -1,11 +1,19 @@
-import { Button } from "@/components/ui/button"
+import React from "react";
+import "./App.css";
 
-function App() {
+import FilterSection from "./components/Filter/FilterSection";
+
+const App: React.FC = () => {
   return (
-    <div className="flex min-h-svh flex-col items-center justify-center">
-      <Button>Click me</Button>
-    </div>
-  )
-}
+    <div className="App">
+      
 
-export default App
+      <div className="main-content">
+        
+        <FilterSection />
+      </div>
+    </div>
+  );
+};
+
+export default App;

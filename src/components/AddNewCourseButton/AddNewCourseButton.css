@@ -1,0 +1,9 @@
+.add-btn {
+  background-color: #d63384;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
