@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 
-/*:root {
+:root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -17,7 +17,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+/*
 a {
   font-weight: 500;
   color: #646cff;
@@ -73,6 +73,8 @@ button:focus-visible {
   }
 } 
 */
+
+
 .topbar{
 background: linear-gradient(90deg, #F6D3E9 0%, #FFFFFF 48.08%, #F6D3E9 100%);
 backdrop-filter: blur(2px);
