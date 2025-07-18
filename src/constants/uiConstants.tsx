@@ -13,5 +13,13 @@ Description: {
 		fontWeight: 300,
 		fontSize: '14px',
         color:"#7d7d7d"
+
+	
 		
+	},
+Buttons:{
+		fontFamily: 'poppins',
+		fontWeight: 200,
+		fontSize: '16px',
+        color:"#ffffff"
 	}}

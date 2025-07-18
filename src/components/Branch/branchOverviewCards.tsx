@@ -44,7 +44,7 @@ export default function CircularCardCarousel() {
       <div className="relative w-full flex items-center justify-center">
         <button
           onClick={handlePrev}
-          className="absolute left-0 z-40 p-2 rounded-full bg-[#ca406f] text-white shadow hover:bg-gray-100"
+          className="absolute left-0 z-40 p-2 rounded-full bg-[#ca406f] text-white shadow "
         >
           <ArrowLeft />
         </button>
@@ -72,7 +72,7 @@ export default function CircularCardCarousel() {
 
         <button
           onClick={handleNext}
-          className="absolute right-0 z-40 p-2 rounded-full bg-[#ca406f] text-white shadow hover:bg-gray-100"
+          className="absolute right-0 z-40 p-2 rounded-full bg-[#ca406f] text-white shadow "
         >
           <ArrowRight />
         </button>

@@ -83,23 +83,18 @@ export default function EarningsChart() {
   const getColor = () => {
     switch (active) {
       case "salary":
-        return "#F97316"; // orange
+        return "#F97316"; 
       case "pendings":
-        return "#EC4899"; // pink
+        return "#EC4899"; 
       case "total":
-        return "#FACC15"; // yellow
+        return "#FACC15"; 
       case "fee":
       default:
-        return "#23AF62"; // green
+        return "#23AF62"; 
     }
   };
 
-  const renderLabelClass = (type: string, color: string) =>
-    `cursor-pointer pb-1 border-b-2 ${
-      active === type
-        ? `text-[${color}] border-[${color}] font-semibold`
-        : "text-gray-400 border-transparent"
-    }`;
+  
 
   return (
     <Card className="p-4 rounded-xl shadow-md bg-white overflow-hidden">
