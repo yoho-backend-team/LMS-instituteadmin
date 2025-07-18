@@ -48,7 +48,7 @@ const FilterSection = () => {
           </button>
         </div>
 
-        {/* Search box OUTSIDE the white box */}
+        
         {showFilter && (
           <div className="search-box-outside">
             <input
@@ -59,7 +59,7 @@ const FilterSection = () => {
           </div>
         )}
 
-        {/* Filter box with dropdowns */}
+        
         {showFilter && (
           <div className="filter-content">
             <div className="dropdown-row">

@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 
 import FilterSection from "./components/Filter/FilterSection";
+import SubscriptionPlans from "./components/SubscriptionPlans/SubsCriptionPlans";
 
 const App: React.FC = () => {
   return (
@@ -10,7 +11,8 @@ const App: React.FC = () => {
 
       <div className="main-content">
         
-        <FilterSection />
+        {/* <FilterSection /> */}
+        <SubscriptionPlans />
       </div>
     </div>
   );
