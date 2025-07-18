@@ -1,12 +1,21 @@
 import React, { useState } from "react";
-import { MoreVertical } from "lucide-react";
+import { MoreVertical, Eye, Pencil, Trash2 } from "lucide-react";
 import bgImage from "../../assets/bgg.png";
+import docImage from "../../assets/doc.png";
+import capImage from "../../assets/cap.png";
+import { useNavigate } from "react-router-dom";
 import StudyFilter from "../ContentManagement/StudyFilter";
-import StudyCard from './StudyCard';
+import StudyCard from "./StudyCard";
+import AddStudyMaterial from "./AddStudyMaterial";
+
 
 const StudyMaterials: React.FC = () => {
+  const navigate = useNavigate();
   const [showFilter] = useState(true);
   const [showCard, setCard] = useState(false);
+  const [showAdd, setShowAdd] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
 
   return (
     <div
@@ -18,55 +27,90 @@ const StudyMaterials: React.FC = () => {
       }}
     >
       <main className="flex-1 flex flex-col mt-5 ml-5">
-        {/* Content*/}
-        <h1 className="text-xl font-semibold mt-4 ml-5 text-[#716F6F]">Study Materials</h1>
+        <h1 className="text-xl font-semibold mt-4 ml-5 text-[#716F6F]">
+          Study Materials
+        </h1>
+
         <section className="p-6 space-y-6">
           <div className="flex justify-between items-center">
-            {/* Filter button */}
             {showFilter && <StudyFilter />}
 
-
-            {/* Add Button */}
-            <button onClick={() => setCard(true)}
-              className="bg-[#d81b60] hover:bg-[#c2185b] text-white px-5 py-2.5 rounded-md shadow-md">
+            <button
+              onClick={() => setShowAdd(true)}
+              className="bg-[#CA406F] text-white px-5 py-2.5 rounded-md shadow-md"
+            >
               + Add Study Material
             </button>
+
+            {showAdd && <AddStudyMaterial onClose={() => setShowAdd(false)} />}
             {showCard && <StudyCard onClose={() => setCard(false)} />}
+
+
           </div>
 
+          {/* Card with menu */}
+          <div className="bg-white w-80 rounded-xl shadow-md p-4 space-y-2 relative">
+            <div className="absolute top-3 right-3">
+              <div className="relative">
+                <button onClick={() => setMenuOpen(!menuOpen)}>
+                  <MoreVertical className="w-5 h-5 text-[#CA406F] cursor-pointer" />
+                </button>
 
-          <div className="flex flex-wrap gap-6">
-            <div className="bg-white rounded-xl shadow-lg w-80 p-4">
-              {/* Card header */}
-              <div className="flex justify-between items-center mb-2">
-                <span className="font-medium text-gray-800 flex items-center gap-2">
-                  <span className="text-gray-500">📄</span>
-                  RVR
-                </span>
-                <MoreVertical size={18} className="text-gray-500 cursor-pointer" />
-              </div>
+                {menuOpen && (
+                  <div className="absolute top-0 left-full ml-2 w-36 bg-white rounded-lg shadow-lg z-10 p-2">
+                    <button className="w-full flex items-center gap-2 border hover:bg-[#CA406F] hover:text-white border-gray-300 text-gray-700 px-3 py-2 mt-2 rounded-md text-sm"
+                      onClick={() => {
+                        navigate("/view");
+                        setMenuOpen(false);
+                      }}>
+                      <Eye size={16} /> View
+                    </button>
 
-              <hr className="my-2" />
+                    <button
+                      onClick={() => {
+                        setMenuOpen(false);
+                        setCard(true);
+                      }}
+                      className="w-full flex items-center gap-2 border hover:bg-[#CA406F] hover:text-white border-gray-300 text-gray-700 px-3 py-2 mt-2 rounded-md text-sm"
+                    >
+                      <Pencil size={16} /> Edit
+                    </button>
 
-              {/* Card body */}
-              <div className="flex flex-col gap-2">
-                <span className="text-gray-700 flex items-center gap-2">
-                  <span className="text-xl text-[#7D7D7D]">📘</span>
-                  Manual Testing Basic
-                </span>
-                <div className="flex justify-between items-center mt-2">
-                  <span className="text-sm text-green-600 font-medium">Active</span>
-                  {/* Toggle on and off */}
-                  <label className="inline-flex items-center cursor-pointer">
-                    <input type="checkbox" defaultChecked className="sr-only peer" />
-                    <div className="w-10 h-5 bg-gray-300 peer-checked:bg-green-500 rounded-full relative">
-                      <div className="absolute top-0.5 left-0.5 h-4 w-4 bg-white rounded-full transition-transform peer-checked:translate-x-5" />
-                    </div>
-                  </label>
-                </div>
+                    <button className="w-full flex items-center gap-2 border hover:bg-[#CA406F] hover:text-white border-gray-300 text-gray-700 px-3 py-2 mt-2 rounded-md text-sm">
+                      <Trash2 size={16} /> Delete
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
 
+            {/* Card content */}
+            <div className="flex justify-between items-center bg-[#F5F5F5] rounded-md mt-8 px-3 py-2">
+              <div className="flex items-center gap-2 text-sm font-medium text-gray-700">
+                <img src={docImage}
+                  className="w-5" />
+                RVR
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2 text-sm font-medium mt-5 text-gray-700">
+              <img src={capImage}
+                className="w-5 ml-3" />
+              Manual Testing Basic
+            </div>
+
+            <div className="flex justify-between items-center px-2 pt-2">
+              <div className="flex items-center gap-3">
+                <span className="text-[#3ABE65] font-medium text-sm capitalize">Active</span>
+                <span className="w-[16px] h-[16px] rounded-full bg-[#3ABE65]" />
+              </div>
+              <label className="inline-flex items-center cursor-pointer">
+                <input type="checkbox" defaultChecked className="sr-only peer" />
+                <div className="w-9 h-5 bg-gray-300 peer-checked:bg-green-500 rounded-full relative">
+                  <div className="absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full transition-transform peer-checked:translate-x-4" />
+                </div>
+              </label>
+            </div>
           </div>
         </section>
       </main>

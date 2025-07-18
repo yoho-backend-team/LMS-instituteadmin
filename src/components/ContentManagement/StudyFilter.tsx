@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Filter } from "lucide-react"
+import filterImage from '../../assets/filter.png'
 
 const StudyMaterials: React.FC = () => {
   const [showFilter, setShowFilter] = useState(false);
@@ -9,16 +9,16 @@ const StudyMaterials: React.FC = () => {
       {/*Button */}
       <button
         onClick={() => setShowFilter(!showFilter)}
-        className="bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700 transition flex items-center gap-2"
+        className="bg-[#CA406F] text-white px-4 py-2 rounded transition flex items-center gap-2"
       >
-        <Filter size={16} />
+        <img src={filterImage} className="w-6" />
         {showFilter ? "Hide Filter" : "Show Filter"}
       </button>
 
       {/* Filter Panel */}
       {showFilter && (
-        <div className="bg-white shadow rounded-lg p-6 w-full max-w-5xl mx-auto mt-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="bg-white shadow rounded-lg p-6 w-350  mx-auto mt-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-337">
             <div>
               <label className="block mb-1 text-sm font-medium text-gray-700">
                 Status

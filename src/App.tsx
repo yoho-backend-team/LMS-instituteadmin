@@ -1,12 +1,16 @@
 //import { Button } from "@/components/ui/button"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import StudyMaterials from "./components/ContentManagement/StudyMaterials"
+import ViewCardPage from "./components/ContentManagement/ViewCardPage";
 
 function App() {
   return (
-    <div className="flex min-h-svh flex-col items-center justify-center">
-      {/*<Button>Click me</Button>*/}
-      <StudyMaterials/>
-    </div>
+    <BrowserRouter>
+  <Routes>
+    <Route path="/" element={<StudyMaterials />} />
+    <Route path="/view" element={<ViewCardPage />} />
+  </Routes>
+</BrowserRouter>
   )
 }
 
