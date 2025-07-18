@@ -15,7 +15,7 @@ const StudyMaterials: React.FC = () => {
   const [showCard, setCard] = useState(false);
   const [showAdd, setShowAdd] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-
+  const [isActive, setIsActive] = useState(true);
 
   return (
     <div
@@ -101,16 +101,34 @@ const StudyMaterials: React.FC = () => {
 
             <div className="flex justify-between items-center px-2 pt-2">
               <div className="flex items-center gap-3">
-                <span className="text-[#3ABE65] font-medium text-sm capitalize">Active</span>
-                <span className="w-[16px] h-[16px] rounded-full bg-[#3ABE65]" />
+                <span
+                  className={`font-medium text-sm capitalize ${isActive ? "text-[#3ABE65]" : "text-gray-400"
+                    }`}
+                >
+                  {isActive ? "Active" : "Inactive"}
+                </span>
+                <span
+                  className={`w-[16px] h-[16px] rounded-full ${isActive ? "bg-[#3ABE65]" : "bg-gray-400"
+                    }`}
+                />
               </div>
+
               <label className="inline-flex items-center cursor-pointer">
-                <input type="checkbox" defaultChecked className="sr-only peer" />
-                <div className="w-9 h-5 bg-gray-300 peer-checked:bg-green-500 rounded-full relative">
-                  <div className="absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full transition-transform peer-checked:translate-x-4" />
+                <input
+                  type="checkbox"
+                  checked={isActive}
+                  onChange={() => setIsActive((prev) => !prev)}
+                  className="sr-only peer"
+                />
+                <div className="w-9 h-5 bg-gray-300 rounded-full relative transition-colors peer-checked:bg-green-500">
+                  <div
+                    className={`absolute top-0.5 w-4 h-4 bg-white rounded-full transition-transform ${isActive ? "translate-x-4 left-0.5" : "left-0.5"
+                      }`}
+                  />
                 </div>
               </label>
             </div>
+
           </div>
         </section>
       </main>
