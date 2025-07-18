@@ -1,38 +1,102 @@
-.form-wrapper {
-  margin-top: 30px;
-  background: rgba(255, 255, 255, 0.95);
-  padding: 30px;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+.add-course-form {
+  max-width: 1278px;
+  width: 100%;
+  background-color: white;
+  padding: 16px;
   border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 40px auto;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+
+  
+  height: auto;
+  overflow: visible;
 }
 
-.form-title {
-  font-size: 22px;
-  margin-bottom: 20px;
-  color: #d9006c;
-  font-weight: bold;
-}
-
-.course-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+.form-heading {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: #e00080;
 }
 
 .form-row {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  gap: 30px;
+  margin-bottom: 20px;
 }
 
-input, textarea {
+.form-group {
   flex: 1;
-  padding: 10px;
-  border: 1.5px solid #ccc;
-  border-radius: 6px;
-  font-size: 14px;
-  min-width: 200px;
+  display: flex;
+  flex-direction: column;
 }
+
+.form-group label {
+  font-weight: 500;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #333;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+}
+
 textarea {
-  resize: vertical;
+  resize: none;
+}
+
+.file-upload {
+  display: flex;
+  flex-direction: column;
+  border: 1px dashed #aaa;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  color: #555;
+  align-items: center;
+}
+
+.upload-icon {
+  font-size: 27px;
+  margin-bottom: 6px;
+  color: blue;
+  justify-content: center;
+}
+
+.button-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.back-btn {
+  padding: 10px 20px;
+  background: #e0e0e0;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.submit-btn {
+  padding: 10px 24px;
+  background: #e00080;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
 }

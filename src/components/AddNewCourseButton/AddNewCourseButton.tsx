@@ -1,8 +1,8 @@
-import React from 'react';
-import './AddNewCourseButton.css';
+// import React from 'react';
+// import './AddNewCourseButton.css';
 
-const AddNewCourseButton: React.FC = () => {
-  return <button className="add-btn">+ Add New Course</button>;
-};
+// const AddNewCourseButton: React.FC = () => {
+//   return <button className="add-btn">+ Add New Course</button>;
+// };
 
-export default AddNewCourseButton;
+// export default AddNewCourseButton;
