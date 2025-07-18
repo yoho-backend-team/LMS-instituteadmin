@@ -87,7 +87,7 @@ const Dashboard: React.FC = () => {
                                     className="border border-pink-500 rounded px-4 py-2  min-h-[48px] min-w-[360px] md:w-1/3 "
                                 />
                             </div>
-                            <div className="bg-white p-4 rounded-lg shadow mb-6">
+                            <div className="bg-white p-4 shadow-lg border-t border-gray-100 rounded-md mb-6 text-gray-700">
                                 <div className="flex flex-col sm:flex-row gap-4">
                                     {/* First select + label */}
                                     <div className="flex flex-col w-full sm:w-1/2">
