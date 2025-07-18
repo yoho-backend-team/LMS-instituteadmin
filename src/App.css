@@ -6,6 +6,8 @@ html, body {
   min-height: 100%;
   overflow-x: hidden;   
   font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+  background: #F9E4F0;
 }
 
 

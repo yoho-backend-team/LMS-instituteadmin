@@ -17,7 +17,6 @@ const FilterSection = () => {
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         minHeight: "100vh",
-        //  overflow: "hidden",
       }}
     >
       <div className="filter-container">
@@ -31,9 +30,11 @@ const FilterSection = () => {
               setShowAddCourse(false);
             }}
           >
-            <img src={filter} alt="filter Icon" className="filter-icon" />
+            <span className="filter-btn-content">
+  <img src={filter} alt="filter Icon" className="filter-icon" />
+  {showFilter ? "Hide" : "Show Filter"}
+</span>
 
-            {showFilter ? "Hide" : "Show Filter"}
           </button>
 
           <button
@@ -47,15 +48,20 @@ const FilterSection = () => {
           </button>
         </div>
 
+        {/* Search box OUTSIDE the white box */}
+        {showFilter && (
+          <div className="search-box-outside">
+            <input
+              type="text"
+              placeholder="Search Course"
+              className="search-input"
+            />
+          </div>
+        )}
+
+        {/* Filter box with dropdowns */}
         {showFilter && (
           <div className="filter-content">
-            <div className="search-box">
-              <input
-                type="text"
-                placeholder="Search Course"
-                className="search-input"
-              />
-            </div>
             <div className="dropdown-row">
               <div className="dropdown-block">
                 <label>Status</label>
@@ -67,7 +73,7 @@ const FilterSection = () => {
               </div>
 
               <div className="dropdown-block">
-                <label>Status</label>
+                <label>Category</label>
                 <select className="input">
                   <option value="">Search by Category</option>
                   <option value="design">Design</option>
@@ -75,7 +81,6 @@ const FilterSection = () => {
                 </select>
               </div>
             </div>
-              
           </div>
         )}
 
