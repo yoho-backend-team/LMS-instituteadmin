@@ -1,5 +1,7 @@
 // import { Button } from "@/components/ui/button"
 
+// import PaymentManagementFees from "./components/PaymentPages/PaymentManagementFees"
+
 import CourseCategories from "./components/CourseCategories/CourseCategories";
 
 function App() {
@@ -8,7 +10,10 @@ function App() {
       {/* <Button>Click me</Button> */}
 
 
-      <CourseCategories />
+      <CourseCategories /> 
+
+
+{/* <PaymentManagementFees /> */}
 
     </div>
   )
