@@ -51,9 +51,9 @@ const OfflineClassPage = () => {
                     </button>
                 </div>
                 <div>
-                    <button className="bg-[#CA406F] w-34 h-8 rounded-sm flex items-center justify-center gap-2 text-sm">
+                    <button className="bg-[#CA406F] w-44 h-8 gap-2 rounded-sm flex items-center justify-center  text-sm">
                         <IoMdAdd size={20} />
-                        Add New Staff
+                        Add Offline Classes
                     </button>
                 </div>
             </div>
