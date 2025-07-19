@@ -1,10 +1,16 @@
-import { Button } from "@/components/ui/button"
+import { BrowserRouter, Routes,Route } from "react-router"
+import StaffMangement from "./page/StaffManagement/StaffMangement"
 
 function App() {
   return (
-    <div className="flex min-h-svh flex-col items-center justify-center">
-      <Button>Click me</Button>
-    </div>
+    <>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/staffmanagement" element={<StaffMangement/>}/>
+    </Routes>
+    
+    </BrowserRouter>
+    </>
   )
 }
 
