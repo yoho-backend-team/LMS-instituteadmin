@@ -1,11 +1,8 @@
 
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-
 import { MainLayout } from "@/layout/mainlayout/mainlayout";
 import Dashboard from "@/pages/dashboard/dashboard";
-// import Branchmanagement from "@/pages/branchmanagement/branchmanagement";
 import Community from "@/pages/community/community";
-// import Usermanagement from "@/pages/usermanagement/usermanagement";
 import Users from "@/pages/users/users";
 import Branch from "@/pages/branchmanagement/branch/branch";
 import Group from "@/pages/usermanagement/group/group";
@@ -42,6 +39,7 @@ import StaffTicket from "@/pages/ticketmanagement/staffticket/staffticket";
 import StudentTicket from "@/pages/ticketmanagement/studentticket/studentticket";
 import YourTicket from "@/pages/ticketmanagement/yourticket/yourticket";
 import StaffNotification from "@/pages/notificationmanagement/staffnotification/staffnotification";
+import OfflineAdd from "@/components/classmanagement/offline_add/offline_add";
 
 const Approutes = () => {
   return (
@@ -75,10 +73,8 @@ const Approutes = () => {
           <Route path="StudentTicket" element={<StudentTicket />} />
           <Route path="Yourticket" element={<YourTicket />} />
           <Route path="Dashboard" element={<Dashboard />} />
-          {/* <Route path="Branch-management" element={<Branchmanagement />} /> */}
           <Route path="Branch" element={<Branch />} />
           <Route path="Community" element={<Community />} />
-          {/* <Route path="User-management" element={<Usermanagement />} /> */}
           <Route path="Group" element={<Group />} />
           <Route path="Users" element={<Users />} />
           <Route path="categories" element={<Categories />} />
@@ -90,6 +86,7 @@ const Approutes = () => {
           <Route path="/offlineedit" element={<OfflineEdit />} />
           <Route path="/offlineclass" element={<OfflineClass />} />
           <Route path="/offlineviewmore" element={<OfflineView />} />
+           <Route path="/offlineadd" element={<OfflineAdd />} />
         </Route>
 
 

@@ -1,5 +1,4 @@
 
-
 import React from "react"
 import type { ReactElement } from "react"
 import { useState, useEffect } from "react"
@@ -26,7 +25,8 @@ const SideBar = ({
     }
     return (
         <div
-            className={`top-0 left-0 h-full z-40 flex flex-col transition-all duration-300 p-1 bg-gradient-to-b from-[#F6D3E9] via-[#FFFFFF] to-[#F6D3E9] ${actualOpen ? "w-60" : "w-16"}`}
+             className={`top-0 left-0 min-h-screen  z-40 flex flex-col transition-all duration-300 p-1 bg-gradient-to-b from-[#F6D3E9] via-[#FFFFFF] to-[#F6D3E9] ${actualOpen ? "w-64" : "w-17"}`}
+
             onMouseEnter={() => !isOpen && setHovered(false)}
             onMouseLeave={() => !isOpen && setHovered(false)}
         >
@@ -258,7 +258,7 @@ const SidebarLink1 = ({
                 )}
             </div>
             {isOpen && <span className={`font-medium text-sm ${isActive ? "text-white" : "text-black"}`}>{label}</span>}
-        </a> // Changed from Link to a
+        </a> 
     )
 }
 
