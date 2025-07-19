@@ -1,16 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Calendar, Plus } from "lucide-react";
 import filterImage from '../../assets/filter.png';
 import bgImage from "../../assets/bgg.png";
+import AddAttendancePanel from "./AddAttendancePanel"; // Make sure the path is correct
 
 const ViewAttendancePage: React.FC = () => {
     const { id } = useParams();
+    const [showPanel, setShowPanel] = useState(false);
 
     return (
-        <div className="min-h-screen p-4 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${bgImage})` }}>
-            
+        <div className="relative min-h-screen p-4 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url(${bgImage})` }}>
+
             {/* Profile Header */}
             <div className="bg-white p-4 rounded-lg shadow flex justify-between items-center mb-4">
                 <div className="flex items-center gap-4">
@@ -24,12 +26,15 @@ const ViewAttendancePage: React.FC = () => {
                         <p className="text-sm text-gray-500">elonmusk@gmail.com</p>
                     </div>
                 </div>
-                <button className="bg-green-500 text-white px-4 py-2 rounded-md flex items-center gap-2">
-                    <Plus size={16} /> Add Attendance
+                <button
+                    onClick={() => setShowPanel(true)}
+                    className="bg-green-500 text-white px-4 py-2 rounded-md flex items-center gap-2"
+                >
+                    <Plus size={22} /> Add Attendance
                 </button>
             </div>
 
-            {/* Calendar and Filter buttons */}
+            {/* Filter Buttons */}
             <div className="flex justify-between items-center">
                 <button className="flex items-center gap-2 bg-[#c62863] text-white px-3 py-1.5 mb-7 mt-3 rounded-md shadow">
                     <Calendar size={18} />
@@ -40,38 +45,34 @@ const ViewAttendancePage: React.FC = () => {
                     <span>Filters</span>
                 </button>
             </div>
-            {/* Calendar and Filters Section */}
-            <div className="bg-white p-4 rounded-lg shadow space-y-4">
-                {/* Month Name */}
 
-                {/* View Buttons */}
-                <div className="flex justify-center gap-2">
-                    <div className="text-center font-semibold text-lg ml-77">July 2025</div>
-                    {["Monthly", "Week", "Day", "List"].map((view) => (
-                        <button
-                            key={view}
-                            className={`px-4 py-1 border rounded ${view === "Monthly"
-                                ? "border-blue-500 text-blue-600"
-                                : "text-gray-600"
-                                }`}
-                        >
-                            {view}
-                        </button>
-                    ))}
+            {/* Calendar View */}
+            <div className="bg-white p-4 rounded-lg shadow space-y-4">
+                <div className="flex justify-center items-center gap-2">
+                    <div className="text-center font-semibold text-lg">July 2025</div>
+                    <div className="flex gap-2">
+                        {["Monthly", "Week", "Day", "List"].map((view) => (
+                            <button
+                                key={view}
+                                className={`w-24 py-2 border rounded-lg text-sm font-medium transition-all duration-200
+                                ${view === "Monthly"
+                                        ? "border-blue-500 text-blue-600 bg-blue-50"
+                                        : "border-gray-300 text-gray-600 bg-white hover:bg-gray-100"}`}
+                            >
+                                {view}
+                            </button>
+                        ))}
+                    </div>
                 </div>
 
-                {/* Calendar Grid */}
+                {/* Calendar Days */}
                 <div className="grid grid-cols-7 gap-2 text-center text-sm text-gray-700 pt-2">
-                    {/* Weekdays */}
                     {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
                         <div key={day} className="h-10 flex items-center justify-center rounded border border-gray-200">{day}</div>
                     ))}
-
-                    {/* Previous month overflow: 29, 30 */}
                     <div className="h-10 flex items-center justify-center rounded border border-gray-200 text-gray-400">29</div>
                     <div className="h-10 flex items-center justify-center rounded border border-gray-200 text-gray-400">30</div>
 
-                    {/* July 1–31 */}
                     {Array.from({ length: 31 }, (_, i) => {
                         const day = i + 1;
                         const isToday = day === 16;
@@ -79,8 +80,8 @@ const ViewAttendancePage: React.FC = () => {
                             <div
                                 key={day}
                                 className={`h-10 flex items-center justify-center rounded border ${isToday
-                                        ? "bg-blue-100 border-blue-500 text-blue-600 font-bold"
-                                        : "border-gray-300 bg-white"
+                                    ? "bg-blue-100 border-blue-500 text-blue-600 font-bold"
+                                    : "border-gray-300 bg-white"
                                     }`}
                             >
                                 {day}
@@ -89,6 +90,9 @@ const ViewAttendancePage: React.FC = () => {
                     })}
                 </div>
             </div>
+
+            {/* Add Attendance Panel */}
+            {showPanel && <AddAttendancePanel onClose={() => setShowPanel(false)} />}
         </div>
     );
 };
