@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AddLiveClassForm from "../components/live-classes/AddLiveClassForm";
 import ClassDetails from "../components/live-classes/ClassDetails";
 import { useNavigate } from "react-router-dom";
+import LiveClassCard from "@/components/live-classes/LiveClassCard";
 
 type ClassCardProps = {
   id: number;
@@ -11,38 +12,7 @@ type ClassCardProps = {
   time: string;
 };
 
-const ClassCard: React.FC<ClassCardProps & { onViewDetails: () => void }> = ({
-  id,
-  title,
-  studentCount,
-  date,
-  time,
-  onViewDetails,
-}) => (
-  <div className="bg-white rounded-lg shadow p-5 relative transition hover:shadow-lg">
-    <div className="flex items-center gap-3 mb-2">
-      <div className="w-10 h-10 bg-gray-300 rounded-full" />
-      <h3 className="text-lg font-semibold">{title}</h3>
-    </div>
-    <p className="text-sm text-gray-500 mb-2">
-      {studentCount} {studentCount === 1 ? "Student" : "Students"} on this Class
-    </p>
-    <div className="flex items-center text-sm text-gray-500 mb-1">
-      <span className="mr-2">📅</span>
-      <span>{date}</span>
-    </div>
-    <div className="flex items-center text-sm text-blue-600 font-medium mb-3">
-      <span className="mr-2">🕒</span>
-      <span>{time}</span>
-    </div>
-    <button
-      onClick={onViewDetails}
-      className="absolute bottom-4 right-4 bg-green-500 text-white text-xs px-3 py-1 rounded hover:bg-green-600"
-    >
-      View More
-    </button>
-  </div>
-);
+
 
 const LiveClasses: React.FC = () => {
   const [showFilter, setShowFilter] = useState(false);
@@ -107,18 +77,9 @@ const LiveClasses: React.FC = () => {
       {/* Filter UI */}
       {showFilter && renderFilterForm()}
 
-      {/* Conditional Views */}
-      {view === "list" && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {classData.map((classItem) => (
-            <ClassCard
-              key={classItem.id}
-              {...classItem}
-              onViewDetails={() => setView("details")}
-            />
-          ))}
-        </div>
-      )}
+
+
+      {view ==="list" && <LiveClassCard />}
 
       {view === "add" && <AddLiveClassForm />}
       {view === "details" && <ClassDetails />}

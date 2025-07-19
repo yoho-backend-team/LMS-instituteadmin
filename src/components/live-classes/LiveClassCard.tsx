@@ -8,9 +8,9 @@ const LiveClassCard: React.FC = () => {
 
   return (
     <div className="p-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
         {/* Card Start */}
-        <div className="flex bg-white shadow-md rounded-xl overflow-hidden">
+        <div className="flex bg-white shadow-md rounded-xl overflow-hidden shadow-2xl">
           {/* Avatar */}
           <div className="flex items-center justify-center p-4">
             <div className="w-12 h-12 rounded-full bg-gray-400"></div>
