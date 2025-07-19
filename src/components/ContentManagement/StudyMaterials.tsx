@@ -50,6 +50,7 @@ const StudyMaterials: React.FC = () => {
           </div>
 
           {/* Card with menu */}
+          
           <div className="bg-white w-80 rounded-xl shadow-md p-4 space-y-2 relative">
             <div className="absolute top-3 right-3">
               <div className="relative">
@@ -129,7 +130,6 @@ const StudyMaterials: React.FC = () => {
                 </div>
               </label>
             </div>
-
           </div>
         </section>
       </main>
