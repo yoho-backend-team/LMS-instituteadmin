@@ -30,7 +30,7 @@ const ViewAttendancePage: React.FC = () => {
                     onClick={() => setShowPanel(true)}
                     className="bg-green-500 text-white px-4 py-2 rounded-md flex items-center gap-2"
                 >
-                    <Plus size={22} /> Add Attendance
+                    <Plus size={16} /> Add Attendance
                 </button>
             </div>
 
