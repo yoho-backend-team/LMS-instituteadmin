@@ -31,7 +31,7 @@ export const MainLayout = () => {
 
     
     <div
-      className="flex-1 p-4 overflow-auto ml-0"
+      className="flex-1 p-4 overflow-auto  "
       style={{
         backgroundImage: `url(${backgroundimage})`,
         backgroundSize: 'cover',
