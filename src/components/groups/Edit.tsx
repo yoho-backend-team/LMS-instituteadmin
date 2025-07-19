@@ -50,7 +50,6 @@ const permissions: Omit<
     );
   };
 
-  // ✅ Select All (Toggles all to true if not all are true, otherwise false)
   const handleSelectAll = () => {
     const allSelected = permissionState.every(
       (p) => p.Read && p.Create && p.Update && p.Delete

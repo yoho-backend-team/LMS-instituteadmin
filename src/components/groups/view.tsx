@@ -56,7 +56,7 @@ function PermissionManagement() {
       style={{ backgroundImage: `url(${bg})` }}
     >
       <div className="bg-white shadow-md rounded-xl p-6 max-w-5xl mx-auto">
-        {/* Tabs */}
+      
         <div className="flex space-x-2 mb-6">
           {["Read", "Create", "Update", "Delete", "All"].map((tab) => (
             <Button
