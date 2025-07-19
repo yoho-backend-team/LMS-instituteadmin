@@ -9,6 +9,15 @@ import {
   Tooltip,
   LabelList,
 } from "recharts";
+import { FONTS } from "@/constants/uiConstants";
+import {  MoreVertical } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
+
 
 const feeData = [
   { label: "", value: 10000 },
@@ -98,14 +107,56 @@ export default function EarningsChart() {
 
   return (
     <Card className="p-4 rounded-xl shadow-md bg-white overflow-hidden">
-      <h4 className="text-lg font-semibold text-gray-800">Statistics</h4>
-      <h4 className="text-md font-semibold text-gray-800 mt-1">
+      <div className="flex items-center justify-between">
+  <h4 style={{ ...FONTS.card_htext }}>Statistics</h4>
+  <DropdownMenu>
+  <DropdownMenuTrigger asChild>
+    <button
+      className="bg-white backdrop-blur-md rounded-md p-1 hover:bg-white shadow-md z-10"
+      aria-label="More options"
+    >
+      <MoreVertical className="w-5 h-5 text-[#ca406f]" />
+    </button>
+  </DropdownMenuTrigger>
+
+  <DropdownMenuContent className="bg-white rounded-lg shadow-xl w-[120px] p-2 z-20 space-y-2">
+    <DropdownMenuItem
+     
+      className="group border border-gray-300 text-black font-semibold text-sm rounded-md px-3 py-2 flex items-center gap-2 cursor-pointer"
+      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#ca406f")}
+      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "")}
+    >
+      <span className="!group-hover:text-white" style={{ ...FONTS.Description }}>Last Week</span>
+    </DropdownMenuItem>
+
+    <DropdownMenuItem
+ 
+      className="group border border-gray-300 text-black font-medium text-sm rounded-md px-3 py-2 flex items-center gap-2 cursor-pointer"
+      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#ca406f")}
+      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "")}
+    >
+      <span className="!group-hover:text-white" style={{ ...FONTS.Description }}>Last Month</span>
+    </DropdownMenuItem>
+
+    <DropdownMenuItem
+      className="group border border-gray-300 text-black font-medium text-sm rounded-md px-3 py-2 flex items-center gap-2 cursor-pointer"
+      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#ca406f")}
+      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "")}
+    >
+      <span className="!group-hover:text-white" style={{ ...FONTS.Description }}>Last Year</span>
+    </DropdownMenuItem>
+  </DropdownMenuContent>
+</DropdownMenu>
+
+</div>
+
+      <h4 className=" !font-semibold mt-1"style={{...FONTS.card_htext}}>
         Earning Reports
       </h4>
 
       <div className="flex justify-between items-center mt-1 mb-4">
-        <p className="text-sm text-gray-500">Yearly Earnings Overview</p>
-        <div className="flex space-x-6 text-sm mr-60 font-semibold">
+        <p style={{...FONTS.card_des}}>Yearly Earnings Overview</p>
+        <div className="flex space-x-6  mr-60 font-semibold"style={{...FONTS.card_des,fontSize:"18px"}}>
           <span
             onClick={() => setActive("fee")}
             className={`cursor-pointer ${

@@ -4,6 +4,7 @@ import dollar from "../../assets/dollar.png";
 import classimg from "../../assets/classimg (1).png";
 import img from "../../assets/arr.png";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { FONTS } from "@/constants/uiConstants";
 
 const metrics = [
   { label: "Profits", value: "12345", img: dollar, bg: "from-[#DB55D2] to-[#7A69FE]" },
@@ -35,11 +36,11 @@ export default function CircularCardCarousel() {
 
   const handlePrev = () => {
     setActiveIndex((prev) => (prev - 1 + metrics.length) % metrics.length);
-  };
+  }
 
   return (
     <Card className="p-4 rounded-xl shadow-md bg-white relative overflow-hidden">
-      <h4 className="text-sm font-semibold text-[#ca406f] mb-2">Key Metrics</h4>
+      <h4 className=" mb-2"style={{...FONTS.card_htext}}>Key Metrics</h4>
 
       <div className="relative w-full flex items-center justify-center">
         <button
@@ -63,8 +64,8 @@ export default function CircularCardCarousel() {
                 className={`w-[220px] h-[220px] rounded-xl bg-gradient-to-br ${item.bg} text-white p-4 flex flex-col items-center justify-center shadow-lg`}
               >
                 <img src={item.img} alt={item.label} className="w-14 h-14 mb-3" />
-                <p className="text-md font-semibold">{item.label}</p>
-                <p className="text-2xl font-bold mt-2">{item.value}</p>
+                <p className="text-md font-semibold" style={{...FONTS.dropdown,fontSize:"22px",fontWeight:400}}>{item.label}</p>
+                <p className=" mt-2"style={{...FONTS.numbers}}>{item.value}</p>
               </div>
             </div>
           ))}

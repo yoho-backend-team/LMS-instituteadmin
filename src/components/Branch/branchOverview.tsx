@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import EarningsChart from "./charts";
 import CircularCardCarousel from "./branchOverviewCards";
+import { FONTS } from "@/constants/uiConstants";
 
 const activities = new Array(8).fill({
   title: "Notes Created",
@@ -30,7 +31,7 @@ const BranchOverview = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-100 via-white to-pink-100 px-6 py-6">
-      <h2 className="text-2xl font-semibold text-[#ca406f] mb-6">Branch Overview</h2>
+      <h2 className=" mb-6" style={{...FONTS.form_head}}>Branch Overview</h2>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="col-span-2 space-y-6">
@@ -41,7 +42,7 @@ const BranchOverview = () => {
     
         <Card className="rounded-xl shadow-md bg-white max-h-[720px]">
           <CardContent className="p-4">
-            <h4 className="text-lg font-semibold text-gray-800 mb-4">Recent Activities</h4>
+            <h4 className=" mb-4"style={{...FONTS.card_htext}}>Recent Activities</h4>
             <ScrollArea className="h-[600px] pr-2">
               <div className="space-y-3">
                 {activities.map((item, idx) => (
@@ -52,8 +53,8 @@ const BranchOverview = () => {
                   >
                     <div className="w-10 h-10 mt-1 rounded-full bg-[#ca406f] group-hover:bg-white transition-all duration-300 flex-shrink-0" />
                     <div className="flex flex-col">
-                      <p className="font-semibold text-sm">{item.title}</p>
-                      <p className="text-xs mt-3 text-muted-foreground group-hover:text-white">
+                      <p style={{...FONTS.card_head}}>{item.title}</p>
+                      <p className="text-xs mt-3 text-muted-foreground group-hover:text-white"style={{...FONTS.dropdown,color:"grey"}}>
                         {item.desc}
                       </p>
                     </div>

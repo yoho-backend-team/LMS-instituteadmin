@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/dialog";
 import { Plus } from "lucide-react";
 import bg from "../../assets/bg.png";
+import { FONTS } from "@/constants/uiConstants";
 
 const branches = [
   {
@@ -57,7 +58,7 @@ const BranchPage = () => {
       style={{ backgroundImage: `url(${bg})` }}
     >
       <div className="max-w-[1200px] mx-auto px-4 py-6">
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between mb-8" style={{...FONTS.input_section}}>
           <Input
             type="text"
             placeholder="Search Branch"
@@ -66,7 +67,7 @@ const BranchPage = () => {
 
           <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
-              <Button className="bg-pink-600 text-white hover:bg-pink-700 flex items-center gap-2">
+              <Button className="bg-[#CA406F] hover:bg-[#ca406f] flex items-center gap-2 " style={{...FONTS.add_button}}>
                 <Plus size={16} />
                 Add New Branch
               </Button>
@@ -77,10 +78,10 @@ const BranchPage = () => {
 >
 
               <DialogHeader>
-                <DialogTitle className="text-2xl font-bold text-[#ca406f]">
+                <DialogTitle style={{...FONTS.form_head}}>
                   Create a New Branch
                 </DialogTitle>
-                <DialogDescription className="text-gray-500 mt-1">
+                <DialogDescription className="mt-1"style={{...FONTS.form_des}}>
                   Fill In The Details Below To Add A New Branch
                 </DialogDescription>
               </DialogHeader>
@@ -88,35 +89,35 @@ const BranchPage = () => {
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
                 <div>
-                  <label className="text-sm font-medium">Branch Name</label>
+                  <label  style={{...FONTS.form_topic}}>Branch Name</label>
                   <Input placeholder="Enter branch name" />
                 </div>
                 <div>
-                  <label className="text-sm font-medium">Phone Number</label>
+                  <label style={{...FONTS.form_topic}}>Phone Number</label>
                   <Input placeholder="Enter phone number" />
                 </div>
                 <div>
-                  <label className="text-sm font-medium">Alternate Number</label>
+                  <label style={{...FONTS.form_topic}}>Alternate Number</label>
                   <Input placeholder="Enter alternate number" />
                 </div>
                 <div>
-                  <label className="text-sm font-medium">Address</label>
+                  <label style={{...FONTS.form_topic}}>Address</label>
                   <Input placeholder="Enter address" />
                 </div>
                 <div>
-                  <label className="text-sm font-medium">Pin Code</label>
+                  <label style={{...FONTS.form_topic}}>Pin Code</label>
                   <Input placeholder="Enter pin code" />
                 </div>
                 <div>
-                  <label className="text-sm font-medium">Land Mark</label>
+                  <label style={{...FONTS.form_topic}}>Land Mark</label>
                   <Input placeholder="Enter landmark" />
                 </div>
                 <div>
-                  <label className="text-sm font-medium">City</label>
+                  <label style={{...FONTS.form_topic}}>City</label>
                   <Input placeholder="Enter city" />
                 </div>
                 <div>
-                  <label className="text-sm font-medium">State</label>
+                  <label style={{...FONTS.form_topic}}>State</label>
                   <Input placeholder="Enter state" />
                 </div>
               </div>
@@ -125,12 +126,12 @@ const BranchPage = () => {
                 <DialogClose asChild>
                   <Button
                     variant="outline"
-                    className="border-[#6f4ef2] text-[#6f4ef2]"
+                    className="!border-[#0400FF] !text-[#0400FF] "style={{...FONTS.Buttons}}
                   >
                     Cancel
                   </Button>
                 </DialogClose>
-                <Button className="bg-[#ca406f] text-white hover:bg-[#b53860]">
+                <Button className="bg-[#ca406f] hover:bg-[#CA406F]"style={{...FONTS.Buttons}}>
                   Create Branch
                 </Button>
               </DialogFooter>

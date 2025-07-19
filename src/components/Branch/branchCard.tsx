@@ -63,7 +63,7 @@ const BranchCard: React.FC<BranchCardProps> = ({ name, address }) => {
 >
   
   <Eye className="w-4 h-4 text-black group-hover:text-white" />
-  <span className="group-hover:text-white">View</span>
+  <span className="!group-hover:text-white" style={{...FONTS.Description}}>View</span>
 </DropdownMenuItem>
 
 
@@ -74,14 +74,14 @@ const BranchCard: React.FC<BranchCardProps> = ({ name, address }) => {
   onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "")}
 >
   <Pencil className="w-4 h-4 text-black group-hover:text-white" />
-  <span className="group-hover:text-white">Edit</span>
+  <span className="!group-hover:text-white" style={{...FONTS.Description}}>Edit</span>
 </DropdownMenuItem>
 
     <DropdownMenuItem className="group border border-gray-300 text-black font-medium text-sm rounded-md px-3 py-2 flex items-center gap-2 cursor-pointer hover:bg-[#ca406f]"
      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#ca406f")}
   onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "")}>
       <Trash2 className="w-4 h-4 text-black group-hover:text-white" />
-      <span className="group-hover:text-white">Delete</span>
+      <span className="!group-hover:text-white"style={{...FONTS.Description}}>Delete</span>
     </DropdownMenuItem>
   </DropdownMenuContent>
 </DropdownMenu>
@@ -89,8 +89,8 @@ const BranchCard: React.FC<BranchCardProps> = ({ name, address }) => {
         </div>
 
         <div>
-          <h3 style={{ ...FONTS.heading_01 }}>{name}</h3>
-          <p style={{ ...FONTS.Description }}>{address}</p>
+          <h3 style={{ ...FONTS.card_head }}>{name}</h3>
+          <p style={{ ...FONTS.card_des }}>{address}</p>
         </div>
 
         <div className="relative z-10">
@@ -101,7 +101,7 @@ const BranchCard: React.FC<BranchCardProps> = ({ name, address }) => {
               }`}
             >
               {status ? (
-                <div className="w-[111px] h-[40px] bg-[#ca406f] text-white text-sm font-medium border rounded-md flex items-center justify-center">
+                <div className="w-[111px] h-[40px] bg-[#ca406f] text-white text-sm font-medium border rounded-md flex items-center justify-center" style={{...FONTS.dropdown}}>
                   {status.charAt(0).toUpperCase() + status.slice(1)}
                 </div>
               ) : (
@@ -117,14 +117,14 @@ const BranchCard: React.FC<BranchCardProps> = ({ name, address }) => {
               <SelectItem
                 value="active"
                 className="bg-[#ca406f] text-white rounded-md px-4 py-2 text-sm font-medium 
-                data-[highlighted]:bg-[#ca406f] hover:bg-[#ca406f] focus:bg-[#ca406f]"
+                data-[highlighted]:bg-[#ca406f] hover:bg-[#ca406f] focus:bg-[#ca406f]" style={{...FONTS.dropdown}}
               >
                 Active
               </SelectItem>
               <SelectItem
                 value="inactive"
                 className="bg-[#ca406f] text-white mt-2 rounded-md px-4 py-2 text-sm font-medium 
-                data-[highlighted]:bg-[#ca406f] hover:bg-[#ca406f] focus:bg-[#ca406f]"
+                data-[highlighted]:bg-[#ca406f] hover:bg-[#ca406f] focus:bg-[#ca406f]"style={{...FONTS.dropdown}}
               >
                 Inactive
               </SelectItem>

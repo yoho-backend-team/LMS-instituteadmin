@@ -19,6 +19,7 @@ import {
 import { useState } from "react";
 import EditBatchModal from "./editBatch";
 import { useNavigate } from "react-router-dom";
+import { FONTS } from "@/constants/uiConstants";
 
 
 
@@ -56,7 +57,7 @@ export const BatchCard: React.FC<BatchCardProps> = ({
       
         <div className="flex justify-between items-start border-b border-gray-200 pb-2">
           <div>
-            <h4 className="text-[14px] font-semibold text-neutral-800">{title}</h4>
+            <h4 className="text-[14px] font-semibold text-neutral-800"style={{...FONTS.card_head}}>{title}</h4>
             
           </div>
          <DropdownMenu>
@@ -99,14 +100,10 @@ export const BatchCard: React.FC<BatchCardProps> = ({
     </DropdownMenuItem>
   </DropdownMenuContent>
 </DropdownMenu>
-
-          
-        </div>
-        <div><p className="text-xs text-neutral-500 mt-4">{subtitle}</p></div>
-
-       
-        <div className="flex items-center justify-between mt-4">
-          <div className="bg-[#1E1EFF] text-white text-[12px] px-6 py-[6px] rounded-md font-semibold">
+</div>
+        <div><p className=" mt-4"style={{...FONTS.card_head,fontSize:"16px"}}>{subtitle}</p></div>
+       <div className="flex items-center justify-between mt-4">
+          <div className="bg-[#1E1EFF]  px-6 py-[6px] rounded-md"style={{...FONTS.numbers,fontSize:"14px"}}>
             {startDate}
           </div>
           <div className="flex items-center justify-center w-16 relative">
@@ -114,7 +111,7 @@ export const BatchCard: React.FC<BatchCardProps> = ({
             <div className="absolute w-2 h-2 bg-[#D43C80] rounded-full left-0 -translate-y-1/2 top-1/2" />
             <div className="absolute w-2 h-2 bg-[#D43C80] rounded-full right-0 -translate-y-1/2 top-1/2" />
           </div>
-          <div className="bg-[#1E1EFF] text-white text-[12px] px-6 py-[6px] rounded-md font-semibold">
+          <div className="bg-[#1E1EFF] px-6 py-[6px] rounded-md "style={{...FONTS.numbers,fontSize:"14px"}}>
             {endDate}
           </div>
         </div>
@@ -132,28 +129,29 @@ export const BatchCard: React.FC<BatchCardProps> = ({
         </div>
 
         
-        <div className="mt-4 h-[60px]">
-          <svg
-            viewBox="0 0 200 40"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-full"
-          >
-            <defs>
-              <linearGradient id="waveGradient" x1="0" y1="0" x2="200" y2="0" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="#D43C80" />
-                <stop offset="90%" stopColor="#BDC2C7BF" />
-              </linearGradient>
-            </defs>
-            <path
-              d="M0,40 C20,10 40,10 60,25 C80,40 100,10 120,25 C140,40 160,10 180,25 C190,30 200,35 200,40"
-              stroke="url(#waveGradient)"
-              strokeWidth="2"
-              fill="none"
-              opacity="0.9"
-            />
-          </svg>
-        </div>
+       <div className="mt-4 h-[60px] pt-2">
+  <svg
+    viewBox="0 0 200 40"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-full h-full"
+  >
+    <defs>
+      <linearGradient id="waveGradient" x1="0" y1="0" x2="200" y2="0" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stopColor="#D43C80" />
+        <stop offset="90%" stopColor="#BDC2C7BF" stopOpacity="0.7" />
+      </linearGradient>
+    </defs>
+    <path
+      d="M0,40 C20,10 40,10 60,25 C80,40 100,10 120,25 C140,40 160,10 180,25 C190,30 200,35 200,40"
+      stroke="url(#waveGradient)"
+      strokeWidth="2"
+      fill="none"
+      opacity="0.9"
+    />
+  </svg>
+</div>
+
 
       
         <div className="flex justify-end mt-6">
