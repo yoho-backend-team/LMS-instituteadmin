@@ -1,0 +1,73 @@
+.course-details-wrapper {
+  padding: 40px;
+  background-color: #fce4ec;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+}
+
+.course-detail-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.course-image-placeholder {
+  background-color: #ccc;
+  width: 100%;
+  height: 200px;
+  border-radius: 8px;
+}
+
+.course-detail-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.course-time {
+  font-size: 14px;
+  color: #333;
+}
+
+.course-price {
+  font-weight: bold;
+  color: #333;
+}
+
+.delete-btn {
+  background-color: #e00076;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.course-tab-section {
+  display: flex;
+  gap: 10px;
+}
+
+.active-tab {
+  flex: 1;
+  padding: 12px;
+  background-color: #00c853;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.inactive-tab {
+  flex: 1;
+  padding: 12px;
+  background-color: #eee;
+  color: #333;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+}

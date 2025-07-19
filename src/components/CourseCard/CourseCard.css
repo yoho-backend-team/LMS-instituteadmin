@@ -1,0 +1,121 @@
+.course-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.badge {
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 400;
+  color: white;
+}
+
+.category {
+  background-color: #f1c9d7;
+  color: #b4004e;
+}
+
+.mode {
+  background-color: #00b300;
+  color: white;
+}
+
+.course-image {
+  width: 100%;
+  height: 160px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.course-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #d2005a;
+}
+
+.course-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #444;
+  font-size: 14px;
+}
+
+.module-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.module-icon {
+  color: #666;
+}
+
+.course-price {
+  font-weight: 600;
+  color: #d2005a;
+}
+
+.card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+.status-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #CA406F;
+  color: #FFFFFF;         
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 500;
+  width:80px;
+  height:35px;
+}
+
+.dropdown-icon {
+  width: 12px;
+  height: 12px;
+}
+
+
+
+
+
+
+
+
+
+.status-select {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 10px;
+  background: #CA406F;
+  color: #FFFFFF;
+}
+
+.view-btn {
+  padding: 8px 18px;
+  background-color: #00c04b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
