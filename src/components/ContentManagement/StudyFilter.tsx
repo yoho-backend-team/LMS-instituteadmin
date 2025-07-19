@@ -9,7 +9,7 @@ const StudyMaterials: React.FC = () => {
       {/*Button */}
       <button
         onClick={() => setShowFilter(!showFilter)}
-        className="bg-[#CA406F] text-white px-4 py-2 rounded transition flex items-center gap-2"
+        className="bg-[#CA406F] text-white px-4 h-12 rounded-md shadow-md transition flex items-center gap-2"
       >
         <img src={filterImage} className="w-6" />
         {showFilter ? "Hide Filter" : "Show Filter"}

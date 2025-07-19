@@ -39,7 +39,8 @@ const StudyMaterials: React.FC = () => {
               onClick={() => setShowAdd(true)}
               className="bg-[#CA406F] text-white px-5 py-2.5 rounded-md shadow-md"
             >
-              + Add Study Material
+              <span className="text-2xl leading-none">+</span>
+              <span className="text-base pl-3">Add Study Material</span>
             </button>
 
             {showAdd && <AddStudyMaterial onClose={() => setShowAdd(false)} />}

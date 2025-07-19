@@ -1,6 +1,7 @@
 // src/components/StudyMaterial/AddStudyMaterial.tsx
 import React from "react";
 import closeImage from '../../assets/close.png'
+import cloudImage from '../../assets/cloud.png'
 
 interface Props {
     onClose: () => void;
@@ -8,13 +9,17 @@ interface Props {
 
 const AddStudyMaterial: React.FC<Props> = ({ onClose }) => {
     return (
-        <div className="fixed right-0 top-4 w-[350px] sm:w-[350px] h-[720px] bg-white shadow-lg z-50 p-6 transition-all">
+        <div className="fixed rounded-md right-0 top-4 w-[350px] sm:w-[350px] h-[690px] bg-white shadow-lg z-50 p-6 transition-all">
             <div className="flex justify-between items-center mb-4">
-                <h2 className="text-lg font-semibold text-gray-700">Add Study Materials</h2>
+                <h2 className="text-lg font-semibold text-[#716F6F]">Add Study Materials</h2>
 
                 <img src={closeImage} onClick={onClose} className="w-5 h-5" />
             </div>
             <form className="space-y-4">
+
+                <div className="border border-gray-300 h-24 p-4 rounded-md text-center text-sm text-gray-500 mb-4">
+        <img src={cloudImage} className="w-6 ml-28"/><br /> Drop Files Here Or Click To Upload
+      </div>
                 <div>
                     <label className="block text-sm">Branch</label>
                     <select className="w-full border-2 px-4 py-2 rounded" />
@@ -39,11 +44,11 @@ const AddStudyMaterial: React.FC<Props> = ({ onClose }) => {
                     <button
                         type="button"
                         onClick={onClose}
-                        className="px-4 py-2 border rounded text-blue-600 border-blue-600"
+                        className="px-4 h-8 border rounded text-blue-600 border-blue-600"
                     >
                         Cancel
                     </button>
-                    <button className="px-4 py-2 bg-[#CA406F] text-white rounded">Submit</button>
+                    <button className="px-4 h-8 bg-[#CA406F] text-white rounded">Submit</button>
                 </div>
             </form>
         </div>

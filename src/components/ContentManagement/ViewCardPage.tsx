@@ -26,16 +26,22 @@ const ViewCardPage: React.FC = () => {
         <img src={closeImage} onClick={handleClose} className="w-5 h-5 ml-125" />
         <div className="flex flex-col items-center">
           <img
-            src={aadhaarImage}
-            alt="ID Card"
-            className="w-full max-w-sm rounded-lg shadow"
-          />
+  src={aadhaarImage}
+  alt="ID Card"
+  className="w-full max-w-sm rounded-lg"
+  style={{
+    boxShadow: `
+      -4px -4px 6px rgba(255, 255, 255, 0.3),  /* Top + Left (light) */
+       4px  4px 6px rgba(0, 0, 0, 0.25)        /* Bottom + Right (dark) */
+    `
+  }}
+/>
 
           {/* Details */}
           <div className="mt-6 text-left w-full space-y-2">
             <h2 className="text-lg font-semibold text-gray-800 flex items-center">
               RVR <span className="ml-2 text-yellow-500">⭐</span>
-              <span className="inline-block mt-2 ml-102 px-3 py-1 text-sm text-white bg-green-500 rounded-full w-fit">
+              <span className="inline-block mt-2 ml-102 px-3 py-1 text-sm text-white bg-green-500 rounded-lg w-fit">
                 Active
               </span>
             </h2>
