@@ -106,10 +106,10 @@ export const BatchCard: React.FC<BatchCardProps> = ({
           <div className="bg-[#1E1EFF]  px-6 py-[6px] rounded-md"style={{...FONTS.numbers,fontSize:"14px"}}>
             {startDate}
           </div>
-          <div className="flex items-center justify-center w-16 relative">
-            <div className="absolute top-1/2 left-0 right-0 h-[2px] bg-[#D43C80] rounded-full -translate-y-1/2" />
-            <div className="absolute w-2 h-2 bg-[#D43C80] rounded-full left-0 -translate-y-1/2 top-1/2" />
-            <div className="absolute w-2 h-2 bg-[#D43C80] rounded-full right-0 -translate-y-1/2 top-1/2" />
+          <div className="flex items-center justify-center w-28 relative">
+            <div className="absolute top-1/2 left-2 right-2 h-[2px] bg-[#D43C80] rounded-full -translate-y-1/2" />
+            <div className="absolute w-2 h-2 bg-[#D43C80] rounded-full left-2 -translate-y-1/2 top-1/2" />
+            <div className="absolute w-2 h-2 bg-[#D43C80] rounded-full right-2 -translate-y-1/2 top-1/2" />
           </div>
           <div className="bg-[#1E1EFF] px-6 py-[6px] rounded-md "style={{...FONTS.numbers,fontSize:"14px"}}>
             {endDate}
@@ -120,11 +120,11 @@ export const BatchCard: React.FC<BatchCardProps> = ({
         <div className="flex items-center justify-between text-[10px] text-gray-500 mt-3">
           <div className="flex items-center gap-1">
             <img src={humaning} className="w-3.5 h-3.5" />
-            <span>{students} Students</span>
+            <span style={{...FONTS.text}}>{students}  Students</span>
           </div>
           <div className="flex items-center gap-1">
             <img src={clock}  className="w-3.5 h-3.5" />
-            <span>Days</span>
+            <span style={{...FONTS.text}}>Days</span>
           </div>
         </div>
 
@@ -162,7 +162,7 @@ export const BatchCard: React.FC<BatchCardProps> = ({
               }`}
             >
               {status ? (
-                <div className="w-[111px] h-[40px] bg-[#ca406f] text-white text-sm font-medium border rounded-md flex items-center justify-center">
+                <div className="w-[111px] h-[40px] bg-[#ca406f]  border rounded-md flex items-center justify-center" style={{...FONTS.dropdown}}>
                   {status.charAt(0).toUpperCase() + status.slice(1)}
                 </div>
               ) : (
@@ -177,15 +177,15 @@ export const BatchCard: React.FC<BatchCardProps> = ({
             >
               <SelectItem
                 value="active"
-                className="bg-[#ca406f] text-white rounded-md px-4 py-2 text-sm font-medium 
-                data-[highlighted]:bg-[#ca406f] hover:bg-[#ca406f] focus:bg-[#ca406f]"
+                className="bg-[#ca406f]  rounded-md px-4 py-2 text-sm font-medium 
+                data-[highlighted]:bg-[#ca406f] hover:bg-[#ca406f] focus:bg-[#ca406f]" style={{...FONTS.dropdown}}
               >
                 Active
               </SelectItem>
               <SelectItem
                 value="inactive"
-                className="bg-[#ca406f] text-white mt-2 rounded-md px-4 py-2 text-sm font-medium 
-                data-[highlighted]:bg-[#ca406f] hover:bg-[#ca406f] focus:bg-[#ca406f]"
+                className="bg-[#ca406f] mt-2 rounded-md px-4 py-2 text-sm font-medium 
+                data-[highlighted]:bg-[#ca406f] hover:bg-[#ca406f] focus:bg-[#ca406f]" style={{...FONTS.dropdown}}
               >
                 Inactive
               </SelectItem>

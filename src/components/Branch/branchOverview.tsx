@@ -30,7 +30,7 @@ const BranchOverview = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-100 via-white to-pink-100 px-6 py-6">
+    <div className="min-h-screen  px-6 py-6">
       <h2 className=" mb-6" style={{...FONTS.form_head}}>Branch Overview</h2>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -40,21 +40,21 @@ const BranchOverview = () => {
         </div>
 
     
-        <Card className="rounded-xl shadow-md bg-white max-h-[720px]">
+        <Card className="rounded-xl shadow-md bg-white max-h-[800px]">
           <CardContent className="p-4">
             <h4 className=" mb-4"style={{...FONTS.card_htext}}>Recent Activities</h4>
-            <ScrollArea className="h-[600px] pr-2">
+            <ScrollArea className="h-[700px] pr-2">
               <div className="space-y-3">
                 {activities.map((item, idx) => (
                   <div
                     key={idx}
-                    className="group flex items-start gap-3 rounded-xl p-4 border border-gray-200 shadow-md bg-white transition-all duration-300 transform hover:translate-y-[-2px] hover:shadow-lg hover:bg-gradient-to-r hover:from-[#f68aab] hover:to-[#ca406f] hover:text-white"
+                    className="group flex items-start gap-3 rounded-xl p-4 border border-gray-200 shadow-md bg-white transition-all duration-300 transform hover:translate-y-[-2px] hover:shadow-lg hover:bg-gradient-to-l hover:from-[#f68aab] hover:to-[#ca406f] hover:text-white"
                     style={{ willChange: "transform" }}
                   >
                     <div className="w-10 h-10 mt-1 rounded-full bg-[#ca406f] group-hover:bg-white transition-all duration-300 flex-shrink-0" />
                     <div className="flex flex-col">
-                      <p style={{...FONTS.card_head}}>{item.title}</p>
-                      <p className="text-xs mt-3 text-muted-foreground group-hover:text-white"style={{...FONTS.dropdown,color:"grey"}}>
+                      <p style={{...FONTS.card_head1}} className="text-[#716F6F] group-hover:text-white">{item.title}</p>
+                      <p className="text-xs mt-3 text-[#716F6F] group-hover:text-white"style={{...FONTS.dropdown1}}>
                         {item.desc}
                       </p>
                     </div>

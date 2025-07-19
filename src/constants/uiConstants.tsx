@@ -13,11 +13,21 @@ Description: {
 		fontSize: '14px',
         color:"#7d7d7d"
 },
+Description1: {
+		fontFamily: 'poppins',
+		fontWeight: 300,
+		fontSize: '14px',
+},
 card_head: {
 		fontFamily: 'poppins',
 		fontWeight: 600,
 		fontSize: '18px',
         color:"#716F6F"
+},
+card_head1: {
+		fontFamily: 'poppins',
+		fontWeight: 600,
+		fontSize: '18px',
 },
 
 card_des: {
@@ -32,6 +42,11 @@ dropdown: {
 		fontWeight: 500,
 		fontSize: '12px',
         color:"#ffffff"
+},
+dropdown1: {
+		fontFamily: 'poppins',
+		fontWeight: 500,
+		fontSize: '12px',
 },
 
 input_section: {
@@ -90,4 +105,11 @@ Buttons:{
 		fontWeight: 500,
 		fontSize: '12px',
         color:"#ffffff"
-	}}
+	},
+text:{
+	fontFamily: 'poppins',
+		fontWeight: 600,
+		fontSize: '14px',
+        color:"#7d7d7d"
+}}
+

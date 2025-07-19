@@ -62,26 +62,26 @@ const BranchCard: React.FC<BranchCardProps> = ({ name, address }) => {
   onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "")}
 >
   
-  <Eye className="w-4 h-4 text-black group-hover:text-white" />
-  <span className="!group-hover:text-white" style={{...FONTS.Description}}>View</span>
+  <Eye className="w-4 h-4 text-[#7d7d7d] group-hover:text-white" />
+  <span className="text-[#7d7d7d] group-hover:text-white" style={{...FONTS.Description1}}>View</span>
 </DropdownMenuItem>
 
 
    <DropdownMenuItem
-  className="group border border-gray-300 text-black font-medium text-sm rounded-md px-3 py-2 flex items-center gap-2 cursor-pointer"
+  className="group border border-gray-300 font-medium text-sm rounded-md px-3 py-2 flex items-center gap-2 cursor-pointer"
   onClick={openEditModal}
   onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#ca406f")}
   onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "")}
 >
-  <Pencil className="w-4 h-4 text-black group-hover:text-white" />
-  <span className="!group-hover:text-white" style={{...FONTS.Description}}>Edit</span>
+  <Pencil className="w-4 h-4 text-[#7d7d7d] group-hover:text-white" />
+  <span className="text-[#7d7d7d] group-hover:text-white" style={{...FONTS.Description1}}>Edit</span>
 </DropdownMenuItem>
 
     <DropdownMenuItem className="group border border-gray-300 text-black font-medium text-sm rounded-md px-3 py-2 flex items-center gap-2 cursor-pointer hover:bg-[#ca406f]"
      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#ca406f")}
   onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "")}>
-      <Trash2 className="w-4 h-4 text-black group-hover:text-white" />
-      <span className="!group-hover:text-white"style={{...FONTS.Description}}>Delete</span>
+      <Trash2 className="w-4 h-4 text-[#7d7d7d] group-hover:text-white" />
+      <span className="text-[#7d7d7d] group-hover:text-white"style={{...FONTS.Description1}}>Delete</span>
     </DropdownMenuItem>
   </DropdownMenuContent>
 </DropdownMenu>

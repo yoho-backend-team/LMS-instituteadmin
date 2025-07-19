@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import bg from "../../assets/bg.png";
 import filter from "../../assets/filter.png";
 import plus from "../../assets/Add.png";
-import { CreateBatchModal } from "./createBatch";
+import { CreateBatchModal } from "@/components/Batch/createBatch";
 import { FONTS } from "@/constants/uiConstants";
 
 export default function StudentDashboard() {

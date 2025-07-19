@@ -156,7 +156,7 @@ export default function EarningsChart() {
 
       <div className="flex justify-between items-center mt-1 mb-4">
         <p style={{...FONTS.card_des}}>Yearly Earnings Overview</p>
-        <div className="flex space-x-6  mr-60 font-semibold"style={{...FONTS.card_des,fontSize:"18px"}}>
+        <div className="flex space-x-6  mr-30 font-semibold"style={{...FONTS.card_des,fontSize:"18px"}}>
           <span
             onClick={() => setActive("fee")}
             className={`cursor-pointer ${

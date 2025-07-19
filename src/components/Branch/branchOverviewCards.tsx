@@ -3,7 +3,8 @@ import { Card } from "@/components/ui/card";
 import dollar from "../../assets/dollar.png";
 import classimg from "../../assets/classimg (1).png";
 import img from "../../assets/arr.png";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import ArrowLeft from "../../assets/Dropleft.png";
+import ArrowRight  from "../../assets/Dropright.png";
 import { FONTS } from "@/constants/uiConstants";
 
 const metrics = [
@@ -39,19 +40,20 @@ export default function CircularCardCarousel() {
   }
 
   return (
-    <Card className="p-4 rounded-xl shadow-md bg-white relative overflow-hidden">
+    <Card className="p-3 rounded-xl shadow-md bg-white relative overflow-hidden">
       <h4 className=" mb-2"style={{...FONTS.card_htext}}>Key Metrics</h4>
 
       <div className="relative w-full flex items-center justify-center">
         <button
           onClick={handlePrev}
-          className="absolute left-0 z-40 p-2 rounded-full bg-[#ca406f] text-white shadow "
+          className="absolute -left-2.5 z-40 p-1 rounded-full bg-[#ca406f] text-white shadow "
         >
-          <ArrowLeft />
+          <img src={ArrowRight}  />
+          
         </button>
 
         <div className="flex justify-center items-center w-full h-[250px] relative">
-          {metrics.map((item, index) => (
+          {metrics?.map((item, index) => (
             <div
               key={index}
               className={`absolute top-0 transition-all duration-500 ease-in-out transform ${getPositionClass(
@@ -73,9 +75,9 @@ export default function CircularCardCarousel() {
 
         <button
           onClick={handleNext}
-          className="absolute right-0 z-40 p-2 rounded-full bg-[#ca406f] text-white shadow "
+          className="absolute -right-2.5 z-40 p-1 rounded-full bg-[#ca406f] text-white shadow "
         >
-          <ArrowRight />
+          <img src={ArrowLeft}  />
         </button>
       </div>
     </Card>

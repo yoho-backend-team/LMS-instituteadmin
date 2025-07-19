@@ -53,11 +53,12 @@ const BranchPage = () => {
   const [open, setOpen] = useState(false);
 
   return (
+    <div>
     <div
       className="min-h-screen bg-cover bg-no-repeat bg-center"
       style={{ backgroundImage: `url(${bg})` }}
     >
-      <div className="max-w-[1200px] mx-auto px-4 py-6">
+      <div className="max-w-[1200px] mx-auto px-2 py-6">
         <div className="flex items-center justify-between mb-8" style={{...FONTS.input_section}}>
           <Input
             type="text"
@@ -144,6 +145,7 @@ const BranchPage = () => {
           ))}
         </div>
       </div>
+    </div>
     </div>
   );
 };

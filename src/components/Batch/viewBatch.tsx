@@ -5,28 +5,29 @@ import call from "../../assets/call.png";
 import email from "../../assets/mail.png";
 import flower from "../../assets/flower.png"
 import location from "../../assets/location.png"
+import { FONTS } from "@/constants/uiConstants";
 
 const batchData = [
   {
-    name: "MEAN STACK 2024",
+    name: "MERN STACK 2024",
     duration: "6 Month",
     startDate: "April 2, 2025",
     endDate: "April 3, 2025",
   },
   {
-    name: "MEAN STACK 2024",
+    name: "MERN STACK 2024",
     duration: "3 Month",
     startDate: "April 3, 2025",
     endDate: "April 4, 2025",
   },
   {
-    name: "MEAN STACK 2024",
+    name: "MERN STACK 2024",
     duration: "2 Month",
     startDate: "April 4, 2025",
     endDate: "April 5, 2025",
   },
   {
-    name: "MEAN STACK 2024",
+    name: "MERN STACK 2024",
     duration: "8 Month",
     startDate: "April 5, 2025",
     endDate: "April 6, 2025",
@@ -54,14 +55,14 @@ const students = [
 
 export default function StudentDashboardMain() {
   return (
-    <div className="p-6 bg-[#f5f5f5] min-h-screen">
-      <h2 className="text-2xl font-bold text-gray-800 mb-4">MEAN 2025</h2>
+    <div className="p-6  min-h-screen">
+      <h2 className="mb-4"style={{...FONTS.card_htext,fontSize:"24px"}}>MERN 2025</h2>
 
 
       <Card className="p-6 bg-white shadow-lg rounded-xl mb-8 space-y-4">
   
   <Card className="p-4 bg-white shadow-sm rounded-xl">
-    <div className="grid grid-cols-3 text-sm font-semibold text-gray-500">
+    <div className="grid grid-cols-3"style={{...FONTS.card_head}}>
       <span>Course Name</span>
       <span>Duration</span>
       <span className="ml-75">Days</span>
@@ -75,12 +76,12 @@ export default function StudentDashboardMain() {
         key={i}
         className="p-4 bg-white shadow-sm rounded-xl flex flex-row items-center justify-between"
       >
-        <div className="text-sm font-medium text-gray-800 w-1/3">
+        <div className=" w-1/3"style={{...FONTS.card_head}}>
           {batch.name}
         </div>
-        <div className="text-sm text-gray-600 w-1/3">{batch.duration}</div>
+        <div className=" w-1/3"style={{...FONTS.card_head}}>{batch.duration}</div>
         <div className="flex items-center gap-2 justify-end w-1/3">
-          <div className="bg-blue-600 text-white text-xs px-3 py-1 rounded-full">
+          <div className="bg-blue-600  px-3 py-1 rounded-md"style={{...FONTS.numbers,fontSize:"14px"}}>
             {batch.startDate}
           </div>
          <div className="flex items-center justify-center w-16 relative">
@@ -88,7 +89,7 @@ export default function StudentDashboardMain() {
             <div className="absolute w-2 h-2 bg-[#D43C80] rounded-full left-0 -translate-y-1/2 top-1/2" />
             <div className="absolute w-2 h-2 bg-[#D43C80] rounded-full right-0 -translate-y-1/2 top-1/2" />
           </div>
-          <div className="bg-blue-600 text-white text-xs px-3 py-1 rounded-full">
+          <div className="bg-blue-600  px-3 py-1 rounded-md"style={{...FONTS.numbers,fontSize:"14px"}}>
             {batch.endDate}
           </div>
         </div>
@@ -104,7 +105,7 @@ export default function StudentDashboardMain() {
         <Input
           type="text"
           placeholder="Search Student"
-          className="border border-pink-400 pl-10 rounded-md"
+          className="border border-pink-400 pl-10 rounded-md "style={{...FONTS.input_section}}
         />
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-pink-500" />
       </div>
@@ -124,24 +125,24 @@ export default function StudentDashboardMain() {
           className="h-14 w-14 rounded-full object-cover"
         />
         <div>
-          <h4 className="font-semibold text-gray-800 text-base">{student.name}</h4>
-          <p className="text-xs text-gray-500">Student ID : {student.id}</p>
+          <h4 style={{...FONTS.card_head}}>{student.name}</h4>
+          <p style={{...FONTS.Description}}>Student ID : {student.id}</p>
         </div>
       </div>
 
       
-      <div className="flex items-center gap-50 mr-60 text-sm text-gray-700">
+      <div className="flex items-center gap-50 mr-20 text-sm text-gray-700">
         <div className="flex items-center gap-2 ">
           <img src={email} alt="email" className="w-4 h-4" />
-          <span className="font-medium text-gray-600">{student.email}</span>
+          <span className="font-medium text-gray-600"style={{...FONTS.Description}}>{student.email}</span>
         </div>
         <div className="flex items-center ml-0  gap-2">
           <img src={call} alt="call" className="w-4 h-4" />
-          <span className="font-medium text-gray-600">{student.phone}</span>
+          <span className="font-medium text-gray-600"style={{...FONTS.Description}}>{student.phone}</span>
         </div>
         <div className="flex items-center gap-2">
           <img src={location} alt="location" className="w-4 h-4" />
-          <span className="font-medium text-gray-600">{student.location}</span>
+          <span className="font-medium text-gray-600"style={{...FONTS.Description}}>{student.location}</span>
         </div>
       </div>
     </Card>

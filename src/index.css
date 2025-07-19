@@ -1,13 +1,22 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@keyframes grow-from-dot-on-hover {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
 @custom-variant dark (&:is(.dark *));
 
-/* :root {
+
+/*:root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
@@ -31,7 +40,7 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
+  min-width: 1020px;
   min-height: 100vh;
 }
 
@@ -63,6 +72,7 @@ button:focus-visible {
   :root {
     color: #213547;
     background-color: #ffffff;
+    max-width: 300px;
   }
   a:hover {
     color: #747bff;
@@ -70,8 +80,34 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-} */
+} 
+*/
+.topbar{
+background: linear-gradient(90deg, #F6D3E9 0%, #FFFFFF 48.08%, #F6D3E9 100%);
+backdrop-filter: blur(2px);
+}
 
+.backgroundimg{
+  position: absolute;
+width: 1224.98px;
+height: 705.9px;
+left: -261px;
+top: 285px;
+
+background: linear-gradient(180deg, #FCF3F6 0%, #F6D3E9 100%);
+transform: rotate(-158.3deg);
+}
+.backgroundimg2{
+  position: absolute;
+width: 1224.98px;
+height: 705.9px;
+left: -261px;
+top: 285px;
+
+background: linear-gradient(180deg, #FCF3F6 0%, #F6D3E9 100%);
+transform: rotate(-158.3deg);
+
+}
 @theme inline {
 
   --radius-sm: calc(var(--radius) - 4px);
