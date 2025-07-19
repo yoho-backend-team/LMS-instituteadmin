@@ -1,16 +1,15 @@
-import { BrowserRouter, Routes,Route } from "react-router"
-import StaffMangement from "./page/StaffManagement/StaffMangement"
+
+
+import { Button } from "@/components/ui/button"
+import Approutes from "./routes/AppRoutes"
 
 function App() {
   return (
-    <>
-    <BrowserRouter>
-    <Routes>
-      <Route path="/staffmanagement" element={<StaffMangement/>}/>
-    </Routes>
-    
-    </BrowserRouter>
-    </>
+   
+    <div className="flex min-h-svh flex-col items-center justify-center">
+      {/* <Button>Click me</Button> */}
+      <Approutes/>
+    </div>
   )
 }
 
