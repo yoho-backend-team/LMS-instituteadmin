@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
+import React, { useState, useRef, type ChangeEvent } from 'react';
 import cardimg1 from '../../../assets/card1.png';
 import cardimg2 from '../../../assets/cardimg2.png';
 import cardimg3 from '../../../assets/cardimg3.png';
@@ -6,10 +7,25 @@ import cardimg4 from '../../../assets/cardimg4.png';
 import Filterimg from '../../../assets/Filter.png';
 import adduserimg from '../../../assets/adduserimg.jpg';
 import bgimg from '../../../assets/Backgroundimg.png';
-
+import plusimg from '../../../assets/Plusimg.png';
+import clsimg from '../../../assets/closeimg.png';
 const Dashboard: React.FC = () => {
+
     const [showFilter, setShowFilter] = useState(true);
     const [showModal, setShowModal] = useState(false);
+    const fileInputRef = useRef<HTMLInputElement>(null);
+
+    const handleUploadClick = () => {
+        fileInputRef.current?.click();
+    };
+
+    const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            console.log('Selected file:', file);
+            e.target.value = '';
+        }
+    };
 
     const cards = [
         { label: 'Total Users', count: 0, color: 'bg-gradient-to-r from-[#EA745F] to-[#B53018]', image: cardimg3 },
@@ -27,11 +43,11 @@ const Dashboard: React.FC = () => {
             }}>
             <div className="min-w-[1440px] w-full min-h-[900px]">
                 <div className="flex-1 p-6">
-                    <div className="bg-white p-4 rounded-lg shadow mb-6">
+                    <div className="bg-white p-4 rounded-lg shadow-[0_4px_10px_3px_rgba(0,0,0,0.10)] mb-6 min-w-[1278px] w-full min-h-[264px]">
                         <h2 className="text-[22px] font-semibold mb-4 font-poppins">Admin User</h2>
 
                         {/* Status Cards */}
-                        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6 ">
+                        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 ">
                             {cards.map((card, idx) => (
                                 <div
                                     key={idx}
@@ -42,15 +58,15 @@ const Dashboard: React.FC = () => {
                                         <img
                                             src={card.image}
                                             alt={card.label}
-                                            className="w-20 h-20 object-contain"
+                                            className="w-[90px] h-[90px] object-contain"
                                         />
                                     </div>
 
                                     {/* Label - Top Right (aligned with image) */}
-                                    <div className="ml-16 mt-2 text-[22px] font-normal mb-4 font-poppins text-white">{card.label}</div>
+                                    <div className="ml-18 mt-5 text-[22px] font-normal mb-4 font-poppins text-white leading-[24px]">{card.label}</div>
 
                                     {/* Count - Bottom Right */}
-                                    <div className="text-right">
+                                    <div className="absolute right-6 bottom-1 text-right">
                                         <div className="text-[32px] font-semibold mb-4 font-poppins">{card.count}</div>
                                     </div>
 
@@ -62,7 +78,7 @@ const Dashboard: React.FC = () => {
                     <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-4 ">
                         <button
                             onClick={() => setShowFilter(!showFilter)}
-                            className="flex items-center bg-[#CA406F] hover:bg-[#CA406F] text-white px-4 py-2 rounded mb-4 md:mb-0 min-h-[48px] min-w-[105px] text-[16px] font-poppins"
+                            className="flex items-center bg-[#CA406F] hover:bg-[#CA406F] text-white px-4 py-2 rounded-lg mb-4 md:mb-0 min-h-[48px] min-w-[105px] text-[16px] font-poppins"
                         >
                             <span className="mr-2"><img src={Filterimg} /></span>
 
@@ -71,9 +87,11 @@ const Dashboard: React.FC = () => {
                         </button>
                         <button
                             onClick={() => setShowModal(true)}
-                            className="bg-[#CA406F] hover:bg-[#CA406F] text-white px-4 py-2 rounded md:ml-4 min-h-[48px] min-w-[105px] text-[16px]"
-                        ><span className="text-[16px] font-medium font-poppins">
-                                + Add User</span>
+                            className="bg-[#CA406F] hover:bg-[#CA406F] text-white px-4 py-2 rounded-lg md:ml-4 min-h-[48px] min-w-[105px] text-[16px]"
+                        ><span className="flex items-center text-[16px] font-medium font-poppins">
+                                <img src={plusimg} alt="plus icon" className="mr-2" />
+                                Add User
+                            </span>
                         </button>
                     </div>
 
@@ -84,10 +102,10 @@ const Dashboard: React.FC = () => {
                                 <input
                                     type="text"
                                     placeholder="Search Admin User"
-                                    className="border border-pink-500 rounded px-4 py-2  min-h-[48px] min-w-[360px] md:w-1/3 "
+                                    className="border-3 border-pink-500 rounded-lg px-4 py-2  min-h-[48px] min-w-[360px] md:w-1/3 "
                                 />
                             </div>
-                            <div className="bg-white p-4 shadow-lg border-t border-gray-100 rounded-md mb-6 text-gray-700">
+                            <div className="bg-white p-4 shadow-[0_4px_10px_3px_rgba(0,0,0,0.10)] p-6 bg-white border-t border-gray-100 rounded-md mb-6 text-gray-700">
                                 <div className="flex flex-col sm:flex-row gap-4">
                                     {/* First select + label */}
                                     <div className="flex flex-col w-full sm:w-1/2">
@@ -115,7 +133,7 @@ const Dashboard: React.FC = () => {
                             <div className="flex justify-between items-center mb-4">
                                 <h2 className="text-[24px] text-[#716F6F] font-semibold font-poppins">Add User</h2>
                                 <button onClick={() => setShowModal(false)} className="text-xl font-bold text-gray-600 hover:text-black">
-                                    ×
+                                    <img src={clsimg} />
                                 </button>
                             </div>
 
@@ -125,7 +143,14 @@ const Dashboard: React.FC = () => {
                                     alt="Profile"
                                     className="w-24 h-24 rounded-full object-cover min-h-[100px] min-w-[100px]"
                                 />
-                                <span className="text-green-600 font-poppins font-bold text-[12px] mt-2">Upload</span>
+                                <span onClick={handleUploadClick} className="text-green-600 font-poppins font-bold text-[12px] mt-2 cursor-pointer">Upload</span>
+                                <input
+                                    type="file"
+                                    ref={fileInputRef}
+                                    onChange={handleFileChange}
+                                    className="hidden"
+                                    accept="image/*"
+                                />
                             </div>
 
                             <form className="space-y-3">
@@ -150,7 +175,7 @@ const Dashboard: React.FC = () => {
                                         className="px-4 py-2 text-[16px] border border-[#716F6F] min-h-[40px] min-w-[98px] rounded-[8px] text-[#0400FF] bg-blue-100 font-semibold hover:bg-blue-100 font-poppins"
                                     >
                                         Cancel
-                                    </button>
+                                    </button>&nbsp;&nbsp;
                                     <button
                                         type="submit"
                                         className="px-4 py-2 text-[16px] bg-[#CA406F] border-[#716F6F] min-h-[40px] min-w-[98px] text-[#FFF] rounded-[8px] hover:bg-[#CA406F] font-poppins"
