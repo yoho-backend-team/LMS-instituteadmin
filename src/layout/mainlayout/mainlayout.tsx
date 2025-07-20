@@ -74,7 +74,7 @@ export const MainLayout = () => {
 
       <div className="flex flex-1 pt-[64px] relative">
         <div
-          className="fixed top-[64px] left-0 z-40 transition-all duration-300 overflow-y-auto"
+          className="fixed top-[64px] left-0 z-40 transition-all duration-300 "
           style={{ height: 'calc(100vh - 64px)' }}
         >
           <SideBar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
