@@ -37,8 +37,12 @@ const RefundManagement = () => {
     amount: '',
   });
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+  const [showBranchDropdown, setShowBranchDropdown] = useState(false);
+  const [selectedBranch, setSelectedBranch] = useState<string | null>(null);
+  const [openDropdownId, setOpenDropdownId] = useState<number | null>(null);
 
-  const dummyData: Note[] = [ {
+  const dummyData: Note[] = [
+    {
       id: 101,
       title: 'Gokul',
       description: 'Java | ₹35000',
@@ -50,27 +54,65 @@ const RefundManagement = () => {
       email: 'cbum@gmail.com',
       paid: 'yes',
     },
-  ]
+    {
+      id: 102,
+      title: 'Armas',
+      description: 'Python | ₹25000',
+      course: 'Python',
+      branch: 'OMR',
+      status: 'Completed',
+      file: undefined,
+      location: 'Germany',
+      email: 'ajay@gmail.com',
+      paid: 'yes',
+    },
+    {
+      id: 103,
+      title: 'Sara',
+      description: 'MERN | ₹30000',
+      course: 'MERN',
+      branch: 'Padur',
+      status: 'Active',
+      file: undefined,
+      location: 'India',
+      email: 'sara@gmail.com',
+      paid: 'yes',
+    },
+  ];
 
- useEffect(() => {
-  setNotes(dummyData)
- })
+  useEffect(() => {
+    setNotes(dummyData);
+  }, []);
 
   const handleSubmit = () => {
-    const newNote: Note = {
-      id: Date.now(),
-      title: formData.student,
-      description: `${formData.batch} | ₹${formData.studentFee}`,
-      course: formData.course,
-      branch: '',
-      status: 'Active',
-      location: '',
-      email: '',
-      paid:'yes',
-    };
-    setNotes([newNote, ...notes]);
+    if (isEditing && editNoteId !== null) {
+      setNotes((prevNotes) =>
+        prevNotes.map((note) =>
+          note.id === editNoteId
+            ? {
+                ...note,
+                title: formData.student,
+                description: `${formData.batch} | ₹${formData.studentFee}`,
+                course: formData.course,
+              }
+            : note
+        )
+      );
+    } else {
+      const newNote: Note = {
+        id: Date.now(),
+        title: formData.student,
+        description: `${formData.batch} | ₹${formData.studentFee}`,
+        course: formData.course,
+        branch: '',
+        status: 'Active',
+        location: '',
+        email: '',
+        paid: 'yes',
+      };
+      setNotes([newNote, ...notes]);
+    }
 
-    // Reset form
     setFormData({
       course: '',
       batch: '',
@@ -88,14 +130,43 @@ const RefundManagement = () => {
     setNotes(notes.filter((note) => note.id !== id));
   };
 
-  const DropdownMenu = ({ onDelete, onEdit }: { onDelete: () => void; onEdit: () => void }) => {
-    const [open, setOpen] = useState(false);
+  const handleEdit = (note: Note) => {
+    const [batch, fee] = note.description.split(' | ₹');
+    setFormData({
+      course: note.course,
+      batch: batch ?? '',
+      student: note.title,
+      studentFee: fee ?? '',
+      amount: '',
+    });
+    setUploadedFile(note.file ?? null);
+    setIsEditing(true);
+    setEditNoteId(note.id);
+    setShowModal(true);
+  };
+
+  const handleBranchSelect = (branch: string) => {
+    setSelectedBranch(branch === 'All' ? null : branch);
+    setShowBranchDropdown(false);
+  };
+
+  const DropdownMenu = ({
+    onDelete,
+    onEdit,
+    isOpen,
+    onToggle,
+  }: {
+    onDelete: () => void;
+    onEdit: () => void;
+    isOpen: boolean;
+    onToggle: () => void;
+  }) => {
     return (
       <div className="relative">
-        <button onClick={() => setOpen(!open)}>
+        <button onClick={onToggle}>
           <BsThreeDotsVertical className="text-red-600" />
         </button>
-        {open && (
+        {isOpen && (
           <div className="absolute right-0 mt-2 w-28 bg-white border rounded shadow-md z-10">
             <button onClick={onEdit} className="w-full px-3 py-2 text-left text-sm hover:bg-gray-100">
               Edit
@@ -115,13 +186,14 @@ const RefundManagement = () => {
   return (
     <div className="h-full min-h-screen w-full bg-cover bg-center relative">
       <div className="px-10 py-6 space-y-6">
-        <div className="flex items-center justify-between">
+        <div className="flex items-start justify-between">
           <button
-            onClick={() => {}}
-            className="gap-2 flex items-center px-4 py-2 ring-2 bg-[#FFFFFF4D] rounded-lg text-[#CA406F] w-2/9 "
+            onClick={() => setShowBranchDropdown((prev) => !prev)}
+            className="gap-2 flex items-center font-semibold px-4 py-2 ring-2 bg-[#FFFFFF33] ring-[#CA406F] rounded-lg text-[#716F6F] w-2/7"
           >
             Branch
           </button>
+
           <button
             onClick={() => {
               setShowModal(true);
@@ -135,11 +207,28 @@ const RefundManagement = () => {
           </button>
         </div>
 
+        {showBranchDropdown && (
+          <div className="w-full bg-white p-4 rounded-lg shadow-md flex gap-4 transition-all duration-300">
+            <div className="w-full">
+              <label className="block text-sm text-gray-600 mb-2">Select Branch</label>
+              <select
+                value={selectedBranch || ''}
+                onChange={(e) => handleBranchSelect(e.target.value)}
+                className="w-full border rounded px-3 py-2 appearance-none"
+              >
+                <option value="">All</option>
+                <option value="Padur">Padur</option>
+                <option value="OMR">OMR</option>
+              </select>
+            </div>
+          </div>
+        )}
+
         <div className="bg-white relative p-4 rounded-2xl">
-          <div className=" bg-white rounded-2xl shadow-md overflow-x-auto">
+          <div className=" bg-white rounded-2xl overflow-x-auto">
             <table className="w-full table-auto text-sm text-left">
-              <thead className="bg-gray-200 h-20 text-[#716F6F]">
-                <tr className='text-md'>
+              <thead className="bg-[#F8F8F8] h-20 text-lg text-[#716F6F]">
+                <tr>
                   <th className="px-4 py-3">Refund ID</th>
                   <th className="px-4 py-3">Student ID</th>
                   <th className="px-4 py-3">Student Info</th>
@@ -151,33 +240,48 @@ const RefundManagement = () => {
               </thead>
               <tbody className="text-gray-600">
                 {[...notes]
-                  .sort((a, b) => a.branch.localeCompare(b.branch))
-                  .map((note) => (
-                    <tr key={note.id} className="border-t">
-                      <td className="px-4 py-3">{`RFND-${note.id.toString().slice(-4)}`}</td>
-                      <td className="px-4 py-3">{`STU-${note.id}`}</td>
-                      <td className="px-4 py-3">
-                        <div className="font-medium">{note.title}</div>
-                        <div className="text-sm text-gray-500">{note.description}</div>
-                      </td>
-                      <td className="px-4 py-3">{note.paid}</td>
-                      <td className="px-4 py-3">Online</td>
-                      <td className="px-4 py-3">
-                        <span
-                          className={`px-2 py-1 rounded-full text-xs font-semibold ${
-                            note.status === 'Active'
-                              ? 'bg-green-100 text-green-700'
-                              : 'bg-gray-100 text-gray-700'
-                          }`}
-                        >
-                          {note.status}
-                        </span>
-                      </td>
-                      <td className="px-4 py-3">
-                        <DropdownMenu onDelete={() => handleDelete(note.id)} onEdit={() => {}} />
-                      </td>
-                    </tr>
-                  ))}
+                  .filter((note) => !selectedBranch || note.branch === selectedBranch)
+                  .map((note) => {
+                    const isOpen = openDropdownId === note.id;
+                    return (
+                      <tr
+                        key={note.id}
+                        className={` transition-all duration-300 ${
+                          isOpen ? 'h-[130px]' : 'h-[80px]'
+                        }`}
+                      >
+                        <td className="px-4 py-3">{`RFND-${note.id.toString().slice(-4)}`}</td>
+                        <td className="px-4 py-3">{`STU-${note.id}`}</td>
+                        <td className="px-4 py-3">
+                          <div className="font-medium">{note.title}</div>
+                          <div className="text-sm text-gray-500">{note.description}</div>
+                        </td>
+                        <td className="px-4 py-3">{note.paid}</td>
+                        <td className="px-4 py-3">Online</td>
+                        <td className="px-4 py-3">
+                          <span
+                            className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                              note.status === 'Active'
+                                ? 'bg-green-100 text-green-700'
+                                : 'bg-gray-100 text-gray-700'
+                            }`}
+                          >
+                            {note.status}
+                          </span>
+                        </td>
+                        <td className="px-4 py-3">
+                          <DropdownMenu
+                            isOpen={isOpen}
+                            onToggle={() =>
+                              setOpenDropdownId((prev) => (prev === note.id ? null : note.id))
+                            }
+                            onDelete={() => handleDelete(note.id)}
+                            onEdit={() => handleEdit(note)}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
               </tbody>
             </table>
           </div>
@@ -191,9 +295,10 @@ const RefundManagement = () => {
           isEditing={isEditing}
           formData={formData}
           setFormData={setFormData}
-          onSubmit={handleSubmit} uploadedFile={null} setUploadedFile={function (file: File | null): void {
-            throw new Error('Function not implemented.');
-          } }        />
+          onSubmit={handleSubmit}
+          uploadedFile={uploadedFile}
+          setUploadedFile={setUploadedFile}
+        />
       )}
     </div>
   );
