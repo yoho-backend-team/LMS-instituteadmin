@@ -1,5 +1,5 @@
 
-import  { useState } from "react";
+import { useState } from "react";
 import { IoMdAdd } from "react-icons/io";
 import { FaCalendarAlt } from "react-icons/fa";
 import { FiMoreVertical } from "react-icons/fi";
@@ -7,25 +7,26 @@ import { useNavigate } from "react-router-dom";
 import OfflineFilter from "@/components/classmanagement/offline_filter/offline_filter";
 
 
- const Tablecontent = [
-        {
-            title: "MERN",
-            subtitle: " student on this class",
-            date: "2025-07-20",
-            day: "Sunday",
-            time: "10:00 AM - 12:00 PM",
-            totalStudents: 1,
-        },
-        {
-            title: "Where Begins The Web History",
-            subtitle: " students on this class",
-            date: "2025-07-21",
-            day: "Monday",
-            time: "2:00 PM - 4:00 PM",
-            totalStudents: 2,
-        },
 
-    ]
+const Tablecontent = [
+    {
+        title: "MERN",
+        subtitle: " student on this class",
+        date: "2025-07-20",
+        day: "Sunday",
+        time: "10:00 AM - 12:00 PM",
+        totalStudents: 1,
+    },
+    {
+        title: "Where Begins The Web History",
+        subtitle: " students on this class",
+        date: "2025-07-21",
+        day: "Monday",
+        time: "2:00 PM - 4:00 PM",
+        totalStudents: 2,
+    },
+
+]
 
 const OfflineClassPage = () => {
     const [showFilter, setShowFilter] = useState(false);
@@ -51,10 +52,16 @@ const OfflineClassPage = () => {
                     </button>
                 </div>
                 <div>
-                    <button className="bg-[#CA406F] w-44 h-8 gap-2 rounded-sm flex items-center justify-center  text-sm">
+
+
+                    <button
+                        onClick={() => navigate("/OfflineAdd")}
+                        className="bg-[#CA406F] w-44 h-8 gap-2 rounded-sm flex items-center justify-center text-sm"
+                    >
                         <IoMdAdd size={20} />
                         Add Offline Classes
                     </button>
+
                 </div>
             </div>
 
@@ -64,7 +71,7 @@ const OfflineClassPage = () => {
                 </div>
             )}
 
-            <div className="grid grid-cols-3 gap-2 w-full">
+            <div className="grid grid-cols-3 gap-2 w-full py-5">
                 {Tablecontent.map((item, index) => (
                     <div
                         key={index}
@@ -105,11 +112,11 @@ const OfflineClassPage = () => {
 
                         <div className=" mt-3 relative px-50">
                             <button
-                            onClick={() => {
-                                        setActiveMenuIndex(null);
-                                        navigate("/offlineviewmore");
-                                    }}
-                            className="bg-green-500 px-1 py-1 w-24 h-8 rounded-sm text-white text-sm">
+                                onClick={() => {
+                                    setActiveMenuIndex(null);
+                                    navigate("/offlineviewmore");
+                                }}
+                                className="bg-green-500 px-1 py-1 w-24 h-8 rounded-sm text-white text-sm">
                                 View More
                             </button>
                         </div>
@@ -128,7 +135,7 @@ const OfflineClassPage = () => {
                                 <button
                                     onClick={() => {
                                         setActiveMenuIndex(null);
-                                        
+
                                         alert(`Delete clicked for ${item.title}`);
                                     }}
                                     className="w-full text-left px-4 py-2 hover:bg-gray-100"
