@@ -11,7 +11,7 @@ interface Batch {
 }
 
 
-const Community = () => {
+const CommunityManagement = () => {
   const [selectedBatch, setSelectedBatch] = useState<Batch | null>(null);
 
   return (
@@ -24,7 +24,7 @@ const Community = () => {
       }}
     >
       <div className="h-screen mt-5 ml-12 w-full">
-        <CommunityChat onSelectBatch={setSelectedBatch} />
+        <CommunityChat />
       </div>
       {/* <div className="w-2/3 mt-5 mr-5 h-[90vh]">
         <Chat selectedBatch={selectedBatch} />
@@ -33,4 +33,4 @@ const Community = () => {
   );
 };
 
-export default Community;
+export default CommunityManagement;

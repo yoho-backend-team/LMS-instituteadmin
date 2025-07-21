@@ -13,6 +13,7 @@ interface Batch {
   batch?: string;
 }
 
+
 const batchList: Batch[] = [
   {
     id: 1,
@@ -38,7 +39,7 @@ const batchList: Batch[] = [
   },
 ];
 
-const CommunityChat: React.FC = () => {
+const CommunityChat: React.FC= ({ }) => {
   const [selectedBatch, setSelectedBatch] = useState<Batch | null>(null);
 
   return (
@@ -62,7 +63,7 @@ const CommunityChat: React.FC = () => {
       </div>
 
       <div className="flex-1">
-        <Chat selectedBatch={selectedBatch} setSelectedBatch={setSelectedBatch} />
+      <Chat selectedBatch={selectedBatch} setSelectedBatch={setSelectedBatch} />
       </div>
     </div>
   );

@@ -1,14 +1,14 @@
 "use client"
 
 import { useState } from "react"
-import background from "../../assets/Backdrop Image.jpg"
-import add from "../../assets/Add.svg"
-import type { Note, FormData } from '../StudentManagement/Student'
-import StudentList from "../StudentManagement/StudentList"
-import AddEditModal from "../StudentManagement/AddModal"
-import FilterSection from "../StudentManagement/FilterSection"
+// import background from "../../assets/Backdrop Image.jpg"
 
-const Student = () => {
+import type { Note, FormData } from './Student'
+import StudentList from "./StudentList"
+import AddEditModal from "./AddModal"
+import FilterSection from "./FilterSection"
+
+const StudentIndex = () => {
   const [showFilter, setShowFilter] = useState(false)
   const [showModal, setShowModal] = useState(false)
   const [isEditing, setIsEditing] = useState(false)
@@ -115,7 +115,6 @@ const Student = () => {
   return (
     <div
       className="h-full min-h-screen w-full bg-cover bg-center relative"
-      style={{ backgroundImage: `url(${background})` }}
     >
       <div className="px-10 py-6 space-y-6">
         <h1 className="text-3xl font-semibold text-[#716F6F]">Student</h1>
@@ -136,7 +135,7 @@ const Student = () => {
             onClick={handleAddNew}
             className="gap-2 flex items-center bg-[#CA406F] px-4 py-2 rounded-lg text-white shadow-md"
           >
-            <img src={add || "/placeholder.svg"} alt="add" className="h-5 w-5" />
+           
             Add New Student
           </button>
         </div>
@@ -155,4 +154,4 @@ const Student = () => {
   )
 }
 
-export default Student
+export default StudentIndex;

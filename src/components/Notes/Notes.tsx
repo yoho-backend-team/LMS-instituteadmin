@@ -23,7 +23,7 @@ interface Note {
   file?: File
 }
 
-const Notes = () => {
+const NotesManagement = () => {
   const [showFilter, setShowFilter] = useState(false)
   const [showModal, setShowModal] = useState(false)
   const [editingNote, setEditingNote] = useState<Note | null>(null)
@@ -185,4 +185,4 @@ const Notes = () => {
   )
 }
 
-export default Notes
+export default NotesManagement
