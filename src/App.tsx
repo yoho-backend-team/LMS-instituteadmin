@@ -1,21 +1,12 @@
-
 // import { Button } from "@/components/ui/button"
-
-import SalaryDetails from "./components/ui/Salary/SalaryDetails"
-
-// import SalaryTable from "./components/ui/Salary/SalaryTable"
-
-
-import { Button } from "@/components/ui/button"
 import Approutes from "./routes/AppRoutes"
-
 
 function App() {
   return (
-   <SalaryDetails />
-
-      // <Dashboard />
-
+    <div className="flex min-h-svh flex-col items-center justify-center">
+      {/* <Button>Click me</Button> */}
+      <Approutes/>
+    </div>
   )
 }
 
