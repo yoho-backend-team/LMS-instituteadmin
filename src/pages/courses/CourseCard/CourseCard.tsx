@@ -1,7 +1,7 @@
 import React from "react";
 import "./CourseCard.css";
 import { FaCubes } from "react-icons/fa";
-import dropdownIcon from "../../Assets/dropdownIcon.png"; 
+import dropdownIcon from "../../../assets/dropdownIcon.png"; 
 
 type CourseCardProps = {
   category: string;

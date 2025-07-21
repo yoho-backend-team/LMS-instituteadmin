@@ -1,23 +1,13 @@
-  
+// import { Button } from "@/components/ui/button"
+import Approutes from "./routes/AppRoutes"
 
-import React from "react";
-import "./App.css";
-
-import FilterSection from "./components/Filter/FilterSection";
-//  import SubscriptionPlans from "./components/SubscriptionPlans/SubsCriptionPlans";
-
-const App: React.FC = () => {
+function App() {
   return (
-    <div className="App">
-      
-
-      <div className="main-content">
-        
-          <FilterSection />  
-        {/* <SubscriptionPlans /> */}
-      </div>
+    <div className="flex min-h-svh flex-col items-center justify-center">
+      {/* <Button>Click me</Button> */}
+      <Approutes/>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "./FilterSection.css";
 import AddCourseForm from "../Course/AddCourseForm";
-import back from "../../Assets/back.png";
-import filter from "../../Assets/filter.png";
+import back from "../../../assets/back.png";
+import filter from "../../../assets/Filter.png";
 import CourseCard from "../CourseCard/CourseCard";
 
-import card1 from "../../Assets/card1.png";
-import card2 from "../../Assets/card2.png";
+import card1 from "../../../assets/card1.png";
+import card2 from "../../../assets/card2.png";
 
 const FilterSection = () => {
   const [showFilter, setShowFilter] = useState(false);
