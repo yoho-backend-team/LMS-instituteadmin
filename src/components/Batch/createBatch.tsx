@@ -45,7 +45,7 @@ export const CreateBatchModal = ({ isOpen, setIsOpen }: CreateBatchModalProps) =
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       <div className="bg-white w-full max-w-4xl rounded-2xl shadow-2xl">
         <h2
-          className="text-white text-center bg-[#c24175] px-6 py-4 rounded-t-2xl mb-6"
+          className="!text-white text-center bg-[#c24175] px-6 py-4 rounded-t-2xl mb-6"
           style={{ ...FONTS.form_head }}
         >
           Create New Batch
@@ -185,7 +185,7 @@ export const CreateBatchModal = ({ isOpen, setIsOpen }: CreateBatchModalProps) =
             <Button
               type="button"
               variant="outline"
-              className="!border-[#0400FF] !text-[#0400FF]"
+              className="!border-[#0400FF] !text-[#0400FF] !bg-blue-50"
               onClick={() => setIsOpen(false)}
               style={{ ...FONTS.Buttons }}
             >

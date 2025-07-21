@@ -65,7 +65,7 @@ const [itemToDelete, setItemToDelete] = useState<FAQItem | null>(null);
 
 const handleConfirmDelete = () => {
   console.log("Delete logic here for", itemToDelete);
-  // You can filter out the item from your data here.
+ 
 };
 
 
@@ -77,14 +77,14 @@ const handleConfirmDelete = () => {
         <Input
           type="text"
           placeholder="Search Category"
-          className="w-[280px] rounded-md border border-pink-300"
+          className="w-[280px] rounded-md border border-pink-300 "style={{ ...FONTS.input_section }}
         />
         <AddFaqCategoryDrawer />
       </div>
 
       <div className="bg-white rounded-xl shadow px-4 py-3">
         <Card className="bg-gray-100 rounded-md shadow-sm px-6 py-4">
-          <div className="grid grid-cols-4 font-semibold text-gray-600">
+          <div className="grid grid-cols-4 font-semibold text-gray-600"style={{ ...FONTS.card_head }}>
             <div>ID</div>
             <div>Category Name</div>
             <div>Status</div>
@@ -98,8 +98,8 @@ const handleConfirmDelete = () => {
               <CardContent className="grid grid-cols-4 items-center py-2 px-4 relative">
                 <div>{item.id}</div>
                 <div>
-                  <div className="font-semibold text-gray-800">{item.title}</div>
-                  <div className="text-sm text-gray-500">{item.author}</div>
+                  <div className="font-semibold text-gray-800"style={{ ...FONTS.card_htext }}>{item.title}</div>
+                  <div className="text-sm text-gray-500"style={{ ...FONTS.card_des }}>{item.author}</div>
                 </div>
                 <div className="flex justify-start">
                   <Select
@@ -137,7 +137,7 @@ const handleConfirmDelete = () => {
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <button className="absolute top-2 right-2" aria-label="More options">
-                        <MoreVertical className="w-5 h-5 text-[#ca406f]" />
+                        <MoreVertical className="w-5 h-5 text-[#ca406f] mt-4 mr-8" />
                       </button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent className="bg-white rounded-lg shadow-xl w-[120px] p-2 z-20 space-y-2">
@@ -169,16 +169,16 @@ const handleConfirmDelete = () => {
         </div>
       </div>
 
-      {/* 🟣 Edit Drawer */}
+      
       <EditFaqCategoryDrawer
         open={editDrawerOpen}
         onClose={() => setEditDrawerOpen(false)}
         editItem={selectedItem}
       />
       <DeleteConfirmationModal
-  open={deleteModalOpen}
-  onClose={() => setDeleteModalOpen(false)}
-  onConfirm={handleConfirmDelete}
+       open={deleteModalOpen}
+       onClose={() => setDeleteModalOpen(false)}
+       onConfirm={handleConfirmDelete}
 />
 
     </div>

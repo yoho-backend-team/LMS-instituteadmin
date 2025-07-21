@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { FONTS } from "@/constants/uiConstants";
 
 interface FAQItem {
   id: string;
@@ -45,7 +46,7 @@ const EditFaqCategoryDrawer: React.FC<EditFaqCategoryDrawerProps> = ({
       >
         <SheetHeader>
           <div className="flex items-center justify-between mb-4">
-            <SheetTitle className="text-lg font-bold text-gray-800">
+            <SheetTitle style={{ ...FONTS.form_head}}>
               Edit FAQ Category
             </SheetTitle>
             {/* <SheetClose asChild>
@@ -58,7 +59,7 @@ const EditFaqCategoryDrawer: React.FC<EditFaqCategoryDrawerProps> = ({
 
         <div className="space-y-4 mt-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-700 mb-2"style={{ ...FONTS.form_topic}}>
               Category
             </label>
             <Input
@@ -70,7 +71,7 @@ const EditFaqCategoryDrawer: React.FC<EditFaqCategoryDrawerProps> = ({
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-700 mb-2"style={{ ...FONTS.form_topic}}>
               Description
             </label>
             <Input
@@ -86,12 +87,12 @@ const EditFaqCategoryDrawer: React.FC<EditFaqCategoryDrawerProps> = ({
               <Button
                 variant="outline"
                 onClick={onClose}
-                className="border border-blue-500 text-blue-600 hover:text-white hover:bg-blue-500"
+                className="border border-blue-500 !text-blue-600 hover:text-white bg-blue-50"style={{ ...FONTS.add_button}}
               >
                 Cancel
               </Button>
             </SheetClose>
-            <Button className="bg-[#CA406F] text-white hover:bg-[#b43e65]">
+            <Button className="bg-[#CA406F] text-white hover:bg-[#b43e65]"style={{ ...FONTS.add_button}}>
               Update
             </Button>
           </div>

@@ -43,11 +43,14 @@ import All from "../components/notificationmanagement/overallnotification/all/al
 import Profile from "@/pages/profile/profile/profile";
 import Settings from "@/pages/profile/settings/settings";
 import Logout from "@/pages/profile/logout/logout";
+import StudentDashboard from "@/pages/batchManagment/studentMainBatch";
+import BranchOverview from "@/components/Branch/branchOverview";
+import StudentDashboardMain from "@/components/Batch/viewBatch";
 const Approutes = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MainLayout />}>
+          <Route path="/" element={<MainLayout />}>
           <Route index element={<Navigate to="/Dashboard" />} />
           <Route path="Staffnotification" element={<StaffNotification />} />
           <Route path="Allnotification" element={<Allnotification />} />
@@ -92,12 +95,11 @@ const Approutes = () => {
           <Route path="/all" element={<All />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/settings" element={<Settings />} />
-            <Route path="/logout" element={<Logout />} />
-
-        </Route>
-
-
-        <Route path="*" element={<Navigate to="/dashboard" replace />} />
+          <Route path="/logout" element={<Logout />} />
+          <Route path="/branch-overview" element={<BranchOverview />} />
+          <Route path="/view-page" element={<StudentDashboardMain/>}/>
+          </Route>
+          <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Routes>
     </BrowserRouter>
   );

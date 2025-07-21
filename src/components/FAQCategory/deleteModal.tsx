@@ -3,6 +3,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import tick from "../../assets/tick.png"
 import warning from "../../assets/warning.png"
+import { FONTS } from "@/constants/uiConstants";
 
 interface DeleteConfirmationModalProps {
   open: boolean;
@@ -35,13 +36,13 @@ const DeleteConfirmationModal = ({
 
   return (
     <Dialog open={open} onOpenChange={handleCancel}>
-      <DialogContent className="max-w-sm text-center p-6 space-y-4">
+      <DialogContent className="max-w-sm text-center p-0 space-y-2">
         {step === "statusConfirm" && (
           <>
             <img src={warning} className="text-yellow-500 mx-auto" />
-            <h2 className="font-bold text-lg">Confirm Action</h2>
-            <p className="text-sm text-gray-600">Are you sure you want to change the status?</p>
-            <div className="flex justify-center gap-4 pt-2">
+            <h2 style={{ ...FONTS.card_head}}>Confirm Action</h2>
+            <p style={{ ...FONTS.Description}}>Are you sure you want to change the status?</p>
+            <div className="flex justify-center gap-4">
               <Button className="bg-[#CA406F] hover:bg-[#CA406F]" onClick={handleStatusConfirm}>
                 Yes, Status
               </Button>
@@ -55,9 +56,9 @@ const DeleteConfirmationModal = ({
         {step === "deleteConfirm" && (
           <>
             <img src={warning} className="text-red-500 mx-auto" />
-            <h2 className="font-bold text-lg">Final Confirmation</h2>
-            <p className="text-sm text-gray-600">Are you sure you want to delete this FAQ category?</p>
-            <div className="flex justify-center gap-4 pt-2">
+            <h2 style={{ ...FONTS.card_head}}>Final Confirmation</h2>
+            <p style={{ ...FONTS.Description}}>Are you sure you want to delete this FAQ category?</p>
+            <div className="flex justify-center gap-4 ">
               <Button className="bg-green-600 hover:bg-green-600" onClick={handleFinalDelete}>
                 Yes, Delete
               </Button>
@@ -71,7 +72,7 @@ const DeleteConfirmationModal = ({
         {step === "success" && (
           <>
             <img src={tick} className="text-green-500 mx-auto" />
-            <h2 className="font-bold text-lg">Success!</h2>
+            <h2 style={{ ...FONTS.card_head}}>Success!</h2>
             <div>
               <Button className="bg-green-600 px-8 hover:bg-green-600" >
             ok
