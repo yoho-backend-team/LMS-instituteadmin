@@ -30,7 +30,7 @@ const BranchOverview = () => {
   }, []);
 
   return (
-    <div className="min-h-screen  px-6 py-6">
+    <div className="min-h-screen  px-4 py-6">
       <h2 className=" mb-6" style={{...FONTS.form_head}}>Branch Overview</h2>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

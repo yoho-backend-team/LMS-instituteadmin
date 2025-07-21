@@ -36,9 +36,9 @@ const BranchCard: React.FC<BranchCardProps> = ({ name, address }) => {
   const navigate = useNavigate();
 
   return (
-    <Card className="rounded-xl shadow-sm w-[344px]">
-      <CardContent className="p-4 space-y-3">
-        <div className="relative w-full h-[160px] rounded-md overflow-hidden">
+    <Card className="rounded-xl shadow-sm w-[auto]">
+      <CardContent className="p-2 space-y-2">
+        <div className="relative w-full h-[150px] rounded-md overflow-hidden">
           <img
             src={cardimg}
             alt={name}

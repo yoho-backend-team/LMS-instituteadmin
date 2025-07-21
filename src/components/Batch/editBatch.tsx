@@ -2,10 +2,18 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
 import { FONTS } from "@/constants/uiConstants";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 interface EditBatchModalProps {
   isOpen: boolean;
   onClose: () => void;
+}
+
+interface FormValues {
+  batchName: string;
+  startDate: string;
+  endDate: string;
 }
 
 const EditBatchModal: React.FC<EditBatchModalProps> = ({ isOpen, onClose }) => {
@@ -13,53 +21,93 @@ const EditBatchModal: React.FC<EditBatchModalProps> = ({ isOpen, onClose }) => {
 
   const selectedStudents = ["Elon Muck", "John William"];
 
+  const formik = useFormik<FormValues>({
+    initialValues: {
+      batchName: "",
+      startDate: "",
+      endDate: "",
+    },
+    validationSchema: Yup.object({
+      batchName: Yup.string().required("Batch Name is required"),
+      startDate: Yup.string().required("Start Date is required"),
+      endDate: Yup.string()
+        .required("End Date is required")
+        .test(
+          "is-after-start",
+          "End Date must be after Start Date",
+          function (value) {
+            return !value || !this.parent.startDate || value >= this.parent.startDate;
+          }
+        ),
+    }),
+    onSubmit: (values) => {
+      console.log("Form Data", values);
+      onClose();
+    },
+  });
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <div className="bg-white w-full max-w-2xl rounded-2xl shadow-lg ">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm">
+      <div className="bg-white w-full max-w-2xl rounded-2xl shadow-lg">
         <div className="bg-[#c24175] text-white rounded-t-xl py-3 px-6">
-          <h2 className="!text-white text-center justify-center"style={{...FONTS.form_head}}>Edit Batch</h2>
+          <h2 className="text-center" style={{ ...FONTS.form_head }}>Edit Batch</h2>
         </div>
-        <div className="mt-6 px-6 space-y-4">
+
+        <form onSubmit={formik.handleSubmit} className="mt-6 px-6 space-y-4">
+          {/* Batch Name */}
           <div>
-            <label className="block  mb-1"style={{...FONTS.form_topic}}>
-              Batch Name
-            </label>
+            <label className="block mb-1" style={{ ...FONTS.form_topic }}>Batch Name</label>
             <input
               type="text"
+              name="batchName"
+              value={formik.values.batchName}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
               className="w-full border rounded-md px-4 py-2"
               placeholder="Enter Batch Name"
             />
+            {formik.touched.batchName && formik.errors.batchName && (
+              <p className="text-red-600 text-sm mt-1">{formik.errors.batchName}</p>
+            )}
           </div>
 
-          
+          {/* Dates */}
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1">
-              <label className="block mb-1"style={{...FONTS.form_topic}}>
-                Start Date
-              </label>
+              <label className="block mb-1" style={{ ...FONTS.form_topic }}>Start Date</label>
               <input
                 type="date"
+                name="startDate"
+                value={formik.values.startDate}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 className="w-full border rounded-md px-4 py-2"
               />
+              {formik.touched.startDate && formik.errors.startDate && (
+                <p className="text-red-600 text-sm mt-1">{formik.errors.startDate}</p>
+              )}
             </div>
 
             <div className="flex-1">
-              <label className="block  mb-1"style={{...FONTS.form_topic}}>
-                End Date
-              </label>
+              <label className="block mb-1" style={{ ...FONTS.form_topic }}>End Date</label>
               <input
                 type="date"
+                name="endDate"
+                value={formik.values.endDate}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 className="w-full border rounded-md px-4 py-2"
               />
+              {formik.touched.endDate && formik.errors.endDate && (
+                <p className="text-red-600 text-sm mt-1">{formik.errors.endDate}</p>
+              )}
             </div>
           </div>
 
-        
+          {/* Students Display */}
           <div>
-            <label className="block mb-1"style={{...FONTS.form_topic}}>
-              Students
-            </label>
-            <div className="w-full border rounded-md px-4 py-2 flex flex-wrap gap-2 items-center min-h-[44px]">
+            <label className="block mb-1" style={{ ...FONTS.form_topic }}>Students</label>
+            <div className="w-full border rounded-md px-4 py-2 flex flex-wrap gap-2 min-h-[44px]">
               {selectedStudents.map((student, idx) => (
                 <div
                   key={idx}
@@ -71,21 +119,27 @@ const EditBatchModal: React.FC<EditBatchModalProps> = ({ isOpen, onClose }) => {
               ))}
             </div>
           </div>
-        </div>
 
-      
-        <div className="flex justify-end items-center gap-4 mt-6 mb-4 px-6">
-          <Button
-            variant="outline"
-            onClick={onClose}
-            className="!border-[#0400FF] !text-[#0400FF]  px-4 py-2 rounded-md "style={{...FONTS.Buttons}}
-          >
-            Cancel
-          </Button>
-          <Button className="bg-[#c24175] text-white hover:bg-[#b23369] px-4 py-2 rounded-md" style={{...FONTS.Buttons}}>
-            Update
-          </Button>
-        </div>
+          {/* Action Buttons */}
+          <div className="flex justify-end items-center gap-4 mt-6 mb-4">
+            <Button
+              type="button"
+              onClick={onClose}
+              variant="outline"
+              className="!border-[#0400FF] !text-[#0400FF]"
+              style={{ ...FONTS.Buttons }}
+            >
+              Cancel
+            </Button>
+            <Button
+              type="submit"
+              className="bg-[#c24175] text-white hover:bg-[#b23369]"
+              style={{ ...FONTS.Buttons }}
+            >
+              Update
+            </Button>
+          </div>
+        </form>
       </div>
     </div>
   );

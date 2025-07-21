@@ -13,7 +13,7 @@ export default function StudentDashboard() {
 
   return (
     <div
-      className="min-h-screen bg-cover bg-no-repeat bg-center p-6"
+      className="min-h-screen bg-cover bg-no-repeat bg-center p-4"
       style={{ backgroundImage: `url(${bg})` }}
     >
       <div className="mb-8">

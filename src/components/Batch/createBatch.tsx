@@ -1,4 +1,6 @@
 import type { Dispatch, SetStateAction } from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 import { Button } from "@/components/ui/button";
 import { FONTS } from "@/constants/uiConstants";
 
@@ -10,68 +12,190 @@ interface CreateBatchModalProps {
 export const CreateBatchModal = ({ isOpen, setIsOpen }: CreateBatchModalProps) => {
   if (!isOpen) return null;
 
+  const validationSchema = Yup.object({
+    batchName: Yup.string().required("Batch name is required"),
+    startDate: Yup.date().required("Start date is required"),
+    endDate: Yup.date()
+      .required("End date is required")
+      .min(Yup.ref("startDate"), "End date must be after start date"),
+    branch: Yup.string().required("Branch selection is required"),
+    course: Yup.string().required("Course selection is required"),
+    students: Yup.string().required("Student selection is required"),
+    teacher: Yup.string().required("Teacher selection is required"),
+  });
+
+  const formik = useFormik({
+    initialValues: {
+      batchName: "",
+      startDate: "",
+      endDate: "",
+      branch: "",
+      course: "",
+      students: "",
+      teacher: "",
+    },
+    validationSchema,
+    onSubmit: (values) => {
+      console.log("Batch created with values:", values);
+      setIsOpen(false);
+    },
+  });
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <div className="bg-[#ffffff] w-full max-w-4xl rounded-2xl shadow-2xl">
-        <h2 className=" !text-white text-center justify-center bg-[#c24175] px-6 py-4 rounded-t-2xl mb-6"style={{...FONTS.form_head}}>
+      <div className="bg-white w-full max-w-4xl rounded-2xl shadow-2xl">
+        <h2
+          className="text-white text-center bg-[#c24175] px-6 py-4 rounded-t-2xl mb-6"
+          style={{ ...FONTS.form_head }}
+        >
           Create New Batch
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
-          <div className="md:col-span-2">
-            <label className="mb-1"style={{...FONTS.form_topic}}>
-              Batch Name
-            </label>
-            <input className="w-full border rounded-md px-4 py-2" type="text" />
+        <form onSubmit={formik.handleSubmit}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
+            <div className="md:col-span-2">
+              <label style={{ ...FONTS.form_topic }}>Batch Name</label>
+              <input
+                name="batchName"
+                className="w-full border rounded-md px-4 py-2"
+                type="text"
+                value={formik.values.batchName}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              />
+              {formik.touched.batchName && formik.errors.batchName && (
+                <p className="text-red-500 text-sm mt-1">{formik.errors.batchName}</p>
+              )}
+            </div>
+
+            <div>
+              <label style={{ ...FONTS.form_topic }}>Start Date</label>
+              <input
+                name="startDate"
+                className="w-full border rounded-md px-4 py-2"
+                type="date"
+                value={formik.values.startDate}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              />
+              {formik.touched.startDate && formik.errors.startDate && (
+                <p className="text-red-500 text-sm mt-1">{formik.errors.startDate}</p>
+              )}
+            </div>
+
+            <div>
+              <label style={{ ...FONTS.form_topic }}>End Date</label>
+              <input
+                name="endDate"
+                className="w-full border rounded-md px-4 py-2"
+                type="date"
+                value={formik.values.endDate}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              />
+              {formik.touched.endDate && formik.errors.endDate && (
+                <p className="text-red-500 text-sm mt-1">{formik.errors.endDate}</p>
+              )}
+            </div>
+
+            <div>
+              <label style={{ ...FONTS.form_topic }}>Branch</label>
+              <select
+                name="branch"
+                className="w-full border rounded-md px-4 py-2"
+                value={formik.values.branch}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              >
+                <option value="">Select Branch</option>
+                <option value="branch1">Branch 1</option>
+                <option value="branch2">Branch 2</option>
+              </select>
+              {formik.touched.branch && formik.errors.branch && (
+                <p className="text-red-500 text-sm mt-1">{formik.errors.branch}</p>
+              )}
+              <p className="text-xs text-gray-500 mt-1" style={{ ...FONTS.form_des }}>
+                Select a branch to see available courses.
+              </p>
+            </div>
+
+            <div>
+              <label style={{ ...FONTS.form_topic }}>Course</label>
+              <select
+                name="course"
+                className="w-full border rounded-md px-4 py-2"
+                value={formik.values.course}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              >
+                <option value="">Select Course</option>
+                <option value="course1">Course 1</option>
+                <option value="course2">Course 2</option>
+              </select>
+              {formik.touched.course && formik.errors.course && (
+                <p className="text-red-500 text-sm mt-1">{formik.errors.course}</p>
+              )}
+              <p className="text-xs text-gray-500 mt-1" style={{ ...FONTS.form_des }}>
+                Please select a branch first to enable course selection.
+              </p>
+            </div>
+
+            <div>
+              <label style={{ ...FONTS.form_topic }}>Students</label>
+              <select
+                name="students"
+                className="w-full border rounded-md px-4 py-2"
+                value={formik.values.students}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              >
+                <option value="">Select Students</option>
+                <option value="student1">Student 1</option>
+              </select>
+              {formik.touched.students && formik.errors.students && (
+                <p className="text-red-500 text-sm mt-1">{formik.errors.students}</p>
+              )}
+              <p className="text-xs text-gray-500 mt-1" style={{ ...FONTS.form_des }}>
+                Please select a course to view and select students.
+              </p>
+            </div>
+
+            <div>
+              <label style={{ ...FONTS.form_topic }}>Teacher</label>
+              <select
+                name="teacher"
+                className="w-full border rounded-md px-4 py-2"
+                value={formik.values.teacher}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              >
+                <option value="">Select Teacher</option>
+                <option value="teacher1">Teacher 1</option>
+              </select>
+              {formik.touched.teacher && formik.errors.teacher && (
+                <p className="text-red-500 text-sm mt-1">{formik.errors.teacher}</p>
+              )}
+              <p className="text-xs text-gray-500 mt-1" style={{ ...FONTS.form_des }}>
+                Please select a course to view and select Teacher.
+              </p>
+            </div>
           </div>
 
-          <div>
-            <label className=" mb-1"style={{...FONTS.form_topic}}>Start Date</label>
-            <input className="w-full border rounded-md px-4 py-2" type="date" />
+          <div className="flex justify-end gap-4 mt-8 mb-4 px-4">
+            <Button
+              type="button"
+              variant="outline"
+              className="!border-[#0400FF] !text-[#0400FF]"
+              onClick={() => setIsOpen(false)}
+              style={{ ...FONTS.Buttons }}
+            >
+              Cancel
+            </Button>
+            <Button type="submit" className="bg-[#c24175] text-white hover:bg-[#c24175]" style={{ ...FONTS.Buttons }}>
+              Create Batch
+            </Button>
           </div>
-
-          <div>
-            <label className="block mb-1"style={{...FONTS.form_topic}}>End Date</label>
-            <input className="w-full border rounded-md px-4 py-2" type="date" />
-          </div>
-
-          <div>
-            <label className=" block mb-1"style={{...FONTS.form_topic}}>Branch</label>
-            <select className="w-full border rounded-md px-4 py-2" />
-            <p className="text-xs text-gray-500 mt-1"style={{...FONTS.form_des}}>Select A Branch To See Available Courses.</p>
-          </div>
-
-          <div>
-            <label className="block mb-1"style={{...FONTS.form_topic}}>Course</label>
-            <select className="w-full border rounded-md px-4 py-2" />
-            <p className=" mt-1"style={{...FONTS.form_des}}>Please select a branch first to enable course selection.</p>
-          </div>
-
-          <div>
-            <label className=" block mb-1"style={{...FONTS.form_topic}}>Students</label>
-            <select className="w-full border rounded-md px-4 py-2" />
-            <p className=" mt-1"style={{...FONTS.form_des}}>Please select a course to view and select students.</p>
-          </div>
-
-          <div>
-            <label className="block mb-1"style={{...FONTS.form_topic}}>Teacher</label>
-            <select className="w-full border rounded-md px-4 py-2" />
-            <p className="mt-1"style={{...FONTS.form_des}}>Please select a course to view and select Teacher.</p>
-          </div>
-        </div>
-
-        <div className="flex justify-end gap-4 mt-8 mb-4 px-4">
-          <Button
-            variant="outline"
-            className="!border-[#0400FF] !text-[#0400FF] "style={{...FONTS.Buttons}}
-            onClick={() => setIsOpen(false)}
-          >
-            Cancel
-          </Button>
-          <Button className="bg-[#c24175] text-white hover:bg-[#c24175]"style={{...FONTS.Buttons}}>
-            Create Batch
-          </Button>
-        </div>
+        </form>
       </div>
     </div>
   );
