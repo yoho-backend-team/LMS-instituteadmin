@@ -1,17 +1,13 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import CourseCategories from "./components/CourseCategories/CourseCategories";
-// import PaymentManagementFees from "./components/PaymentPages/PaymentManagementFees";
-// import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button"
+import Approutes from "./routes/AppRoutes"
 
 function App() {
   return (
-    <Router>
-        <Routes>
-          <Route path="/course" element={<CourseCategories />} />
-        </Routes>
-      
-    </Router>
-  );
+    <div className="flex min-h-svh flex-col items-center justify-center">
+      {/* <Button>Click me</Button> */}
+      <Approutes/>
+    </div>
+  )
 }
 
 export default App;

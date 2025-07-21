@@ -241,7 +241,7 @@ const AddEditCategoryModal = ({
   )
 }
 
-const CourseCategories = () => {
+const Categories = () => {
   const [showFilters, setShowFilters] = useState(false)
   const [statusFilter, setStatusFilter] = useState("")
   const [courseFilter, setCourseFilter] = useState("")
@@ -437,4 +437,4 @@ const CourseCategories = () => {
   )
 }
 
-export default CourseCategories
+export default Categories

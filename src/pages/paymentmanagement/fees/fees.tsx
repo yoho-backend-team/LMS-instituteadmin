@@ -1,8 +1,8 @@
 "use client"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "../ui/card"
+import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
-import { Badge } from "../ui/badge"
+import { Badge } from "@/components/ui/badge"
 import { Filter, Plus, MoreHorizontal, Eye, Edit, Trash2, Download } from "lucide-react"
 import React, { useState, useRef, useEffect } from "react"
 
@@ -60,7 +60,7 @@ const feeData: FeeRecord[] = [
     student: { name: "Elon Musk", email: "musk@gmail.com", avatar: "" },
     amountPaid: 10000,
     issuedDate: "2025-05-07",
-    status: "pending",
+    status: "active",
   },
   {
     id: "#36",
@@ -68,7 +68,7 @@ const feeData: FeeRecord[] = [
     student: { name: "Elon Musk", email: "musk@gmail.com", avatar: "" },
     amountPaid: 10000,
     issuedDate: "2025-05-07",
-    status: "inactive",
+    status: "active",
   },
 ]
 
@@ -146,7 +146,7 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ recordId }) => {
   )
 }
 
-export default function PaymentManagementFees() {
+export default function fees() {
   const [showFilters, setShowFilters] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
   const [batchFilter, setBatchFilter] = useState("")
@@ -169,7 +169,7 @@ export default function PaymentManagementFees() {
   })
 
   return (
-    <div className="min-h-screen bg-white relative overflow-hidden">
+    <div className="min-h-screen  relative overflow-hidden">
       <main className="p-8 overflow-auto">
         <div className="max-w-[1278px] mx-auto">
           {/* Header */}
@@ -328,15 +328,15 @@ export default function PaymentManagementFees() {
                       </div>
 
                       <div className="flex justify-center">
-                        <Badge 
-                          className={`px-3 py-1 rounded text-white ${
-                            record.status === "active" 
-                              ? "bg-[#3ABE65] hover:bg-[#3ABE65]/90" 
-                              : record.status === "pending" 
-                                ? "bg-yellow-500 hover:bg-yellow-500/90" 
-                                : "bg-red-500 hover:bg-red-500/90"
-                          }`}
-                        >
+                       <Badge 
+  className={`rounded-[4px] text-white capitalize font-semibold text-[18px] leading-[27px] flex items-center justify-center ${
+    record.status === "active" 
+      ? "bg-[#3ABE65] w-[58px] h-[27px] hover:bg-[#3ABE65]/90" 
+      : record.status === "pending" 
+        ? "bg-yellow-500 hover:bg-yellow-500/90 px-3 py-1" 
+        : "bg-red-500 hover:bg-red-500/90 px-3 py-1"
+  }`}
+>
                           {record.status.charAt(0).toUpperCase() + record.status.slice(1)}
                         </Badge>
                       </div>
