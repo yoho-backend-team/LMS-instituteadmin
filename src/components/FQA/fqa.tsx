@@ -15,23 +15,31 @@ import {
 import { Pencil, Trash2 } from "lucide-react";
 import StatusCourseFilterfqa from "./fqa-drop-down";
 import filter from '../../assets/Filter.png'
-
-
+import AddFaqNotes from "./Addfaq-category";
+import Editfaq from './editfaq'
+import DeleteConfirmationModal from './deletefaq'
 interface FAQItem {
   id: number;
   title: string;
   author: string;
+  category:string;
   status: string;
 }
 
 const initialData: FAQItem[] = [
-  { id: 1, title: "Certificate Issue", author: "Sara", status: "Active" },
-  { id: 2, title: "Login Issue", author: "Peater", status: "Active" },
+  { id: 1, title: "Chennai",category:"", author: "29/1,second floor chennai ", status: "Active" },
+//   { id: 2, title: "Login Issue",category:"", author: "Peater", status: "Active" },
 ];
 
 const Category = () => {
   const [search, setSearch] = useState("");
-   const [showFilter, setShowFilter] = useState(false);  
+   const [openAddNotes, setOpenAddNotes] = useState(false);
+   const [showFilter, setShowFilter] = useState(false);
+   const [openEditModules, setOpenEditModules] = useState(false);
+   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+const [selectedItemId, setSelectedItemId] = useState<number | null>(null);
+
+
   const filteredData = initialData.filter((item) =>
     item.title.toLowerCase().includes(search.toLowerCase())
   );
@@ -43,11 +51,16 @@ const Category = () => {
     const handleStatusChange = (id: number, newStatus: string) => {
     setStatusMap((prev) => ({ ...prev, [id]: newStatus }));
   };
+const handleDeleteConfirm = () => {
+  console.log("Deleting Item ID:", selectedItemId);
+
+};
+
 
   return (
     <div className="p-6 min-h-screen">
         <div style={{ ...FONTS.heading_01 }}>
-            FAQ CATEGORY
+            FAQ 
         </div>
   
 
@@ -59,12 +72,12 @@ const Category = () => {
   className="bg-[#ca406f] text-white px-4 py-2  rounded-md mt-1 shadow hover:bg-[#b23561] flex items-center justify-center gap-2 " style={FONTS.add_button}
 >
   <img src={filter} className="w-4 h-4" alt="filter" />
-  {showFilter ? "Hide Filter" : "Show Filter"}
+  {showFilter ? "Hide" : "Show"}
 </button>
 
 
         <button
-        //   onClick={() => setOpenAddNotes(true)}
+          onClick={() => setOpenAddNotes(true)}
           className="bg-[#ca406f] text-white px-4 py-2  rounded-md  shadow hover:bg-[#b23561] flex items-center justify-center mr-4 gap-2" style={FONTS.add_button}
         >
           + Add Notes
@@ -79,11 +92,12 @@ const Category = () => {
       )}
 
 
-      <div className="bg-white rounded-xl shadow px-4 py-3 ">
+      <div className="bg-white rounded-xl shadow px-4 py-3 mt-8">
         <Card className="bg-gray-100 rounded-md shadow-sm px-6 py-4">
-  <div className="grid grid-cols-4 font-semibold text-gray-600">
+  <div className="grid grid-cols-5 font-semibold text-gray-600">
     <div>ID</div>
-    <div>Category Name</div>
+    <div>FAQ Name</div>
+    <div>Category</div>
     <div>Status</div>
     <div className="text-right">Actions</div>
   </div>
@@ -92,13 +106,15 @@ const Category = () => {
         <div className="space-y-4 py-4">
           {filteredData.map((item) => (
             <Card key={item.id} className="shadow-lg rounded-lg relative">
-  <CardContent className="grid grid-cols-4 items-center py-2 px-4 relative">
+  <CardContent className="grid grid-cols-5 items-center py-2 px-4 relative">
 
                 <div>{item.id}</div>
                 <div>
                   <div className="font-semibold text-gray-800">{item.title}</div>
                   <div className="text-sm text-gray-500">{item.author}</div>
+                  
                 </div>
+                 <div className="text-sm text-gray-500">{item.category}</div>
                  <div className="flex justify-start">
                     <Select
                       value={statusMap[item.id]}
@@ -154,23 +170,35 @@ const Category = () => {
 
   <DropdownMenuContent className="bg-white rounded-lg shadow-xl w-[120px] p-2 z-20 space-y-2">
    
-
-   <DropdownMenuItem
+<DropdownMenuItem
   className="group border border-gray-300 text-black font-medium text-sm rounded-md px-3 py-2 flex items-center gap-2 cursor-pointer"
- 
   onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#ca406f")}
   onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "")}
+  onClick={() => setOpenEditModules(true)}
 >
   <Pencil className="w-4 h-4 text-black group-hover:text-white" />
   <span className="group-hover:text-white">Edit</span>
 </DropdownMenuItem>
-
+{/* 
     <DropdownMenuItem className="group border border-gray-300 text-black font-medium text-sm rounded-md px-3 py-2 flex items-center gap-2 cursor-pointer hover:bg-[#ca406f]"
      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#ca406f")}
   onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "")}>
       <Trash2 className="w-4 h-4 text-black group-hover:text-white" />
       <span className="group-hover:text-white">Delete</span>
-    </DropdownMenuItem>
+    </DropdownMenuItem> */}
+    <DropdownMenuItem
+  className="group border border-gray-300 text-black font-medium text-sm rounded-md px-3 py-2 flex items-center gap-2 cursor-pointer"
+  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#ca406f")}
+  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "")}
+  onClick={() => {
+    setSelectedItemId(item.id); 
+    setDeleteModalOpen(true);   
+  }}
+>
+  <Trash2 className="w-4 h-4 text-black group-hover:text-white" />
+  <span className="group-hover:text-white">Delete</span>
+</DropdownMenuItem>
+
   </DropdownMenuContent>
 </DropdownMenu>
                 </div>
@@ -179,6 +207,16 @@ const Category = () => {
           ))}
         </div>
       </div>
+       <AddFaqNotes open={openAddNotes} onClose={setOpenAddNotes} />
+      <Editfaq open={openEditModules} onClose={setOpenEditModules} />
+      {/* <Deletefaq open={openDelete} onClose={()=>setOpendelete(false)} /> */}
+      <DeleteConfirmationModal
+  open={deleteModalOpen}
+  onClose={() => setDeleteModalOpen(false)}
+  onConfirmDelete={handleDeleteConfirm}
+/>
+
+      {/* openDelete,setOpendelete] */}
     </div>
   );
 };
