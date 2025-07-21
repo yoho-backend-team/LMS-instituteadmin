@@ -1,11 +1,8 @@
 
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-
 import { MainLayout } from "@/layout/mainlayout/mainlayout";
 import Dashboard from "@/pages/dashboard/dashboard";
-// import Branchmanagement from "@/pages/branchmanagement/branchmanagement";
 import Community from "@/pages/community/community";
-// import Usermanagement from "@/pages/usermanagement/usermanagement";
 import Users from "@/pages/users/users";
 import Branch from "@/pages/branchmanagement/branch/branch";
 import Group from "@/pages/usermanagement/group/group";
@@ -44,7 +41,12 @@ import YourTicket from "@/pages/ticketmanagement/yourticket/yourticket";
 import StaffNotification from "@/pages/notificationmanagement/staffnotification/staffnotification";
 import ClassDetails from "@/components/live-classes/ClassDetails";
 import AddLiveClassForm from "@/components/live-classes/AddLiveClassForm";
-
+import OfflineAdd from "@/components/classmanagement/offline_add/offline_add";
+import All from "../components/notificationmanagement/overallnotification/all/all"
+import Profile from "@/pages/profile/profile/profile";
+import Settings from "@/pages/profile/settings/settings";
+import Logout from "@/pages/profile/logout/logout";
+import EditLiveClassForm from "@/components/live-classes/EditLiveClassForm";
 const Approutes = () => {
   return (
     <BrowserRouter>
@@ -56,6 +58,7 @@ const Approutes = () => {
           <Route path="Studentnotification" element={<StudentNotification />} />
           <Route path="Liveclasses" element={<Liveclasses />} />
           <Route path="live-classes/add" element={<AddLiveClassForm />} />
+          <Route path="live-classes/edit/:id" element={<EditLiveClassForm />} />
           <Route path="/live-classes/details" element={<ClassDetails />} />
           <Route path="StudentIdCard" element={<StudentIdCrad />} />
           <Route path="StaffIdCard" element={<StaffIdCard />} />
@@ -79,10 +82,8 @@ const Approutes = () => {
           <Route path="StudentTicket" element={<StudentTicket />} />
           <Route path="Yourticket" element={<YourTicket />} />
           <Route path="Dashboard" element={<Dashboard />} />
-          {/* <Route path="Branch-management" element={<Branchmanagement />} /> */}
           <Route path="Branch" element={<Branch />} />
           <Route path="Community" element={<Community />} />
-          {/* <Route path="User-management" element={<Usermanagement />} /> */}
           <Route path="Group" element={<Group />} />
           <Route path="Users" element={<Users />} />
           <Route path="categories" element={<Categories />} />
@@ -94,6 +95,12 @@ const Approutes = () => {
           <Route path="/offlineedit" element={<OfflineEdit />} />
           <Route path="/offlineclass" element={<OfflineClass />} />
           <Route path="/offlineviewmore" element={<OfflineView />} />
+          <Route path="/offlineadd" element={<OfflineAdd />} />
+          <Route path="/all" element={<All />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/settings" element={<Settings />} />
+            <Route path="/logout" element={<Logout />} />
+
         </Route>
 
 

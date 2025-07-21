@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import ClassDetails from "@/components/live-classes/ClassDetails";
 import { useNavigate, useParams } from "react-router-dom";
 import LiveClassCard from "@/components/live-classes/LiveClassCard";
-import AddLiveClassForm from "@/components/live-classes/AddLiveClassForm";
 import { FaSliders } from "react-icons/fa6";
 import { IoAddSharp } from "react-icons/io5";
 
