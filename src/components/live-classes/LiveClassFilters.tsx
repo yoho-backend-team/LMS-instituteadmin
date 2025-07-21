@@ -6,7 +6,7 @@ const LiveClassFilters: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="p-6 max-w-xl mx-auto bg-white dark:bg-background rounded shadow-md space-y-4">
+    <div className="p-6  max-w-xl mx-auto bg-white dark:bg-background rounded shadow-md space-y-4">
       <h2 className="text-xl font-semibold text-center mb-4 text-[#CA406F]">
         Filter Classes
       </h2>

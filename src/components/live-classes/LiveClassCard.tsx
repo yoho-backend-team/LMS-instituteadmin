@@ -1,91 +1,90 @@
-
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Calendar, Paperclip } from "lucide-react";
+import { Calendar, Paperclip, MoreVertical } from "lucide-react";
+import { BiSolidCalendar } from "react-icons/bi";
+
+const classData = [
+  {
+    id: "class-1",
+    title: "MERN",
+    students: 2,
+    schedule: "Thu, July 12, 2025 | 12:00 PM – 01:00 PM",
+    link: "https://zoom.us/j/123456789",
+    avatars: ["bg-gray-400", "bg-black"],
+  },
+  {
+    id: "class-2",
+    title: "MERN",
+    students: 1,
+    schedule: "Thu, July 12, 2025 | 12:00 PM – 01:00 PM",
+    link: "https://zoom.us/j/987654321",
+    avatars: ["bg-black"],
+  },
+];
 
 const LiveClassCard: React.FC = () => {
   const navigate = useNavigate();
 
+  const handleMoreClick = (classId: string) => {
+    console.log("More clicked for class:", classId);
+    // Could open a dropdown menu or modal
+  };
+
   return (
-    <div className="p-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
-        {/* Card Start */}
-        <div className="flex bg-white shadow-md rounded-xl overflow-hidden shadow-2xl">
-          {/* Avatar */}
-          <div className="flex items-center justify-center p-4">
-            <div className="w-12 h-12 rounded-full bg-gray-400"></div>
-          </div>
+    <div className="p-6 ">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {classData.map((item) => (
+          <div
+            key={item.id}
+            className="flex flex-col justify-between bg-white h-70 rounded-2xl shadow-xl p-4 relative"
+          >
+            {/* Top Row: Avatars and 3-dot menu */}
+            <div className="flex justify-between items-start">
+              {/* Avatars */}
+              <div className="flex -space-x-2">
+                {item.avatars.map((avatarColor, index) => (
+                  <div
+                    key={index}
+                    className={`w-10 h-10 rounded-full border-2 border-white ${avatarColor}`}
+                  />
+                ))}
+              </div>
 
-          {/* Content */}
-          <div className="flex-1 p-4">
-            <h3 className="font-semibold text-lg">MERN</h3>
-            <p className="text-sm text-gray-600">2 Students on this Class</p>
-
-            <div className="flex items-center text-sm text-gray-600 mt-2">
-              <Calendar className="w-4 h-4 mr-2" />
-              Thu, July 12, 2025 | 12:00 PM – 01:00 PM
+              {/* Menu */}
+              <button
+                onClick={() => handleMoreClick(item.id)}
+                className="p-1 rounded hover:bg-gray-100"
+              >
+                <MoreVertical className="w-5 h-5 text-[#CA406F]" />
+              </button>
             </div>
 
-            <div className="flex items-center text-sm text-blue-700 mt-2">
-              <Paperclip className="w-4 h-4 mr-2 text-purple-600" />
-              <a href="#" className="underline">
-                Thu, July 12, 2025 | 12:00 PM – 01:00 PM
-              </a>
+            {/* Content */}
+            <div className="flex-1">
+              <h3 className="font-semibold text-xl mb-5 mt-4">{item.title}</h3>
+              <p className="text-sm text-gray-600 mb-2">
+                {item.students} {item.students === 1 ? "Student" : "Students"} on this Class
+              </p>
+
+              <div className="flex items-center text-sm text-gray-600 mb-1">
+                <BiSolidCalendar  className="w-6 h-6 mr-2" />
+                {item.schedule}
+              </div>
+
+              <div className="flex items-center text-sm text-blue-700 pt-1">
+                <Paperclip className="w-5 h-5 mr-2 text-blue-700" />
+                <a
+                  href={item.link}
+                  className="underline font-medium"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {item.schedule}
+                </a>
+              </div>
             </div>
           </div>
-
-          {/* Menu (3 dots) */}
-          <div className="flex items-start p-4">
-            <div className="w-1 h-1 bg-gray-500 rounded-full mb-1"></div>
-            <div className="w-1 h-1 bg-gray-500 rounded-full mb-1"></div>
-            <div className="w-1 h-1 bg-gray-500 rounded-full"></div>
-          </div>
-        </div>
-        {/* Card End */}
-
-        {/* Card 2 Start */}
-        <div className="flex bg-white shadow-md rounded-xl overflow-hidden">
-          {/* Avatar */}
-          <div className="flex items-center justify-center p-4">
-            <div className="w-12 h-12 rounded-full bg-black"></div>
-          </div>
-
-          {/* Content */}
-          <div className="flex-1 p-4">
-            <h3 className="font-semibold text-lg">MERN</h3>
-            <p className="text-sm text-gray-600">1 Students on this Class</p>
-
-            <div className="flex items-center text-sm text-gray-600 mt-2">
-              <Calendar className="w-4 h-4 mr-2" />
-              Thu, July 12, 2025 | 12:00 PM – 01:00 PM
-            </div>
-
-            <div className="flex items-center text-sm text-blue-700 mt-2">
-              <Paperclip className="w-4 h-4 mr-2 text-purple-600" />
-              <a href="#" className="underline">
-                Thu, July 12, 2025 | 12:00 PM – 01:00 PM
-              </a>
-            </div>
-          </div>
-
-          {/* Menu (3 dots) */}
-          <div className="flex items-start p-4">
-            <div className="w-1 h-1 bg-gray-500 rounded-full mb-1"></div>
-            <div className="w-1 h-1 bg-gray-500 rounded-full mb-1"></div>
-            <div className="w-1 h-1 bg-gray-500 rounded-full"></div>
-          </div>
-        </div>
-        {/* Card 2 End */}
-      </div>
-
-      {/* Single View More Button */}
-      <div className="flex justify-end mt-4">
-        <button
-          onClick={() => navigate("/live-classes/details/123")}
-          className="px-4 py-2 bg-green-600 text-white rounded"
-        >
-          View More
-        </button>
+        ))}
       </div>
     </div>
   );

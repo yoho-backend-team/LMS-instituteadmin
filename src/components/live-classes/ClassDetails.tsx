@@ -1,4 +1,5 @@
 import React from "react";
+import { MdAccessTimeFilled } from "react-icons/md";
 
 const ClassDetails: React.FC = () => {
   const students = [
@@ -10,7 +11,7 @@ const ClassDetails: React.FC = () => {
       avatar: "https://via.placeholder.com/40",
     },
     {
-      id: 46,
+      id: 47,
       name: "Elon Musk",
       city: "Chennai",
       address: "The SpaceX Starbase",
@@ -19,123 +20,130 @@ const ClassDetails: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-cover p-6"
-      style={{ backgroundImage: "url('/Backdrop Image (1).png')" }}>
-      <h2 className="text-2xl font-bold mb-6 ">Live Classes</h2>
+<div className="min-h-screen pt-6 pr-6 pb-6 pl-[10px] xl:pl-[40px] transition-all duration-300">
+  {/* Header */}
+  <div className="flex flex-wrap justify-between items-start mb-4">
+    <div>
+      <span className="bg-[#CA406F] text-white px-6 py-3 rounded-lg font-bold text-lg">
+        MERN
+      </span>
+      <h3 className="text-xl font-semibold mt-6 px-2">Batch 21</h3>
+    </div>
 
-      {/* Batch Info */}
-      
-      <div className="flex justify-between items-center mb-2">
-  <span className="bg-[#CA406F] text-white px-3 py-1 rounded-full font-semibold">
-    MERN
-  </span>
-  <div className="flex items-center gap-4">
-      <span className="text-sm text-gray-600">Duration: 6 Months</span>
-    <span className="text-md bg-green-600 text-white px-3 py-3  rounded-lg">
-      Offline
-    </span>
-  
+    <div className="flex items-center gap-4">
+      {/* Duration with Icon */}
+      <span className="flex items-center gap-2 text-lg text-gray-600">
+        <MdAccessTimeFilled className="text-base w-5 h-5" />
+        Duration: 6 Months
+      </span>
+
+      {/* Status Badge */}
+      <span className="text-lg font-medium bg-green-600 text-white px-4 py-2 rounded-lg mr-1 ">
+        Offline
+      </span>
+    </div>
   </div>
+
+  {/* Class Info Cards */}
+  <div className="grid grid-cols-1 gap-4 mb-6">
+    {/* Row 1 */}
+    <div className="bg-white p-6 rounded-xl shadow">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        <div>
+          <p className="text-sm text-gray-500">Course</p>
+          <p className="font-medium">MEAN STACK 202</p>
+        </div>
+        <div>
+          <p className="text-sm text-gray-500">Batch</p>
+          <p className="font-medium">MERN 2025</p>
+        </div>
+        <div>
+          <p className="text-sm text-gray-500">Duration</p>
+          <p className="font-medium">8 Hrs 30 Min</p>
+        </div>
+        <div>
+          <p className="text-sm text-gray-500">Date</p>
+          <p className="font-medium">2025-06-12</p>
+        </div>
+      </div>
+    </div>
+
+    {/* Row 2 */}
+    <div className="bg-white p-6 rounded-xl shadow">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 items-start">
+        <div>
+          <p className="text-sm text-gray-500">Started At</p>
+          <p className="font-medium">2025-09-12</p>
+        </div>
+        <div>
+          <p className="text-sm text-gray-500">Ended At</p>
+          <p className="font-medium">2025-10-12</p>
+        </div>
+        <div>
+          <p className="text-sm text-gray-500 mb-1">Instructor</p>
+          <div className="flex items-center gap-2">
+            {/* <img
+              src="https://via.placeholder.com/40"
+              alt="Instructor"
+              className="rounded-full w-10 h-10"
+            /> */}
+            <span className="font-medium text-sm">IMAGE</span>
+          </div>
+        </div>
+        <div>
+          <p className="text-sm text-gray-500">Class Link</p>
+          <a href="#" className="text-blue-700 font-medium break-all">
+            https:SARDFYGUHKJHFD
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div className="bg-white rounded-xl shadow overflow-x-auto p-4">
+  {/* Search Student */}
+  <div className="m-2">
+    <input
+      type="text"
+      placeholder="Search Student"
+      className="w-full md:w-1/3 border border-[#CA406F] rounded px-2 py-2"
+    />
+  </div>
+
+  <table className="min-w-full table-auto text-sm p-4">
+    <thead>
+      <tr className="bg-gray-100 text-left">
+        <th className="p-4 font-semibold">Student ID</th>
+        <th className="p-4 font-semibold">Student Name</th>
+        <th className="p-4 font-semibold text-center">City</th>
+        <th className="p-4 font-semibold text-center">Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      {students.map((student, idx) => (
+        <tr key={idx} className="border-t text-sm">
+          <td className="p-4">{student.id}</td>
+
+          <td className="p-4">
+            <div className="flex items-center gap-2">
+              <img
+                src={student.avatar}
+                alt={student.name}
+                className="w-6 h-6 rounded-full"
+              />
+              <span className="font-medium">{student.name}</span>
+            </div>
+          </td>
+
+          <td className="p-4 text-center">{student.city}</td>
+          <td className="p-4 text-center">{student.address}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
 </div>
-<h3 className="text-xl font-semibold">Batch 21</h3>
 
-
-    {/* Course Details - 4 items per card */}
-<div className="grid grid-cols-1 gap-4 mb-6 pt-2">
-  {/* Row 1: Course, Batch, Duration, Date */}
-  <div className="bg-white p-4 rounded shadow">
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-      <div>
-        <p className="text-sm text-gray-500">Course</p>
-        <p className="font-medium">MEAN STACK 202</p>
-      </div>
-      <div>
-        <p className="text-sm text-gray-500">Batch</p>
-        <p className="font-medium">MERN 2025</p>
-      </div>
-      <div>
-        <p className="text-sm text-gray-500">Duration</p>
-        <p className="font-medium">8 Hrs 30 Min</p>
-      </div>
-      <div>
-        <p className="text-sm text-gray-500">Date</p>
-        <p className="font-medium">2025-06-12</p>
-      </div>
-    </div>
-  </div>
-
-  {/* Row 2: Started At, Ended At, Instructor, Class Link */}
-  <div className="bg-white p-4 rounded shadow">
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-start">
-      <div>
-        <p className="text-sm text-gray-500">Started At</p>
-        <p className="font-medium">2025-05-99</p>
-      </div>
-      <div>
-        <p className="text-sm text-gray-500">Ended At</p>
-        <p className="font-medium">2025-05-12</p>
-      </div>
-      <div>
-        <p className="text-sm text-gray-500">Instructor</p>
-        <img
-          src="https://via.placeholder.com/40"
-          alt="Instructor"
-          className="rounded-full w-10 h-10 mt-1"
-        />
-      </div>
-      <div>
-        <p className="text-sm text-gray-500">Class Link</p>
-        <a href="#" className="text-blue-700 font-medium break-words">
-          https:SARDFYGUHKJHFD
-        </a>
-      </div>
-    </div>
-  </div>
 </div>
-
-
-
-      {/* Student Search */}
-      <input
-        type="text"
-        placeholder="Search Student"
-        className="mb-4 w-full md:w-1/3 border border-gray-300 rounded px-3 py-2"
-      />
-
-      {/* Student Table */}
-      <div className="bg-white rounded shadow overflow-x-auto">
-        <table className="min-w-full table-auto text-sm">
-          <thead>
-            <tr className="bg-gray-100 text-left">
-              <th className="p-4 font-medium">Student ID</th>
-              <th className="p-4 font-medium">Student Name</th>
-              <th className="p-4 font-medium">City</th>
-              <th className="p-4 font-medium">Address</th>
-            </tr>
-          </thead>
-          <tbody>
-            {students.map((student, idx) => (
-              <tr key={idx} className="border-t">
-                <td className="p-4">{student.id}</td>
-                <td className="p-4 flex items-center gap-2">
-                  <img
-                    src={student.avatar}
-                    alt={student.name}
-                    className="w-8 h-8 rounded-full"
-                  />
-                  <div>
-                    <div className="font-medium">{student.name}</div>
-                    <div className="text-xs text-gray-500">Instructor</div>
-                  </div>
-                </td>
-                <td className="p-4">{student.city}</td>
-                <td className="p-4">{student.address}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
   );
 };
 
