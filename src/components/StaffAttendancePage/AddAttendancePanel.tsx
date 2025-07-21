@@ -41,7 +41,7 @@ const AddAttendancePanel: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         <button className="border border-blue-500 text-blue-500 px-4 py-1 rounded">
           Reset
         </button>
-        <button className="bg-pink-600 text-white px-6 py-1 rounded">
+        <button className="bg-[#c62863] text-white px-6 py-1 rounded">
           Add
         </button>
       </div>

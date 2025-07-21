@@ -9,7 +9,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ showFilter, toggleFilter }) => {
   return (
-    <div className="bg-[#c62863] text-white px-4 py-3 flex justify-between items-center rounded-md shadow-md w-413 max-w-538">
+    <div className="bg-[#c62863] text-white px-4 py-3 flex justify-between items-center rounded-md shadow-md w-345">
       <div className="flex items-center gap-2 font-bold">
         <Calendar className="w-5 h-5" />
         <span>STAFF ATTENDANCE</span>

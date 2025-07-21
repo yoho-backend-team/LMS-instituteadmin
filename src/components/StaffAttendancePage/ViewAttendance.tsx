@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Calendar, Plus } from "lucide-react";
 import filterImage from '../../assets/filter.png';
-import bgImage from "../../assets/bgg.png";
 import AddAttendancePanel from "./AddAttendancePanel"; // Make sure the path is correct
 
 const ViewAttendancePage: React.FC = () => {
@@ -10,9 +9,7 @@ const ViewAttendancePage: React.FC = () => {
     const [showPanel, setShowPanel] = useState(false);
 
     return (
-        <div className="relative min-h-screen p-4 bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: `url(${bgImage})` }}>
-
+        <div className="relative min-h-screen p-4 bg-cover bg-center bg-no-repeat">
             {/* Profile Header */}
             <div className="bg-white p-4 rounded-lg shadow flex justify-between items-center mb-4">
                 <div className="flex items-center gap-4">
