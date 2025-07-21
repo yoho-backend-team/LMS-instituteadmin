@@ -40,7 +40,10 @@ import StudentTicket from "@/pages/ticketmanagement/studentticket/studentticket"
 import YourTicket from "@/pages/ticketmanagement/yourticket/yourticket";
 import StaffNotification from "@/pages/notificationmanagement/staffnotification/staffnotification";
 import OfflineAdd from "@/components/classmanagement/offline_add/offline_add";
-
+import All from "../components/notificationmanagement/overallnotification/all/all"
+import Profile from "@/pages/profile/profile/profile";
+import Settings from "@/pages/profile/settings/settings";
+import Logout from "@/pages/profile/logout/logout";
 const Approutes = () => {
   return (
     <BrowserRouter>
@@ -86,7 +89,12 @@ const Approutes = () => {
           <Route path="/offlineedit" element={<OfflineEdit />} />
           <Route path="/offlineclass" element={<OfflineClass />} />
           <Route path="/offlineviewmore" element={<OfflineView />} />
-           <Route path="/offlineadd" element={<OfflineAdd />} />
+          <Route path="/offlineadd" element={<OfflineAdd />} />
+          <Route path="/all" element={<All />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/settings" element={<Settings />} />
+            <Route path="/logout" element={<Logout />} />
+
         </Route>
 
 

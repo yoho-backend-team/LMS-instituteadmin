@@ -71,7 +71,7 @@ const OfflineClassPage = () => {
                 </div>
             )}
 
-            <div className="grid grid-cols-3 gap-2 w-full">
+            <div className="grid grid-cols-3 gap-2 w-full py-5">
                 {Tablecontent.map((item, index) => (
                     <div
                         key={index}
