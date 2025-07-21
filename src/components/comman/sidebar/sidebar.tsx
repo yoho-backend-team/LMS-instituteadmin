@@ -177,14 +177,14 @@ const SideBar = ({
                 transform transition-all duration-500 ease-in-out origin-left
                 ${isOpen ? "w-64 scale-100 opacity-100" : "w-17 scale-y-100 opacity-80"}`}
         >
-            <div className="flex items-center justify-between px-4 h-16 flex-shrink-0">
+            <div className="flex items-center justify-between px-4 h-16 py-5">
                 <div className="relative group flex items-center overflow-visible px-0.5">
                     <button
                         onClick={handleToggle}
                         className="rounded-md transition duration-200 hover:bg-white/10"
                         title="Toggle Sidebar"
                     >
-                        <Menu size={20} className="text-[#CA406F]" />
+                        <Menu size={20} className="text-[#CA406F]"/>
                     </button>
                     <span className="absolute left-full top-1/2 -translate-y-1/2 ml-4 whitespace-nowrap rounded-3xl bg-[#CA406F] text-white text-sm px-2 py-1 shadow-lg opacity-0 group-hover:opacity-100 z-50">
                         Toggle Sidebar
@@ -192,7 +192,7 @@ const SideBar = ({
                 </div>
             </div>
 
-            <nav className=" px-2 space-y-3">
+            <nav className=" overflow-y-scroll px-2 space-y-3 ">
                 <SidebarLink to="/dashboard" icon={<LayoutDashboard />} label="Dashboard" isOpen={isOpen} onClick={handleLinkClick} />
                 <SidebarLink to="/community" icon={<Home />} label="Community" isOpen={isOpen} onClick={handleLinkClick} />
 
@@ -284,23 +284,20 @@ export default SideBar
 
 const SidebarLink1 = ({
     to,
-    //   icon,
     label,
     isOpen,
     onClick,
 }: {
     to: string
-    //   icon: ReactElement
     label: string
     isOpen: boolean
     onClick: () => void
 }) => {
-    // Using window.location.pathname instead of usePathname
     const currentPathname = typeof window !== "undefined" ? window.location.pathname : ""
     const [isHovered, setIsHovered] = useState(false)
     const isActive = currentPathname === to
     return (
-        <a // Changed from Link to a
+        <a
             href={to}
             onClick={onClick}
             onMouseEnter={() => setIsHovered(true)}
@@ -346,7 +343,7 @@ const SidebarLink = ({
     const [isHovered, setIsHovered] = useState(false)
     const isActive = currentPathname === to
     return (
-        <a 
+        <a
             href={to}
             onClick={onClick}
             onMouseEnter={() => setIsHovered(true)}
@@ -364,13 +361,13 @@ const SidebarLink = ({
                     {icon}
                 </div>
                 {!isOpen && (
-                    <span className="absolute top-1/2 -translate-y-4 ml-10 whitespace-nowrap rounded-3xl bg-[#CA406F] text-white text-sm px-2 py-1 shadow-lg opacity-0 group-hover:opacity-100 z-50">
+                    <span className="absolute top-1/2 -translate-y-4 ml-10 whitespace-nowrap rounded-3xl bg-[#CA406F] text-white text-sm px-2 py-1 shadow-lg opacity-0 group-hover:opacity-100 ">
                         {label}
                     </span>
                 )}
             </div>
             {isOpen && <span className={`font-medium text-sm ${isActive ? "text-white" : "text-black"}`}>{label}</span>}
-        </a> 
+        </a>
     )
 }
 
@@ -385,7 +382,7 @@ const SidebarDropdown = ({
     childRoutes = [],
     activeDropdown,
     setActiveDropdown,
-    setIsOpen, 
+    setIsOpen,
 }: {
     icon: ReactElement
     label: string
@@ -394,7 +391,7 @@ const SidebarDropdown = ({
     childRoutes?: string[]
     activeDropdown: string | null
     setActiveDropdown: (label: string | null) => void
-    setIsOpen: (open: boolean) => void 
+    setIsOpen: (open: boolean) => void
 }) => {
     const currentPathname = typeof window !== "undefined" ? window.location.pathname : ""
     const isChildActive = childRoutes.some((route) => currentPathname === route)
@@ -403,7 +400,7 @@ const SidebarDropdown = ({
     useEffect(() => {
         if (isChildActive) {
             setActiveDropdown(label)
-            setIsOpen(false) 
+            setIsOpen(false)
         }
     }, [currentPathname, isChildActive, label, setActiveDropdown, setIsOpen])
 
@@ -432,7 +429,7 @@ const SidebarDropdown = ({
                         {icon}
                     </div>
                     {!isOpen && (
-                        <span className="absolute top-1/2 -translate-y-4 ml-10 whitespace-nowrap rounded-3xl bg-[#CA406F] text-white text-sm px-2 py-1 shadow-lg opacity-0 group-hover:opacity-100 ">
+                        <span className="absolute  top-1/2 -translate-y-4 ml-10 whitespace-nowrap rounded-3xl bg-[#CA406F] text-white text-sm px-2 py-1 shadow-lg opacity-0 group-hover:opacity-100 ">
                             {label}
                         </span>
                     )}
