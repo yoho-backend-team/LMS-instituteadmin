@@ -12,6 +12,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
+import {FONTS} from '../../constants/uiConstants'
 
 const  Groups=() =>{
   const groups = [
@@ -28,8 +29,8 @@ const  Groups=() =>{
   style={{ backgroundImage: `url(${bg})` }}
 >
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-xl font-semibold text-gray-700">Groups</h1>
-        <Button className="bg-[#CA406f] hover:bg-[#CA406f] text-white rounded-md" onClick={() => navigate("/add-group")}>
+        <h1 className="text-xl font-semibold text-gray-700" style={FONTS.heading_01}>Groups</h1>
+        <Button className="bg-[#CA406f] hover:bg-[#CA406f] text-white rounded-md" style={FONTS.add_button} onClick={() => navigate("/add-group")}>
           Add New Group
         </Button>
       </div>
@@ -37,8 +38,8 @@ const  Groups=() =>{
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {groups.map((group, index) => (
           <Card key={index} className="shadow-md rounded-2xl">
-            <CardContent className="p-4 flex flex-col justify-between h-40  relative">
-              <button className="absolute top-3 right-3 p-1 rounded-full" >
+            <CardContent className="p-4 flex flex-col justify-between h-40  relative" style={FONTS.card_head}> 
+              <button className="absolute top-3 right-3 p-1 rounded-full">
       <MoreVertical className="w-5 h-5 text-gray-600"/>
       </button>
 
@@ -127,89 +128,4 @@ export default Groups
 
 
 
-
-
-
-
-
-// <DropdownMenu>
-//   <DropdownMenuTrigger asChild>
-//     <button
-//       className="absolute top-2 right-2 bg-white backdrop-blur-md rounded-md p-1 hover:bg-white shadow-md z-10"
-//       aria-label="More options"
-//     >
-//       <MoreVertical className="w-5 h-5 text-[#ca406f]" />
-//     </button>
-//   </DropdownMenuTrigger>
-
-//   <DropdownMenuContent className="bg-white rounded-lg shadow-xl w-[120px] p-2 z-20 space-y-2">
-//     <DropdownMenuItem
-//   className="group border border-gray-300 text-black font-semibold text-sm rounded-md px-3 py-2 flex items-center gap-2 cursor-pointer"
-//   onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#ca406f")}
-//   onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "")}
-// >
-//   <Eye className="w-4 h-4 text-black group-hover:text-white" />
-//   <span className="group-hover:text-white">View</span>
-// </DropdownMenuItem>
-
-
-//     <DropdownMenuItem className="group border border-gray-300 text-black font-medium text-sm rounded-md px-3 py-2 flex items-center gap-2 cursor-pointer hover:bg-[#ca406f]"
-//      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#ca406f")}
-//   onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "")}>
-      
-//       <Pencil className="w-4 h-4 text-black group-hover:text-white" />
-//       <span className="group-hover:text-white ">Edit</span>
-//     </DropdownMenuItem>
-
-//     <DropdownMenuItem className="group border border-gray-300 text-black font-medium text-sm rounded-md px-3 py-2 flex items-center gap-2 cursor-pointer hover:bg-[#ca406f]"
-//      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#ca406f")}
-//   onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "")}>
-//       <Trash2 className="w-4 h-4 text-black group-hover:text-white" />
-//       <span className="group-hover:text-white">Delete</span>
-//     </DropdownMenuItem>
-//   </DropdownMenuContent>
-// </DropdownMenu>
-// import {
-//   DropdownMenu,
-//   DropdownMenuTrigger,
-//   DropdownMenuContent,
-//   DropdownMenuItem,
-// } from "@/components/ui/dropdown-menu";
-{/* <DropdownMenu>
-  <DropdownMenuTrigger asChild>
-    <button
-      className="absolute top-2 right-2 bg-white backdrop-blur-md rounded-md p-1 hover:bg-white shadow-md z-10"
-      aria-label="More options"
-    >
-      <MoreVertical className="w-5 h-5 text-[#ca406f]" />
-    </button>
-  </DropdownMenuTrigger>
-
-  <DropdownMenuContent className="bg-white rounded-lg shadow-xl w-[120px] p-2 z-20 space-y-2">
-    <DropdownMenuItem
-  className="group border border-gray-300 text-black font-semibold text-sm rounded-md px-3 py-2 flex items-center gap-2 cursor-pointer"
-  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#ca406f")}
-  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "")}
->
-  <Eye className="w-4 h-4 text-black group-hover:text-white" />
-  <span className="group-hover:text-white">View</span>
-</DropdownMenuItem>
-
-
-    <DropdownMenuItem className="group border border-gray-300 text-black font-medium text-sm rounded-md px-3 py-2 flex items-center gap-2 cursor-pointer hover:bg-[#ca406f]"
-     onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#ca406f")}
-  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "")}>
-      
-      <Pencil className="w-4 h-4 text-black group-hover:text-white" />
-      <span className="group-hover:text-white ">Edit</span>
-    </DropdownMenuItem>
-
-    <DropdownMenuItem className="group border border-gray-300 text-black font-medium text-sm rounded-md px-3 py-2 flex items-center gap-2 cursor-pointer hover:bg-[#ca406f]"
-     onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#ca406f")}
-  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "")}>
-      <Trash2 className="w-4 h-4 text-black group-hover:text-white" />
-      <span className="group-hover:text-white">Delete</span>
-    </DropdownMenuItem>
-  </DropdownMenuContent>
-</DropdownMenu> */}
 

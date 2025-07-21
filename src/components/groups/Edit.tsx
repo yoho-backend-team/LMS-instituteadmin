@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import bg from "../../../src/assets/Backdrop Image.png";
+import {FONTS} from '../../constants/uiConstants'
 
 interface PermissionItem {
   name: string;
@@ -38,7 +39,7 @@ const permissions: Omit<
     }))
   );
 
-  // ✅ Toggle individual checkbox
+
   const handleToggle = (
     index: number,
     type: "Read" | "Create" | "Update" | "Delete"
@@ -75,12 +76,12 @@ const permissions: Omit<
       style={{ backgroundImage: `url(${bg})` }}
     >
       <div className="bg-white shadow-md rounded-xl p-6 max-w-5xl mx-auto">
-        <h2 className="text-lg font-bold text-[#CA406f] mb-2">Edit Group</h2>
-        <p className="text-sm text-gray-500 mb-4">Set Group Permissions</p>
+        <h2 className="text-lg font-bold text-[#CA406f] mb-2" style={FONTS.form_head}>Edit Group</h2>
+        <p className="text-sm text-gray-500 mb-4" style={FONTS.Description}>Set Group Permissions</p>
 
         {/* Group Name Input */}
         <div className="mb-6">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium !text-gray-700 mb-1" style={FONTS.add_button}>
             Group Name
           </label>
           <input
@@ -91,9 +92,9 @@ const permissions: Omit<
           />
         </div>
 
-        {/* Administrator Access */}
+        
         <div className="flex justify-between items-center mb-4">
-          <h3 className="font-sm text-gray-700">Administrator Access</h3>
+          <h3 className="font-sm text-gray-700" style={FONTS.form_des}> Administrator Access</h3>
           <div className="flex items-center space-x-1">
             <Checkbox
               checked={isAllSelected}
@@ -104,12 +105,12 @@ const permissions: Omit<
           </div>
         </div>
 
-        {/* Permissions Table */}
+      
         <div className="space-y-2">
           {permissionState.map((item, index) => (
             <Card key={index} className="shadow-sm">
               <CardContent className="flex justify-between items-center ">
-                <span className="font-sm w-40 text-gray-600">{item.name}</span>
+                <span className="font-sm w-40 text-gray-600" style={FONTS.form_topic}>{item.name}</span>
                 <div className="flex space-x-25">
                   {(["Read", "Create", "Update", "Delete"] as const).map(
                     (type) => (
@@ -122,7 +123,7 @@ const permissions: Omit<
                           onCheckedChange={() => handleToggle(index, type)}
                           className="data-[state=checked]:bg-green-500 data-[state=checked]:border-green-500"
                         />
-                        <span>{type}</span>
+                        <span style={FONTS.Description}>{type}</span>
                       </div>
                     )
                   )}

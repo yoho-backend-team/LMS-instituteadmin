@@ -8,6 +8,7 @@ import EditModules from "./EditModules";
 import ViewModule from "./viewmodules";
 import filter from '../../assets/Filter.png'
 import pdfimage from '../../assets/pdf.png'
+import {FONTS} from '../../constants/uiConstants'
 import headcap from '../../assets/headcap.png'
 
 function NotesUI() {
@@ -26,13 +27,13 @@ const [selectedModule, setSelectedModule] = useState<any>(null);
     >
       
       <div className="top-8">
-        <h1 className="text-xl font-semibold text-gray-700 ">Modules</h1>
+        <h1 className="text-xl font-semibold text-gray-700" style={FONTS.heading_01}>Modules</h1>
       </div>
 
       <div className="flex justify-between mt-5">
         <button
   onClick={() => setShowFilter(!showFilter)}
-  className="bg-[#ca406f] text-white px-4 py-2  rounded-md mt-1 shadow hover:bg-[#b23561] flex items-center justify-center gap-2 "
+  className="bg-[#ca406f] text-white px-4 py-2  rounded-md mt-1 shadow hover:bg-[#b23561] flex items-center justify-center gap-2 " style={FONTS.add_button}
 >
   <img src={filter} className="w-4 h-4" alt="filter" />
   {showFilter ? "Hide Filter" : "Show Filter"}
@@ -41,7 +42,7 @@ const [selectedModule, setSelectedModule] = useState<any>(null);
 
         <button
           onClick={() => setOpenAddNotes(true)}
-          className="bg-[#ca406f] text-white px-4 py-2 ml-4 rounded-md  shadow hover:bg-[#b23561] flex items-center justify-center gap-2"
+          className="bg-[#ca406f] text-white px-4 py-2  rounded-md  shadow hover:bg-[#b23561] flex items-center justify-center mr-4 gap-2" style={FONTS.add_button}
         >
           + Add Notes
         </button>
@@ -114,13 +115,13 @@ const [selectedModule, setSelectedModule] = useState<any>(null);
             <div className="w-6 h-6 bg-gray-200 rounded flex items-center justify-center">
               <img src={pdfimage} className="w-4 h-4"/>
             </div>
-            <span className="font-semibold text-gray-700">RVR</span>
+            <span className="font-semibold text-gray-700" style={FONTS.card_head}>RVR</span>
           </div>
 
           <div className="flex items-center gap-2 mt-2 text-gray-500">
             {/* <span className="text-lg"></span> */}
             <div><img src={headcap}/></div>
-            <span>Manual Testing Basic</span>
+            <span style={FONTS.card_head}> Manual Testing Basic</span>
           </div>
 
           

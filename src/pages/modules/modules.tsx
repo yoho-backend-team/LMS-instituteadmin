@@ -1,12 +1,7 @@
-import React from 'react'
-import Modules from '../../components/modules/module'
-
-function modules() {
-  return (
-    <div>
-   <Modules />
-    </div>
-  )
+import Module from "../../components/modules/module";
+const Modules=() =>{
+    return(
+        <div><Module /></div>
+    )
 }
-
-export default modules
+export default Modules;

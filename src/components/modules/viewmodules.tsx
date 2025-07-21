@@ -68,17 +68,6 @@ function ViewModule({ open, onClose, moduleData }: ViewModuleProps) {
           </p>
 
         
-          {/* <div className="flex items-center">
-            <span
-              className={`px-3 py-1 rounded-full text-sm font-medium ${
-                moduleData?.status === "Active"
-                  ? "bg-green-500 text-white"
-                  : "bg-red-100 text-red-700"
-              }`}
-            >
-              {moduleData?.status}
-            </span>
-          </div> */}
         </div>
       </DialogContent>
     </Dialog>

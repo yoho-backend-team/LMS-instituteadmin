@@ -6,14 +6,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {FONTS} from '../../constants/uiConstants'
 
 function StatusCourseFilter() {
   return (
-    <div className="w-[1300px] flex gap-2 bg-white shadow-md rounded-md p-4 -ml-4 ">
+    <div className="w-90rem flex gap-6 bg-white shadow-md rounded-md p-4 -ml-4  ">
       <div className="flex flex-col w-1/2">
-        <label className="text-sm text-gray-600 mb-1">Status</label>
+        <label className="text-sm text-gray-600 mb-1" style={FONTS.form_topic}>Status</label>
         <Select>
-          <SelectTrigger className="w-full bg-white border rounded-md shadow-sm">
+          <SelectTrigger className="w-[30rem] bg-white border rounded-md shadow-sm">
             <SelectValue placeholder="Select status" />
           </SelectTrigger>
           <SelectContent>
@@ -25,9 +26,9 @@ function StatusCourseFilter() {
 
       {/* Course Select */}
       <div className="flex flex-col w-1/2">
-        <label className="text-sm text-gray-600 mb-1">Course</label>
+        <label className="text-sm text-gray-600 mb-1" style={FONTS.form_topic}>Course</label>
         <Select>
-          <SelectTrigger className="w-full bg-white border rounded-md shadow-sm">
+          <SelectTrigger className="w-[30rem] bg-white border rounded-md shadow-sm">
             <SelectValue placeholder="Select course" />
           </SelectTrigger>
           <SelectContent>
