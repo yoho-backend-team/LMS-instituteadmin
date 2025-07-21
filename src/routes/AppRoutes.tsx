@@ -1,11 +1,8 @@
 
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-
 import { MainLayout } from "@/layout/mainlayout/mainlayout";
 import Dashboard from "@/pages/dashboard/dashboard";
-// import Branchmanagement from "@/pages/branchmanagement/branchmanagement";
 import Community from "@/pages/community/community";
-// import Usermanagement from "@/pages/usermanagement/usermanagement";
 import Users from "@/pages/users/users";
 import Branch from "@/pages/branchManagment/branchPage";
 import Group from "@/pages/usermanagement/group/group";
@@ -41,11 +38,11 @@ import StaffTicket from "@/pages/ticketmanagement/staffticket/staffticket";
 import StudentTicket from "@/pages/ticketmanagement/studentticket/studentticket";
 import YourTicket from "@/pages/ticketmanagement/yourticket/yourticket";
 import StaffNotification from "@/pages/notificationmanagement/staffnotification/staffnotification";
-import StudentDashboard from "@/pages/batchManagment/studentMainBatch";
-import BranchOverview from "@/components/Branch/branchOverview";
-import StudentDashboardMain from "@/components/Batch/viewBatch";
-import BranchPage from "@/pages/branchManagment/branchPage";
-
+import OfflineAdd from "@/components/classmanagement/offline_add/offline_add";
+import All from "../components/notificationmanagement/overallnotification/all/all"
+import Profile from "@/pages/profile/profile/profile";
+import Settings from "@/pages/profile/settings/settings";
+import Logout from "@/pages/profile/logout/logout";
 const Approutes = () => {
   return (
     <BrowserRouter>
@@ -78,10 +75,8 @@ const Approutes = () => {
           <Route path="StudentTicket" element={<StudentTicket />} />
           <Route path="Yourticket" element={<YourTicket />} />
           <Route path="Dashboard" element={<Dashboard />} />
-          <Route path="Branch-management" element={<BranchPage />} />
           <Route path="Branch" element={<Branch />} />
           <Route path="Community" element={<Community />} />
-          {/* <Route path="User-management" element={<Usermanagement />} /> */}
           <Route path="Group" element={<Group />} />
           <Route path="Users" element={<Users />} />
           <Route path="categories" element={<Categories />} />
@@ -93,8 +88,12 @@ const Approutes = () => {
           <Route path="/offlineedit" element={<OfflineEdit />} />
           <Route path="/offlineclass" element={<OfflineClass />} />
           <Route path="/offlineviewmore" element={<OfflineView />} />
-           <Route path="/branch-overview" element={<BranchOverview />} />
-            <Route path="/view-page" element={<StudentDashboardMain/>}/>
+          <Route path="/offlineadd" element={<OfflineAdd />} />
+          <Route path="/all" element={<All />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/settings" element={<Settings />} />
+            <Route path="/logout" element={<Logout />} />
+
         </Route>
 
 
