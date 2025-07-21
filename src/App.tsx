@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Community from "./components/community/Community";
+import Community from "./components/chat/Community";
 import RevenueExpenseChart from "./components/DashboardChart";
 import Notes from "./components/Notes/Notes";
 import Student from "./components/StudentManagement/Student";

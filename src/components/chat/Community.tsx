@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Chat from '../chat/Chat';
-import CommunityChat from '../chat/Batches';
+import Chat from './Chat';
+import CommunityChat from './Batches';
 import backdrop from '../../assets/Backdrop Image.jpg';
 
 interface Batch {
