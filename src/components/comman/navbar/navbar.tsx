@@ -4,7 +4,7 @@ import Titlelogo from "@/assets/icons/titlelogo.png"
 
 const Navbar = () => {
   return (
-    <nav className="   w-full  bg-gradient-to-r from-[#F6D3E9] via-[#FFFFFF] to-[#F6D3E9] shadow-md p-3 flex items-center justify-between">
+    <nav className="   w-full  bg-gradient-to-r from-[#F6D3E9] via-[#FFFFFF] to-[#F6D3E9]  p-3 flex items-center justify-between">
       
       <div className="flex items-center">
         <img src={Titlelogo} alt="Logo" className="h-10 w-auto "  />
