@@ -64,33 +64,30 @@ export default function Dashboard() {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          <div className="flex gap-4 ml-auto items-center">
-            <span className="text-lg font-bold text-[#CA406F]">Popular Course</span>
+          <div className="flex  ml-auto items-center">
+            <span className="text-lg font-bold text-[#CA406F]">
+              Popular Course
+            </span>
             <DropdownMenu>
-  <DropdownMenuTrigger>
-    <button className="border border-gray-300 text-white text-sm font-medium rounded-md bg-[#CA406F] h-10 w-32 px-6">
-      Trending
-    </button>
-  </DropdownMenuTrigger>
+              <DropdownMenuTrigger>
+                <button className="border border-gray-300 text-white text-sm font-medium rounded-md bg-[#CA406F] h-10 w-32 px-6">
+                  Trending
+                </button>
+              </DropdownMenuTrigger>
 
-  <DropdownMenuContent className="bg-white/90 rounded-lg shadow-lg w-[250px] p-2 space-y-2 z-50">
-    {[
-      "Price – Low to High",
-      "Price – High to Low",
-      "Trending",
-    ].map((label) => (
-    <DropdownMenuItem
-  key={label}
-  className="!bg-transparent hover:!bg-[#CA406F] text-[#716F6F] hover:!text-white font-medium text-sm rounded-md px-4 py-2 flex items-center cursor-pointer transition-colors duration-200"
->
-  {label}
-</DropdownMenuItem>
-
-
-    ))}
-  </DropdownMenuContent>
-</DropdownMenu>
-
+              <DropdownMenuContent className="bg-white/90 rounded-lg shadow-lg w-[250px] p-2 space-y-2 z-50 border border-gray-100">
+                {["Price – Low to High", "Price – High to Low", "Trending"].map(
+                  (label) => (
+                    <DropdownMenuItem
+                      key={label}
+                      className="!bg-transp6F] text-[#716F6F]  hover:!text-white font-medium text-sm rounded-md px-4 py-2 flex items-center cursor-pointer transition-colors duration-200"
+                    >
+                      {label}
+                    </DropdownMenuItem>
+                  )
+                )}
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
 
@@ -112,7 +109,8 @@ export default function Dashboard() {
                       MEAN STACK 2024
                     </h3>
                     <p className="text-xs opacity-80 mt-1 group-hover:text-white transition-all duration-300">
-                      The MEAN stack is a collection of JavaScript-based technologies for building...
+                      The MEAN stack is a collection of JavaScript-based
+                      technologies for building...
                     </p>
                     <span className="inline-block mt-2 px-3 py-1 text-xs font-medium text-[#1A846C] border border-[#1A846C] bg-white/20 rounded-full transition-all duration-300 group-hover:text-white group-hover:border-white group-hover:bg-white/30">
                       1 Modules

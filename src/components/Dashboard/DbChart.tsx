@@ -63,7 +63,7 @@ export default function RevenueExpenseChart() {
           className={`px-6 py-2 rounded-lg font-medium transition-colors ${
             activeTab === "revenue"
               ? "bg-[#CA406F] text-white"
-              : "bg-gray-100 text-[#CA406F] hover:bg-gray-200"
+              : "text-[#CA406F] hover:bg-gray-100 border border-[#CA406F]"
           }`}
         >
           Revenue
@@ -73,7 +73,7 @@ export default function RevenueExpenseChart() {
           className={`px-6 py-2 rounded-lg font-medium transition-colors ${
             activeTab === "expense"
               ? "bg-[#CA406F] text-white"
-              : "bg-gray-100 text-[#CA406F] hover:bg-gray-200"
+              : " text-[#CA406F] hover:bg-gray-100 border border-[#CA406F]"
           }`}
         >
           Expense
