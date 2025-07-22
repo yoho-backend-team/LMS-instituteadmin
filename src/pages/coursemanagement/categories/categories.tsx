@@ -1,50 +1,63 @@
-// const Categories=() =>{
-//     return(
-//         <div>Categories</div>
-//     )
-// }
-// export default Categories;
-
-
-
-
 "use client"
 
-import type React from "react"
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { MoreVertical, X, Plus, ChevronRight } from "lucide-react"
 
- import Image from "../../../assets/image.png";
-import mern from "../../../assets/mern.png";
-import backdropImg from "../../../assets/backdropimage.png";
-import FilterIcon from "../../../assets/Filter.png";
-import DeleteIcon from "../../../assets/delete.png";
-import EditIcon from "../../../assets/edit.png";
-import UploadIcon from "../../../assets/upload.png";
+import Image from "../../../assets/image.png"
+import mern from "../../../assets/mern.png"
+import backdropImg from "../../../assets/backdropimage.png"
+import FilterIcon from "../../../assets/Filter.png"
+import DeleteIcon from "../../../assets/delete.png"
+import EditIcon from "../../../assets/edit.png"
+import UploadIcon from "../../../assets/upload.png"
 
 // Custom Select Component
-type CustomSelectOption = { label: string; value: string };
+type CustomSelectOption = { label: string; value: string }
 
 interface CustomSelectProps {
-  options: CustomSelectOption[];
-  selected: string;
-  setSelected: (value: string) => void;
-  placeholder: string;
+  options: CustomSelectOption[]
+  selected: string
+  setSelected: (value: string) => void
+  placeholder: string
+  disabled?: boolean
 }
 
-const CustomSelect: React.FC<CustomSelectProps> = ({ options, selected, setSelected, placeholder }) => {
+const CustomSelect: React.FC<CustomSelectProps> = ({ 
+  options, 
+  selected, 
+  setSelected, 
+  placeholder,
+  disabled = false
+}) => {
   const [open, setOpen] = useState(false)
+  const selectRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (selectRef.current && !selectRef.current.contains(event.target as Node)) {
+        setOpen(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [])
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full" ref={selectRef}>
       <button
-        onClick={() => setOpen(!open)}
-        className="w-full h-12 border border-[#716F6F] rounded-lg px-4 flex items-center justify-between text-[#716F6F] bg-white"
+        onClick={() => !disabled && setOpen(!open)}
+        className={`w-full h-12 border border-[#716F6F] rounded-lg px-4 flex items-center justify-between text-[#716F6F] bg-white ${
+          disabled ? "opacity-50 cursor-not-allowed" : ""
+        }`}
+        disabled={disabled}
       >
         <span className="truncate text-left">
           {selected ? options.find((opt) => opt.value === selected)?.label : placeholder}
         </span>
-        <ChevronRight className="transform rotate-90 text-[#716F6F]" />
+        <ChevronRight className={`transform ${open ? "rotate-90" : "rotate-0"} text-[#716F6F]`} />
       </button>
       {open && (
         <ul className="absolute w-full bg-white border border-[#716F6F] rounded-lg mt-1 z-20 max-h-48 overflow-y-auto">
@@ -66,9 +79,30 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ options, selected, setSelec
   )
 }
 
-// Updated Status Dropdown Component with the provided design
-const StatusDropdown = ({ value, onChange }: { value: string; onChange: (value: string) => void }) => {
+const StatusDropdown = ({ 
+  value, 
+  onChange,
+  disabled = false
+}: { 
+  value: string; 
+  onChange: (value: string) => void;
+  disabled?: boolean 
+}) => {
   const [isOpen, setIsOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [])
 
   const handleSelect = (status: string) => {
     onChange(status)
@@ -82,10 +116,13 @@ const StatusDropdown = ({ value, onChange }: { value: string; onChange: (value: 
           Status
         </div>
 
-        <div className="relative w-full">
+        <div className="relative w-full" ref={dropdownRef}>
           <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="flex flex-row justify-between items-center w-[372px] h-[48px] px-[16px] py-[12px] border border-[#716F6F] rounded-[8px]"
+            onClick={() => !disabled && setIsOpen(!isOpen)}
+            className={`flex flex-row justify-between items-center w-[372px] h-[48px] px-[16px] py-[12px] border border-[#716F6F] rounded-[8px] ${
+              disabled ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+            disabled={disabled}
           >
             <span className="text-[#716F6F] font-[Poppins] text-[18px] font-light leading-[27px]">
               {value === "active" ? "Active" : "Inactive"}
@@ -95,12 +132,10 @@ const StatusDropdown = ({ value, onChange }: { value: string; onChange: (value: 
 
           {isOpen && (
             <div className="absolute z-20 mt-1 left-0">
-              {/* Container matching the provided CSS design */}
               <div className="flex flex-col items-start p-4 gap-4 relative w-[143px] h-[128px] bg-white shadow-[0px_4px_24px_rgba(0,0,0,0.15)] rounded-[12px]">
-                {/* Active Option */}
                 <button
                   onClick={() => handleSelect("active")}
-                  className="flex flex-col justify-center items-start px-4 gap-[10px] w-[111px] h-[40px] bg-[#CA406F] rounded-[8px] flex-none order-0"
+                  className="flex flex-col justify-center items-start px-4 gap-[10px] w-[111px] h-[40px] bg-[#CA406F] rounded-[8px] flex-none order-0 hover:bg-[#e0527c] transition-colors"
                 >
                   <div className="flex flex-row items-center p-0 gap-[10px] w-[49px] h-[24px] flex-none order-0">
                     <span className="w-[49px] h-[18px] font-['Poppins'] font-medium text-[12px] leading-[18px] capitalize text-white flex-none order-0">
@@ -109,10 +144,9 @@ const StatusDropdown = ({ value, onChange }: { value: string; onChange: (value: 
                   </div>
                 </button>
 
-                {/* Inactive Option */}
                 <button
                   onClick={() => handleSelect("inactive")}
-                  className="flex flex-col justify-center items-start px-4 gap-[10px] w-[111px] h-[40px] bg-[#CA406F] rounded-[8px] flex-none order-1"
+                  className="flex flex-col justify-center items-start px-4 gap-[10px] w-[111px] h-[40px] bg-[#CA406F] rounded-[8px] flex-none order-1 hover:bg-[#e0527c] transition-colors"
                 >
                   <div className="flex flex-row items-center p-0 gap-[10px] w-[49px] h-[24px] flex-none order-0">
                     <span className="w-[49px] h-[18px] font-['Poppins'] font-medium text-[12px] leading-[18px] capitalize text-white flex-none order-0">
@@ -129,29 +163,96 @@ const StatusDropdown = ({ value, onChange }: { value: string; onChange: (value: 
   )
 }
 
-const EditCategoryOptions = ({ onEdit, onDelete }: { onEdit: () => void; onDelete: () => void }) => {
+const EditCategoryOptions = ({ 
+  onEdit, 
+  onDelete,
+  onClose 
+}: { 
+  onEdit: () => void; 
+  onDelete: () => void;
+  onClose: () => void;
+}) => {
+  const dropdownRef = useRef<HTMLDivElement>(null)
+  const [hoveredButton, setHoveredButton] = useState<"edit" | "delete" | null>(null)
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        onClose()
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [onClose])
+
   return (
-    <div className="flex flex-col items-start p-3 gap-[20px] w-[160px] h-[120px] bg-white rounded-[10px] absolute top-12 right-4 shadow-lg z-20">
-      <div className="flex flex-col items-start gap-4 w-full">
-        <button
-          className="flex flex-row items-center gap-2 w-full px-3 py-2 bg-[#CA406F] rounded-[8px]"
-          onClick={onEdit}
-        >
-          <img src={EditIcon} alt="Edit" className="w-5 h-5" />
-          <span className="text-white text-[14px] leading-[20px] font-medium font-[Poppins]">Edit</span>
-        </button>
-        <button
-          className="flex flex-row items-center gap-2 w-full px-3 py-2 border border-[#716F6F] rounded-[8px]"
-          onClick={onDelete}
-        >
-          <img src={DeleteIcon} alt="Delete" className="w-5 h-5" />
-          <span className="text-[#716F6F] text-[14px] leading-[20px] font-medium font-[Poppins]">Delete</span>
-        </button>
+    <div 
+      className="flex flex-col items-start p-3 gap-[20px] w-[170px] h-[132px] bg-white rounded-[12px] absolute top-12 right-4 shadow-lg z-20"
+      ref={dropdownRef}
+    >
+      <div className="flex flex-col items-start gap-3 w-[144px] h-[104px]">
+        {/* Edit Button */}
+<div className="flex flex-col items-start w-[144px] h-[44px]">
+  <button
+    className={`flex flex-row items-center px-3 py-2 gap-2 w-full h-full rounded-[8px] border ${
+      hoveredButton === "edit" 
+        ? "bg-[#CA406F] border-transparent text-white" 
+        : "border-[#716F6F] bg-white text-[#716F6F]"
+    } transition-colors`}
+    onClick={onEdit}
+    onMouseEnter={() => setHoveredButton("edit")}
+    onMouseLeave={() => setHoveredButton(null)}
+  >
+    <img 
+      src={EditIcon} 
+      alt="Edit" 
+      className="w-5 h-5" 
+      style={{ 
+        filter: hoveredButton === "edit" 
+          ? "brightness(0) invert(1)" 
+          : "brightness(0) invert(0)" 
+      }}
+    />
+    <span className="font-[Poppins] text-[15px] font-medium leading-[22px]">
+      Edit
+    </span>
+  </button>
+</div>
+
+        {/* Delete Button */}
+        <div className="flex flex-col items-start w-[144px] h-[44px]">
+          <button
+            className={`flex flex-row items-center px-3 py-2 gap-2 w-full h-full rounded-[8px] border ${
+              hoveredButton === "delete" ? "bg-[#CA406F] border-transparent" : "border-[#716F6F] bg-white"
+            } transition-colors`}
+            onClick={onDelete}
+            onMouseEnter={() => setHoveredButton("delete")}
+            onMouseLeave={() => setHoveredButton(null)}
+          >
+            <img 
+              src={DeleteIcon} 
+              alt="Delete" 
+              className="w-5 h-5" 
+              style={{ 
+                filter: hoveredButton === "delete" ? 
+                  "brightness(0) invert(1)" : 
+                  "brightness(0) invert(44%) sepia(3%) saturate(675%) hue-rotate(314deg)" 
+              }}
+            />
+            <span className={`font-[Poppins] text-[15px] font-medium leading-[22px] ${
+              hoveredButton === "delete" ? "text-white" : "text-[#716F6F]"
+            }`}>
+              Delete
+            </span>
+          </button>
+        </div>
       </div>
     </div>
   )
 }
-
 
 const AddEditCategoryModal = ({
   onClose,
@@ -167,26 +268,70 @@ const AddEditCategoryModal = ({
   const [categoryName, setCategoryName] = useState(initialData.name)
   const [imageFile, setImageFile] = useState<File | null>(null)
   const [previewImage, setPreviewImage] = useState<string | null>(initialData.image)
+  const [imageError, setImageError] = useState(false)
+  const modalRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+        onClose()
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [onClose])
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0]
       setImageFile(file)
-      setPreviewImage(URL.createObjectURL(file))
+      setImageError(false)
+      
+      // Create preview URL
+      const reader = new FileReader()
+      reader.onload = (event) => {
+        setPreviewImage(event.target?.result as string)
+      }
+      reader.onerror = () => {
+        setImageError(true)
+        setPreviewImage(null)
+      }
+      reader.readAsDataURL(file)
     }
   }
 
+  const handleImageError = () => {
+    setImageError(true)
+    setPreviewImage(null)
+  }
+
   const handleSave = () => {
+    if (!categoryName.trim()) {
+      alert("Please enter a category name")
+      return
+    }
+
+    if (imageError) {
+      alert("Please upload a valid image")
+      return
+    }
+
     onSave({
       name: categoryName,
-      image: imageFile,
+      image: imageError ? null : imageFile,
     })
     onClose()
   }
 
   return (
     <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50">
-      <div className="w-[608px] bg-white rounded-xl shadow-[0px_4px_24px_rgba(0,0,0,0.15)] p-4 flex flex-col gap-[30px] relative">
+      <div 
+        className="w-[608px] bg-white rounded-xl shadow-[0px_4px_24px_rgba(0,0,0,0.15)] p-4 flex flex-col gap-[30px] relative"
+        ref={modalRef}
+      >
         <button className="absolute top-4 right-4" onClick={onClose}>
           <X className="text-[#716F6F]" />
         </button>
@@ -203,9 +348,18 @@ const AddEditCategoryModal = ({
 
           <div className="w-full border border-[#BDC2C7BF]" />
 
-          {previewImage && (
+          {previewImage && !imageError ? (
             <div className="w-full h-[200px] rounded-xl overflow-hidden">
-              <img src={previewImage || "/placeholder.svg"} alt="Preview" className="w-full h-full object-cover" />
+              <img 
+                src={previewImage} 
+                alt="Preview" 
+                className="w-full h-full object-cover"
+                onError={handleImageError}
+              />
+            </div>
+          ) : (
+            <div className="w-full h-[200px] rounded-xl overflow-hidden bg-gray-100 flex items-center justify-center">
+              <span className="text-gray-500">No image or image failed to load</span>
             </div>
           )}
 
@@ -217,6 +371,7 @@ const AddEditCategoryModal = ({
               onChange={(e) => setCategoryName(e.target.value)}
               className="w-full h-[48px] border border-[#716F6F] rounded-lg px-4 py-3 text-[#6C6C6C] placeholder-[#6C6C6C] focus:outline-none"
               placeholder="Enter category name"
+              required
             />
           </div>
 
@@ -224,24 +379,33 @@ const AddEditCategoryModal = ({
             <label className="text-[14px] text-[#7D7D7D] capitalize">
               Recommended: 388x300 Pixels Accepted Formats: PNG, JPEG
             </label>
-            <label className="flex items-center justify-center px-4 py-3 gap-[10px] w-[181px] h-[48px] bg-[#CA406F] rounded-[12px] cursor-pointer relative">
+            <label className="flex items-center justify-center px-4 py-3 gap-[10px] w-[181px] h-[48px] bg-[#CA406F] rounded-[12px] cursor-pointer relative hover:bg-[#e0527c] transition-colors">
               <img src={UploadIcon} alt="Upload" className="w-6 h-6 absolute left-4" />
               <span className="text-white font-[Poppins] text-[16px] font-medium leading-[24px] capitalize">Upload Image</span>
-              <input type="file" onChange={handleImageUpload} className="hidden" accept="image/png, image/jpeg" />
+              <input 
+                type="file" 
+                onChange={handleImageUpload} 
+                className="hidden" 
+                accept="image/png, image/jpeg, image/jpg" 
+                required={mode === "add"}
+              />
             </label>
+            {imageError && (
+              <span className="text-red-500 text-sm">Failed to load image. Please try another one.</span>
+            )}
           </div>
         </div>
 
         <div className="flex gap-[30px] w-[262px] self-end">
           <button
             onClick={onClose}
-            className="bg-[rgba(4,0,255,0.1)] border border-[#0400FF] rounded-lg text-[#0400FF] text-[12px] font-medium px-4 py-2 w-[98px] h-[40px]"
+            className="bg-[rgba(4,0,255,0.1)] border border-[#0400FF] rounded-lg text-[#0400FF] text-[12px] font-medium px-4 py-2 w-[98px] h-[40px] hover:bg-[rgba(4,0,255,0.2)] transition-colors"
           >
             Cancel
           </button>
           <button
             onClick={handleSave}
-            className="bg-[#CA406F] rounded-lg text-white text-[12px] font-medium px-4 py-2 w-[134px] h-[40px]"
+            className="bg-[#CA406F] rounded-lg text-white text-[12px] font-medium px-4 py-2 w-[134px] h-[40px] hover:bg-[#e0527c] transition-colors"
           >
             {mode === "add" ? "Create" : "Save Changes"}
           </button>
@@ -251,7 +415,7 @@ const AddEditCategoryModal = ({
   )
 }
 
-const categories = () => {
+const Categories = () => {
   const [showFilters, setShowFilters] = useState(false)
   const [statusFilter, setStatusFilter] = useState("")
   const [courseFilter, setCourseFilter] = useState("")
@@ -263,11 +427,29 @@ const categories = () => {
     { id: 1, title: "Mern", image: Image, status: "active" },
     { id: 2, title: "Mern", image: mern, status: "active" },
   ])
+  const pageRef = useRef<HTMLDivElement>(null)
+
+  // Close all dropdowns when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (pageRef.current && !pageRef.current.contains(event.target as Node)) {
+        setEditId(null)
+        setShowFilters(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [])
 
   const handleAddCategory = () => {
     setModalMode("add")
-    setCurrentEditData(null)
+    setCurrentEditData({ name: "", image: null })
     setShowModal(true)
+    setEditId(null)
+    setShowFilters(false)
   }
 
   const handleEditCategory = (id: number) => {
@@ -280,6 +462,8 @@ const categories = () => {
         image: category.image,
       })
       setShowModal(true)
+      setEditId(null)
+      setShowFilters(false)
     }
   }
 
@@ -297,7 +481,7 @@ const categories = () => {
       const newCategory = {
         id: Math.max(...categories.map((c) => c.id), 0) + 1,
         title: data.name,
-        image: data.image ? URL.createObjectURL(data.image) : mern,
+        image: data.image ? URL.createObjectURL(data.image) : null,
         status: "active",
       }
       setCategories([...categories, newCategory])
@@ -317,8 +501,29 @@ const categories = () => {
     setEditId(null)
   }
 
+  const toggleFilters = () => {
+    setShowFilters(!showFilters)
+    setEditId(null)
+    if (!showFilters) {
+      setShowModal(false)
+    }
+  }
+
+  const handleOpenEditDropdown = (id: number, e: React.MouseEvent) => {
+    e.stopPropagation()
+    setEditId(editId === id ? null : id)
+    setShowFilters(false)
+    setShowModal(false)
+  }
+
+  const handleImageError = (id: number) => {
+    setCategories(categories.map(c => 
+      c.id === id ? { ...c, image: "" } : c
+    ))
+  }
+
   return (
-    <div className="relative w-full min-h-screen bg-white overflow-hidden">
+    <div className="relative w-full min-h-screen bg-white overflow-hidden" ref={pageRef}>
       <div
         className="absolute w-full h-full"
         style={{
@@ -335,16 +540,16 @@ const categories = () => {
 
         <div className="flex justify-between items-center mb-8">
           <button
-            onClick={() => setShowFilters(!showFilters)}
-            className="bg-[#CA406F] text-white px-4 py-3 rounded-lg flex items-center gap-2 h-12"
+            onClick={toggleFilters}
+            className="bg-[#CA406F] text-white px-4 py-3 rounded-lg flex items-center gap-2 h-12 hover:bg-[#e0527c] transition-colors"
           >
-            <img src={FilterIcon || "/placeholder.svg"} alt="Filter" className="w-6 h-6" />
+            <img src={FilterIcon} alt="Filter" className="w-6 h-6" />
             <span className="text-sm font-medium">{showFilters ? "Hide" : "Show Filter"}</span>
           </button>
 
           <button
             onClick={handleAddCategory}
-            className="bg-[#CA406F] text-white px-4 py-3 rounded-lg flex items-center gap-2 h-12"
+            className="bg-[#CA406F] text-white px-4 py-3 rounded-lg flex items-center gap-2 h-12 hover:bg-[#e0527c] transition-colors"
           >
             <Plus size={20} />
             <span className="text-sm font-medium">Add New Category</span>
@@ -402,33 +607,42 @@ const categories = () => {
               key={card.id}
               className="w-[400px] bg-white rounded-xl shadow-md p-4 relative transition-transform hover:scale-105 duration-200"
             >
-              <img
-                src={card.image || "/placeholder.svg"}
-                alt={card.title}
-                className="w-full h-40 object-cover rounded-lg"
-              />
+              {card.image ? (
+                <img
+                  src={card.image}
+                  alt={card.title}
+                  className="w-full h-40 object-cover rounded-lg"
+                  onError={() => handleImageError(card.id)}
+                />
+              ) : (
+                <div className="w-full h-40 bg-gray-100 rounded-lg flex items-center justify-center">
+                  <span className="text-gray-500">No image available</span>
+                </div>
+              )}
 
               <div className="mt-4 flex items-start justify-between relative">
                 <h3 className="text-[#CA406F] font-semibold text-lg">{card.title}</h3>
                 <div className="relative">
                   <MoreVertical
-                    className="text-gray-500 cursor-pointer"
-                    onClick={() => setEditId(editId === card.id ? null : card.id)}
+                    className="text-gray-500 cursor-pointer hover:text-[#CA406F] transition-colors"
+                    onClick={(e) => handleOpenEditDropdown(card.id, e)}
                   />
                   {editId === card.id && (
                     <EditCategoryOptions
-                      onEdit={() => {
-                        handleEditCategory(card.id)
-                        setEditId(null)
-                      }}
+                      onEdit={() => handleEditCategory(card.id)}
                       onDelete={() => handleDeleteCategory(card.id)}
+                      onClose={() => setEditId(null)}
                     />
                   )}
                 </div>
               </div>
 
               <div className="mt-4">
-                <StatusDropdown value={card.status} onChange={(value) => handleStatusChange(card.id, value)} />
+                <StatusDropdown 
+                  value={card.status} 
+                  onChange={(value) => handleStatusChange(card.id, value)}
+                  disabled={showFilters || showModal || editId !== null}
+                />
               </div>
             </div>
           ))}
@@ -447,4 +661,4 @@ const categories = () => {
   )
 }
 
-export default categories
+export default Categories

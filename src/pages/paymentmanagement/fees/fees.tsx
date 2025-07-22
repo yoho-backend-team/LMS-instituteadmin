@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
-import { Filter, Plus, MoreHorizontal, Eye, Edit, Trash2, Download } from "lucide-react"
+import { Filter, Plus, MoreHorizontal, Eye, Edit, Trash2, Download, X } from "lucide-react"
 import React, { useState, useRef, useEffect } from "react"
 
 interface Student {
@@ -73,30 +73,32 @@ const feeData: FeeRecord[] = [
 ]
 
 interface ActionMenuProps {
-  recordId: string
+  record: FeeRecord
+  onView: (record: FeeRecord) => void
+  onEdit: (record: FeeRecord) => void
 }
 
-const ActionMenu: React.FC<ActionMenuProps> = ({ recordId }) => {
+const ActionMenu: React.FC<ActionMenuProps> = ({ record, onView, onEdit }) => {
   const [isOpen, setIsOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
 
   const handleView = () => {
-    console.log(`View record ${recordId}`)
+    onView(record)
     setIsOpen(false)
   }
 
   const handleEdit = () => {
-    console.log(`Edit record ${recordId}`)
+    onEdit(record)
     setIsOpen(false)
   }
 
   const handleDelete = () => {
-    console.log(`Delete record ${recordId}`)
+    console.log(`Delete record ${record.id}`)
     setIsOpen(false)
   }
 
   const handleDownload = () => {
-    console.log(`Download record ${recordId}`)
+    console.log(`Download record ${record.id}`)
     setIsOpen(false)
   }
 
@@ -146,12 +148,411 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ recordId }) => {
   )
 }
 
-export default function fees() {
+const ViewFeeModal: React.FC<{ onClose: () => void; record: FeeRecord }> = ({ onClose, record }) => {
+  return (
+    <div className="fixed inset-0 z-50 flex items-start justify-end  bg-opacity-30 pt-16">
+      <div className="flex flex-col items-start p-6 gap-6 w-[380px] max-h-[80vh] overflow-y-auto bg-white shadow-[0px_4px_24px_rgba(0,0,0,0.15)] rounded-lg">
+        {/* Header */}
+        <div className="flex flex-row justify-between items-center w-full">
+          <h2 className="text-xl font-semibold text-[#716F6F]">Fees Details</h2>
+          <button onClick={onClose} className="text-[#716F6F] hover:text-gray-800">
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Student Profile */}
+        <div className="flex flex-col items-center gap-4 w-full">
+          <div className="w-[80px] h-[80px] rounded-full bg-gray-200 flex items-center justify-center">
+            {record.student.avatar ? (
+              <img src={record.student.avatar} alt="Student" className="w-full h-full rounded-full" />
+            ) : (
+              <span className="text-2xl font-semibold text-[#CA406F]">
+                {record.student.name.charAt(0).toUpperCase()}
+              </span>
+            )}
+          </div>
+          <div className="flex flex-col items-center gap-1">
+            <h3 className="text-md font-bold text-[#716F6F]">{record.student.name}</h3>
+            <p className="text-sm text-[#7D7D7D]">{record.student.email}</p>
+          </div>
+        </div>
+
+        {/* Student Details Section */}
+        <div className="w-full space-y-4">
+          <h3 className="text-xl font-semibold text-[#716F6F]">Student Details:</h3>
+          
+          {/* Transaction ID */}
+          <div>
+            <label className="block text-sm font-medium text-[#716F6F] mb-1">Transaction ID</label>
+            <div className="flex items-center justify-between p-2 w-full border border-[#716F6F] rounded-md">
+              <span className="text-md text-[#716F6F]">
+                {record.transactionId || "N/A"}
+              </span>
+            </div>
+          </div>
+
+          {/* Student Name */}
+          <div>
+            <label className="block text-sm font-medium text-[#716F6F] mb-1">Student Name</label>
+            <div className="flex items-center justify-between p-2 w-full border border-[#716F6F] rounded-md">
+              <span className="text-md text-[#716F6F]">
+                {record.student.name}
+              </span>
+            </div>
+          </div>
+
+          {/* Student Email */}
+          <div>
+            <label className="block text-sm font-medium text-[#716F6F] mb-1">Student Email</label>
+            <div className="flex items-center justify-between p-2 w-full border border-[#716F6F] rounded-md">
+              <span className="text-md text-[#716F6F]">
+                {record.student.email}
+              </span>
+            </div>
+          </div>
+
+          {/* Student ID */}
+          <div>
+            <label className="block text-sm font-medium text-[#716F6F] mb-1">Student ID</label>
+            <div className="flex items-center justify-between p-2 w-full border border-[#716F6F] rounded-md">
+              <span className="text-md text-[#716F6F]">
+                {record.id}
+              </span>
+            </div>
+          </div>
+
+          {/* Paid Amount */}
+          <div>
+            <label className="block text-sm font-medium text-[#716F6F] mb-1">Paid Amount</label>
+            <div className="flex items-center justify-between p-2 w-full border border-[#716F6F] rounded-md">
+              <span className="text-md text-[#716F6F]">
+                ${record.amountPaid.toLocaleString()}
+              </span>
+            </div>
+          </div>
+
+          {/* Payment Date */}
+          <div>
+            <label className="block text-sm font-medium text-[#716F6F] mb-1">Payment Date</label>
+            <div className="flex items-center justify-between p-2 w-full border border-[#716F6F] rounded-md">
+              <span className="text-md text-[#716F6F]">
+                {record.issuedDate || "N/A"}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const AddFeeModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
+  const [formData, setFormData] = useState({
+    branch: '',
+    course: '',
+    batch: '',
+    student: '',
+    paymentDate: '',
+    transactionId: '',
+    paidAmount: '',
+    balance: '',
+    duePaymentDate: ''
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  return (
+    <div className="fixed inset-0 z-50 flex justify-end">
+      <div className="bg-white shadow-[0px_4px_24px_rgba(0,0,0,0.15)] rounded-lg mt-20 w-[380px] h-[calc(100vh-100px)] overflow-y-auto right-0">
+        {/* Header */}
+        <div className="flex justify-between items-center p-4 border-b border-gray-200">
+          <h2 className="text-xl font-semibold text-[#716F6F]">Add Fees</h2>
+          <button onClick={onClose} className="text-[#716F6F] hover:text-gray-800">
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Form */}
+        <div className="p-4 space-y-4">
+          {/* Select Branch */}
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-[#716F6F]">Select Branch</label>
+            <div className="flex items-center justify-between p-2 w-full border border-[#716F6F] rounded-md">
+              <input
+                type="text"
+                name="branch"
+                value={formData.branch}
+                onChange={handleInputChange}
+                placeholder="Select"
+                className="text-sm text-[#716F6F] w-full outline-none"
+              />
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 7.5L10 12.5L15 7.5" stroke="#716F6F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+          </div>
+
+          {/* Select Course */}
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-[#716F6F]">Select Course</label>
+            <div className="flex items-center justify-between p-2 w-full border border-[#716F6F] rounded-md">
+              <input
+                type="text"
+                name="course"
+                value={formData.course}
+                onChange={handleInputChange}
+                placeholder="Select"
+                className="text-sm text-[#716F6F] w-full outline-none"
+              />
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 7.5L10 12.5L15 7.5" stroke="#716F6F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+          </div>
+
+          {/* Batch */}
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-[#716F6F]">Batch</label>
+            <div className="flex items-center p-2 w-full border border-[#716F6F] rounded-md">
+              <input
+                type="text"
+                name="batch"
+                value={formData.batch}
+                onChange={handleInputChange}
+                placeholder="Select"
+                className="text-sm text-[#716F6F] w-full outline-none"
+              />
+            </div>
+          </div>
+
+          {/* Student */}
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-[#716F6F]">Student</label>
+            <div className="flex items-center p-2 w-full border border-[#716F6F] rounded-md">
+              <input
+                type="text"
+                name="student"
+                value={formData.student}
+                onChange={handleInputChange}
+                placeholder="Select"
+                className="text-sm text-[#716F6F] w-full outline-none"
+              />
+            </div>
+          </div>
+
+          {/* Payment Date */}
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-[#716F6F]">Payment Date</label>
+            <div className="flex items-center justify-between p-2 w-full border border-[#716F6F] rounded-md">
+              <input
+                type="date"
+                name="paymentDate"
+                value={formData.paymentDate}
+                onChange={handleInputChange}
+                className="text-sm text-[#716F6F] w-full outline-none"
+              />
+            </div>
+          </div>
+
+          {/* Transaction ID */}
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-[#716F6F]">Transaction ID</label>
+            <div className="flex items-center justify-between p-2 w-full border-b border-[#716F6F] rounded-md">
+              <input
+                type="text"
+                name="transactionId"
+                value={formData.transactionId}
+                onChange={handleInputChange}
+                placeholder="Enter ID"
+                className="text-sm text-[#716F6F] w-full outline-none"
+              />
+            </div>
+          </div>
+
+          {/* Paid Amount */}
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-[#716F6F]">Paid Amount</label>
+            <div className="flex items-center justify-between p-2 w-full border-b border-[#716F6F] rounded-md">
+              <input
+                type="number"
+                name="paidAmount"
+                value={formData.paidAmount}
+                onChange={handleInputChange}
+                placeholder="Enter Amount"
+                className="text-sm text-[#716F6F] w-full outline-none"
+              />
+            </div>
+          </div>
+
+          {/* Balance */}
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-[#716F6F]">Balance</label>
+            <div className="flex items-center justify-between p-2 w-full border-b border-[#716F6F] rounded-md">
+              <input
+                type="number"
+                name="balance"
+                value={formData.balance}
+                onChange={handleInputChange}
+                placeholder="Enter Balance"
+                className="text-sm text-[#716F6F] w-full outline-none"
+              />
+            </div>
+          </div>
+
+          {/* Due Payment Date */}
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-[#716F6F]">Due Payment Date</label>
+            <div className="flex items-center justify-between p-2 w-full border border-[#716F6F] rounded-md">
+              <input
+                type="date"
+                name="duePaymentDate"
+                value={formData.duePaymentDate}
+                onChange={handleInputChange}
+                className="text-sm text-[#716F6F] w-full outline-none"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Buttons */}
+        <div className="flex justify-center gap-4 p-4 border-t border-gray-200">
+          <button onClick={onClose} className="px-4 py-2 bg-blue-100 text-blue-600 rounded-md border border-blue-600 text-sm font-medium">
+            Cancel
+          </button>
+          <button className="px-4 py-2 bg-[#CA406F] text-white rounded-md text-sm font-medium">
+            Create Fee
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+
+const EditFeeModal: React.FC<{ onClose: () => void; record: FeeRecord }> = ({ onClose, record }) => {
+  const [formData, setFormData] = useState({
+    transactionId: record.transactionId || '',
+    amountPaid: record.amountPaid.toString(),
+    paymentDate: record.issuedDate || ''
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = () => {
+    console.log('Updated fee data:', formData);
+    onClose();
+  };
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-start justify-end bg-opacity-30 pt-16">
+      <div className="flex flex-col items-start p-5 gap-5 w-[360px] max-h-[820px] overflow-y-auto bg-white shadow-[0px_4px_24px_rgba(0,0,0,0.15)] rounded-lg">
+        {/* Header */}
+        <div className="flex justify-between items-center w-full">
+          <h2 className="text-xl font-semibold text-[#716F6F]">Edit Fees</h2>
+          <button onClick={onClose} className="text-[#716F6F] hover:text-gray-800">
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Student Profile */}
+        <div className="flex flex-col items-center gap-3 w-full">
+          <div className="w-[90px] h-[90px] rounded-full bg-gray-200 flex items-center justify-center">
+            {record.student.avatar ? (
+              <img src={record.student.avatar} alt="Student" className="w-full h-full rounded-full" />
+            ) : (
+              <span className="text-xl font-semibold text-[#CA406F]">
+                {record.student.name.charAt(0).toUpperCase()}
+              </span>
+            )}
+          </div>
+          <div className="flex flex-col items-center gap-0.5">
+            <h3 className="text-base font-bold text-[#716F6F]">{record.student.name}</h3>
+            <p className="text-sm text-[#7D7D7D]">{record.student.email}</p>
+          </div>
+        </div>
+
+        {/* Form Fields */}
+        <div className="w-full space-y-4">
+          {/* Transaction ID */}
+          <div className="space-y-1.5">
+            <label className="block text-sm font-medium text-[#716F6F]">Transaction ID</label>
+            <input
+              type="text"
+              name="transactionId"
+              value={formData.transactionId}
+              onChange={handleInputChange}
+              className="w-full p-2.5 border border-[#716F6F] rounded-md text-sm text-[#716F6F] outline-none"
+              placeholder="Enter transaction ID"
+            />
+          </div>
+
+          {/* Paid Amount */}
+          <div className="space-y-1.5">
+            <label className="block text-sm font-medium text-[#716F6F]">Paid Amount</label>
+            <input
+              type="number"
+              name="amountPaid"
+              value={formData.amountPaid}
+              onChange={handleInputChange}
+              className="w-full p-2.5 border border-[#716F6F] rounded-md text-sm text-[#716F6F] outline-none"
+              placeholder="Enter amount"
+            />
+          </div>
+
+          {/* Payment Date */}
+          <div className="space-y-1.5">
+            <label className="block text-sm font-medium text-[#716F6F]">Payment Date</label>
+            <input
+              type="date"
+              name="paymentDate"
+              value={formData.paymentDate}
+              onChange={handleInputChange}
+              className="w-full p-2.5 border border-[#716F6F] rounded-md text-sm text-[#716F6F] outline-none"
+            />
+          </div>
+        </div>
+
+        {/* Buttons */}
+        <div className="flex justify-between items-center w-full mt-4">
+          <button
+            onClick={onClose}
+            className="px-4 py-2 w-[90px] h-[38px] bg-[rgba(4,0,255,0.1)] border border-[#0400FF] rounded-md"
+          >
+            <span className="text-sm font-semibold text-[#0400FF]">Cancel</span>
+          </button>
+          <button
+            onClick={handleSubmit}
+            className="px-4 py-2 w-[120px] h-[38px] bg-[#CA406F] rounded-md"
+          >
+            <span className="text-sm font-semibold text-white">Submit</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default function Fees() {
   const [showFilters, setShowFilters] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
   const [batchFilter, setBatchFilter] = useState("")
   const [startDate, setStartDate] = useState("")
   const [endDate, setEndDate] = useState("")
+  const [showAddFeeModal, setShowAddFeeModal] = useState(false)
+  const [viewingRecord, setViewingRecord] = useState<FeeRecord | null>(null)
+  const [editingRecord, setEditingRecord] = useState<FeeRecord | null>(null)
 
   const filteredData = feeData.filter(record => {
     const matchesSearch = record.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -168,8 +569,13 @@ export default function fees() {
     return matchesSearch && matchesBatch && matchesDate
   })
 
+  const handleEditRecord = (record: FeeRecord) => {
+    setEditingRecord(record);
+  };
+
   return (
-    <div className="min-h-screen  relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden">
+      
       <main className="p-8 overflow-auto">
         <div className="max-w-[1278px] mx-auto">
           {/* Header */}
@@ -185,7 +591,10 @@ export default function fees() {
                 <span className="text-base font-medium">{showFilters ? 'Hide Filter' : 'Show Filter'}</span>
               </Button>
 
-              <Button className="flex items-center justify-center gap-2 bg-[#CA406F] hover:bg-[#CA406F]/90 text-white px-4 py-2 rounded-lg h-12 w-[132px]">
+              <Button 
+                className="flex items-center justify-center gap-2 bg-[#CA406F] hover:bg-[#CA406F]/90 text-white px-4 py-2 rounded-lg h-12 w-[132px]"
+                onClick={() => setShowAddFeeModal(true)}
+              >
                 <Plus className="w-6 h-6" />
                 <span className="text-base font-medium">Add Fee</span>
               </Button>
@@ -201,13 +610,13 @@ export default function fees() {
                   <div className="flex flex-col gap-2 w-full">
                     <label className="text-[#716F6F] font-medium text-base font-['Poppins']">Search</label>
                     <div className="flex items-center border border-[#716F6F] rounded-lg p-3 gap-3">
-                     <input
-  type="text"
-  placeholder="Search by Status"
-  className="max-w-[250px] basis-[250px] text-[#716F6F] font-light text-lg font-['Poppins'] outline-none bg-transparent"
-  value={searchTerm}
-  onChange={(e) => setSearchTerm(e.target.value)}
-/>
+                      <input
+                        type="text"
+                        placeholder="Search by Status"
+                        className="max-w-[250px] basis-[250px] text-[#716F6F] font-light text-lg font-['Poppins'] outline-none bg-transparent"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                      />
                     </div>
                   </div>
 
@@ -328,21 +737,25 @@ export default function fees() {
                       </div>
 
                       <div className="flex justify-center">
-                       <Badge 
-  className={`rounded-[4px] text-white capitalize font-semibold text-[18px] leading-[27px] flex items-center justify-center ${
-    record.status === "active" 
-      ? "bg-[#3ABE65] w-[58px] h-[27px] hover:bg-[#3ABE65]/90" 
-      : record.status === "pending" 
-        ? "bg-yellow-500 hover:bg-yellow-500/90 px-3 py-1" 
-        : "bg-red-500 hover:bg-red-500/90 px-3 py-1"
-  }`}
->
+                        <Badge 
+                          className={`rounded-[4px] text-white capitalize font-semibold text-[18px] leading-[27px] flex items-center justify-center ${
+                            record.status === "active" 
+                              ? "bg-[#3ABE65] w-[58px] h-[27px] hover:bg-[#3ABE65]/90" 
+                              : record.status === "pending" 
+                                ? "bg-yellow-500 hover:bg-yellow-500/90 px-3 py-1" 
+                                : "bg-red-500 hover:bg-red-500/90 px-3 py-1"
+                          }`}
+                        >
                           {record.status.charAt(0).toUpperCase() + record.status.slice(1)}
                         </Badge>
                       </div>
 
                       <div className="flex justify-center">
-                        <ActionMenu recordId={record.id} />
+                        <ActionMenu 
+                          record={record} 
+                          onView={setViewingRecord} 
+                          onEdit={handleEditRecord}
+                        />
                       </div>
                     </div>
                   </div>
@@ -352,6 +765,25 @@ export default function fees() {
           </Card>
         </div>
       </main>
+
+      {/* Add Fee Modal */}
+      {showAddFeeModal && <AddFeeModal onClose={() => setShowAddFeeModal(false)} />}
+      
+      {/* View Fee Modal */}
+      {viewingRecord && (
+        <ViewFeeModal 
+          onClose={() => setViewingRecord(null)} 
+          record={viewingRecord} 
+        />
+      )}
+
+      {/* Edit Fee Modal */}
+      {editingRecord && (
+        <EditFeeModal
+          onClose={() => setEditingRecord(null)}
+          record={editingRecord}
+        />
+      )}
     </div>
-  );
+  )
 }
