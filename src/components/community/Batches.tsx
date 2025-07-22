@@ -45,7 +45,7 @@ const CommunityChat: React.FC= ({ }) => {
   return (
     <div className="flex w-full h-[90vh]">
       {/* Left Side - Batch List */}
-      <div className="w-[30%] h-[86vh] bg-[#CA406F] text-white rounded-2xl mr-6 p-4 space-y-4">
+      <div className="w-[30%] h-[87vh] bg-[#CA406F] text-white rounded-2xl mr-6 p-4 space-y-4">
         <h2 className="text-3xl font-semibold mb-5">Batches</h2>
         {batchList.map((batch) => (
           <div

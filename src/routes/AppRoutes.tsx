@@ -44,6 +44,10 @@ import All from "../components/notificationmanagement/overallnotification/all/al
 import Profile from "@/pages/profile/profile/profile";
 import Settings from "@/pages/profile/settings/settings";
 import Logout from "@/pages/profile/logout/logout";
+import TrackOrder from "@/components/HelpFAQ/TrackOrder";
+import FindMissingOrder from "@/components/HelpFAQ/FindMissingOrder";
+import SecureDelivery from "@/components/HelpFAQ/SecureDelivery";
+import StudentCertificates from "@/components/CertificateManagement/StudentCertificate";
 const Approutes = () => {
   return (
     <BrowserRouter>
@@ -56,7 +60,7 @@ const Approutes = () => {
           <Route path="Liveclasses" element={<Liveclasses />} />
           <Route path="StudentIdCard" element={<StudentIdCrad />} />
           <Route path="StaffIdCard" element={<StaffIdCard />} />
-          <Route path="HelpFQA" element={<HelpFQA />} />
+          <Route path="HelpFQA" element={<FQA />} />
           <Route path="AddQust" element={<AddQust />} />
           <Route path="Category" element={<Category />} />
           <Route path="FQA" element={<FQA />} />
@@ -93,7 +97,12 @@ const Approutes = () => {
           <Route path="/all" element={<All />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/settings" element={<Settings />} />
-            <Route path="/logout" element={<Logout />} />
+          <Route path="/logout" element={<Logout />} />
+          <Route path="/track-order" element={<TrackOrder />} />
+          <Route path="/find-missingpackage" element={<FindMissingOrder />} />
+          <Route path="/secure-delivery" element={<SecureDelivery />} />
+          <Route path="/student-certificate" element={<StudentCertificates />} />
+
 
         </Route>
 

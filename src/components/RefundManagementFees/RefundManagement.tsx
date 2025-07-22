@@ -264,7 +264,7 @@ const RefundManagement = () => {
                               note.status === 'Active'
                                 ? 'bg-green-100 text-green-700'
                                 : 'bg-gray-100 text-gray-700'
-                            }`}
+                            }`}               
                           >
                             {note.status}
                           </span>
