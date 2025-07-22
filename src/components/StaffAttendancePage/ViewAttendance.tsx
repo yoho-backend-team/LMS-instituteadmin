@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Calendar, Plus } from "lucide-react";
 import filterImage from '../../assets/filter.png';
-import AddAttendancePanel from "./AddAttendancePanel"; // Make sure the path is correct
+import AddAttendancePanel from "./AddAttendancePanel"; 
 
 const ViewAttendancePage: React.FC = () => {
     const { id } = useParams();
@@ -46,19 +46,26 @@ const ViewAttendancePage: React.FC = () => {
             {/* Calendar View */}
             <div className="bg-white p-4 rounded-lg shadow space-y-4">
                 <div className="flex justify-center items-center gap-2">
-                    <div className="text-center font-semibold text-lg">July 2025</div>
-                    <div className="flex gap-2">
-                        {["Monthly", "Week", "Day", "List"].map((view) => (
-                            <button
-                                key={view}
-                                className={`w-24 py-2 border rounded-lg text-sm font-medium transition-all duration-200
-                                ${view === "Monthly"
-                                        ? "border-blue-500 text-blue-600 bg-blue-50"
-                                        : "border-gray-300 text-gray-600 bg-white hover:bg-gray-100"}`}
-                            >
-                                {view}
-                            </button>
-                        ))}
+                    <div className="relative flex items-center w-full px-4 h-16">
+                        {/* Centered title */}
+                        <div className="absolute left-1/2 transform -translate-x-1/2 font-semibold text-lg">
+                            July 2025
+                        </div>
+
+                        {/* Right-aligned buttons */}
+                        <div className="ml-auto flex gap-2">
+                            {["Monthly", "Week", "Day", "List"].map((view) => (
+                                <button
+                                    key={view}
+                                    className={`w-24 py-2 border rounded-lg text-sm font-medium transition-all duration-200
+                                    ${view === "Monthly"
+                                            ? "border-blue-500 text-blue-600 bg-blue-50"
+                                            : "border-gray-300 text-gray-600 bg-white hover:bg-gray-100"}`}
+                                >
+                                    {view}
+                                </button>
+                            ))}
+                        </div>
                     </div>
                 </div>
 

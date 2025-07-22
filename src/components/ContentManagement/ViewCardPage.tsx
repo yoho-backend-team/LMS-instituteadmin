@@ -1,6 +1,5 @@
 import React from "react";
 import aadhaarImage from '../../assets/aadhar.png';
-import bgImage from "../../assets/Backgroundimage.png";
 import closeImage from '../../assets/close.png';
 import { useNavigate } from "react-router-dom";
 
@@ -9,13 +8,7 @@ const ViewCardPage: React.FC = () => {
 
   return (
     <div
-      className="min-h-screen w-full bg-black/40 flex items-center justify-center"
-      style={{
-        backgroundImage: `url(${bgImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
+      className="min-h-screen w-full flex items-center justify-center">
       <div className="relative w-full max-w-xl bg-white rounded-xl shadow-lg p-6 m-4">
         <img
           src={closeImage}
