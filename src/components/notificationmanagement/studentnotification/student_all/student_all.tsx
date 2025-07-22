@@ -1,6 +1,19 @@
-const Student_All=() =>{
-    return(
-        <div>welcome to student all notification page</div>
-    )
-}
-export default Student_All;
+
+const Student_Allnotification = () => {
+ 
+
+    return (
+        <div className="">
+            
+            <div className="mb-5 text-lg font-bold">
+                Student all notification page
+            </div>
+
+           
+
+            
+        </div>
+    );
+};
+
+export default Student_Allnotification;

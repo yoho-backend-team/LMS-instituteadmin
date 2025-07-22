@@ -1,6 +1,14 @@
 const Student_Unread=() =>{
     return(
-        <div>welcome to student unread  notification page</div>
-    )
+<div className="">
+            
+            <div className="mb-5 text-lg font-bold">
+                Student unread notification page
+            </div>
+
+           
+
+            
+        </div>    )
 }
 export default Student_Unread;
