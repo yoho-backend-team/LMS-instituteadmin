@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
-import { FaClock } from "react-icons/fa";
+import { FaClock, } from "react-icons/fa";
 import { useNavigate } from "react-router";
 
 interface Option {
