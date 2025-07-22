@@ -192,7 +192,7 @@ const SideBar = ({
                 </div>
             </div>
 
-            <nav className=" overflow-y-scroll px-2 space-y-3 ">
+            <nav className=" overflow-y-scroll px-2 space-y-3 mb-15  ">
                 <SidebarLink to="/dashboard" icon={<LayoutDashboard />} label="Dashboard" isOpen={isOpen} onClick={handleLinkClick} />
                 <SidebarLink to="/community" icon={<Home />} label="Community" isOpen={isOpen} onClick={handleLinkClick} />
 
@@ -273,6 +273,7 @@ const SideBar = ({
                     <SidebarLink1 to="/Category" label="Category" isOpen={isOpen} onClick={handleLinkClick} />
                     <SidebarLink1 to="/FQA" label="FQA" isOpen={isOpen} onClick={handleLinkClick} />
                 </SidebarDropdown>
+                
             </nav>
         </div>
     )
