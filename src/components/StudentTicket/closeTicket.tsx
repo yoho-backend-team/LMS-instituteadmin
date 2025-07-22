@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Button } from "@/components/ui/button";
 import human from "../../assets/bluehum.png"
 import chattheme from "../../assets/chattheme.jpeg";
@@ -28,11 +28,16 @@ export default function ClosedTicket() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-6">
         <div className="lg:col-span-2 bg-white shadow rounded-xl p-4 flex flex-col max-h-[75vh]">
           <div className="flex items-center gap-3 mb-3">
-            <div className="w-12 h-12 rounded-full bg-[#ca406f]" />
-            <div>
-              <p style={{...FONTS.card_head}}>Oliver Smith</p>
-              <p className="!text-green-500"style={{...FONTS.Description}}>Active Now</p>
-            </div>
+            <div className="w-full p-4 rounded-xl shadow-md bg-white flex items-center gap-4">
+  <div className="w-12 h-12 rounded-full bg-[#ca406f]" />
+  <div>
+    <p style={{ ...FONTS.card_head }}>Oliver Smith</p>
+    <p className="!text-[#23a45d]" style={{ ...FONTS.Description }}>
+      Active Now
+    </p>
+  </div>
+</div>
+
           </div>
 
          

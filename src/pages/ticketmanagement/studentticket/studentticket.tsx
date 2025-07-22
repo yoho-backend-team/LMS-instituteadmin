@@ -1,5 +1,5 @@
-import React from "react";
-import { Card, CardContent } from "@/components/ui/card";
+
+import { Card} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MoreVertical, BadgeAlert } from "lucide-react";
 import {
@@ -99,10 +99,10 @@ const StudentTicket = () => {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
                  <DropdownMenuItem
-    className="bg-[#ca406f] text-white hover:bg-[#b4385d] focus:bg-[#b4385d] focus:text-white"
-  onClick={() => navigate("/chat-page")} >
-    Resolved
-  </DropdownMenuItem>
+                   className="bg-[#ca406f] text-white hover:bg-[#b4385d] focus:bg-[#b4385d] focus:text-white"
+                     onClick={() => navigate("/chat-page")} >
+                         Resolved
+                       </DropdownMenuItem>
                   
                 </DropdownMenuContent>
               </DropdownMenu>

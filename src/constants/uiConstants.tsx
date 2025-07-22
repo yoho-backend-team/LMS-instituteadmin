@@ -111,5 +111,19 @@ text:{
 		fontWeight: 600,
 		fontSize: '14px',
         color:"#7d7d7d"
-}}
+},
+
+text1:{
+	fontweight:"600",
+	fontSize:"12px",
+	color:"pink"
+
+}
+,
+topic:{
+	fontfamily:"poppins"
+}
+
+
+}
 
