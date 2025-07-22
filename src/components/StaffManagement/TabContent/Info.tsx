@@ -6,9 +6,22 @@ import { MdEmail } from "react-icons/md";
 interface Props {
   name: string;
   email: string;
+  gender?: string;
+  dob?: string;
+  primaryNumber?: string;
+  alternativeNumber?: string;
+  role?: string;
 }
 
-const InfoTab: React.FC<Props> = ({ name, email }) => (
+const InfoTab: React.FC<Props> = ({
+  name,
+  email,
+  gender,
+  dob,
+  primaryNumber,
+  alternativeNumber,
+  role,
+}) => (
   <div>
     <div className="bg-[#CA406F] p-3 rounded-t-lg">
       <h3 className="text-lg text-white">User Details</h3>
@@ -18,7 +31,9 @@ const InfoTab: React.FC<Props> = ({ name, email }) => (
       <form>
         {/* Personal Information */}
         <div>
-          <h3 className="font-semibold px-2 pt-2 text-[#7D7D7D]">Personal Information</h3>
+          <h3 className="font-semibold px-2 pt-2 text-[#7D7D7D]">
+            Personal Information
+          </h3>
           <div className="p-2 grid grid-cols-3 gap-4">
             {/* Name */}
             <div className="flex flex-col gap-2">
@@ -56,7 +71,7 @@ const InfoTab: React.FC<Props> = ({ name, email }) => (
               </div>
               <input
                 type="text"
-                value="Faculty"
+                value={role || ""}
                 readOnly
                 className="border h-10 rounded-lg px-2"
               />
@@ -70,7 +85,7 @@ const InfoTab: React.FC<Props> = ({ name, email }) => (
               </div>
               <input
                 type="text"
-                value="Male"
+                value={gender || ""}
                 readOnly
                 className="border h-10 rounded-lg px-2"
               />
@@ -84,7 +99,7 @@ const InfoTab: React.FC<Props> = ({ name, email }) => (
               </div>
               <input
                 type="text"
-                value="1990-01-01"
+                value={dob || ""}
                 readOnly
                 className="border h-10 rounded-lg px-2"
               />
@@ -97,7 +112,9 @@ const InfoTab: React.FC<Props> = ({ name, email }) => (
 
         {/* Contact Information */}
         <div>
-          <h3 className="font-semibold px-2 text-[#7D7D7D]">Contact Information</h3>
+          <h3 className="font-semibold px-2 text-[#7D7D7D]">
+            Contact Information
+          </h3>
           <div className="grid grid-cols-3 p-2 gap-4">
             {/* Primary Number */}
             <div className="flex flex-col gap-2">
@@ -107,7 +124,7 @@ const InfoTab: React.FC<Props> = ({ name, email }) => (
               </div>
               <input
                 type="text"
-                value="9876543210"
+                value={primaryNumber || ""}
                 readOnly
                 className="border h-10 rounded-lg px-2"
               />
@@ -121,7 +138,7 @@ const InfoTab: React.FC<Props> = ({ name, email }) => (
               </div>
               <input
                 type="text"
-                value="8765432109"
+                value={alternativeNumber || ""}
                 readOnly
                 className="border h-10 rounded-lg px-2"
               />

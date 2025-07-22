@@ -1,0 +1,165 @@
+import { ArrowLeft } from "lucide-react";
+import Frame from "../../../assets/frame.png"; 
+import { IoMdSend } from "react-icons/io";
+import { FaRegSmileWink, FaUser } from "react-icons/fa";
+import { FiPaperclip } from "react-icons/fi";
+
+interface ChatTicketProps {
+  ticket: {
+    id: number;
+    name: string;
+    email: string;
+    date: string;
+    time: string;
+    priority: string;
+    description: string;
+    status?: "Open" | "Closed";
+  };
+  onBack: () => void;
+}
+
+const ChatTicket: React.FC<ChatTicketProps> = ({ ticket, onBack }) => {
+  return (
+    <div className="h-screen w-full ">
+      {/* Back Button */}
+      <button
+        onClick={onBack}
+        className="flex items-center text-gray-600 hover:text-gray-900 mb-4"
+      >
+        <ArrowLeft className="w-5 h-5 mr-2" />
+      </button>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 h-full">
+        {/* Chat Panel */}
+        <div className="lg:col-span-2 bg-white rounded-xl shadow p-4 flex flex-col h-[90vh]">
+          {/* Header */}
+          <div className="flex items-center gap-3 border-b pb-3 mb-3 border rounded-lg shadow-lg">
+            <div className="w-12 h-12 bg-[#CA406F] rounded-full overflow-hidden">
+              <img
+                src=""
+                alt="Profile"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div>
+              <h2 className="font-semibold text-lg text-[#716F6F]">
+                {ticket.name}
+              </h2>
+              <p className="text-[#3ABE65] text-sm">Active Now</p>
+            </div>
+          </div>
+
+          {/* Messages */}
+          <div
+            className="flex-1  bg-repeat p-3 rounded-md justify-between flex flex-col"
+            style={{
+              backgroundImage: `url(${Frame})`,
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+            }}
+          >
+            <div className="flex flex-col gap-4 overflow-y-auto max-h-full flex-1">
+              {/* User message */}
+              <div className="flex items-start mb-1">
+                <div className="w-8 h-8 bg-[#0400FF] rounded-lg mr-2 flex items-center justify-center text-white">
+                  <FaUser />
+                </div>
+                <div>
+                  <div className="bg-white rounded-lg px-4 py-2 text-sm shadow max-w-[75%]">
+                    Hi there, How are you?
+                  </div>
+                  <div className="text-[11px] text-[#7D7D7D] mt-1 ml-2">
+                    12:34 PM
+                  </div>
+                </div>
+              </div>
+
+              {/* Admin reply */}
+              <div className="flex justify-end mb-1">
+                <div className="flex flex-col justify-end items-end ">
+                  <div className="bg-[#CA406F] text-white rounded-lg px-4 py-2 text-sm max-w-[75%] shadow">
+                    Hi, I am coming there in few minutes. Please wait!! I am in
+                    taxi right now.
+                  </div>
+                  <div className="text-[11px] ">12:35 PM</div>
+                </div>
+                <div className="w-8 h-8 bg-[#0400FF] rounded-lg ml-2 flex items-center justify-center text-white">
+                  <FaUser />
+                </div>
+              </div>
+
+              {/* Another message */}
+              <div className="flex items-start mb-1">
+                <div className="w-8 h-8 bg-[#0400FF] rounded-lg mr-2 flex items-center justify-center text-white">
+                  <FaUser />
+                </div>
+                <div>
+                  <div className="bg-white rounded-lg px-4 py-2 text-sm shadow max-w-[75%]">
+                    Thank you very much, I am waiting here at Starbucks cafe.
+                  </div>
+                  <div className="text-[11px] text-[#7D7D7D] mt-1 ml-2">
+                    12:36 PM
+                  </div>
+
+                  <div className="flex gap-2 mt-2">
+                    <button className="px-3 py-1 border border-[#CA406F] text-[#CA406F] text-xs rounded hover:bg-red-50">
+                      Solved
+                    </button>
+                    <button className="px-3 py-1 border bg-[#CA406F] text-white text-xs rounded hover:bg-[#CA406F]">
+                      Not Related
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Message Input Bar */}
+            <div className=" flex items-center gap-2 border-t pt-3 justify-bottom">
+              <div className="flex items-center gap-2 flex-1  bg-white rounded  px-4 py-2 border border-gray-300">
+                <FaRegSmileWink className="text-gray-500 cursor-pointer" />
+                <input
+                  type="text"
+                  placeholder="Type your message..."
+                  className=" flex-1  focus:outline-none "
+                />
+                <FiPaperclip />
+              </div>
+              <button className="bg-[#3ABE65] text-white px-2 py-2 rounded-lg  transition-all flex items-center justify-center">
+                <IoMdSend size={20} />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Ticket Info */}
+        <div className="bg-white rounded-xl shadow-lg p-4 h-[50vh] ">
+          <h3 className="text-sm font-semibold mb-2 text-[#716F6F]">
+            Issue Description:
+          </h3>
+          <p className="text-sm text-gray-700 mb-3">{ticket.description}</p>
+
+          <h3 className="text-sm font-semibold mb-2 text-[#716F6F]">
+            Issue Category:
+          </h3>
+          <p className="text-sm text-gray-700 mb-3">Feedback</p>
+
+          <h3 className="text-sm font-semibold mb-2 text-[#716F6F]">
+            Attachments:
+          </h3>
+          <p className="text-sm text-blue-600 underline mb-3 cursor-pointer">
+            2bf39530-F04d-4e22-A5ea-2be943f28e9e.jpeg
+          </p>
+
+          <span
+            className={`inline-block px-5 py-2 text-white  font-semibold rounded p-2 ${
+              ticket.status === "Open" ? "bg-[#CA406F]" : "bg-[#3ABE65]"
+            }`}
+          >
+            {ticket.status}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ChatTicket;

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import CustomDropdown from "../CustomeDropDown"; // adjust path as needed
+import CustomDropdown from "../CustomeDropDown";
 
 interface AddStaffProps {
   onClose: () => void;
+  onSave: (newStaff: any) => void;
 }
 
-const AddStaff: React.FC<AddStaffProps> = ({ onClose }) => {
+const AddStaff: React.FC<AddStaffProps> = ({ onClose, onSave }) => {
   const genderOptions = ["Male", "Female", "Other"];
   const courseOptions = [
     "Mathematics",
@@ -14,13 +15,35 @@ const AddStaff: React.FC<AddStaffProps> = ({ onClose }) => {
     "History",
     "Computer Science",
   ];
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    dob: "",
+    gender: "",
+    course: "",
+    designation: "",
+    qualification: "",
+    state: "",
+    city: "",
+    pinCode: "",
+    address1: "",
+    address2: "",
+    phone: "",
+    altPhone: "",
+    image: "",
+  });
 
-  const [gender, setGender] = useState("");
-  const [course, setCourse] = useState("");
+  const handleSave = () => {
+    if (!formData.name || !formData.email) {
+      alert("Please fill in required fields");
+      return;
+    }
+    onSave(formData);
+  };
 
   return (
-    <div className=" flex justify-end items-center z-80">
-      <div className="bg-white p-4 rounded-lg shadow-lg w-[85%] h-[88%] overflow-y-auto">
+    <div className=" flex justify-center items-center ">
+      <div className="bg-white p-4 rounded-lg shadow-lg w-full h-full  ">
         <div className="flex flex-col w-full h-full gap-5">
           <div className="flex flex-col gap-1">
             <h2 className="text-xl font-semibold">Add New Staff</h2>
@@ -49,25 +72,48 @@ const AddStaff: React.FC<AddStaffProps> = ({ onClose }) => {
           <form className="p-2 grid grid-cols-3 gap-6">
             <div className="flex flex-col gap-2">
               <label>Full Name</label>
-              <input type="text" className="border rounded-md h-10 px-2" />
+              <input
+                type="text"
+                className="border rounded-md h-10 px-2"
+                value={formData.name}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
+              />
             </div>
 
             <div className="flex flex-col gap-2">
               <label>Email</label>
-              <input type="email" className="border rounded-md h-10 px-2" />
+              <input
+                type="email"
+                className="border rounded-md h-10 px-2"
+                value={formData.email}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
+              />
             </div>
 
             <div className="flex flex-col gap-2">
               <label>Date of Birth</label>
-              <input type="date" className="border rounded-md h-10 px-2" />
+              <input
+                type="date"
+                className="border rounded-md h-10 px-2"
+                value={formData.dob}
+                onChange={(e) =>
+                  setFormData({ ...formData, dob: e.target.value })
+                }
+              />
             </div>
 
             <div className="flex flex-col gap-2">
               <label>Gender</label>
               <CustomDropdown
                 options={genderOptions}
-                value={gender}
-                onChange={setGender}
+                value={formData.gender}
+                onChange={(value) =>
+                  setFormData({ ...formData, gender: value })
+                }
                 placeholder="Select Gender"
               />
             </div>
@@ -76,55 +122,117 @@ const AddStaff: React.FC<AddStaffProps> = ({ onClose }) => {
               <label>Courses</label>
               <CustomDropdown
                 options={courseOptions}
-                value={course}
-                onChange={setCourse}
-                placeholder="Select Course"
+                value={formData.course}
+                onChange={(value) =>
+                  setFormData({ ...formData, course: value })
+                }
               />
             </div>
 
             <div className="flex flex-col gap-2">
               <label>Designation</label>
-              <input type="text" className="border rounded-md h-10 px-2" />
+              <input
+                type="text"
+                className="border rounded-md h-10 px-2"
+                value={formData.designation}
+                onChange={(e) =>
+                  setFormData({ ...formData, designation: e.target.value })
+                }
+              />
             </div>
 
             <div className="flex flex-col gap-2">
               <label>Qualification</label>
-              <input type="text" className="border rounded-md h-10 px-2" />
+              <input
+                type="text"
+                className="border rounded-md h-10 px-2"
+                value={formData.qualification}
+                onChange={(e) =>
+                  setFormData({ ...formData, qualification: e.target.value })
+                }
+              />
             </div>
 
             <div className="flex flex-col gap-2">
               <label>State</label>
-              <input type="text" className="border rounded-md h-10 px-2" />
+              <input
+                type="text"
+                className="border rounded-md h-10 px-2"
+                value={formData.state}
+                onChange={(e) =>
+                  setFormData({ ...formData, state: e.target.value })
+                }
+              />
             </div>
 
             <div className="flex flex-col gap-2">
               <label>City</label>
-              <input type="text" className="border rounded-md h-10 px-2" />
+              <input
+                type="text"
+                className="border rounded-md h-10 px-2"
+                value={formData.city}
+                onChange={(e) =>
+                  setFormData({ ...formData, city: e.target.value })
+                }
+              />
             </div>
 
             <div className="flex flex-col gap-2">
               <label>Pin Code</label>
-              <input type="text" className="border rounded-md h-10 px-2" />
+              <input
+                type="text"
+                className="border rounded-md h-10 px-2"
+                value={formData.pinCode}
+                onChange={(e) =>
+                  setFormData({ ...formData, pinCode: e.target.value })
+                }
+              />
             </div>
 
             <div className="flex flex-col gap-2">
               <label>Address Line 1</label>
-              <textarea className="border rounded-md h-10 px-2 py-1 resize-none" />
+              <textarea
+                className="border rounded-md h-10 px-2 py-1 resize-none"
+                value={formData.address1}
+                onChange={(e) =>
+                  setFormData({ ...formData, address1: e.target.value })
+                }
+              />
             </div>
 
             <div className="flex flex-col gap-2">
               <label>Address Line 2</label>
-              <textarea className="border rounded-md h-10 px-2 py-1 resize-none" />
+              <textarea
+                className="border rounded-md h-10 px-2 py-1 resize-none"
+                value={formData.address2}
+                onChange={(e) =>
+                  setFormData({ ...formData, address2: e.target.value })
+                }
+              />
             </div>
 
             <div className="flex flex-col gap-2">
               <label>Phone Number</label>
-              <input type="tel" className="border rounded-md h-10 px-2" />
+              <input
+                type="tel"
+                className="border rounded-md h-10 px-2"
+                value={formData.phone}
+                onChange={(e) =>
+                  setFormData({ ...formData, phone: e.target.value })
+                }
+              />
             </div>
 
             <div className="flex flex-col gap-2">
               <label>Alt Phone Number</label>
-              <input type="text" className="border rounded-md h-10 px-2" />
+              <input
+                type="tel"
+                className="border rounded-md h-10 px-2"
+                value={formData.altPhone}
+                onChange={(e) =>
+                  setFormData({ ...formData, altPhone: e.target.value })
+                }
+              />
             </div>
           </form>
 
@@ -135,7 +243,10 @@ const AddStaff: React.FC<AddStaffProps> = ({ onClose }) => {
             >
               Close
             </button>
-            <button className="bg-[#CA406F] text-white px-4 py-2 rounded hover:bg-pink-700">
+            <button
+              onClick={handleSave}
+              className="bg-[#CA406F] text-white px-4 py-2 rounded hover:bg-pink-700"
+            >
               Save
             </button>
           </div>

@@ -7,7 +7,7 @@ interface CustomDropdownProps {
   onChange: (value: string) => void;
   label?: string;
   placeholder?: string;
-  width?: string; 
+  width?: string;
 }
 
 const CustomDropdown: React.FC<CustomDropdownProps> = ({
@@ -23,14 +23,20 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({
   return (
     <div className={`relative inline-block text-sm ${width}`}>
       {label && (
-        <label className="block mb-1 text-gray-700 font-medium bg-[#CA406F]">{label}</label>
+        <label className="block mb-1 text-gray-700 font-medium bg-[#CA406F] px-2 py-1 rounded">
+          {label}
+        </label>
       )}
+
       <button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
-        className="w-full text-left bg-white border border-gray-300 rounded-lg px-4 py-2 shadow-sm hover:bg-gray-100"
+        className="w-full text-left bg-white border border-gray-300 rounded-lg px-4 py-2 hover:bg-gray-100"
       >
-        {value || placeholder} <span className="float-right"><RiArrowDownSLine size={24}/></span>
+        {value || placeholder}
+        <span className="float-right">
+          <RiArrowDownSLine size={24} />
+        </span>
       </button>
 
       {open && (
@@ -42,8 +48,8 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({
                 onChange(option);
                 setOpen(false);
               }}
-              className={`px-4 py-2 cursor-pointer hover:bg-[#CA406F] ${
-                value === option ? "bg-[#CA406F] font-semibold" : ""
+              className={`border border-gray-300 rounded-md mx-2 my-2 px-4 py-3 cursor-pointer hover:bg-[#CA406F] hover:text-white transition ${
+                value === option ? "bg-[#CA406F] text-white font-semibold" : ""
               }`}
             >
               {option}

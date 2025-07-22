@@ -9,13 +9,26 @@ import SecurityTab from "../TabContent/Security";
 import ClassesTab from "../TabContent/Classes";
 import AttendanceTab from "../TabContent/Attendance";
 import ActivityTab from "../TabContent/Acitivity";
+import { ArrowLeft } from "lucide-react";
 
 interface ViewStaffProps {
   staff: {
     name: string;
     email: string;
-    status: string;
+    dob: string;
+    gender: string;
+    course: string;
+    designation: string;
+    qualification: string;
+    state: string;
+    city: string;
+    pinCode: string;
+    address1: string;
+    address2: string;
+    phone: string;
+    altPhone: string;
     image: string;
+    status: string;
   };
   onBack: () => void;
 }
@@ -32,11 +45,8 @@ const ViewStaff: React.FC<ViewStaffProps> = ({ staff, onBack }) => {
 
   return (
     <div className=" flex flex-col gap-4">
-      <button
-        className="self-start bg-gray-200 px-3 py-2 rounded"
-        onClick={onBack}
-      >
-        ← Back to Staff List
+      <button className="self-start" onClick={onBack}>
+        <ArrowLeft />
       </button>
 
       {/* Profile Header */}
@@ -98,7 +108,15 @@ const ViewStaff: React.FC<ViewStaffProps> = ({ staff, onBack }) => {
 
       {/* Tab Content */}
       {activePage === "info" && (
-        <InfoTab email={staff.email} name={staff.name} />
+        <InfoTab
+          name={staff.name}
+          email={staff.email}
+          gender={staff.gender}
+          dob={staff.dob}
+          primaryNumber={staff.phone}
+          alternativeNumber={staff.altPhone}
+          role={staff.designation}
+        />
       )}
       {activePage === "security" && <SecurityTab />}
       {activePage === "classes" && <ClassesTab />}
