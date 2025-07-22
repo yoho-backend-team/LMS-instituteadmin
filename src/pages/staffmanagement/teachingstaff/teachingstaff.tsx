@@ -1,6 +1,10 @@
-const Teachingstaff = () =>{
-    return(
-        <div>welcome to Teachingstaff</div>
-    )
-}
+import Staffmainpage from "@/components/StaffManagement/staffmainpage";
+
+const Teachingstaff = () => {
+  return (
+    <div>
+      <Staffmainpage />
+    </div>
+  );
+};
 export default Teachingstaff;
