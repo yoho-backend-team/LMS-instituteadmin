@@ -46,6 +46,8 @@ import Logout from "@/pages/profile/logout/logout";
 import StudentDashboard from "@/pages/batchManagment/studentMainBatch";
 import BranchOverview from "@/components/Branch/branchOverview";
 import StudentDashboardMain from "@/components/Batch/viewBatch";
+import ChatPage from "@/components/StudentTicket/chatPage";
+import ClosedTicket from "@/components/StudentTicket/closeTicket";
 const Approutes = () => {
   return (
     <BrowserRouter>
@@ -98,6 +100,8 @@ const Approutes = () => {
           <Route path="/logout" element={<Logout />} />
           <Route path="/branch-overview" element={<BranchOverview />} />
           <Route path="/view-page" element={<StudentDashboardMain/>}/>
+          <Route path="/chat-page" element={<ChatPage/>}/>
+           <Route path="/closed-ticket" element={<ClosedTicket/>}/>
           </Route>
           <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Routes>

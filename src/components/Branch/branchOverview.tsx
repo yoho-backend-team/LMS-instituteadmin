@@ -4,6 +4,9 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import EarningsChart from "./charts";
 import CircularCardCarousel from "./branchOverviewCards";
 import { FONTS } from "@/constants/uiConstants";
+import { useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
+
 
 const activities = new Array(8).fill({
   title: "Notes Created",
@@ -13,6 +16,8 @@ const activities = new Array(8).fill({
 
 const BranchOverview = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate(); 
+
  
 
   useEffect(() => {
@@ -31,6 +36,14 @@ const BranchOverview = () => {
 
   return (
     <div className="min-h-screen  px-4 py-6">
+      <button
+  onClick={() => navigate(-1)}
+  className="flex items-center gap-2 text-[#ca406f] hover:text-[#a2355a] transition-all mb-4"
+>
+  <ArrowLeft className="w-5 h-5" />
+  <span className="font-medium text-base">Back</span>
+</button>
+
       <h2 className=" mb-6" style={{...FONTS.form_head}}>Branch Overview</h2>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

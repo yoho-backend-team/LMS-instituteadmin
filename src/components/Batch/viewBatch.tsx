@@ -6,6 +6,10 @@ import email from "../../assets/mail.png";
 import flower from "../../assets/flower.png"
 import location from "../../assets/location.png"
 import { FONTS } from "@/constants/uiConstants";
+import { useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
+
+
 
 const batchData = [
   {
@@ -54,8 +58,18 @@ const students = [
 ];
 
 export default function StudentDashboardMain() {
+  const navigate = useNavigate(); 
+
   return (
     <div className="p-6  min-h-screen">
+      <button
+  onClick={() => navigate(-1)}
+  className="flex items-center gap-2 text-[#ca406f] hover:text-[#a2355a] transition-all mb-4"
+>
+  <ArrowLeft className="w-5 h-5" />
+  <span className="font-medium text-base">Back</span>
+</button>
+
       <h2 className="mb-4"style={{...FONTS.card_htext,fontSize:"24px"}}>MERN 2025</h2>
 
 
