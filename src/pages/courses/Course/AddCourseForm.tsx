@@ -1,31 +1,50 @@
 import React, { useState } from "react";
-import "./AddCourseForm.css";
 import { FaCloudUploadAlt } from "react-icons/fa";
+import card1 from "../../../Assets/card1.png";
 
-const AddCourseForm = () => {
+// ✅ Add prop type for onBack
+type AddCourseFormProps = {
+  onBack: () => void;
+};
+
+const AddCourseForm = ({ onBack }: AddCourseFormProps) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true); 
+    setIsSubmitted(true);
   };
 
   return (
-    <div className="add-course-form">
+    <div className="max-w-[1278px] w-full bg-white p-6 rounded-xl mx-auto mt-10 font-[Poppins]">
       {!isSubmitted ? (
         <>
-          <h2 className="form-heading">Add New Course</h2>
+          <h2 className="text-2xl font-semibold text-[#e00080] mb-8">
+            Add New Course
+          </h2>
 
           <form onSubmit={handleSubmit}>
-          
-            <div className="form-row">
-              <div className="form-group">
-                <label>Course Name</label>
-                <input type="text" placeholder="Enter course name" required />
+            {/* Row 1 */}
+            <div className="flex flex-wrap gap-6 mb-5">
+              <div className="flex flex-col flex-1">
+                <label className="font-medium text-sm text-[#7D7D7D] mb-1">
+                  Course Name
+                </label>
+                <input
+                  type="text"
+                  placeholder="Enter course name"
+                  required
+                  className="p-3 text-sm border border-gray-300 rounded-md"
+                />
               </div>
-              <div className="form-group">
-                <label>Course Duration</label>
-                <select required>
+              <div className="flex flex-col flex-1">
+                <label className="font-medium text-sm text-[#7D7D7D] mb-1">
+                  Course Duration
+                </label>
+                <select
+                  required
+                  className="p-3 text-sm border border-gray-300 rounded-md"
+                >
                   <option>Select Duration</option>
                   <option>1 Month</option>
                   <option>3 Months</option>
@@ -33,43 +52,81 @@ const AddCourseForm = () => {
               </div>
             </div>
 
-        
-            <div className="form-row">
-              <div className="form-group">
-                <label>Actual Price</label>
-                <input type="text" placeholder="Enter actual price" required />
+            {/* Row 2 */}
+            <div className="flex flex-wrap gap-6 mb-5">
+              <div className="flex flex-col flex-1">
+                <label className="font-medium text-sm text-[#7D7D7D] mb-1">
+                  Actual Price
+                </label>
+                <input
+                  type="text"
+                  placeholder="Enter actual price"
+                  required
+                  className="p-3 text-sm border border-gray-300 rounded-md"
+                />
               </div>
-              <div className="form-group">
-                <label>Current Price</label>
-                <input type="text" placeholder="Enter current price" required />
+              <div className="flex flex-col flex-1">
+                <label className="font-medium text-sm text-[#7D7D7D] mb-1">
+                  Current Price
+                </label>
+                <input
+                  type="text"
+                  placeholder="Enter current price"
+                  required
+                  className="p-3 text-sm border border-gray-300 rounded-md"
+                />
               </div>
             </div>
 
-         
-            <div className="form-row">
-              <div className="form-group">
-                <label>Star Rating</label>
-                <input type="text" placeholder="Enter rating" required />
+            {/* Row 3 */}
+            <div className="flex flex-wrap gap-6 mb-5">
+              <div className="flex flex-col flex-1">
+                <label className="font-medium text-sm text-[#7D7D7D] mb-1">
+                  Star Rating
+                </label>
+                <input
+                  type="text"
+                  placeholder="Enter rating"
+                  required
+                  className="p-3 text-sm border border-gray-300 rounded-md"
+                />
               </div>
-              <div className="form-group">
-                <label>Total Review</label>
-                <input type="text" placeholder="Enter total reviews" required />
+              <div className="flex flex-col flex-1">
+                <label className="font-medium text-sm text-[#7D7D7D] mb-1">
+                  Total Review
+                </label>
+                <input
+                  type="text"
+                  placeholder="Enter total reviews"
+                  required
+                  className="p-3 text-sm border border-gray-300 rounded-md"
+                />
               </div>
             </div>
 
-        
-            <div className="form-row">
-              <div className="form-group">
-                <label>Select Branches</label>
-                <select required>
+            {/* Row 4 */}
+            <div className="flex flex-wrap gap-6 mb-5">
+              <div className="flex flex-col flex-1">
+                <label className="font-medium text-sm text-[#7D7D7D] mb-1">
+                  Select Branches
+                </label>
+                <select
+                  required
+                  className="p-3 text-sm border border-gray-300 rounded-md"
+                >
                   <option>Select Branch</option>
                   <option>Branch A</option>
                   <option>Branch B</option>
                 </select>
               </div>
-              <div className="form-group">
-                <label>Select Category</label>
-                <select required>
+              <div className="flex flex-col flex-1">
+                <label className="font-medium text-sm text-[#7D7D7D] mb-1">
+                  Select Category
+                </label>
+                <select
+                  required
+                  className="p-3 text-sm border border-gray-300 rounded-md"
+                >
                   <option>Select Category</option>
                   <option>Design</option>
                   <option>Development</option>
@@ -77,11 +134,16 @@ const AddCourseForm = () => {
               </div>
             </div>
 
-          
-            <div className="form-row">
-              <div className="form-group">
-                <label>Learning Format</label>
-                <select required>
+            {/* Row 5 */}
+            <div className="flex flex-wrap gap-6 mb-5">
+              <div className="flex flex-col flex-1">
+                <label className="font-medium text-sm text-[#7D7D7D] mb-1">
+                  Learning Format
+                </label>
+                <select
+                  required
+                  className="p-3 text-sm border border-gray-300 rounded-md"
+                >
                   <option>Select Format</option>
                   <option>Online</option>
                   <option>Offline</option>
@@ -89,51 +151,88 @@ const AddCourseForm = () => {
               </div>
             </div>
 
-            <div className="form-row">
-              <div className="form-group">
-                <label>Course Overview</label>
-                <textarea placeholder="Write overview..." rows={3} required></textarea>
+            {/* Row 6 */}
+            <div className="flex flex-wrap gap-6 mb-5">
+              <div className="flex flex-col flex-1">
+                <label className="font-medium text-sm text-[#7D7D7D] mb-1">
+                  Course Overview
+                </label>
+                <textarea
+                  placeholder="Write overview..."
+                  rows={3}
+                  required
+                  className="p-3 text-sm border border-gray-300 rounded-md resize-none"
+                ></textarea>
               </div>
-              <div className="form-group">
-                <label>Course Description</label>
-                <textarea placeholder="Write description..." rows={3} required></textarea>
+              <div className="flex flex-col flex-1">
+                <label className="font-medium text-sm text-[#7D7D7D] mb-1">
+                  Course Description
+                </label>
+                <textarea
+                  placeholder="Write description..."
+                  rows={3}
+                  required
+                  className="p-3 text-sm border border-gray-300 rounded-md resize-none"
+                ></textarea>
               </div>
             </div>
 
-            <div className="form-row">
-              <div className="form-group">
-                <label>Thumbnail</label>
-                <label className="file-upload">
-                  <FaCloudUploadAlt className="upload-icon" />
+            {/* Row 7 */}
+            <div className="flex flex-wrap gap-6 mb-5">
+              <div className="flex flex-col flex-1">
+                <label className="font-medium text-sm text-[#7D7D7D] mb-1">
+                  Thumbnail
+                </label>
+                <label className="border border-dashed border-gray-400 p-5 rounded-md bg-gray-50 text-center cursor-pointer text-gray-600 flex flex-col items-center">
+                  <FaCloudUploadAlt className="text-blue-600 text-2xl mb-1" />
                   <span>Choose File</span>
                   <input type="file" hidden />
                 </label>
               </div>
-              <div className="form-group">
-                <label>Main Image</label>
-                <label className="file-upload">
-                  <FaCloudUploadAlt className="upload-icon" />
+              <div className="flex flex-col flex-1">
+                <label className="font-medium text-sm text-[#7D7D7D] mb-1">
+                  Main Image
+                </label>
+                <label className="border border-dashed border-gray-400 p-5 rounded-md bg-gray-50 text-center cursor-pointer text-gray-600 flex flex-col items-center">
+                  <FaCloudUploadAlt className="text-blue-600 text-2xl mb-1" />
                   <span>Choose File</span>
                   <input type="file" hidden />
                 </label>
               </div>
             </div>
 
-         
-            <div className="button-row">
-              <button type="button" className="back-btn">Back</button>
-              <button type="submit" className="submit-btn">Submit</button>
+            {/* Buttons */}
+            <div className="flex justify-end gap-4 mt-8">
+              <button
+                type="button"
+                className="px-5 py-2 bg-gray-200 rounded-md font-medium"
+                onClick={onBack} // ✅ calls parent function to go back
+              >
+                Back
+              </button>
+              <button
+                type="submit"
+                className="px-6 py-2 bg-[#e00080] text-white rounded-md font-medium"
+              >
+                Submit
+              </button>
             </div>
           </form>
         </>
       ) : (
-        <div className="thank-you-message">
-          <h2> Thank you for submitting!</h2>
-          <p>Your course has been added successfully.</p>
+        <div className="p-20 text-center bg-white rounded-xl shadow-md">
+          <h2 className="text-[#e00076] mb-3 text-2xl font-semibold">
+            Thank you for submitting!
+          </h2>
+          <img
+            src={card1}
+            alt="Course Submitted"
+            className="mx-auto mt-4 w-48 h-auto"
+          />
         </div>
       )}
     </div>
   );
 };
 
-export default AddCourseForm;
+export default AddCourseForm;
