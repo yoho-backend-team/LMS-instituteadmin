@@ -40,7 +40,7 @@ const Placement = () => {
                 </Link>
             </div>
 
-            <div className="bg-white shadow-md rounded-md p-4">
+            <div className="bg-white shadow-2xl rounded-md p-4">
                 {/* Header */}
                 <div className="bg-gray-100 shadow-lg rounded-md p-4 mb-2">
                     <div className="flex items-center justify-between text-sm font-semibold">
@@ -78,7 +78,7 @@ const Placement = () => {
                                     />
 
                                     {activeMenuIndex === index && (
-                                        <div className="absolute right-0 mt-2 bg-white rounded shadow-2xl p-2 z-10 w-28">
+                                        <div className="absolute right-0 mt-2 bg-white border-1 border-white  rounded shadow-2xl p-2 z-10 w-28">
                                             <div className="flex flex-col justify-center space-y-1">
                                                 <Link
                                                     to={"/placememntedit"}
