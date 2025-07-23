@@ -20,10 +20,16 @@ export interface RefundModalProps {
   onSubmit: () => void;
 }
 
-const courseOptions = ["MERN", "Python", "Java","MEAN","Data Analyst","SQL"];
+const courseOptions = ["MERN", "Python", "Java", "MEAN", "Data Analyst", "SQL"];
 const batchOptions = ["Batch 2023", "Batch 2024", "Batch 2025"];
-const studentOptions = ["John Doe", "Jane Smith", "Alice Johnson","Chris Hemsworth","Brad Pitt"];
-const feeOptions = ["30000", "35000", "40000","25000","38000"]; 
+const studentOptions = [
+  "John Doe",
+  "Jane Smith",
+  "Alice Johnson",
+  "Chris Hemsworth",
+  "Brad Pitt",
+];
+const feeOptions = ["30000", "35000", "40000", "25000", "38000"];
 
 export const RefundModal: React.FC<RefundModalProps> = ({
   showModal,
@@ -42,7 +48,7 @@ export const RefundModal: React.FC<RefundModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-end  p-6 bg-black/30 backdrop-blur-md">
+    <div className="fixed inset-0 z-50 flex items-center justify-end bg-black/30 backdrop-blur-md">
       <div className="w-full max-w-md h-[90vh] rounded-lg flex flex-col shadow-xl bg-white overflow-hidden">
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 text-2xl sticky text-[#716F6F] top-0 bg-white z-10">
@@ -57,11 +63,11 @@ export const RefundModal: React.FC<RefundModalProps> = ({
           </button>
         </div>
 
-      
         <div className="flex-1 overflow-y-auto px-6 py-4 space-y-4 hide-scrollbar">
-      
           <div>
-            <label className="block text-lg text-[#716F6F] font-medium mb-1">Select Course</label>
+            <label className="block text-lg text-[#716F6F] font-medium mb-1">
+              Select Course
+            </label>
             <select
               value={formData.course}
               onChange={(e) => handleInputChange("course", e.target.value)}
@@ -76,9 +82,10 @@ export const RefundModal: React.FC<RefundModalProps> = ({
             </select>
           </div>
 
-     
           <div>
-            <label className="block text-lg text-[#716F6F] font-medium mb-1">Batch</label>
+            <label className="block text-lg text-[#716F6F] font-medium mb-1">
+              Batch
+            </label>
             <select
               value={formData.batch}
               onChange={(e) => handleInputChange("batch", e.target.value)}
@@ -93,9 +100,10 @@ export const RefundModal: React.FC<RefundModalProps> = ({
             </select>
           </div>
 
-     
           <div>
-            <label className="block text-lg text-[#716F6F] font-medium mb-1">Student</label>
+            <label className="block text-lg text-[#716F6F] font-medium mb-1">
+              Student
+            </label>
             <select
               value={formData.student}
               onChange={(e) => handleInputChange("student", e.target.value)}
@@ -110,28 +118,28 @@ export const RefundModal: React.FC<RefundModalProps> = ({
             </select>
           </div>
 
-        
-         <div>
-  <label className="block text-lg text-[#716F6F] font-medium mb-1">
-    Student Fee
-  </label>
-  <select
-    value={formData.studentFee}
-    onChange={(e) => handleInputChange("studentFee", e.target.value)}
-    className="w-full bg-white border rounded-md px-3 py-2 appearance-none"
-  >
-    <option value=""></option>
-    {feeOptions.map((fee) => (
-      <option key={fee} value={fee}>
-        ₹ {fee}
-      </option>
-    ))}
-  </select>
-</div>
-
-  
           <div>
-            <label className="block text-lg  text-[#716F6F] font-medium mb-1">Amount</label>
+            <label className="block text-lg text-[#716F6F] font-medium mb-1">
+              Student Fee
+            </label>
+            <select
+              value={formData.studentFee}
+              onChange={(e) => handleInputChange("studentFee", e.target.value)}
+              className="w-full bg-white border rounded-md px-3 py-2 appearance-none"
+            >
+              <option value=""></option>
+              {feeOptions.map((fee) => (
+                <option key={fee} value={fee}>
+                  ₹ {fee}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-lg  text-[#716F6F] font-medium mb-1">
+              Amount
+            </label>
             <input
               type="number"
               value={formData.amount}
@@ -139,10 +147,8 @@ export const RefundModal: React.FC<RefundModalProps> = ({
               className="w-full bg-white border rounded-md px-3 py-2"
             />
           </div>
-
         </div>
 
-     
         <div className="px-6 py-4 border-t flex justify-end gap-4">
           <button
             className="border border-gray-300 bg-[#0400FF1A] text-[#0400FF] px-4 py-2 rounded-md"

@@ -1,15 +1,15 @@
-import type React from "react"
-import filter from "../../assets/Mask group.svg"
+import type React from "react";
+import filter from "../../assets/Mask group.svg";
 
 interface FilterSectionProps {
-  showFilter: boolean
-  onToggleFilter: () => void
-  statusFilter: string
-  courseFilter: string
-  searchFilter: string
-  onStatusFilterChange: (value: string) => void
-  onCourseFilterChange: (value: string) => void
-  onSearchFilterChange: (value: string) => void
+  showFilter: boolean;
+  onToggleFilter: () => void;
+  statusFilter: string;
+  courseFilter: string;
+  searchFilter: string;
+  onStatusFilterChange: (value: string) => void;
+  onCourseFilterChange: (value: string) => void;
+  onSearchFilterChange: (value: string) => void;
 }
 
 const FilterSection: React.FC<FilterSectionProps> = ({
@@ -28,14 +28,20 @@ const FilterSection: React.FC<FilterSectionProps> = ({
         onClick={onToggleFilter}
         className="gap-2 flex items-center bg-[#CA406F] px-4 py-2 rounded-lg text-white shadow-md"
       >
-        <img src={filter || "/placeholder.svg"} alt="filter" className="h-5 w-5" />
+        <img
+          src={filter || "/placeholder.svg"}
+          alt="filter"
+          className="h-5 w-5"
+        />
         {showFilter ? "Hide" : "Show Filter"}
       </button>
 
       {showFilter && (
         <div className="mt-4 grid grid-cols-2 bg-white p-6 rounded-xl shadow-2xl gap-6">
           <div className="flex flex-col w-full relative">
-            <label className="text-md font-semibold text-gray-600">Filter By Status</label>
+            <label className="text-md font-semibold text-gray-600">
+              Filter By Status
+            </label>
             <select
               className="appearance-none border w-full rounded-md px-3 py-2 pr-10"
               value={statusFilter}
@@ -48,7 +54,9 @@ const FilterSection: React.FC<FilterSectionProps> = ({
           </div>
 
           <div className="flex flex-col w-full relative">
-            <label className="text-md font-semibold text-gray-600">Filter By Course</label>
+            <label className="text-md font-semibold text-gray-600">
+              Filter By Course
+            </label>
             <select
               className="appearance-none border w-full rounded-md px-3 py-2 pr-10"
               value={courseFilter}
@@ -61,7 +69,9 @@ const FilterSection: React.FC<FilterSectionProps> = ({
           </div>
 
           <div className="flex flex-col w-full relative">
-            <label className="text-md font-semibold text-gray-600">Filter By Batches</label>
+            <label className="text-md font-semibold text-gray-600">
+              Filter By Batches
+            </label>
             <select
               className="appearance-none border w-full rounded-md px-3 py-2 pr-10"
               value={courseFilter}
@@ -74,7 +84,9 @@ const FilterSection: React.FC<FilterSectionProps> = ({
           </div>
 
           <div>
-            <label className="text-md font-semibold text-gray-600">Search Student</label>
+            <label className="text-md font-semibold text-gray-600">
+              Search Student
+            </label>
             <input
               type="text"
               placeholder="Enter Student Name"
@@ -86,7 +98,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
         </div>
       )}
     </>
-  )
-}
+  );
+};
 
-export default FilterSection
+export default FilterSection;

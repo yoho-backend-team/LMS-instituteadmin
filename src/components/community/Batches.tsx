@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import Chat from './Chat';
+import React, { useState } from "react";
+import Chat from "./Chat";
 
 interface Batch {
   id: number;
@@ -13,12 +13,12 @@ interface Batch {
   batch?: string;
 }
 
-
 const batchList: Batch[] = [
   {
     id: 1,
     name: "MERN 2025",
-    image: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y291cnNlfGVufDB8fDB8fHww',
+    image:
+      "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y291cnNlfGVufDB8fDB8fHww",
     about: "This is the MERN 2025 batch",
     email: "mern2025@example.com",
     timing: "10:00 AM - 12:00 PM",
@@ -29,7 +29,8 @@ const batchList: Batch[] = [
   {
     id: 2,
     name: "Python 2024",
-    image: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y291cnNlfGVufDB8fDB8fHww',
+    image:
+      "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y291cnNlfGVufDB8fDB8fHww",
     about: "Python 2024 batch",
     email: "python2024@example.com",
     timing: "3:00 PM - 5:00 PM",
@@ -39,7 +40,7 @@ const batchList: Batch[] = [
   },
 ];
 
-const CommunityChat: React.FC= ({ }) => {
+const CommunityChat: React.FC = ({}) => {
   const [selectedBatch, setSelectedBatch] = useState<Batch | null>(null);
 
   return (
@@ -53,7 +54,11 @@ const CommunityChat: React.FC= ({ }) => {
             onClick={() => setSelectedBatch(batch)}
             className="bg-white text-black p-3 rounded-lg cursor-pointer flex items-center gap-3 hover:bg-pink-100 transition"
           >
-            <img src={batch.image} alt={batch.name} className="w-14 h-14 rounded-full object-cover" />
+            <img
+              src={batch.image}
+              alt={batch.name}
+              className="w-14 h-14 rounded-full object-cover"
+            />
             <div className="grid">
               <span className="font-medium">{batch.name}</span>
               <span className="text-sm text-gray-600">{batch.batch}</span>
@@ -63,7 +68,10 @@ const CommunityChat: React.FC= ({ }) => {
       </div>
 
       <div className="flex-1">
-      <Chat selectedBatch={selectedBatch} setSelectedBatch={setSelectedBatch} />
+        <Chat
+          selectedBatch={selectedBatch}
+          setSelectedBatch={setSelectedBatch}
+        />
       </div>
     </div>
   );

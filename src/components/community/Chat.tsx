@@ -1,19 +1,24 @@
-import React, { useState, useEffect, type ChangeEvent } from 'react';
+import React, { useState, useEffect, type ChangeEvent } from "react";
 import {
-  FiSend, FiSmile, FiPaperclip, FiCheck,
-  FiClock, FiPhone, FiX
-} from 'react-icons/fi';
-import EmojiPicker from 'emoji-picker-react';
-import sendIcon from '../../assets/Send.svg';
-import userIcon from '../../assets/User.svg';
-import chatbg from '../../assets/ChatBg.png';
+  FiSend,
+  FiSmile,
+  FiPaperclip,
+  FiCheck,
+  FiClock,
+  FiPhone,
+  FiX,
+} from "react-icons/fi";
+import EmojiPicker from "emoji-picker-react";
+import sendIcon from "../../assets/Send.svg";
+import userIcon from "../../assets/User.svg";
+import chatbg from "../../assets/ChatBg.png";
 
 interface Message {
   id: number;
   text: string;
-  sender: 'me' | 'other';
+  sender: "me" | "other";
   time: string;
-  status: 'sent' | 'delivered' | 'seen';
+  status: "sent" | "delivered" | "seen";
   file?: File;
   fileUrl?: string;
 }
@@ -36,28 +41,44 @@ interface ChatProps {
 }
 
 const Chat: React.FC<ChatProps> = ({ selectedBatch, setSelectedBatch }) => {
-  const [messagesByBatch, setMessagesByBatch] = useState<Record<number, Message[]>>({});
-  const [newMessage, setNewMessage] = useState('');
+  const [messagesByBatch, setMessagesByBatch] = useState<
+    Record<number, Message[]>
+  >({});
+  const [newMessage, setNewMessage] = useState("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    setNewMessage('');
+    setNewMessage("");
     setSelectedFile(null);
     setShowEmojiPicker(false);
     if (selectedBatch && !messagesByBatch[selectedBatch.id]) {
-      setMessagesByBatch(prev => ({
+      setMessagesByBatch((prev) => ({
         ...prev,
         [selectedBatch.id]: [
-          { id: 1, text: 'Hello!', sender: 'other', time: '10:00 AM', status: 'seen' },
-          { id: 2, text: 'Hi there!', sender: 'me', time: '10:01 AM', status: 'delivered' },
-        ]
+          {
+            id: 1,
+            text: "Hello!",
+            sender: "other",
+            time: "10:00 AM",
+            status: "seen",
+          },
+          {
+            id: 2,
+            text: "Hi there!",
+            sender: "me",
+            time: "10:01 AM",
+            status: "delivered",
+          },
+        ],
       }));
     }
   }, [selectedBatch]);
 
-  const currentMessages = selectedBatch ? messagesByBatch[selectedBatch.id] || [] : [];
+  const currentMessages = selectedBatch
+    ? messagesByBatch[selectedBatch.id] || []
+    : [];
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -71,46 +92,51 @@ const Chat: React.FC<ChatProps> = ({ selectedBatch, setSelectedBatch }) => {
     if (!selectedBatch) return;
 
     const now = new Date();
-    const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const time = now.toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
 
-    const fileUrl = selectedFile ? URL.createObjectURL(selectedFile) : undefined;
+    const fileUrl = selectedFile
+      ? URL.createObjectURL(selectedFile)
+      : undefined;
 
     const newMsg: Message = {
       id: currentMessages.length + 1,
       text: newMessage,
-      sender: 'me',
+      sender: "me",
       time,
-      status: 'sent',
+      status: "sent",
       file: selectedFile || undefined,
-      fileUrl: fileUrl || undefined
+      fileUrl: fileUrl || undefined,
     };
 
-    setMessagesByBatch(prev => ({
+    setMessagesByBatch((prev) => ({
       ...prev,
       [selectedBatch.id]: [...(prev[selectedBatch.id] || []), newMsg],
     }));
 
-    setNewMessage('');
+    setNewMessage("");
     setSelectedFile(null);
     setShowEmojiPicker(false);
   };
 
   const handleEmojiClick = (emojiData: any) => {
-    setNewMessage(prev => prev + emojiData.emoji);
+    setNewMessage((prev) => prev + emojiData.emoji);
   };
 
-  const getStatusIcon = (status: Message['status']) => {
+  const getStatusIcon = (status: Message["status"]) => {
     switch (status) {
-      case 'sent':
+      case "sent":
         return <FiCheck className="inline text-gray-400 ml-1" />;
-      case 'delivered':
+      case "delivered":
         return (
           <span className="inline ml-1 text-blue-500">
             <FiCheck className="inline" />
             <FiCheck className="inline -ml-2" />
           </span>
         );
-      case 'seen':
+      case "seen":
         return (
           <span className="inline ml-1 text-green-500">
             <FiCheck className="inline" />
@@ -125,13 +151,18 @@ const Chat: React.FC<ChatProps> = ({ selectedBatch, setSelectedBatch }) => {
   const renderFilePreview = (fileUrl: string, file: File) => {
     if (!file || !fileUrl) return null;
 
-    if (file.type.startsWith('image/')) {
+    if (file.type.startsWith("image/")) {
       return <img src={fileUrl} alt="uploaded" className="w-40 mt-2 rounded" />;
-    } else if (file.type.startsWith('video/')) {
+    } else if (file.type.startsWith("video/")) {
       return <video controls src={fileUrl} className="w-40 mt-2 rounded" />;
     } else {
       return (
-        <a href={fileUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline mt-2 block">
+        <a
+          href={fileUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 underline mt-2 block"
+        >
           {file.name}
         </a>
       );
@@ -139,14 +170,23 @@ const Chat: React.FC<ChatProps> = ({ selectedBatch, setSelectedBatch }) => {
   };
 
   if (!selectedBatch) {
-    return <div className="text-gray-500 text-center mt-32">Select a batch to start chatting</div>;
+    return (
+      <div className="text-gray-500 text-center mt-32">
+        Select a batch to start chatting
+      </div>
+    );
   }
 
   return (
     <div className="relative bg-white rounded-lg h-[87vh] p-4 mr-10 flex flex-col">
       {/* Header */}
       <div className="flex items-center gap-3 mb-4 bg-white shadow-2xl h-18 rounded-2xl cursor-pointer">
-        <img src={selectedBatch.image} alt="" className="w-13 h-13 ml-5 rounded-full"  onClick={() => setShowModal(true)}/>
+        <img
+          src={selectedBatch.image}
+          alt=""
+          className="w-13 h-13 ml-5 rounded-full"
+          onClick={() => setShowModal(true)}
+        />
         <div>
           <h2 className="text-lg font-semibold">{selectedBatch.name}</h2>
           <h2 className="text-md">{selectedBatch.batch}</h2>
@@ -154,43 +194,61 @@ const Chat: React.FC<ChatProps> = ({ selectedBatch, setSelectedBatch }) => {
       </div>
 
       {/* Message area */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-3 rounded-t-2xl " style={{backgroundImage: `url(${chatbg})`, backgroundSize: 'cover',  backgroundPosition: 'center'}}>
-       {currentMessages.map((msg) => (
-  <div
-    key={msg.id}
-    className={`flex flex-col items-${msg.sender === 'me' ? 'end' : 'start'} mb-3`}
-  >
-  
-    <div className={`flex items-end ${msg.sender === 'me' ? 'flex-row-reverse' : 'flex-row'} gap-2`}>
-   
-      <img
-        src={userIcon}
-        alt=""
-        className={`p-2 rounded-lg w-10 h-10 ${msg.sender === 'me' ? 'bg-blue-700 ml-2' : 'bg-blue-700 mr-2'}`}
-      />
+      <div
+        className="flex-1 overflow-y-auto p-4 space-y-3 rounded-t-2xl "
+        style={{
+          backgroundImage: `url(${chatbg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        {currentMessages.map((msg) => (
+          <div
+            key={msg.id}
+            className={`flex flex-col items-${
+              msg.sender === "me" ? "end" : "start"
+            } mb-3`}
+          >
+            <div
+              className={`flex items-end ${
+                msg.sender === "me" ? "flex-row-reverse" : "flex-row"
+              } gap-2`}
+            >
+              <img
+                src={userIcon}
+                alt=""
+                className={`p-2 rounded-lg w-10 h-10 ${
+                  msg.sender === "me" ? "bg-blue-700 ml-2" : "bg-blue-700 mr-2"
+                }`}
+              />
 
-    
-      <div className={`max-w-[70%] px-4 py-2 rounded-lg ${msg.sender === 'me' ? 'bg-[#CA406F] text-white' : 'bg-white text-black'}`}>
-        <div>{msg.text}</div>
-        {msg.file && msg.fileUrl && renderFilePreview(msg.fileUrl, msg.file)}
+              <div
+                className={`max-w-[70%] px-4 py-2 rounded-lg ${
+                  msg.sender === "me"
+                    ? "bg-[#CA406F] text-white"
+                    : "bg-white text-black"
+                }`}
+              >
+                <div>{msg.text}</div>
+                {msg.file &&
+                  msg.fileUrl &&
+                  renderFilePreview(msg.fileUrl, msg.file)}
+              </div>
+            </div>
+
+            <div
+              className={`text-xs mt-1 text-gray-400 flex items-center gap-1 ${
+                msg.sender === "me"
+                  ? "justify-end pr-12"
+                  : "justify-start pl-12"
+              }`}
+            >
+              {msg.time}
+              {msg.sender === "me" && getStatusIcon(msg.status)}
+            </div>
+          </div>
+        ))}
       </div>
-    </div>
-
-   
-    <div
-      className={`text-xs mt-1 text-gray-400 flex items-center gap-1 ${
-        msg.sender === 'me' ? 'justify-end pr-12' : 'justify-start pl-12'
-      }`}
-    >
-      {msg.time}
-      {msg.sender === 'me' && getStatusIcon(msg.status)}
-    </div>
-  </div>
-))}
-
-
-      </div>
-      
 
       {showEmojiPicker && (
         <div className="absolute bottom-24 left-6 z-50">
@@ -198,17 +256,26 @@ const Chat: React.FC<ChatProps> = ({ selectedBatch, setSelectedBatch }) => {
         </div>
       )}
 
-
-      <div className="p-4 flex items-center gap-2 rounded-b-2xl relative" style={{backgroundImage: `url(${chatbg})`,  backgroundSize: 'cover',  backgroundPosition: 'center'}}>
+      <div
+        className="p-4 flex items-center gap-2 rounded-b-2xl relative"
+        style={{
+          backgroundImage: `url(${chatbg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         <div className="relative flex items-center w-full">
-          <span onClick={() => setShowEmojiPicker(prev => !prev)} className="absolute left-3 text-gray-500 cursor-pointer">
+          <span
+            onClick={() => setShowEmojiPicker((prev) => !prev)}
+            className="absolute left-3 text-gray-500 cursor-pointer"
+          >
             <FiSmile className="text-xl" />
           </span>
           <input
             type="text"
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
-            onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
+            onKeyDown={(e) => e.key === "Enter" && sendMessage()}
             className="w-full rounded-lg pl-12 pr-12 h-13 py-2 focus:outline-none shadow-2xl bg-white focus:ring-2"
             placeholder="Type your message..."
           />
@@ -219,8 +286,11 @@ const Chat: React.FC<ChatProps> = ({ selectedBatch, setSelectedBatch }) => {
             </label>
           </span>
         </div>
-        <button onClick={sendMessage} className="bg-green-500 h-13 w-13 text-white p-2 rounded-md">
-          <img src={sendIcon} alt="Send" className='ml-1.5'/>
+        <button
+          onClick={sendMessage}
+          className="bg-green-500 h-13 w-13 text-white p-2 rounded-md"
+        >
+          <img src={sendIcon} alt="Send" className="ml-1.5" />
         </button>
       </div>
 
@@ -234,14 +304,16 @@ const Chat: React.FC<ChatProps> = ({ selectedBatch, setSelectedBatch }) => {
             >
               <FiX className="text-2xl" />
             </button>
-<div className="flex flex-col gap-5 items-center text-center mt-4">
+            <div className="flex flex-col gap-5 items-center text-center mt-4">
               <img
                 src={selectedBatch.image}
                 alt="Profile"
                 className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-lg"
               />
               <h2 className="text-xl font-bold mt-2">{selectedBatch.name}</h2>
-              <p className="text-green-600 text-sm font-semibold">{selectedBatch.status}</p>
+              <p className="text-green-600 text-sm font-semibold">
+                {selectedBatch.status}
+              </p>
             </div>
             <hr className="my-6 border-gray-200" />
             <div className="space-y-6 text-gray-700 text-sm">
@@ -249,8 +321,10 @@ const Chat: React.FC<ChatProps> = ({ selectedBatch, setSelectedBatch }) => {
                 <h3 className="font-semibold text-gray-900 mb-1">About</h3>
                 <p>{selectedBatch.about}</p>
               </div>
-              <div className='border-b-1'>
-                <h3 className="font-semibold text-gray-900 mb-1">Personal Information</h3>
+              <div className="border-b-1">
+                <h3 className="font-semibold text-gray-900 mb-1">
+                  Personal Information
+                </h3>
                 <div className="space-y-2">
                   <p className="flex items-center gap-2">
                     <FiSend className="text-gray-500" />

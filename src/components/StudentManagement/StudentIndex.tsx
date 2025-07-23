@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { useState } from "react";
 // import background from "../../assets/Backdrop Image.jpg"
 
-import type { Note, FormData } from './Student'
-import StudentList from "./StudentList"
-import AddEditModal from "./AddModal"
-import FilterSection from "./FilterSection"
+import type { Note, FormData } from "./Student";
+import StudentList from "./StudentList";
+import AddEditModal from "./AddModal";
+import FilterSection from "./FilterSection";
 
 const StudentIndex = () => {
-  const [showFilter, setShowFilter] = useState(false)
-  const [showModal, setShowModal] = useState(false)
-  const [isEditing, setIsEditing] = useState(false)
-  const [editingStudent, setEditingStudent] = useState<Note | null>(null)
+  const [showFilter, setShowFilter] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editingStudent, setEditingStudent] = useState<Note | null>(null);
 
   const [notes, setNotes] = useState<Note[]>([
     {
@@ -45,18 +45,20 @@ const StudentIndex = () => {
       location: "Thanjavur",
       email: "cbum@gmail.com",
     },
-  ])
+  ]);
 
-  const [statusFilter, setStatusFilter] = useState("")
-  const [courseFilter, setCourseFilter] = useState("")
-  const [searchFilter, setSearchFilter] = useState("")
+  const [statusFilter, setStatusFilter] = useState("");
+  const [courseFilter, setCourseFilter] = useState("");
+  const [searchFilter, setSearchFilter] = useState("");
 
   const filteredNotes = notes.filter((note) => {
-    const statusMatch = statusFilter ? note.status === statusFilter : true
-    const courseMatch = courseFilter ? note.course === courseFilter : true
-    const searchMatch = searchFilter ? note.title.toLowerCase().includes(searchFilter.toLowerCase()) : true
-    return statusMatch && courseMatch && searchMatch
-  })
+    const statusMatch = statusFilter ? note.status === statusFilter : true;
+    const courseMatch = courseFilter ? note.course === courseFilter : true;
+    const searchMatch = searchFilter
+      ? note.title.toLowerCase().includes(searchFilter.toLowerCase())
+      : true;
+    return statusMatch && courseMatch && searchMatch;
+  });
 
   const handleSubmit = (formData: FormData, uploadedFile: File | null) => {
     if (isEditing && editingStudent) {
@@ -73,9 +75,9 @@ const StudentIndex = () => {
                 email: formData.email,
                 file: uploadedFile || undefined,
               }
-            : note,
-        ),
-      )
+            : note
+        )
+      );
     } else {
       const newNote: Note = {
         id: Date.now(),
@@ -87,35 +89,33 @@ const StudentIndex = () => {
         file: uploadedFile || undefined,
         location: formData.city,
         email: formData.email,
-      }
-      setNotes([newNote, ...notes])
+      };
+      setNotes([newNote, ...notes]);
     }
 
-    setShowModal(false)
-    setIsEditing(false)
-    setEditingStudent(null)
-  }
+    setShowModal(false);
+    setIsEditing(false);
+    setEditingStudent(null);
+  };
 
   const handleEdit = (note: Note) => {
-    setEditingStudent(note)
-    setIsEditing(true)
-    setShowModal(true)
-  }
+    setEditingStudent(note);
+    setIsEditing(true);
+    setShowModal(true);
+  };
 
   const handleDelete = (id: number) => {
-    setNotes(notes.filter((note) => note.id !== id))
-  }
+    setNotes(notes.filter((note) => note.id !== id));
+  };
 
   const handleAddNew = () => {
-    setIsEditing(false)
-    setEditingStudent(null)
-    setShowModal(true)
-  }
+    setIsEditing(false);
+    setEditingStudent(null);
+    setShowModal(true);
+  };
 
   return (
-    <div
-      className="h-full min-h-screen w-full bg-cover bg-center relative"
-    >
+    <div className="h-full min-h-screen w-full bg-cover bg-center relative">
       <div className="px-10 py-6 space-y-6">
         <h1 className="text-3xl font-semibold text-[#716F6F]">Student</h1>
 
@@ -135,12 +135,15 @@ const StudentIndex = () => {
             onClick={handleAddNew}
             className="gap-2 flex items-center bg-[#CA406F] px-4 py-2 rounded-lg text-white shadow-md"
           >
-           
             Add New Student
           </button>
         </div>
 
-        <StudentList students={filteredNotes} onEdit={handleEdit} onDelete={handleDelete} />
+        <StudentList
+          students={filteredNotes}
+          onEdit={handleEdit}
+          onDelete={handleDelete}
+        />
       </div>
 
       <AddEditModal
@@ -151,7 +154,7 @@ const StudentIndex = () => {
         isEditing={isEditing}
       />
     </div>
-  )
-}
+  );
+};
 
 export default StudentIndex;
