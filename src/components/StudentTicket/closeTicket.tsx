@@ -21,11 +21,7 @@ export default function ClosedTicket() {
   <span className="font-medium text-base">Back</span>
 </button>
       <h2 style={{...FONTS.heading_01}}>STUDENT TICKET</h2>
-
-    
-     
-
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-6">
+  <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-6">
         <div className="lg:col-span-2 bg-white shadow rounded-xl p-4 flex flex-col max-h-[75vh]">
           <div className="flex items-center gap-3 mb-3">
             <div className="w-full p-4 rounded-xl shadow-md bg-white flex items-center gap-4">
@@ -37,11 +33,8 @@ export default function ClosedTicket() {
     </p>
   </div>
 </div>
-
-          </div>
-
-         
-          <div
+ </div>
+            <div
             className="flex flex-col gap-3 flex-1 overflow-y-auto rounded-lg p-4"
             style={{ backgroundImage: `url(${chattheme})`, backgroundSize: "cover" }}
           >

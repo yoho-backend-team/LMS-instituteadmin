@@ -23,7 +23,6 @@ import Category from "@/pages/FQAcategory/category/category";
 import AddQust from "@/pages/helpcenter/AddQust/addQust";
 import HelpFQA from "@/pages/helpcenter/helpFQA/helpFQA";
 import StaffIdCard from "@/pages/id_cardmanagement/staffidcard/staffidcard";
-import StudentIdCrad from "@/pages/id_cardmanagement/studentidcard/studentidcard";
 import Liveclasses from "@/pages/liveclasses/liveclasses";
 import Allnotification from "@/pages/notificationmanagement/allnotification/allnotification";
 import StudentNotification from "@/pages/notificationmanagement/studentnotification/studentnotification";
@@ -48,6 +47,7 @@ import BranchOverview from "@/components/Branch/branchOverview";
 import StudentDashboardMain from "@/components/Batch/viewBatch";
 import ChatPage from "@/components/StudentTicket/chatPage";
 import ClosedTicket from "@/components/StudentTicket/closeTicket";
+import StudentIDCard from "@/pages/id_cardmanagement/studentidcard/studentidcard";
 const Approutes = () => {
   return (
     <BrowserRouter>
@@ -58,7 +58,7 @@ const Approutes = () => {
           <Route path="Allnotification" element={<Allnotification />} />
           <Route path="Studentnotification" element={<StudentNotification />} />
           <Route path="Liveclasses" element={<Liveclasses />} />
-          <Route path="StudentIdCard" element={<StudentIdCrad />} />
+          <Route path="StudentIdCard" element={<StudentIDCard />} />
           <Route path="StaffIdCard" element={<StaffIdCard />} />
           <Route path="HelpFQA" element={<HelpFQA />} />
           <Route path="AddQust" element={<AddQust />} />
