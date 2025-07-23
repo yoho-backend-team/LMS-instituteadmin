@@ -18,7 +18,7 @@ const ClassesTab = () => {
           {[1, 2, 3].map((_, index) => (
             <div
               key={index}
-              className="p-4 bg-white shadow rounded flex flex-col gap-3"
+              className="p-4 bg-white shadow rounded-lg flex flex-col gap-3"
             >
               <div>
                 <h3 className="text-lg font-semibold">To path Of MERN Stack</h3>

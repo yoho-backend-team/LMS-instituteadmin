@@ -5,7 +5,6 @@ import { SlOptionsVertical } from "react-icons/sl";
 import { FaCalendarCheck, FaClock } from "react-icons/fa";
 import { RiListCheck3 } from "react-icons/ri";
 
-
 export interface Ticket {
   id: number;
   name: string;
@@ -21,6 +20,7 @@ const YourTicket = () => {
   const [showPanel, setShowPanel] = useState(false);
   const [selectedTicket, setSelectedTicket] = useState<Ticket | null>(null);
   const [filter, setFilter] = useState<"Open" | "Closed">("Open");
+  const [dropdownOpenId, setDropdownOpenId] = useState<number | null>(null);
   const [tickets, setTickets] = useState<Ticket[]>([
     {
       id: 1,
@@ -75,12 +75,18 @@ const YourTicket = () => {
   };
 
   const filteredTickets = tickets.filter((t) => t.status === filter);
+  const handleDeleteTicket = (ticketId: number) => {
+    setTickets((prevTickets) =>
+      prevTickets.filter((ticket) => ticket.id !== ticketId)
+    );
+    setDropdownOpenId(null);
+  };
 
   return (
-    <div className="p-2 ">
+    <div className="p-2">
       {/* Create Ticket Modal */}
       {showPanel && (
-        <div className="fixed right-0  h-[85vh] z-50 bg-white shadow-xl w-1/3">
+        <div className="fixed right-0 h-[85vh] z-50 bg-white shadow-xl w-1/3">
           <Createticket
             onClose={() => setShowPanel(false)}
             onSubmit={handleCreateTicket}
@@ -137,7 +143,7 @@ const YourTicket = () => {
             {filteredTickets.map((ticket) => (
               <div
                 key={ticket.id}
-                className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition cursor-pointer"
+                className="bg-white p-4 rounded-2xl shadow-md hover:shadow-lg transition cursor-pointer"
                 onClick={() => setSelectedTicket(ticket)}
               >
                 <div className="flex items-start justify-between">
@@ -154,13 +160,38 @@ const YourTicket = () => {
                       </p>
                     </div>
                   </div>
-                  <div className="text-[#CA406F] cursor-pointer text-lg">
-                    <button><SlOptionsVertical /> 
-                      </button>
+                  <div
+                    className="text-[#CA406F] cursor-pointer text-lg relative"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <button
+                      className="p-1 text-[#D24582] hover:bg-gray-100 rounded-full"
+                      onClick={() =>
+                        setDropdownOpenId((prevId) =>
+                          prevId === ticket.id ? null : ticket.id
+                        )
+                      }
+                    >
+                      <SlOptionsVertical size={20} />
+                    </button>
+
+                    {dropdownOpenId === ticket.id && (
+                      <div className="p-2 absolute right-0 mt-2 w-30 bg-white border rounded-lg shadow-lg z-50">
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation(); // prevent triggering chat view
+                            handleDeleteTicket(ticket.id);
+                          }}
+                          className="w-full flex items-center gap-2 text-md px-2 py-1 border mt-1 text-[#716F6F] border-gray-300 rounded-lg hover:bg-[#CA406F] hover:text-white"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
 
-                <p className="text-gray-600 mt-4 text-[15px] font-medium">
+                <p className="text-gray-600 mt-4 text-[15px] h-13 line-clamp-3 font-medium">
                   {ticket.description}
                 </p>
 
