@@ -1,6 +1,6 @@
 import React from "react";
 import { FaBriefcase, FaCalendarAlt, FaPhoneAlt, FaUser } from "react-icons/fa";
-import { IoTransgenderOutline } from "react-icons/io5";
+import { FaVenusMars } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 
 interface Props {
@@ -80,7 +80,7 @@ const InfoTab: React.FC<Props> = ({
             {/* Gender */}
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-2">
-                <IoTransgenderOutline className="text-[#CA406F]" />
+                <FaVenusMars className="text-[#CA406F]" />
                 <label>Gender</label>
               </div>
               <input
