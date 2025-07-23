@@ -44,6 +44,8 @@ import All from "../components/notificationmanagement/overallnotification/all/al
 import Profile from "@/pages/profile/profile/profile";
 import Settings from "@/pages/profile/settings/settings";
 import Logout from "@/pages/profile/logout/logout";
+import ProfileEdit from "@/components/profile/edit/edit";
+
 const Approutes = () => {
   return (
     <BrowserRouter>
@@ -93,8 +95,8 @@ const Approutes = () => {
           <Route path="/all" element={<All />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/settings" element={<Settings />} />
-            <Route path="/logout" element={<Logout />} />
-
+          <Route path="/logout" element={<Logout />} />
+          <Route path="/profiledit" element={<ProfileEdit />} />
         </Route>
 
 

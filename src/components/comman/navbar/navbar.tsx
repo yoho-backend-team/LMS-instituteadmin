@@ -1,12 +1,16 @@
 
-
-
 import { FiBell } from "react-icons/fi";
 import Titlelogo from "@/assets/icons/titlelogo.png";
 import { useState, useRef, useEffect } from "react";
-import Profile from "@/pages/profile/profile/profile";
 import { Link } from "react-router";
 
+
+
+
+
+import { IoSettingsOutline } from "react-icons/io5";
+import { FaRegUser } from "react-icons/fa";
+import { TbLogout } from "react-icons/tb";
 const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<string | null>(null);
@@ -25,19 +29,6 @@ const Navbar = () => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
-
-  // const renderContent = () => {
-  //   switch (activeTab) {
-  //     case "profile":
-  //       return <Profile />;
-  //     case "settings":
-  //       return <div className="p-4">Settings content coming soon</div>;
-  //     case "logout":
-  //       return <div className="p-4">Logging out...</div>;
-  //     default:
-  //       return null;
-  //   }
-  // };
 
   return (
     <div>
@@ -63,90 +54,84 @@ const Navbar = () => {
                 className="h-full w-full object-cover"
               />
             </button>
-
             {dropdownOpen && (
-              <div className="absolute right-0 mt-3 w-50 bg-white rounded-md shadow-lg z-10">
-                {/* <ul className="p-3 space-y-4">
-                  <li>
-                    <Link
-                    to={'profile'}
-                     
-                      className={`w-full rounded-lg text-left px-4 py-2 hover:bg-gray-100 ${activeTab === "profile" ? "bg-[#CA406F] font-semibold text-white" : ""
-                        }`}
-                    >
-                      Profile
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to={'settings'}
-                      className={`w-full rounded-lg text-left px-4 py-2 hover:bg-gray-100 ${activeTab === "settings" ? "bg-[#CA406F] font-semibold text-white" : ""
-                        }`}
-                    >
-                      Settings
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to={'logout'}
-                      className={`w-full rounded-lg text-left px-4 py-2 hover:bg-gray-100 text-red-600 ${activeTab === "logout" ? "bg-[#CA406F] font-semibold text-white" : ""
-                        }`}
-                    >
-                      Logout
-                    </Link>
-                  </li>
+              <div className="absolute right-0 mt-2 w-60 bg-white rounded-md shadow-lg z-50">
+                {/* Header */}
+                <div className="flex items-center justify-between px-4 py-3 ">
+                  <div>
+                    <p className="text-sm text-gray-500">Good evening</p>
+                    <p className="text-lg font-bold text-gray-800">Kumar</p>
+                  </div>
+                  <div>
+                    <button className="bg-green-500 text-white text-xs px-2 py-1 rounded-sm">
+                      Active
+                    </button>
+                  </div>
+                </div>
 
-                </ul> */}
-
-                <ul className="p-3 space-y-4">
+                <ul className="p-2 ">
                   <li>
                     <Link
-                      to={'profile'}
+                      to="profile"
                       onClick={() => {
-                        // setActiveTab("profile");
+                        setActiveTab("profile");
                         setDropdownOpen(false);
                       }}
-                      className={`w-full rounded-lg text-left px-4 py-2 hover:bg-gray-100 ${activeTab === "profile" ? "bg-[#CA406F] font-semibold text-white" : ""
+                      className={`block rounded-lg px-4 py-2 text-sm text-left hover:bg-gray-200 hover:text-black ${activeTab === "profile"
+                          ? "bg-[#CA406F] font-semibold text-white"
+                          : ""
                         }`}
                     >
-                      Profile
+                      <div className="flex items-center gap-2">
+                        <FaRegUser />
+                        Profile
+                      </div>
                     </Link>
                   </li>
                   <li>
                     <Link
-                      to={'settings'}
+                      to="settings"
                       onClick={() => {
-                        // setActiveTab("settings");
+                        setActiveTab("settings");
                         setDropdownOpen(false);
                       }}
-                      className={`w-full rounded-lg text-left px-4 py-2 hover:bg-gray-100 ${activeTab === "settings" ? "bg-[#CA406F] font-semibold text-white" : ""
+                      className={`block rounded-lg px-4 py-2 text-sm text-left hover:bg-gray-200 hover:text-black ${activeTab === "settings"
+                          ? "bg-[#CA406F] font-semibold text-white"
+                          : ""
                         }`}
                     >
-                      Settings
+                      <div className="flex items-center gap-2">
+                        <IoSettingsOutline />
+                        Settings
+                      </div>
                     </Link>
                   </li>
                   <li>
                     <Link
-                      to={'logout'}
+                      to="logout"
                       onClick={() => {
-                        // setActiveTab("logout");
+                        setActiveTab("logout");
                         setDropdownOpen(false);
                       }}
-                      className={`w-full rounded-lg text-left px-4 py-2 hover:bg-gray-100 text-red-600 ${activeTab === "logout" ? "bg-[#CA406F] font-semibold text-white" : ""
+                      className={`block rounded-lg px-4 py-2 text-sm text-left text-red-600 hover:bg-gray-200 hover:text-red-700 ${activeTab === "logout"
+                          ? "bg-[#CA406F] font-semibold text-white"
+                          : ""
                         }`}
                     >
-                      Logout
+                      <div className="flex items-center gap-2">
+                        <TbLogout />
+                        Logout
+                      </div>
                     </Link>
                   </li>
                 </ul>
-
               </div>
             )}
+
+
           </div>
         </div>
       </nav>
-
-      {/* {activeTab && <div>{renderContent()}</div>} */}
     </div>
   );
 };
