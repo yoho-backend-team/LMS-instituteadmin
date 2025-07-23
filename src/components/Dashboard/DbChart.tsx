@@ -1,117 +1,126 @@
-import React, { useState } from "react";
 import {
-  BarChart,
-  Bar,
+  AreaChart,
+  Area,
   XAxis,
   YAxis,
+  Tooltip,
   ResponsiveContainer,
   CartesianGrid,
 } from "recharts";
+import { curveCardinal } from "d3-shape";
+import { useState } from "react";
 
-const chartData = [
-  { month: "Jan", revenue: 4000, expense: 3500 },
-  { month: "Feb", revenue: 3000, expense: 2800 },
-  { month: "Mar", revenue: 2000, expense: 1800 },
-  { month: "Apr", revenue: 2780, expense: 2500 },
-  { month: "May", revenue: 1890, expense: 1600 },
-  { month: "Jun", revenue: 2390, expense: 2100 },
-  { month: "Jul", revenue: 3490, expense: 3200 },
-  { month: "Aug", revenue: 4000, expense: 3800 },
-  { month: "Sep", revenue: 3500, expense: 3200 },
-  { month: "Oct", revenue: 3200, expense: 2900 },
-  { month: "Nov", revenue: 2800, expense: 2500 },
-  { month: "Dec", revenue: 3900, expense: 3600 },
+const dataRevenue = [
+  { name: "Jan", uv: 4000 },
+  { name: "Feb", uv: 3000 },
+  { name: "Mar", uv: 2000 },
+  { name: "Apr", uv: 2780 },
+  { name: "May", uv: 1890 },
+  { name: "Jun", uv: 2390 },
+  { name: "Jul", uv: 3490 },
+  { name: "Aug", uv: 2800 },
+  { name: "Sep", uv: 3200 },
+  { name: "Oct", uv: 3100 },
+  { name: "Nov", uv: 2900 },
+  { name: "Dec", uv: 3700 },
 ];
 
-// Custom 3D Diamond Bar
-const DiamondBar = (props: any) => {
-  const { x, y, width, height, fill } = props;
-  const depth = 8;
+const dataExpense = [
+  { name: "Jan", uv: 2000 },
+  { name: "Feb", uv: 2200 },
+  { name: "Mar", uv: 1800 },
+  { name: "Apr", uv: 2100 },
+  { name: "May", uv: 1700 },
+  { name: "Jun", uv: 1900 },
+  { name: "Jul", uv: 2300 },
+  { name: "Aug", uv: 2500 },
+  { name: "Sep", uv: 2700 },
+  { name: "Oct", uv: 2600 },
+  { name: "Nov", uv: 2400 },
+  { name: "Dec", uv: 2800 },
+];
 
-  const frontColor = fill;
-  const topColor = "#e55a9b";    // top highlight
-  const rightColor = "#a33572";  // darker side
+const cardinal = curveCardinal.tension(0.2);
 
-  return (
-    <g>
-      {/* Front */}
-      <rect x={x} y={y} width={width} height={height} fill={frontColor} />
-
-      {/* Top */}
-      <polygon
-        points={`${x},${y} ${x + depth},${y - depth} ${x + width + depth},${y - depth} ${x + width},${y}`}
-        fill={topColor}
-      />
-
-      {/* Right */}
-      <polygon
-        points={`${x + width},${y} ${x + width + depth},${y - depth} ${x + width + depth},${y + height - depth} ${x + width},${y + height}`}
-        fill={rightColor}
-      />
-    </g>
-  );
+const CustomTooltip = ({ active, payload }: any) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="bg-white px-2 py-1 rounded shadow-lg text-sm text-gray-700 border border-gray-200">
+        {`${payload[0].value}k`}
+      </div>
+    );
+  }
+  return null;
 };
 
-export default function RevenueExpenseChart() {
+const DbChart = () => {
   const [activeTab, setActiveTab] = useState<"revenue" | "expense">("revenue");
 
+  const data = activeTab === "revenue" ? dataRevenue : dataExpense;
+  const color = activeTab === "revenue" ? "#3b82f6" : "#f43f5e";
+
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
-      <div className="flex justify-between mb-6">
+    <div className="w-full h-80 rounded-2xl bg-white p-4 shadow-xl">
+      {/* Tabs */}
+      <div className="flex justify-center gap-4 mb-3">
         <button
           onClick={() => setActiveTab("revenue")}
-          className={`px-6 py-2 rounded-lg font-medium transition-colors ${
+          className={`px-4 py-1.5 rounded-lg shadow-md text-sm ${
             activeTab === "revenue"
-              ? "bg-[#CA406F] text-white"
-              : "text-[#CA406F] hover:bg-gray-100 border border-[#CA406F]"
+              ? "bg-gradient-to-br from-blue-400 to-blue-600 text-white"
+              : "bg-gray-100 text-gray-500 shadow-inner"
           }`}
         >
           Revenue
         </button>
         <button
           onClick={() => setActiveTab("expense")}
-          className={`px-6 py-2 rounded-lg font-medium transition-colors ${
+          className={`px-4 py-1.5 rounded-lg shadow-md text-sm ${
             activeTab === "expense"
-              ? "bg-[#CA406F] text-white"
-              : " text-[#CA406F] hover:bg-gray-100 border border-[#CA406F]"
+              ? "bg-gradient-to-br from-rose-400 to-rose-600 text-white"
+              : "bg-gray-100 text-gray-500 shadow-inner"
           }`}
         >
           Expense
         </button>
       </div>
 
-      <div className="h-64">
-        <ResponsiveContainer width="100%" height="100%">
-          <BarChart
-            data={chartData}
-            margin={{ top: 20, right: 30, left: 0, bottom: 5 }}
-            barSize={32}
-          >
-            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
-            <XAxis
-              dataKey="month"
-              axisLine={false}
-              tickLine={false}
-              tick={{ fill: "#6B7280", fontSize: 12 }}
-            />
-            <YAxis
-              axisLine={false}
-              tickLine={false}
-              tickFormatter={(value) => `${(value / 1000).toFixed(0)}k`}
-              tick={{ fill: "#6B7280", fontSize: 12 }}
-              domain={[0, 5000]}
-              ticks={[0, 1000, 2000, 3000, 4000, 5000]}
-            />
+      {/* Chart */}
+      <ResponsiveContainer width="100%" height="75%">
+        <AreaChart data={data}>
+          <defs>
+            <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor={color} stopOpacity={0.6} />
+              <stop offset="100%" stopColor={color} stopOpacity={0.1} />
+            </linearGradient>
+          </defs>
+          <CartesianGrid
+            strokeDasharray="3 3"
+            vertical={false}
+            stroke="#e5e7eb"
+          />
+          <XAxis
+            dataKey="name"
+            stroke="#9ca3af"
+            fontSize={12}
+            padding={{ left: 10, right: 10 }}
+          />
 
-            <Bar
-              dataKey={activeTab}
-              shape={<DiamondBar />}
-              fill="#BF4B94"
-              radius={[4, 4, 0, 0]}
-            />
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
+          <YAxis hide />
+          <Tooltip content={<CustomTooltip />} />
+          <Area
+            type={cardinal}
+            dataKey="uv"
+            stroke={color}
+            fill="url(#chartFill)"
+            strokeWidth={2}
+            dot={{ r: 3, stroke: "#fff", strokeWidth: 1.5 }}
+            activeDot={{ r: 5 }}
+          />
+        </AreaChart>
+      </ResponsiveContainer>
     </div>
   );
-}
+};
+
+export default DbChart;

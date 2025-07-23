@@ -10,31 +10,31 @@ const statCards = [
     title: "Total Earnings",
     value: "₹21,440",
     icon: TotalEarnings,
-    color: "from-[#F798D3] via-[#D96FBE] to-[#BF4B94]",
+    color: "from-red-400 via-pink-500 to-purple-500",
   },
   {
     title: "Projects",
     value: "10,000",
     icon: Project,
-    color: "from-[#A18CD1] via-[#D8B5FF] to-[#FBC2EB]",
+    color: "from-green-400 via-blue-400 to-purple-500",
   },
   {
     title: "Instructor",
     value: "543",
     icon: Instructor,
-    color: "from-[#74EBD5] via-[#A5C8F3] to-[#9FACE6]",
+    color: "from-green-200 via-green-300 to-blue-300",
   },
   {
     title: "Students",
     value: "10,000",
     icon: Instructor,
-    color: "from-[#FDCB82] via-[#FF9A8B] to-[#FF7E5F]",
+    color: "from-pink-400 via-purple-500 to-blue-500",
   },
   {
     title: "Revenue",
     value: "₹8,000",
     icon: TotalEarnings,
-    color: "from-[#FFDEE9] via-[#D5F3FF] to-[#B5FFFC]",
+    color: "from-yellow-400 via-orange-400 to-red-500",
   },
 ];
 
