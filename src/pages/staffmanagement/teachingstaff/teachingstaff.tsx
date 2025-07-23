@@ -194,7 +194,7 @@ const Teachingstaff = () => {
                   </div>
                 </div>
 
-                <div className="w-full text-center border bg-[#0000FA] rounded-sm text-white">
+                <div className="w-full text-center border bg-[#0400FF] rounded-sm text-white">
                   <button
                     className="p-1 w-full"
                     onClick={() => handleViewProfile(staff)}
