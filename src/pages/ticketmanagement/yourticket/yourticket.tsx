@@ -21,8 +21,6 @@ const YourTicket = () => {
   const [showPanel, setShowPanel] = useState(false);
   const [selectedTicket, setSelectedTicket] = useState<Ticket | null>(null);
   const [filter, setFilter] = useState<"Open" | "Closed">("Open");
-  // const priorityOptions = ["Low", "Medium", "High"];
-
   const [tickets, setTickets] = useState<Ticket[]>([
     {
       id: 1,
@@ -79,7 +77,7 @@ const YourTicket = () => {
   const filteredTickets = tickets.filter((t) => t.status === filter);
 
   return (
-    <div className="">
+    <div className="p-2 ">
       {/* Create Ticket Modal */}
       {showPanel && (
         <div className="fixed right-0  h-[85vh] z-50 bg-white shadow-xl w-1/3">

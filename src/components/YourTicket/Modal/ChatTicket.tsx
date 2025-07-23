@@ -1,6 +1,5 @@
-import { ArrowLeft } from "lucide-react";
 import Frame from "../../../assets/frame.png"; 
-import { IoMdSend } from "react-icons/io";
+import { IoIosArrowBack, IoMdSend } from "react-icons/io";
 import { FaRegSmileWink, FaUser } from "react-icons/fa";
 import { FiPaperclip } from "react-icons/fi";
 
@@ -24,9 +23,9 @@ const ChatTicket: React.FC<ChatTicketProps> = ({ ticket, onBack }) => {
       {/* Back Button */}
       <button
         onClick={onBack}
-        className="flex items-center text-gray-600 hover:text-gray-900 mb-4"
+        className="flex items-center text-gray-600 hover:text-[#CA406F] mb-4 w-10 h-10 rounded-full "
       >
-        <ArrowLeft className="w-5 h-5 mr-2" />
+        <IoIosArrowBack  size={20} />
       </button>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 h-full">

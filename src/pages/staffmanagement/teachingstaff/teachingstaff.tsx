@@ -70,10 +70,16 @@ const Teachingstaff = () => {
     setShowAddStaff(false);
   };
   const handleAddStaff = (newStaff: any) => {
-    const newId = staffList.length + 1;
-    setStaffList((prevList) => [...prevList, { id: newId, ...newStaff }]);
-    setShowAddStaff(false);
+  const newId = staffList.length + 1;
+  const completeStaff = {
+    id: newId,
+    status: "Active", 
+    image: "", 
+    ...newStaff
   };
+  setStaffList((prevList) => [...prevList, completeStaff]);
+  setShowAddStaff(false);
+};
 
   return (
     <div className="h-full flex flex-col gap-4 transition-all duration-300">

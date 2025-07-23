@@ -9,26 +9,26 @@ import SecurityTab from "../TabContent/Security";
 import ClassesTab from "../TabContent/Classes";
 import AttendanceTab from "../TabContent/Attendance";
 import ActivityTab from "../TabContent/Acitivity";
-import { ArrowLeft } from "lucide-react";
+import { IoIosArrowBack } from "react-icons/io";
 
 interface ViewStaffProps {
   staff: {
     name: string;
     email: string;
-    dob: string;
-    gender: string;
-    course: string;
-    designation: string;
-    qualification: string;
-    state: string;
-    city: string;
-    pinCode: string;
-    address1: string;
-    address2: string;
-    phone: string;
-    altPhone: string;
-    image: string;
     status: string;
+    image?: string;
+    dob?: string;
+    gender?: string;
+    course?: string;
+    designation?: string;
+    qualification?: string;
+    state?: string;
+    city?: string;
+    pinCode?: string;
+    address1?: string;
+    address2?: string;
+    phone?: string;
+    altPhone?: string;
   };
   onBack: () => void;
 }
@@ -42,12 +42,14 @@ const ViewStaff: React.FC<ViewStaffProps> = ({ staff, onBack }) => {
         ? "bg-green-600 text-white"
         : "bg-white text-gray-700 hover:bg-green-100"
     }`;
-
   return (
     <div className=" flex flex-col gap-4">
-      <button className="self-start" onClick={onBack}>
-        <ArrowLeft />
-      </button>
+       <button
+              onClick={onBack}
+              className="flex items-center text-gray-600 hover:text-[#CA406F]  rounded-full "
+            >
+              <IoIosArrowBack  size={20} />
+            </button>
 
       {/* Profile Header */}
       <div className="flex gap-4 bg-white rounded-xl shadow-md p-3">
@@ -67,7 +69,7 @@ const ViewStaff: React.FC<ViewStaffProps> = ({ staff, onBack }) => {
                 : "bg-red-500"
             }`}
           >
-            {staff.status}
+           {staff.status || "Inactive"}
           </p>
         </div>
       </div>
