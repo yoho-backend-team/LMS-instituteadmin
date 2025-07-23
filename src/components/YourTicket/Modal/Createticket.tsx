@@ -1,8 +1,8 @@
 import CustomDropdown from "@/components/StaffManagement/CustomeDropDown";
 import type { Ticket } from "@/pages/ticketmanagement/yourticket/yourticket";
-import { X } from "lucide-react";
 import { useRef, useState } from "react";
 import { BiSolidCloudUpload } from "react-icons/bi";
+import { IoMdClose } from "react-icons/io";
 
 interface Props {
   onClose: () => void;
@@ -45,7 +45,7 @@ const Createticket = ({ onClose, onSubmit }: Props) => {
         onClick={onClose}
         className="absolute top-2 right-2 text-white bg-gray-500 rounded-full p-1 hover:bg-red-500"
       >
-        <X size={16} />
+        <IoMdClose size={16} />
       </button>
       <h2 className="text-xl font-bold mb-4 text-[#716F6]">Create Ticket</h2>
       <form

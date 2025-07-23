@@ -179,7 +179,7 @@ const YourTicket = () => {
                       <div className="p-2 absolute right-0 mt-2 w-30 bg-white border rounded-lg shadow-lg z-50">
                         <button
                           onClick={(e) => {
-                            e.stopPropagation(); // prevent triggering chat view
+                            e.stopPropagation(); 
                             handleDeleteTicket(ticket.id);
                           }}
                           className="w-full flex items-center gap-2 text-md px-2 py-1 border mt-1 text-[#716F6F] border-gray-300 rounded-lg hover:bg-[#CA406F] hover:text-white"

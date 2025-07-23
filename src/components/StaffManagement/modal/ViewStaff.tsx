@@ -3,7 +3,6 @@ import { IoInformationCircle, IoShieldCheckmark } from "react-icons/io5";
 import { RiPresentationFill } from "react-icons/ri";
 import { LiaUserCheckSolid } from "react-icons/lia";
 import { TbGraphFilled } from "react-icons/tb";
-
 import InfoTab from "../TabContent/Info";
 import SecurityTab from "../TabContent/Security";
 import ClassesTab from "../TabContent/Classes";

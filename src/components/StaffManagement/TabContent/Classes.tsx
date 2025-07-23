@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Calendar } from "lucide-react";
 import { FaCalendarAlt } from "react-icons/fa";
 import ClassessModal from "../modal/ClassessModal";
 
@@ -25,7 +24,7 @@ const ClassesTab = () => {
                 <p className="text-gray-500 text-sm">2 students in this class</p>
               </div>
               <div className="flex items-center gap-2 text-sm text-gray-700">
-                {index % 2 === 0 ? <Calendar /> : <FaCalendarAlt />}
+                {index % 2 === 0 ? <FaCalendarAlt /> : <FaCalendarAlt />}
                 <p>4:00 AM to 12:30 PM</p>
               </div>
               <div className="flex justify-end">

@@ -1,5 +1,5 @@
 import React from "react";
-import { X } from "lucide-react";
+import { IoMdClose } from "react-icons/io";
 
 interface ClassessModalProps {
   onClose: () => void;
@@ -34,7 +34,7 @@ const ClassessModal: React.FC<ClassessModalProps> = ({ onClose }) => {
         onClick={onClose}
         className="absolute top-4 right-4 text-gray-600 hover:text-red-600"
       >
-        <X size={20} />
+        <IoMdClose size={20} />
       </button>
 
       <h2 className="text-xl font-semibold mb-4">Class Details</h2>
