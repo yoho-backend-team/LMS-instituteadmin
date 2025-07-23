@@ -36,10 +36,10 @@ const ViewStaff: React.FC<ViewStaffProps> = ({ staff, onBack }) => {
   const [activePage, setActivePage] = useState("info");
 
   const tabButtonStyle = (page: string) =>
-    `px-4 py-2 border flex items-center gap-2 rounded transition-all ${
+    `px-4 py-2 border flex items-center gap-2 rounded transition-all  ${
       activePage === page
         ? "bg-green-600 text-white"
-        : "bg-white text-gray-700 hover:bg-green-100"
+        : "bg-tranparent border-2 text-gray-700 hover:bg-green-100"
     }`;
   return (
     <div className=" flex flex-col gap-4">

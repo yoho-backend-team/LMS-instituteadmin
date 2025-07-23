@@ -22,12 +22,12 @@ const InfoTab: React.FC<Props> = ({
   alternativeNumber,
   role,
 }) => (
-  <div>
-    <div className="bg-[#CA406F] p-3 rounded-t-lg">
+  <div className="">
+    <div className="bg-[#CA406F] p-3 rounded-t-sm">
       <h3 className="text-lg text-white">User Details</h3>
     </div>
 
-    <div className="bg-white">
+    <div className="bg-white rounded-b-sm">
       <form>
         {/* Personal Information */}
         <div>

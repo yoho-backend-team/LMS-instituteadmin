@@ -6,7 +6,7 @@ import interactionPlugin from "@fullcalendar/interaction";
 
 const AttendanceTab = () => {
   return (
-    <div className="p-4 bg-white shadow rounded">
+    <div className="p-4 bg-white shadow rounded-sm">
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]}
         initialView="dayGridMonth"

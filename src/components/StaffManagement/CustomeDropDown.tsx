@@ -7,7 +7,7 @@ interface CustomDropdownProps {
   onChange: (value: string) => void;
   label?: string;
   placeholder?: string;
-  width?: string; // can be "w-40" or "200px"
+  width?: string;
 }
 
 const CustomDropdown: React.FC<CustomDropdownProps> = ({
@@ -56,9 +56,7 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({
                 setOpen(false);
               }}
               className={`border border-gray-300 rounded-md mx-2 my-2 px-4 py-3 cursor-pointer hover:bg-[#CA406F] hover:text-white transition ${
-                value === option
-                  ? "bg-[#CA406F] text-white font-semibold"
-                  : ""
+                value === option ? "bg-[#CA406F] text-white font-semibold" : ""
               }`}
             >
               {option}

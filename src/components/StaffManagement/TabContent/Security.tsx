@@ -1,7 +1,7 @@
 import { PiPasswordFill } from "react-icons/pi";
 
 const SecurityTab = () => (
-  <div className="p-4 bg-white shadow rounded">
+  <div className="p-4 bg-white shadow rounded-sm">
     <h3 className="text-lg text-[#7D7D7D] font-semibold mb-2">Change Password</h3>
     
     <form>
@@ -16,7 +16,7 @@ const SecurityTab = () => (
             type="password"
             name="newPassword"
             id="newPassword"
-            className="border h-10 rounded-lg px-2"
+            className="border h-10 rounded-sm px-2"
             placeholder="Enter new password"
           />
         </div>
@@ -31,7 +31,7 @@ const SecurityTab = () => (
             type="password"
             name="confirmPassword"
             id="confirmPassword"
-            className="border h-10 rounded-lg px-2"
+            className="border h-10 rounded-sm px-2"
             placeholder="Confirm new password"
           />
         </div>
@@ -40,7 +40,7 @@ const SecurityTab = () => (
       <div className="flex justify-end p-2">
         <button
           type="submit"
-          className="bg-green-600 px-4 py-2 text-white rounded-lg hover:bg-green-700 transition"
+          className="bg-green-600 px-4 py-2 text-white rounded-sm hover:bg-green-700 transition"
         >
           Change Password
         </button>

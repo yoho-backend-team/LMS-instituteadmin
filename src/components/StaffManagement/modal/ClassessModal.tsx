@@ -3,6 +3,11 @@ import { IoMdClose } from "react-icons/io";
 
 interface ClassessModalProps {
   onClose: () => void;
+  classData: {
+    title: string;
+    students: number;
+    time: string;
+  };
 }
 
 const dummyStudents = [
@@ -26,7 +31,10 @@ const dummyStudents = [
   },
 ];
 
-const ClassessModal: React.FC<ClassessModalProps> = ({ onClose }) => {
+const ClassessModal: React.FC<ClassessModalProps> = ({
+  onClose,
+  classData,
+}) => {
   return (
     <div className="bg-white p-6 rounded-sm shadow-lg w-full max-w-full mx-auto relative">
       {/* Close Button */}
@@ -39,10 +47,43 @@ const ClassessModal: React.FC<ClassessModalProps> = ({ onClose }) => {
 
       <h2 className="text-xl font-semibold mb-4">Class Details</h2>
 
-      {/* Form */}
+      {/* Class Info Section */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+        <div className="flex flex-col gap-1">
+          <label htmlFor="title">Course</label>
+          <input
+            type="text"
+            id="title"
+            value={classData.title}
+            readOnly
+            className="border p-2 rounded w-full bg-gray-100"
+          />
+        </div>
+        <div className="flex flex-col gap-1">
+          <label htmlFor="students">Total Students</label>
+          <input
+            type="text"
+            id="students"
+            value={classData.students}
+            readOnly
+            className="border p-2 rounded w-full bg-gray-100"
+          />
+        </div>
+        <div className="flex flex-col gap-1">
+          <label htmlFor="time">Class Time</label>
+          <input
+            type="text"
+            id="time"
+            value={classData.time}
+            readOnly
+            className="border p-2 rounded w-full bg-gray-100"
+          />
+        </div>
+      </div>
+
+      {/* Placeholder Inputs (optional - keep or remove as needed) */}
       <form className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
         {[
-          "Course",
           "Batch",
           "Duration",
           "Date",
@@ -64,7 +105,7 @@ const ClassessModal: React.FC<ClassessModalProps> = ({ onClose }) => {
         ))}
       </form>
 
-      {/* Table */}
+      {/* Students Table */}
       <div className="overflow-x-auto scrollbar-hide">
         <table className="min-w-full border border-gray-200 text-sm">
           <thead>
