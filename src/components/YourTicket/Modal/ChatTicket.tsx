@@ -1,4 +1,4 @@
-import Frame from "../../../assets/frame.png"; 
+import Frame from "../../../assets/frame.png";
 import { IoIosArrowBack, IoMdSend } from "react-icons/io";
 import { FaRegSmileWink, FaUser } from "react-icons/fa";
 import { FiPaperclip } from "react-icons/fi";
@@ -12,6 +12,7 @@ interface ChatTicketProps {
     time: string;
     priority: string;
     description: string;
+    image?: string;
     status?: "Open" | "Closed";
   };
   onBack: () => void;
@@ -23,23 +24,33 @@ const ChatTicket: React.FC<ChatTicketProps> = ({ ticket, onBack }) => {
       {/* Back Button */}
       <button
         onClick={onBack}
-        className="flex items-center text-gray-600 hover:text-[#CA406F] mb-4 w-10 h-10 rounded-full "
+        className="flex items-center text-gray-600 hover:text-[#CA406F] mb-2  rounded-full "
       >
-        <IoIosArrowBack  size={20} />
+        <IoIosArrowBack size={20} />
       </button>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 h-full">
         {/* Chat Panel */}
         <div className="lg:col-span-2 bg-white rounded-xl shadow p-4 flex flex-col h-[90vh]">
           {/* Header */}
-          <div className="flex items-center gap-3 border-b pb-3 mb-3 border rounded-lg shadow-lg">
-            <div className="w-12 h-12 bg-[#CA406F] rounded-full overflow-hidden">
-              <img
-                src=""
-                alt="Profile"
-                className="w-full h-full object-cover"
-              />
+          <div className="flex items-center gap-3 border-b p-2 mb-3 border rounded-lg shadow-lg">
+            <div className="w-12 h-12 rounded-full bg-gray-200 overflow-hidden flex items-center justify-center text-[#CA406F] font-bold text-sm uppercase">
+              {ticket.image ? (
+                <img
+                  src={ticket.image}
+                  alt="Profile"
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                ticket.name
+                  .split(" ")
+                  .map((n) => n[0])
+                  .join("")
+                  .slice(0, 2)
+                  .toUpperCase()
+              )}
             </div>
+
             <div>
               <h2 className="font-semibold text-lg text-[#716F6F]">
                 {ticket.name}

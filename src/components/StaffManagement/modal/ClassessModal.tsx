@@ -28,7 +28,7 @@ const dummyStudents = [
 
 const ClassessModal: React.FC<ClassessModalProps> = ({ onClose }) => {
   return (
-    <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-full mx-auto relative">
+    <div className="bg-white p-6 rounded-sm shadow-lg w-full max-w-full mx-auto relative">
       {/* Close Button */}
       <button
         onClick={onClose}
@@ -65,7 +65,7 @@ const ClassessModal: React.FC<ClassessModalProps> = ({ onClose }) => {
       </form>
 
       {/* Table */}
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto scrollbar-hide">
         <table className="min-w-full border border-gray-200 text-sm">
           <thead>
             <tr className="bg-gray-100 text-left text-gray-700">

@@ -12,57 +12,59 @@ export interface Ticket {
   date: string;
   time: string;
   priority: string;
+  image?: string;
   description: string;
   status?: "Open" | "Closed";
 }
+const initialTickets: Ticket[] = [
+  {
+    id: 1,
+    name: "Elon Musk",
+    email: "musk@gmail.com",
+    date: "2025-07-22",
+    time: "10:30 AM",
+    priority: "High",
+    description: "This ticket was created from the student mobile app.",
+    status: "Open",
+  },
+  {
+    id: 2,
+    name: "Sundar Pichai",
+    email: "sundar@gmail.com",
+    date: "2025-07-21",
+    time: "2:15 PM",
+    priority: "Medium",
+    description: "Issue with student login.",
+    status: "Open",
+  },
+  {
+    id: 3,
+    name: "Mark Zuckerberg",
+    email: "zuck@gmail.com",
+    date: "2025-07-18",
+    time: "1:00 PM",
+    priority: "Low",
+    description: "Resolved: Query regarding attendance sync.",
+    status: "Closed",
+  },
+  {
+    id: 4,
+    name: "Satya Nadella",
+    email: "satya@gmail.com",
+    date: "2025-07-17",
+    time: "9:45 AM",
+    priority: "High",
+    description: "Resolved: Server timeout issue reported.",
+    status: "Closed",
+  },
+];
 
 const YourTicket = () => {
   const [showPanel, setShowPanel] = useState(false);
   const [selectedTicket, setSelectedTicket] = useState<Ticket | null>(null);
   const [filter, setFilter] = useState<"Open" | "Closed">("Open");
   const [dropdownOpenId, setDropdownOpenId] = useState<number | null>(null);
-  const [tickets, setTickets] = useState<Ticket[]>([
-    {
-      id: 1,
-      name: "Elon Musk",
-      email: "musk@gmail.com",
-      date: "2025-07-22",
-      time: "10:30 AM",
-      priority: "High",
-      description: "This ticket was created from the student mobile app.",
-      status: "Open",
-    },
-    {
-      id: 2,
-      name: "Sundar Pichai",
-      email: "sundar@gmail.com",
-      date: "2025-07-21",
-      time: "2:15 PM",
-      priority: "Medium",
-      description: "Issue with student login.",
-      status: "Open",
-    },
-    {
-      id: 3,
-      name: "Mark Zuckerberg",
-      email: "zuck@gmail.com",
-      date: "2025-07-18",
-      time: "1:00 PM",
-      priority: "Low",
-      description: "Resolved: Query regarding attendance sync.",
-      status: "Closed",
-    },
-    {
-      id: 4,
-      name: "Satya Nadella",
-      email: "satya@gmail.com",
-      date: "2025-07-17",
-      time: "9:45 AM",
-      priority: "High",
-      description: "Resolved: Server timeout issue reported.",
-      status: "Closed",
-    },
-  ]);
+  const [tickets, setTickets] = useState<Ticket[]>(initialTickets);
 
   const handleCreateTicket = (newTicket: Omit<Ticket, "id" | "status">) => {
     const ticketWithId: Ticket = {
@@ -83,19 +85,27 @@ const YourTicket = () => {
   };
 
   return (
-    <div className="p-2">
+    <div className=" relative">
       {/* Create Ticket Modal */}
       {showPanel && (
-        <div className="fixed right-0 h-[85vh] z-50 bg-white shadow-xl w-1/3">
-          <Createticket
-            onClose={() => setShowPanel(false)}
-            onSubmit={handleCreateTicket}
-          />
+        <div
+          className="absolute h-[85vh] inset-0 flex justify-end "
+          onClick={() => setShowPanel(false)} 
+        >
+          <div
+            className="h-[85vh] w-1/3 bg-white shadow-xl "
+            onClick={(e) => e.stopPropagation()} // prevent inner modal click from closing
+          >
+            <Createticket
+              onClose={() => setShowPanel(false)}
+              onSubmit={handleCreateTicket}
+            />
+          </div>
         </div>
       )}
 
       {/* Header */}
-      <div className="flex items-center justify-between p-3 bg-[#CA406F] shadow rounded">
+      <div className="flex items-center justify-between p-3 bg-[#CA406F] shadow rounded ">
         <h2 className="uppercase text-lg text-white font-bold flex items-center gap-2">
           <FaCalendarCheck size={20} /> Your Ticket
         </h2>
@@ -139,7 +149,7 @@ const YourTicket = () => {
             onBack={() => setSelectedTicket(null)}
           />
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 overflow-auto scrollbar-hide">
             {filteredTickets.map((ticket) => (
               <div
                 key={ticket.id}
@@ -148,9 +158,23 @@ const YourTicket = () => {
               >
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gray-200 overflow-hidden">
-                      <img src="" alt="Profile" />
+                    <div className="w-12 h-12 rounded-full bg-gray-200 overflow-hidden flex items-center justify-center text-[#CA406F] font-bold text-sm uppercase">
+                      {ticket.image ? (
+                        <img
+                          src={ticket.image}
+                          alt="Profile"
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        ticket.name
+                          .split(" ")
+                          .map((n) => n[0])
+                          .join("")
+                          .slice(0, 2)
+                          .toUpperCase()
+                      )}
                     </div>
+
                     <div>
                       <h3 className="text-lg font-semibold text-[#333]">
                         {ticket.name}
@@ -179,7 +203,7 @@ const YourTicket = () => {
                       <div className="p-2 absolute right-0 mt-2 w-30 bg-white border rounded-lg shadow-lg z-50">
                         <button
                           onClick={(e) => {
-                            e.stopPropagation(); 
+                            e.stopPropagation();
                             handleDeleteTicket(ticket.id);
                           }}
                           className="w-full flex items-center gap-2 text-md px-2 py-1 border mt-1 text-[#716F6F] border-gray-300 rounded-lg hover:bg-[#CA406F] hover:text-white"

@@ -43,32 +43,42 @@ const ViewStaff: React.FC<ViewStaffProps> = ({ staff, onBack }) => {
     }`;
   return (
     <div className=" flex flex-col gap-4">
-       <button
-              onClick={onBack}
-              className="flex items-center text-gray-600 hover:text-[#CA406F]  rounded-full "
-            >
-              <IoIosArrowBack  size={20} />
-            </button>
+      <button
+        onClick={onBack}
+        className="flex items-center text-gray-600 hover:text-[#CA406F]  rounded-full "
+      >
+        <IoIosArrowBack size={20} />
+      </button>
 
       {/* Profile Header */}
-      <div className="flex gap-4 bg-white rounded-xl shadow-md p-3">
-        <div className="w-32 h-28 rounded-full overflow-hidden border">
-          <img
-            src={staff.image || "https://via.placeholder.com/150"}
-            alt="profile"
-            className="w-full h-full object-cover"
-          />
+      <div className="flex gap-4 bg-white rounded-sm shadow-md p-3">
+        <div className="w-32 h-28 rounded-full overflow-hidden border bg-gray-100 flex items-center justify-center text-3xl font-bold text-[#CA406F] uppercase">
+          {staff.image ? (
+            <img
+              src={staff.image}
+              alt={staff.name}
+              className="w-full h-full object-cover"
+              onError={(e) => (e.currentTarget.style.display = "none")}
+            />
+          ) : (
+            staff.name
+              .split(" ")
+              .map((n) => n[0])
+              .join("")
+              .slice(0, 2)
+          )}
         </div>
+
         <div className="flex items-center justify-between w-full">
           <h2 className="text-xl font-semibold">{staff.name}</h2>
           <p
-            className={`px-4 py-1 rounded-lg text-white text-sm font-medium ${
+            className={`px-4 py-1 rounded-sm text-white text-sm font-medium ${
               staff.status.toLowerCase() === "active"
                 ? "bg-green-600"
                 : "bg-red-500"
             }`}
           >
-           {staff.status || "Inactive"}
+            {staff.status || "Inactive"}
           </p>
         </div>
       </div>

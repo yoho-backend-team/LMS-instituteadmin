@@ -7,7 +7,7 @@ interface CustomDropdownProps {
   onChange: (value: string) => void;
   label?: string;
   placeholder?: string;
-  width?: string;
+  width?: string; // can be "w-40" or "200px"
 }
 
 const CustomDropdown: React.FC<CustomDropdownProps> = ({
@@ -20,8 +20,15 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({
 }) => {
   const [open, setOpen] = useState(false);
 
+  const isTailwindWidth = width.startsWith("w-");
+
   return (
-    <div className={`relative inline-block text-sm ${width}`}>
+    <div
+      className={`relative inline-block text-sm ${
+        isTailwindWidth ? width : ""
+      }`}
+      style={!isTailwindWidth ? { width } : undefined}
+    >
       {label && (
         <label className="block mb-1 text-gray-700 font-medium bg-[#CA406F] px-2 py-1 rounded">
           {label}
@@ -49,7 +56,9 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({
                 setOpen(false);
               }}
               className={`border border-gray-300 rounded-md mx-2 my-2 px-4 py-3 cursor-pointer hover:bg-[#CA406F] hover:text-white transition ${
-                value === option ? "bg-[#CA406F] text-white font-semibold" : ""
+                value === option
+                  ? "bg-[#CA406F] text-white font-semibold"
+                  : ""
               }`}
             >
               {option}

@@ -50,7 +50,7 @@ const Createticket = ({ onClose, onSubmit }: Props) => {
       <h2 className="text-xl font-bold mb-4 text-[#716F6]">Create Ticket</h2>
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-4 mt-6 overflow-y-auto h-[70vh]"
+        className="flex flex-col gap-4 mt-6 overflow-y-auto h-[70vh] scrollbar-hide"
       >
         <div className="flex flex-col gap-2">
           <label>Query</label>
