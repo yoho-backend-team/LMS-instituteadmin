@@ -1,12 +1,11 @@
 "use client";
 
 import { useState } from "react";
-// import background from "../../assets/Backdrop Image.jpg"
-
 import type { Note, FormData } from "./Student";
 import StudentList from "./StudentList";
 import AddEditModal from "./AddModal";
 import FilterSection from "./FilterSection";
+import filter from "../../assets/Mask group.svg";
 
 const StudentIndex = () => {
   const [showFilter, setShowFilter] = useState(false);
@@ -120,16 +119,13 @@ const StudentIndex = () => {
         <h1 className="text-3xl font-semibold text-[#716F6F]">Student</h1>
 
         <div className="flex items-center justify-between">
-          <FilterSection
-            showFilter={showFilter}
-            onToggleFilter={() => setShowFilter(!showFilter)}
-            statusFilter={statusFilter}
-            courseFilter={courseFilter}
-            searchFilter={searchFilter}
-            onStatusFilterChange={setStatusFilter}
-            onCourseFilterChange={setCourseFilter}
-            onSearchFilterChange={setSearchFilter}
-          />
+          <button
+            onClick={() => setShowFilter(!showFilter)}
+            className="gap-2 flex items-center bg-[#CA406F] px-4 py-2 rounded-lg text-white shadow-md"
+          >
+            <img src={filter} alt="filter" className="h-5 w-5" />
+            {showFilter ? "Hide Filter" : "Show Filter"}
+          </button>
 
           <button
             onClick={handleAddNew}
@@ -138,6 +134,18 @@ const StudentIndex = () => {
             Add New Student
           </button>
         </div>
+
+        {/* Filter section dropdown */}
+        {showFilter && (
+          <FilterSection
+            statusFilter={statusFilter}
+            courseFilter={courseFilter}
+            searchFilter={searchFilter}
+            onStatusFilterChange={setStatusFilter}
+            onCourseFilterChange={setCourseFilter}
+            onSearchFilterChange={setSearchFilter}
+          />
+        )}
 
         <StudentList
           students={filteredNotes}

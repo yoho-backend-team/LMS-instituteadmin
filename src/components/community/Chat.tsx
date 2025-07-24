@@ -178,7 +178,7 @@ const Chat: React.FC<ChatProps> = ({ selectedBatch, setSelectedBatch }) => {
   }
 
   return (
-    <div className="relative bg-white rounded-lg h-[87vh] p-4 mr-10 flex flex-col">
+    <div className="relative text-[#716F6F] bg-white rounded-lg h-[87vh] p-4 mr-10 flex flex-col">
       {/* Header */}
       <div className="flex items-center gap-3 mb-4 bg-white shadow-2xl h-18 rounded-2xl cursor-pointer">
         <img
@@ -188,8 +188,8 @@ const Chat: React.FC<ChatProps> = ({ selectedBatch, setSelectedBatch }) => {
           onClick={() => setShowModal(true)}
         />
         <div>
-          <h2 className="text-lg font-semibold">{selectedBatch.name}</h2>
-          <h2 className="text-md">{selectedBatch.batch}</h2>
+          <h2 className="text-xl font-semibold">{selectedBatch.name}</h2>
+          <h2 className="text-sm">{selectedBatch.batch}</h2>
         </div>
       </div>
 
@@ -294,10 +294,10 @@ const Chat: React.FC<ChatProps> = ({ selectedBatch, setSelectedBatch }) => {
         </button>
       </div>
 
-      {/* Modal (unchanged part) */}
+     
       {showModal && selectedBatch && (
-        <div className="fixed inset-0 z-50 flex backdrop-blur-sm bg-white/30 h-screen mt-5 justify-end bg-opacity-40">
-          <div className="relative w-2/8 h-[87vh] bg-white rounded-2xl shadow-2xl z-50 p-6 overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex backdrop-blur-sm bg-white/30 h-screen justify-end bg-opacity-40">
+          <div className="relative w-2/8 h-[87vh] mt-15 bg-white rounded-2xl shadow-2xl z-50 p-6 overflow-y-auto">
             <button
               className="absolute top-4 right-4 text-white bg-black rounded-2xl"
               onClick={() => setShowModal(false)}

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import add from "../../assets/Add.svg";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { RefundModal } from "./AddModal";
+import { MdDelete, MdEditDocument } from "react-icons/md";
 
 interface Note {
   id: number;
@@ -162,22 +163,24 @@ const RefundManagement = () => {
     onToggle: () => void;
   }) => {
     return (
-      <div className="relative">
+      <div className="relative ">
         <button onClick={onToggle}>
           <BsThreeDotsVertical className="text-red-600" />
         </button>
         {isOpen && (
-          <div className="absolute right-0 w-28 bg-white border rounded shadow-md z-10">
+          <div className="fixed right-0 mr-8 w-40 gap-2 grid p-3 bg-white border rounded-lg shadow-lg z-10">
             <button
               onClick={onEdit}
-              className="w-full px-3 py-2 text-left text-sm hover:bg-gray-100"
+              className="w-full border  flex px-3 py-2 text-left text-sm rounded-md hover:text-white hover:bg-[#CA406F]"
             >
+              <MdEditDocument className="mt-1 mr-2" />
               Edit
             </button>
             <button
               onClick={onDelete}
-              className="w-full px-3 py-2 text-left text-sm hover:bg-gray-100"
+              className="w-full border flex px-3 py-2 text-left text-sm rounded-md hover:text-white hover:bg-[#CA406F]"
             >
+               <MdDelete className="mt-1 mr-2" />
               Delete
             </button>
           </div>
@@ -187,8 +190,8 @@ const RefundManagement = () => {
   };
 
   return (
-    <div className="h-full min-h-screen w-full  bg-cover bg-center relative">
-      <div className="px-10 py-6 space-y-6">
+    <div className="h-full min-h-screen w-full p-3 bg-cover bg-center relative">
+      <div className="space-y-6">
         <div className="flex items-start justify-between">
           <button
             onClick={() => setShowBranchDropdown((prev) => !prev)}
@@ -221,6 +224,7 @@ const RefundManagement = () => {
                 onChange={(e) => handleBranchSelect(e.target.value)}
                 className="w-full border rounded px-3 py-2 appearance-none"
               >
+                <option value=""></option>
                 <option value="">All</option>
                 <option value="Padur">Padur</option>
                 <option value="OMR">OMR</option>
@@ -253,9 +257,7 @@ const RefundManagement = () => {
                     return (
                       <tr
                         key={note.id}
-                        className={` transition-all duration-300 ${
-                          isOpen ? "h-[130px]" : "h-[80px]"
-                        }`}
+                        className={` transition-all duration-300`}
                       >
                         <td className="px-4 py-3">{`RFND-${note.id
                           .toString()

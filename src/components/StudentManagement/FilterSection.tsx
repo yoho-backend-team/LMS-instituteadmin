@@ -1,9 +1,6 @@
-import type React from "react";
-import filter from "../../assets/Mask group.svg";
+import React from "react";
 
 interface FilterSectionProps {
-  showFilter: boolean;
-  onToggleFilter: () => void;
   statusFilter: string;
   courseFilter: string;
   searchFilter: string;
@@ -13,8 +10,6 @@ interface FilterSectionProps {
 }
 
 const FilterSection: React.FC<FilterSectionProps> = ({
-  showFilter,
-  onToggleFilter,
   statusFilter,
   courseFilter,
   searchFilter,
@@ -23,81 +18,61 @@ const FilterSection: React.FC<FilterSectionProps> = ({
   onSearchFilterChange,
 }) => {
   return (
-    <>
-      <button
-        onClick={onToggleFilter}
-        className="gap-2 flex items-center bg-[#CA406F] px-4 py-2 rounded-lg text-white shadow-md"
-      >
-        <img
-          src={filter || "/placeholder.svg"}
-          alt="filter"
-          className="h-5 w-5"
+    <div className="mt-6 grid grid-cols-2 text-[#716F6F] md:grid-cols-2 gap-6 bg-white p-6 rounded-xl shadow-2xl">
+      <div className="flex flex-col w-full">
+        <label className=" text-lg ">
+          Filter By Status
+        </label>
+        <select
+          className="border h-13 rounded-md px-3 py-2"
+          value={statusFilter}
+          onChange={(e) => onStatusFilterChange(e.target.value)}
+        >
+          <option value=""></option>
+          <option value="">All</option>
+          <option value="Active">Active</option>
+          <option value="Completed">Completed</option>
+        </select>
+      </div>
+
+      <div className="flex flex-col w-full">
+        <label className=" text-lg ">
+          Filter By Course
+        </label>
+        <select
+          className="border h-13 rounded-md px-3 py-2"
+          value={courseFilter}
+          onChange={(e) => onCourseFilterChange(e.target.value)}
+        >
+          <option value=""></option>
+          <option value="">All</option>
+          <option value="React">React</option>
+          <option value="Java">Java</option>
+        </select>
+      </div>
+
+      <div className="flex flex-col w-full">
+        <label className=" text-lg ">
+          Filter By Batches
+        </label>
+        <select className="border h-13 rounded-md px-3 py-2">
+          <option value=""></option>
+          <option value="">All</option>
+          <option value="2025">2025</option>
+          <option value="2020">2020</option>
+        </select>
+      </div>
+
+      <div className="flex flex-col w-full">
+        <input
+          type="text"
+          placeholder="Enter Student Name"
+          className="border mt-6 h-13 rounded-md px-3 py-2"
+          value={searchFilter}
+          onChange={(e) => onSearchFilterChange(e.target.value)}
         />
-        {showFilter ? "Hide" : "Show Filter"}
-      </button>
-
-      {showFilter && (
-        <div className="mt-4 grid grid-cols-2 bg-white p-6 rounded-xl shadow-2xl gap-6">
-          <div className="flex flex-col w-full relative">
-            <label className="text-md font-semibold text-gray-600">
-              Filter By Status
-            </label>
-            <select
-              className="appearance-none border w-full rounded-md px-3 py-2 pr-10"
-              value={statusFilter}
-              onChange={(e) => onStatusFilterChange(e.target.value)}
-            >
-              <option value="">All</option>
-              <option value="Active">Active</option>
-              <option value="Completed">Completed</option>
-            </select>
-          </div>
-
-          <div className="flex flex-col w-full relative">
-            <label className="text-md font-semibold text-gray-600">
-              Filter By Course
-            </label>
-            <select
-              className="appearance-none border w-full rounded-md px-3 py-2 pr-10"
-              value={courseFilter}
-              onChange={(e) => onCourseFilterChange(e.target.value)}
-            >
-              <option value="">All</option>
-              <option>React</option>
-              <option>Java</option>
-            </select>
-          </div>
-
-          <div className="flex flex-col w-full relative">
-            <label className="text-md font-semibold text-gray-600">
-              Filter By Batches
-            </label>
-            <select
-              className="appearance-none border w-full rounded-md px-3 py-2 pr-10"
-              value={courseFilter}
-              onChange={(e) => onCourseFilterChange(e.target.value)}
-            >
-              <option value="">All</option>
-              <option>2025</option>
-              <option>2020</option>
-            </select>
-          </div>
-
-          <div>
-            <label className="text-md font-semibold text-gray-600">
-              Search Student
-            </label>
-            <input
-              type="text"
-              placeholder="Enter Student Name"
-              className="appearance-none border w-full rounded-md px-3 py-2"
-              value={searchFilter}
-              onChange={(e) => onSearchFilterChange(e.target.value)}
-            />
-          </div>
-        </div>
-      )}
-    </>
+      </div>
+    </div>
   );
 };
 

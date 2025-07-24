@@ -45,14 +45,14 @@ const CommunityChat: React.FC = ({}) => {
 
   return (
     <div className="flex w-full h-[90vh]">
-      {/* Left Side - Batch List */}
-      <div className="w-[30%] h-[87vh] bg-[#CA406F] text-white rounded-2xl mr-6 p-4 space-y-4">
-        <h2 className="text-3xl font-semibold mb-5">Batches</h2>
+     
+      <div className="w-[30%] h-[87vh] bg-[#CA406F] text-[#7D7D7D] rounded-2xl mr-6 p-4 space-y-4">
+        <h2 className="text-3xl text-white font-semibold mb-5">Batches</h2>
         {batchList.map((batch) => (
           <div
             key={batch.id}
             onClick={() => setSelectedBatch(batch)}
-            className="bg-white text-black p-3 rounded-lg cursor-pointer flex items-center gap-3 hover:bg-pink-100 transition"
+            className="bg-white text-[#716F6F]  p-3 rounded-lg cursor-pointer flex items-center gap-3 hover:bg-pink-100 transition"
           >
             <img
               src={batch.image}
@@ -60,14 +60,14 @@ const CommunityChat: React.FC = ({}) => {
               className="w-14 h-14 rounded-full object-cover"
             />
             <div className="grid">
-              <span className="font-medium">{batch.name}</span>
+              <span className="font-semibold text-lg">{batch.name}</span>
               <span className="text-sm text-gray-600">{batch.batch}</span>
             </div>
           </div>
         ))}
       </div>
 
-      <div className="flex-1">
+      <div className="flex-1 ml-5">
         <Chat
           selectedBatch={selectedBatch}
           setSelectedBatch={setSelectedBatch}

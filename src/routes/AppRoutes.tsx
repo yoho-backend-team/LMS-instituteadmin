@@ -48,7 +48,7 @@ import TrackOrder from "@/components/HelpFAQ/TrackOrder";
 import FindMissingOrder from "@/components/HelpFAQ/FindMissingOrder";
 import SecureDelivery from "@/components/HelpFAQ/SecureDelivery";
 import CertificateView from "@/components/CertificateManagement/CertificateView";
-import CertificateDownload from "@/components/CertificateManagement/CertificateDownload";
+
 const Approutes = () => {
   return (
     <BrowserRouter>
@@ -102,8 +102,7 @@ const Approutes = () => {
           <Route path="/track-order" element={<TrackOrder />} />
           <Route path="/find-missingpackage" element={<FindMissingOrder />} />
           <Route path="/secure-delivery" element={<SecureDelivery />} />
-         <Route path="/certificate/capture" element={<CertificateView />} />
-         <Route path="/certificate/download" element={<CertificateDownload />} />
+          <Route path="/certificate-view" element={<CertificateView />} />
 
 
 

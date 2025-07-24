@@ -35,15 +35,20 @@ export const NoteModal: React.FC<NoteModalProps> = ({
 }) => {
   if (!isOpen) return null
 
+  const filteredFields = isEditing
+    ? fields.filter((field) => field.key === "title" || field.key === "description")
+    : fields
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-end bg-black/30 backdrop-blur-md">
-      <div className="bg-white rounded-xl w-full max-w-md p-6 shadow-lg relative">
+    <div className="fixed inset-0 z-50 flex  items-center justify-end bg-black/30 backdrop-blur-md">
+      <div className="bg-white rounded-xl h-[90vh] w-full max-w-md p-6 shadow-lg relative">
         <button className="absolute top-3 right-3 bg-black text-white rounded-full p-1" onClick={onClose}>
           <XMarkIcon className="h-5 w-5" />
         </button>
 
         <h2 className="text-2xl font-semibold text-gray-600 mb-4">{isEditing ? "Edit Note" : "Add Note"}</h2>
 
+        
         <div
           className="border border-dashed border-gray-300 rounded-md text-center py-6 mb-4 cursor-pointer"
           onClick={() => document.getElementById("fileInput")?.click()}
@@ -63,13 +68,14 @@ export const NoteModal: React.FC<NoteModalProps> = ({
           </p>
         </div>
 
-        {fields.map((field) => (
+     
+        {filteredFields.map((field) => (
           <div key={field.key} className="mb-4">
             <label className="block mb-1 text-sm text-gray-600">{field.label}</label>
             {field.type === "select" ? (
               <select
                 className="w-full border rounded-md px-3 py-2"
-                value={formData[field.key] || ""}
+                
                 onChange={(e) => onFormChange(field.key, e.target.value)}
               >
                 <option value="">Select {field.label}</option>
@@ -83,7 +89,7 @@ export const NoteModal: React.FC<NoteModalProps> = ({
               <input
                 type={field.type}
                 className="w-full border rounded-md px-3 py-2"
-                value={formData[field.key] || ""}
+               
                 onChange={(e) => onFormChange(field.key, e.target.value)}
               />
             )}

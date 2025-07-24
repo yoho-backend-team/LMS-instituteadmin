@@ -15,7 +15,7 @@ const HelpFAQ = () => {
   };
 
   return (
-    <div className="">
+    <div className="p-3">
       <div className="bg-[#CA406F] p-5 text-white text-lg rounded-md font-bold">
         CUSTOMER
       </div>
@@ -25,7 +25,7 @@ const HelpFAQ = () => {
           Hello, How Can We Help You
         </div>
         <select
-          className="bg-white mt-5 w-2/5 h-12 ring-1 ring-[#716F6F] rounded text-[#716F6F]"
+          className="bg-white mt-5 w-2/4 h-12 ring-1 ring-[#716F6F] rounded text-[#716F6F]"
           onChange={handleSelectChange}
         >
           <option value="">Select a topic</option>

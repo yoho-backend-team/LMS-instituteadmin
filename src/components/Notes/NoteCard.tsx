@@ -21,7 +21,7 @@ interface NoteCardProps {
 
 export const NoteCard: React.FC<NoteCardProps> = ({ note, onEdit, onDelete, fileIcon }) => {
   return (
-    <div className="bg-white rounded-xl p-4 shadow-md relative">
+    <div className="bg-white text-[#716F6F] rounded-xl p-4 shadow-md relative">
       <div className="absolute right-3 top-3">
         <DropdownMenu onEdit={() => onEdit(note)} onDelete={() => onDelete(note.id)} />
       </div>
@@ -40,8 +40,8 @@ export const NoteCard: React.FC<NoteCardProps> = ({ note, onEdit, onDelete, file
         </div>
       )}
 
-      <h2 className="text-lg font-semibold mt-3 text-gray-700">{note.title}</h2>
-      <p className="text-sm text-gray-600 mt-2">{note.course}</p>
+      <h2 className="text-lg font-semibold mt-3 ">{note.title}</h2>
+      <p className="text-sm  mt-2">{note.course}</p>
 
       {note.status === "Active" && (
         <div className="flex items-center mt-2 gap-1 text-green-600 font-medium text-sm">

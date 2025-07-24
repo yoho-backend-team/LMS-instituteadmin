@@ -28,6 +28,7 @@ export const FilterSection: React.FC<FilterSectionProps> = ({ isVisible, filters
               value={values[filter.value] || ""}
               onChange={(e) => onChange(filter.value, e.target.value)}
             >
+              <option value=""></option>
               <option value="">All</option>
               {filter.options.map((option) => (
                 <option key={option} value={option}>

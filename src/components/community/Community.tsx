@@ -21,7 +21,7 @@ const CommunityManagement = () => {
         backgroundPosition: "center",
       }}
     >
-      <div className="h-screen mt-5 ml-12 w-full">
+      <div className="h-screen p-3 w-full">
         <CommunityChat />
       </div>
     </div>

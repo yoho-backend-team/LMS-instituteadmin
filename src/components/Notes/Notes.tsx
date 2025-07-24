@@ -141,10 +141,10 @@ const NotesManagement = () => {
 
   return (
     <div
-      className="min-h-screen w-full bg-cover bg-center"
+      className="min-h-screen p-3 w-full bg-cover bg-center"
       style={{ backgroundImage: `url(${background})`}}
     >
-      <div className="px-10 py-6">
+      <div className="">
         <HeaderActions
           title="Notes"
           onFilterToggle={() => setShowFilter(!showFilter)}

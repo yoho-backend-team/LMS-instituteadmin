@@ -1,9 +1,9 @@
-import Certificate from "@/components/CertificateManagement/Certificate"
+import { CertificateManager } from "@/components/CertificateManagement/Certificate"
 
 const StudentCertificate = () =>{
     return(
         <div>
-            <Certificate />
+            <CertificateManager />
         </div>
     )
 }
