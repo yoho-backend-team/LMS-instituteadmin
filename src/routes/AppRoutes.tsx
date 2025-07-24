@@ -48,6 +48,7 @@ import Settings from "@/pages/profile/settings/settings";
 import Logout from "@/pages/profile/logout/logout";
 import EditLiveClassForm from "@/components/live-classes/EditLiveClassForm";
 import TicketDetailPanel from "@/components/ticketmanagement/staffticket/TicketDetailPanel";
+import TicketDetailPanels from "@/components/ticketmanagement/studentticket/TicketDetailPannel";
 const Approutes = () => {
   return (
     <BrowserRouter>
@@ -82,6 +83,7 @@ const Approutes = () => {
           <Route path="Staffticket" element={< StaffTicket />} />
           <Route path="/staff-tickets/:ticketId" element={<TicketDetailPanel />} />
           <Route path="StudentTicket" element={<StudentTicket />} />
+          <Route path="/student-tickets/:ticketId" element={<TicketDetailPanels />} />
           <Route path="Yourticket" element={<YourTicket />} />
           <Route path="Dashboard" element={<Dashboard />} />
           <Route path="Branch" element={<Branch />} />
