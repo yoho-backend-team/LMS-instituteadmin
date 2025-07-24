@@ -17,6 +17,7 @@ const SideBar = ({
         if (isOpen) {
             setIsOpen(false)
         }
+          setActiveDropdown(null)
     }
 
     const handleToggle = () => {
@@ -26,8 +27,8 @@ const SideBar = ({
     return (
         <div
             className={`h-screen z-40 flex flex-col p-1 bg-gradient-to-b from-[#F6D3E9] via-[#FFFFFF] to-[#F6D3E9]
-              transform transition-all duration-500 ease-in-out origin-left
-              ${isOpen ? "w-64 scale-100 opacity-100" : "w-17 scale-y-100 opacity-80"}`}
+              transform transition-all duration-500 ease-in-out origin-left  
+              ${isOpen ? "w-64 scale-100 opacity-100 pb-6 " : "w-17 pb-6  scale-y-100 opacity-80  "}`}
         >
             <div className="flex items-center justify-between px-4 h-16 py-5">
                 <div className="relative group flex items-center overflow-visible px-0.5">
@@ -43,14 +44,14 @@ const SideBar = ({
                     </span> */}
                 </div>
             </div>
-            <nav className="overflow-y-auto px-2 space-y-3 mb-15 no-scrollbar">
+            <nav className="overflow-y-auto px-2  space-y-3 mb-15 no-scrollbar">
                 <SidebarLink
                     to="/dashboard"
                     icon={<LayoutDashboard />}
                     label="Dashboard"
                     isOpen={isOpen}
                     onClick={handleLinkClick}
-                    
+
                 />
                 <SidebarLink to="/community" icon={<Home />} label="Community" isOpen={isOpen} onClick={handleLinkClick} />
                 <SidebarDropdown
@@ -105,6 +106,7 @@ const SideBar = ({
                     icon={<UserSearch />}
                     label="Class Management"
                     isOpen={isOpen}
+                    childRoutes={["/OffLine Class", "/Live Class"]}
                     activeDropdown={activeDropdown}
                     setActiveDropdown={setActiveDropdown}
                     setIsOpen={setIsOpen}
@@ -112,6 +114,7 @@ const SideBar = ({
                     <SidebarLink1 to="/offlinemanagement" label="OffLine Class" isOpen={isOpen} onClick={handleLinkClick} />
                     <SidebarLink1 to="/Liveclasses" label="Live Class" isOpen={isOpen} onClick={handleLinkClick} />
                 </SidebarDropdown>
+
                 <SidebarLink
                     to="/Teachingstaff"
                     icon={<Briefcase />}
@@ -137,6 +140,8 @@ const SideBar = ({
                     icon={<UserSearch />}
                     label="Attendence Management"
                     isOpen={isOpen}
+                    childRoutes={["/Studentattendence", "/Staffattendence"]}
+
                     activeDropdown={activeDropdown}
                     setActiveDropdown={setActiveDropdown}
                     setIsOpen={setIsOpen}
@@ -148,6 +153,8 @@ const SideBar = ({
                     icon={<UserSearch />}
                     label="Payment Management"
                     isOpen={isOpen}
+                    childRoutes={["/Fees", "/Slaries", "/Subscription"]}
+
                     activeDropdown={activeDropdown}
                     setActiveDropdown={setActiveDropdown}
                     setIsOpen={setIsOpen}
@@ -162,16 +169,13 @@ const SideBar = ({
                     icon={<UserSearch />}
                     label="Notification Management"
                     isOpen={isOpen}
+                    childRoutes={["/Studentnotification", "/Staffnotification", "/Allnotification",]}
+
                     activeDropdown={activeDropdown}
                     setActiveDropdown={setActiveDropdown}
                     setIsOpen={setIsOpen}
                 >
-                    <SidebarLink1
-                        to="/Studentnotification"
-                        label="Studentnotification"
-                        isOpen={isOpen}
-                        onClick={handleLinkClick}
-                    />
+                    <SidebarLink1 to="/Studentnotification" label="Studentnotification" isOpen={isOpen} onClick={handleLinkClick}/>
                     <SidebarLink1 to="/Staffnotification" label="Staffnotification" isOpen={isOpen} onClick={handleLinkClick} />
                     <SidebarLink1 to="/Allnotification" label="Allnotification" isOpen={isOpen} onClick={handleLinkClick} />
                 </SidebarDropdown>
@@ -187,6 +191,8 @@ const SideBar = ({
                     icon={<UserSearch />}
                     label="Id Crad Management"
                     isOpen={isOpen}
+                    childRoutes={["/StudentIdCard", "/StaffIdCard"]}
+
                     activeDropdown={activeDropdown}
                     setActiveDropdown={setActiveDropdown}
                     setIsOpen={setIsOpen}
@@ -205,6 +211,8 @@ const SideBar = ({
                     icon={<UserSearch />}
                     label="Help Center"
                     isOpen={isOpen}
+                    childRoutes={["/HelpFQA", "/AddQust"]}
+
                     activeDropdown={activeDropdown}
                     setActiveDropdown={setActiveDropdown}
                     setIsOpen={setIsOpen}
@@ -216,6 +224,8 @@ const SideBar = ({
                     icon={<UserSearch />}
                     label="Ticket Management"
                     isOpen={isOpen}
+                    childRoutes={["/Staffticket", "/StudentTicket", "/Yourticket"]}
+
                     activeDropdown={activeDropdown}
                     setActiveDropdown={setActiveDropdown}
                     setIsOpen={setIsOpen}
@@ -228,6 +238,8 @@ const SideBar = ({
                     icon={<UserSearch />}
                     label="FQA Category"
                     isOpen={isOpen}
+                    childRoutes={["/Category", "/FQA"]}
+
                     activeDropdown={activeDropdown}
                     setActiveDropdown={setActiveDropdown}
                     setIsOpen={setIsOpen}
@@ -264,11 +276,10 @@ const SidebarLink1 = ({
             onClick={onClick}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className={`group flex items-center py-3 rounded-full ${
-                isActive ? "bg-[#CA406F] text-white" :
+            className={`group flex items-center py-3 rounded-full ${isActive ? "bg-[#CA406F] text-white" :
                 isHovered ? "bg-[rgba(202,64,111,0.1)]" :
-                "hover:bg-white/10"
-            } ${isOpen ? "justify-start gap-3 px-2" : "justify-center"}`}
+                    "hover:bg-white/10"
+                } ${isOpen ? "justify-start gap-3 px-2" : "justify-center"}`}
         >
             <div className="relative group flex items-center overflow-visible">
                 <div
@@ -314,11 +325,10 @@ const SidebarLink = ({
             onClick={onClick}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className={`group flex items-center py-3 rounded-full ${
-                isActive ? "bg-[#CA406F] text-white" :
+            className={`group flex items-center py-3 rounded-full ${isActive ? "bg-[#CA406F] text-white" :
                 isHovered ? "bg-[rgba(202,64,111,0.1)]" :
-                "hover:bg-white/10"
-            } ${isOpen ? "justify-start gap-3 px-2" : "justify-center px-5"}`}
+                    "hover:bg-white/10"
+                } ${isOpen ? "justify-start gap-3 px-2" : "justify-center px-5"}`}
         >
             <div className="relative group flex items-center overflow-visible">
                 <div
@@ -340,6 +350,9 @@ const SidebarLink = ({
         </Link>
     )
 }
+
+
+
 
 
 const SidebarDropdown = ({
@@ -374,9 +387,8 @@ const SidebarDropdown = ({
 
     return (
         <div
-            className={`w-full relative ${
-                isChildActive && !isOpen ? "bg-[#CA406F] text-white rounded-4xl" : "hover:backdrop-blur-md rounded-xl"
-            }`}
+            className={`w-full relative ${isChildActive && !isOpen ? "bg-[#CA406F] text-white rounded-4xl" : "hover:backdrop-blur-md rounded-xl"
+                }`}
         >
             <button
                 onClick={() => {
@@ -388,22 +400,18 @@ const SidebarDropdown = ({
                     }
                 }}
                 title={!isOpen ? label : ""}
-                className={`group flex items-center w-full py-2 transition-all ${
-                    isOpen ? "justify-start gap-3 px-2 rounded-md" : "justify-center rounded-md px-5"
-                }`}
+                className={`group flex items-center w-full py-2 transition-all ${isOpen ? "justify-start gap-3 px-2 rounded-md" : "justify-center rounded-md px-5"
+                    }`}
             >
                 <div className="relative group flex items-center overflow-visible">
                     <div
                         className={`text-lg flex-shrink-0 transform scale-100 transition-colors duration-200
                             group-hover:animate-[grow-from-dot-on-hover_1.5s_ease-out]
-                            ${
-                                isChildActive
-                                    ? !isOpen
-                                        ? "text-white"
-                                        : "text-black"
-                                    : expanded
-                                    ? "text-black/50"
-                                    : "text-[#CA406F]"
+                            ${isChildActive || expanded
+                                ? isOpen
+                                    ? "text-[#CA406F]"
+                                    : "text-white "
+                                : "text-[#CA406F]"
                             }`}
                     >
                         {icon}
@@ -416,14 +424,12 @@ const SidebarDropdown = ({
                 </div>
                 {isOpen && (
                     <>
-                        <span className={`font-medium text-sm flex-1 text-left transition-colors ${
-                            isChildActive ? "text-black" : expanded ? "text-black/50" : "text-black"
-                        }`}>
+                        <span className={`font-medium text-sm flex-1 text-left transition-colors ${isChildActive ? "text-black" : expanded ? "text-black/50" : "text-black"
+                            }`}>
                             {label}
                         </span>
-                        <span className={`transition-transform duration-200 ${
-                            expanded ? "rotate-180" : ""
-                        } ${isChildActive ? "text-black" : "text-black"}`}>
+                        <span className={`transition-transform duration-200 ${expanded ? "rotate-180" : ""
+                            } ${isChildActive ? "text-black" : "text-black"}`}>
                             <ChevronDown />
                         </span>
                     </>

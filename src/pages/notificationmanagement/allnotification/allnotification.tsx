@@ -86,7 +86,7 @@ const Allnotification = () => {
                     <div className="py-3">
                         <button
                             onClick={() => setShowForm(true)}
-                            className="bg-[#CA406F] text-white w-28 h-8 text-sm text-center py-1 rounded-sm absolute left-340  ">
+                            className="bg-[#CA406F] text-white w-28 h-8 text-sm text-center py-1 rounded-sm absolute left-298  ">
                             Add Notification
                         </button>
                     </div>

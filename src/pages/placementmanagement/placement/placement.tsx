@@ -48,7 +48,7 @@ const Placement = () => {
                         <p className="w-1/5">Company Name</p>
                         <p className="w-1/5">Interview Date</p>
                         <p className="w-1/5">Job Name</p>
-                        <p className="w-1/5 text-right">Active</p>
+                        <p className="w-1/5 text-center">Active</p>
                     </div>
                 </div>
 
@@ -67,7 +67,7 @@ const Placement = () => {
                                 <p className="w-1/5">{placement.company}</p>
                                 <p className="w-1/5">{placement.interviewDate}</p>
                                 <p className="w-1/5">{placement.jobName}</p>
-                                <div className="relative w-1/5 text-right">
+                                <div className="relative w-1/5 text-center">
                                     <BsThreeDotsVertical
                                         className="h-4 w-4 text-red-500 cursor-pointer inline-block"
                                         onClick={() =>
