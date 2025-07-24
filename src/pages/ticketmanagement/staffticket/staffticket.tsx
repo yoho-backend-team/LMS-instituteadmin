@@ -1,21 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import TicketTabs from "@/components/ticketmanagement/staffticket/TicketTabs";
-import TicketCard from "@/components/ticketmanagement/staffticket/TicketCard";
-import TicketDetailPanel from "@/components/ticketmanagement/staffticket/TicketDetailPanel";
+import TicketCard, { type Ticket } from "@/components/ticketmanagement/staffticket/TicketCard";
+import { FaCalendarCheck } from "react-icons/fa";
 
 
-// import type { Ticket  from "@/components/ticketmanagement/staffticket/TicketTabs";
-
-interface Ticket {
-  id: string;
-  subject: string;
-  status: string;
-  createdAt: string;
-  assignedTo: string;
-  priority?: "High" | "Medium" | "Low";
-}
-
-const dummyTickets: Ticket[] = [
+const initialTickets: Ticket[] = [
   {
     id: "t1",
     subject: "Login not working",
@@ -59,43 +49,52 @@ const dummyTickets: Ticket[] = [
 ];
 
 const StaffTicket: React.FC = () => {
+  const [tickets, setTickets] = useState<Ticket[]>(initialTickets);
   const [selectedTab, setSelectedTab] = useState("Opened Tickets");
-  const [selectedTicket, setSelectedTicket] = useState<any>(null);
+  const [selectedTicket, setSelectedTicket] = useState<Ticket | null>(null);
 
-  const filteredTickets =
-    selectedTab === "Opened Tickets"
-      ? dummyTickets.filter((t) => t.status === "Open")
-      : dummyTickets.filter((t) => t.status === "Closed");
+  const navigate = useNavigate();
+
+  const handleCloseTicket = (ticketId: string) => {
+    setTickets((prev) =>
+      prev.map((ticket) =>
+        ticket.id === ticketId ? { ...ticket, status: "Closed" } : ticket
+      )
+    );
+
+    // If currently viewing this ticket, update it locally too
+    if (selectedTicket?.id === ticketId) {
+      setSelectedTicket({ ...selectedTicket, status: "Closed" });
+    }
+  };
+
+  const filteredTickets = tickets.filter((ticket) => {
+    if (selectedTab === "Opened Tickets") return ticket.status === "Open";
+    if (selectedTab === "Closed Tickets") return ticket.status === "Closed";
+    return true;
+  });
 
   return (
-    <div className="flex flex-col md:flex-row  p-6 gap-6">
-      {/* Ticket List Section */}
-      <div className="flex-1 md:max-w-md">
-        <h2 className="text-2xl font-bold mb-4">Staff Tickets</h2>
+    <div className="flex flex-col lg:flex-row gap-6 p-6">
+      {/* Left Section: Tabs + Ticket Cards */}
+      <div className="flex-1 flex-col flex gap-8">
+        <div className="w-full flex gap-2  items-center justify-start bg-[#CA406f] text-white p-4 rounded-sm ">
+            <FaCalendarCheck size={20} />
+        <h2 className="text-2xl font-bold ">STAFF TICKETS</h2>
+        </div>
         <TicketTabs selected={selectedTab} setSelected={setSelectedTab} />
 
-        <div className="mt-4 space-y-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredTickets.map((ticket) => (
             <TicketCard
               key={ticket.id}
               ticket={ticket}
-              onClick={() => setSelectedTicket(ticket)}
+             onClick={() => navigate(`/staff-tickets/${ticket.id}`)}
               isActive={selectedTicket?.id === ticket.id}
             />
           ))}
         </div>
       </div>
-
-      {/* Ticket Details Section */}
-      {/* <div className="flex-1 bg-white rounded-lg shadow-md p-4">
-        {selectedTicket ? (
-          <TicketDetailPanel ticket={selectedTicket} />
-        ) : (
-          <p className="text-gray-600 text-center pt-12">
-            Select a ticket to view details
-          </p>
-        )}
-      </div> */}
     </div>
   );
 };

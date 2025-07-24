@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Paperclip, MoreVertical,  Trash2 } from "lucide-react";
+import { Paperclip, MoreVertical,   } from "lucide-react";
 import { BiSolidCalendar } from "react-icons/bi";
 import { FaEye } from "react-icons/fa";
 import { MdEditDocument } from "react-icons/md";

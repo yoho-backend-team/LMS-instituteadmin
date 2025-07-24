@@ -1,118 +1,202 @@
-import React from "react";
+import React, { useState } from "react";
 import { MdAccessTimeFilled } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
 const AddLiveClassForm: React.FC = () => {
   const navigate = useNavigate();
 
+  const [formData, setFormData] = useState({
+    className: "",
+    branch: "",
+    course: "",
+    batch: "",
+    date: "",
+    startTime: "",
+    endTime: "",
+    instructor: "",
+    videoUrl: "",
+  });
+
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+
+  const validate = () => {
+    const newErrors: { [key: string]: string } = {};
+    if (!formData.className.trim()) newErrors.className = "Class name is required.";
+    if (!formData.branch) newErrors.branch = "Branch is required.";
+    if (!formData.course) newErrors.course = "Course is required.";
+    if (!formData.batch.trim()) newErrors.batch = "Batch is required.";
+    if (!formData.date) newErrors.date = "Date is required.";
+    if (!formData.startTime) newErrors.startTime = "Start time is required.";
+    if (!formData.endTime) newErrors.endTime = "End time is required.";
+    if (!formData.instructor) newErrors.instructor = "Instructor is required.";
+
+    const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
+    if (!formData.videoUrl.trim()) {
+      newErrors.videoUrl = "Video URL is required.";
+    } else if (!urlRegex.test(formData.videoUrl.trim())) {
+      newErrors.videoUrl = "Enter a valid URL.";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: "" }); // Clear error on change
+  };
+
+  const handleSubmit = () => {
+    if (validate()) {
+      alert("Form submitted successfully! (You can now add logic to create the card)");
+      // Logic to add the new class to state goes here
+      navigate("/live-classes");
+    }
+  };
+
   return (
-    <div className="p-6 bg-white dark:bg-background rounded-lg shadow-md max-w-5xl mx-auto space-y-5">
+    <div className="p-6 bg-white rounded-lg shadow-md max-w-5xl mx-auto space-y-5">
       <h2 className="text-xl font-semibold text-center bg-[#CA406F] text-white p-3 rounded-md">
         Add Live Class
       </h2>
 
       {/* Class Name */}
       <div className="flex flex-col gap-1">
-        <label className="text-sm font-medium text-gray-700">Class Name</label>
+        <label>Class Name</label>
         <input
-          type="text"
-          className="w-full p-3 border border-gray-300 rounded-md"
+          name="className"
+          value={formData.className}
+          onChange={handleChange}
+          className="p-3 border border-gray-300 rounded-md"
         />
+        {errors.className && <p className="text-red-500 text-sm">{errors.className}</p>}
       </div>
 
-      {/* Select Branch */}
+      {/* Branch */}
       <div className="flex flex-col gap-1">
-        <label className="text-sm font-medium text-gray-700">Branch</label>
-        <select className="w-full p-3 border border-gray-300 rounded-md">
-          <option></option>
+        <label>Branch</label>
+        <select
+          name="branch"
+          value={formData.branch}
+          onChange={handleChange}
+          className="p-3 border border-gray-300 rounded-md"
+        >
+          <option value="">Select</option>
+          <option value="Delhi">Delhi</option>
+          <option value="Mumbai">Mumbai</option>
         </select>
+        {errors.branch && <p className="text-red-500 text-sm">{errors.branch}</p>}
       </div>
 
-      {/* Select Course */}
+      {/* Course */}
       <div className="flex flex-col gap-1">
-        <label className="text-sm font-medium text-gray-700">Course</label>
-        <select className="w-full p-3 border border-gray-300 rounded-md">
-          <option></option>
+        <label>Course</label>
+        <select
+          name="course"
+          value={formData.course}
+          onChange={handleChange}
+          className="p-3 border border-gray-300 rounded-md"
+        >
+          <option value="">Select</option>
+          <option value="MERN">MERN</option>
+          <option value="Python">Python</option>
         </select>
-        <p className=" px-2 text-sm text-gray-400">please select a Branch first to enable course selection</p>
+        {errors.course && <p className="text-red-500 text-sm">{errors.course}</p>}
       </div>
 
       {/* Batch */}
       <div className="flex flex-col gap-1">
-        <label className="text-sm font-medium text-gray-700">Batch</label>
+        <label>Batch</label>
         <input
-          type="text"
-          className="w-full p-3 border border-gray-300 rounded-md"
+          name="batch"
+          value={formData.batch}
+          onChange={handleChange}
+          className="p-3 border border-gray-300 rounded-md"
         />
-         <p className=" px-2 text-sm text-gray-400">please select a Course first to enable course selection</p>
+        {errors.batch && <p className="text-red-500 text-sm">{errors.batch}</p>}
       </div>
 
-      {/* Date, Start Time, End Time */}
- <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-    {/* Class Date */}
-    <div className="flex flex-col gap-1">
-      <label className="text-sm font-medium text-gray-700">Class Date</label>
-      <input
-        type="date"
-        className="w-full p-3 border border-gray-300 rounded-md"
-      />
-    </div>
+      {/* Date, Start, End Time */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="flex flex-col gap-1">
+          <label>Class Date</label>
+          <input
+            name="date"
+            type="date"
+            value={formData.date}
+            onChange={handleChange}
+            className="p-3 border border-gray-300 rounded-md"
+          />
+          {errors.date && <p className="text-red-500 text-sm">{errors.date}</p>}
+        </div>
 
-    {/* Start Time with Icon */}
-    <div className="flex flex-col gap-1">
-      <label className="text-sm font-medium text-gray-700">Start Time</label>
-      <div className="relative">
-        <input
-         
-          className="w-full pr-10 pl-3 py-3 border border-gray-300 rounded-md"
-        />
-        <MdAccessTimeFilled className="absolute top-1/2 right-3 -translate-y-1/2 text-gray-500" />
+        <div className="flex flex-col gap-1 relative">
+          <label>Start Time</label>
+          <input
+            name="startTime"
+            type="time"
+            value={formData.startTime}
+            onChange={handleChange}
+            className="p-3  border border-gray-300 rounded-md"
+          />
+          {/* <MdAccessTimeFilled className="absolute right-3 top-9 text-gray-500" />
+          {errors.startTime && <p className="text-red-500 text-sm">{errors.startTime}</p>} */}
+        </div>
+
+        <div className="flex flex-col gap-1 relative">
+          <label>End Time</label>
+          <input
+            name="endTime"
+            type="time"
+            value={formData.endTime}
+            onChange={handleChange}
+            className="p-3 border border-gray-300 rounded-md"
+          />
+          {/* <MdAccessTimeFilled className="absolute right-3 top-9 text-gray-500" />
+          {errors.endTime && <p className="text-red-500 text-sm">{errors.endTime}</p>} */}
+        </div>
       </div>
-    </div>
 
-    {/* End Time with Icon */}
-    <div className="flex flex-col gap-1">
-      <label className="text-sm font-medium text-gray-700">End Time</label>
-      <div className="relative">
-        <input
-         
-          className="w-full pr-10 pl-3 py-3 border border-gray-300 rounded-md"
-        />
-        <MdAccessTimeFilled className="absolute top-1/2 right-3 -translate-y-1/2 text-gray-500" />
-      </div>
-    </div>
-  </div>
-
-
-
-      {/* Instructors */}
+      {/* Instructor */}
       <div className="flex flex-col gap-1">
-        <label className="text-sm font-medium text-gray-700">Instructors</label>
-        <select className="w-full p-3 border border-gray-300 rounded-md">
-          <option></option>
+        <label>Instructor</label>
+        <select
+          name="instructor"
+          value={formData.instructor}
+          onChange={handleChange}
+          className="p-3 border border-gray-300 rounded-md"
+        >
+          <option value="">Select</option>
+          <option value="John">John</option>
+          <option value="Elon Musk">Elon Musk</option>
         </select>
-         <p className=" px-2 text-sm text-gray-400">please select a Class Date first to enable course selection</p>
+        {errors.instructor && <p className="text-red-500 text-sm">{errors.instructor}</p>}
       </div>
 
-      {/* Video Link */}
+      {/* Video URL */}
       <div className="flex flex-col gap-1">
-        <label className="text-sm font-medium text-gray-700">Video URL</label>
+        <label>Video URL</label>
         <input
-          type="text"
-          className="w-full p-3 border border-gray-300 rounded-md"
+          name="videoUrl"
+          value={formData.videoUrl}
+          onChange={handleChange}
+          className="p-3 border border-gray-300 rounded-md"
         />
+        {errors.videoUrl && <p className="text-red-500 text-sm">{errors.videoUrl}</p>}
       </div>
 
       {/* Action Buttons */}
       <div className="flex justify-end gap-4 pt-4">
-       <button
-  onClick={() => navigate(-1)}
-  className="px-5 py-2 border border-[#0400FF] text-[#0400FF] rounded-md hover:bg-[#0400ff1a]"
->
-  Cancel
-</button>
-
-        <button className="px-5 py-2 bg-[#CA406F] text-white rounded-md hover:bg-[#b43763]">
+        <button
+          onClick={() => navigate(-1)}
+          className="px-5 py-2 border border-[#0400FF] text-[#0400FF] rounded-md hover:bg-[#0400ff1a]"
+        >
+          Cancel
+        </button>
+        <button
+          onClick={handleSubmit}
+          className="px-5 py-2 bg-[#CA406F] text-white rounded-md hover:bg-[#b43763]"
+        >
           Submit
         </button>
       </div>

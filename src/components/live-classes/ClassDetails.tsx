@@ -1,7 +1,12 @@
 import React from "react";
+import { IoIosArrowBack } from "react-icons/io";
 import { MdAccessTimeFilled } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+
+
 
 const ClassDetails: React.FC = () => {
+  const navigate = useNavigate();
   const students = [
     {
       id: 46,
@@ -24,8 +29,9 @@ const ClassDetails: React.FC = () => {
   {/* Header */}
   <div className="flex flex-wrap justify-between items-start mb-4">
     <div>
-      <span className="bg-[#CA406F] text-white px-6 py-3 rounded-lg font-bold text-lg">
-        MERN
+      <span className="bg-[#CA406F] text-white px-2 py-2 rounded-lg font-bold text-lg flex items-center"
+        onClick={() => navigate("/liveclasses")}>
+<IoIosArrowBack size={20} /> MERN
       </span>
       <h3 className="text-xl font-semibold mt-6 px-2">Batch 21</h3>
     </div>
