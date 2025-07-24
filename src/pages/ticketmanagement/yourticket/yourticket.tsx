@@ -90,11 +90,11 @@ const YourTicket = () => {
       {showPanel && (
         <div
           className="absolute h-[85vh] inset-0 flex justify-end "
-          onClick={() => setShowPanel(false)} 
+          onClick={() => setShowPanel(false)}
         >
           <div
             className="h-[85vh] w-1/3 bg-white shadow-xl "
-            onClick={(e) => e.stopPropagation()} // prevent inner modal click from closing
+            onClick={(e) => e.stopPropagation()}
           >
             <Createticket
               onClose={() => setShowPanel(false)}
@@ -117,25 +117,26 @@ const YourTicket = () => {
         </button>
       </div>
 
-      {/* Filter Buttons */}
-      <div className="flex gap-2 ">
+      {/* Filter Buttons (always visible, but conditionally disabled) */}
+      <div className="flex gap-2 mt-2">
         <button
-          onClick={() => setFilter("Open")}
+          onClick={() => !selectedTicket && setFilter("Open")}
           className={`p-2 rounded-sm text-sm font-semibold w-32 flex items-center justify-center ${
             filter === "Open"
               ? "bg-[#CA406F] text-white"
               : "bg-gray-200 text-gray-700"
-          }`}
+          } ${selectedTicket ? " pointer-events-none" : ""}`}
         >
           Opened Tickets
         </button>
+
         <button
-          onClick={() => setFilter("Closed")}
+          onClick={() => !selectedTicket && setFilter("Closed")}
           className={`p-2 rounded-sm text-sm font-semibold w-32 flex items-center justify-center ${
             filter === "Closed"
               ? "bg-[#CA406F] text-white"
               : "bg-gray-200 text-gray-700"
-          }`}
+          } ${selectedTicket ? "pointer-events-none" : ""}`}
         >
           Closed Tickets
         </button>

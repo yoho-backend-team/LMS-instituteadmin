@@ -66,11 +66,11 @@ const ClassesTab = () => {
               className="p-4 bg-white shadow rounded-sm flex flex-col gap-3"
             >
               <div className="">
-                <h3 className="text-lg font-semibold text-[#716F6F]">{cls.title}</h3>
+                <h3 className="text-2xl font-semibold text-[#716F6F]">{cls.title}</h3>
                
               </div>
               <div className="flex flex-col gap-1">
-                 <p className="text-[#7D7D7D] text-sm font-medium">
+                 <p className="text-[#7D7D7D] text-base font-medium">
                   {cls.students} students in this class
                 </p>
                 <div className="flex items-center gap-2 text-sm text-gray-700">
