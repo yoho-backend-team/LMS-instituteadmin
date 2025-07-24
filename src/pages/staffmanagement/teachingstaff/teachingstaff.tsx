@@ -181,7 +181,7 @@ const Teachingstaff = () => {
                   </p>
                   <p className="font-medium">{staff.email}</p>
                 </div>
-                <div className="flex justify-between items-center text-sm ">
+                <div className="flex justify-between items-center text-sm text-[#7D7D7D] ">
                   <p className="text-[#716F6F] font-medium">Status</p>
                   <div className="">
                     <CustomDropdown
