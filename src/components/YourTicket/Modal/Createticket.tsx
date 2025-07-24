@@ -14,15 +14,26 @@ const Createticket = ({ onClose, onSubmit }: Props) => {
   const [priority, setPriority] = useState("");
   const [query, setQuery] = useState("");
   const [description, setDescription] = useState("");
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleUploadClick = () => {
     fileInputRef.current?.click();
   };
 
+  const validate = () => {
+    const newErrors: { [key: string]: string } = {};
+    if (!query.trim()) newErrors.query = "Query is required";
+    if (!description.trim()) newErrors.description = "Description is required";
+    if (!priority) newErrors.priority = "Priority is required";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!priority || !description) return;
+    if (!validate()) return;
 
     const newTicket = {
       name: "User",
@@ -52,25 +63,40 @@ const Createticket = ({ onClose, onSubmit }: Props) => {
         onSubmit={handleSubmit}
         className="flex flex-col gap-4 mt-6 overflow-y-auto h-[70vh] scrollbar-hide"
       >
+        {/* Query */}
         <div className="flex flex-col gap-2">
           <label>Query</label>
           <textarea
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Your query"
-            className="border p-2 rounded h-20"
+            className={`border p-2 rounded h-20 ${
+              errors.query ? "border-red-500" : "border-gray-300"
+            }`}
           />
+          {errors.query && (
+            <span className="text-red-500 text-sm">{errors.query}</span>
+          )}
         </div>
+
+        {/* Description */}
         <div className="flex flex-col gap-2">
           <label>Description</label>
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Describe the issue"
-            className="border p-2 rounded h-20"
+            className={`border p-2 rounded h-20 ${
+              errors.description ? "border-red-500" : "border-gray-300"
+            }`}
           />
+          {errors.description && (
+            <span className="text-red-500 text-sm">{errors.description}</span>
+          )}
         </div>
-        <div>
+
+        {/* Priority */}
+        <div className="flex flex-col gap-2">
           <label>Priority</label>
           <CustomDropdown
             options={priorityOptions}
@@ -78,8 +104,12 @@ const Createticket = ({ onClose, onSubmit }: Props) => {
             onChange={setPriority}
             placeholder="Select Priority"
           />
+          {errors.priority && (
+            <span className="text-red-500 text-sm">{errors.priority}</span>
+          )}
         </div>
 
+        {/* File Upload */}
         <div
           onClick={handleUploadClick}
           className="flex items-center gap-2 border p-5 rounded-lg flex-col justify-center cursor-pointer hover:bg-gray-100 transition"
@@ -91,6 +121,7 @@ const Createticket = ({ onClose, onSubmit }: Props) => {
           <input type="file" ref={fileInputRef} className="hidden" />
         </div>
 
+        {/* Buttons */}
         <div className="flex justify-end items-center gap-4">
           <button
             className="bg-gray-300 text-blue-700 border-blue-700 border px-4 py-1 rounded mt-2"

@@ -9,17 +9,18 @@ interface AddStaffProps {
 const AddStaff: React.FC<AddStaffProps> = ({ onClose, onSave }) => {
   const genderOptions = ["Male", "Female", "Other"];
   const courseOptions = [
-  "MERN Full Stack Development",
-  "UI/UX Design",
-  "Data Science & Machine Learning",
-  "Python Programming",
-  "DevOps & Cloud Computing",
-  "Android App Development",
-  "iOS App Development",
-  "Cybersecurity Fundamentals",
-  "Blockchain Development",
-  "AI & Deep Learning"
-];
+    "MERN Full Stack Development",
+    "UI/UX Design",
+    "Data Science & Machine Learning",
+    "Python Programming",
+    "DevOps & Cloud Computing",
+    "Android App Development",
+    "iOS App Development",
+    "Cybersecurity Fundamentals",
+    "Blockchain Development",
+    "AI & Deep Learning",
+  ];
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -38,17 +39,36 @@ const AddStaff: React.FC<AddStaffProps> = ({ onClose, onSave }) => {
     image: "",
   });
 
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+
+  const validateForm = () => {
+    const newErrors: { [key: string]: string } = {};
+
+    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.email.trim()) newErrors.email = "Email is required";
+    else if (!/\S+@\S+\.\S+/.test(formData.email))
+      newErrors.email = "Invalid email format";
+
+    if (!formData.dob.trim()) newErrors.dob = "Date of birth is required";
+    if (!formData.gender.trim()) newErrors.gender = "Please select a gender";
+    if (!formData.course.trim()) newErrors.course = "Please select a course";
+
+    if (!formData.phone.trim()) newErrors.phone = "Phone number is required";
+    else if (!/^\d{10}$/.test(formData.phone))
+      newErrors.phone = "Phone number must be 10 digits";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSave = () => {
-    if (!formData.name || !formData.email) {
-      alert("Please fill in required fields");
-      return;
-    }
+    if (!validateForm()) return;
     onSave(formData);
   };
 
   return (
-    <div className=" flex justify-center items-center ">
-      <div className="bg-white p-4 rounded-sm shadow-lg w-full h-full  ">
+    <div className="flex justify-center items-center">
+      <div className="bg-white p-4 rounded-sm shadow-lg w-full h-full">
         <div className="flex flex-col w-full h-full gap-5">
           <div className="flex flex-col gap-1">
             <h2 className="text-xl font-semibold">Add New Staff</h2>
@@ -75,6 +95,7 @@ const AddStaff: React.FC<AddStaffProps> = ({ onClose, onSave }) => {
           </div>
 
           <form className="p-2 grid grid-cols-3 gap-6">
+            {/* Name */}
             <div className="flex flex-col gap-2">
               <label>Full Name</label>
               <input
@@ -85,8 +106,12 @@ const AddStaff: React.FC<AddStaffProps> = ({ onClose, onSave }) => {
                   setFormData({ ...formData, name: e.target.value })
                 }
               />
+              {errors.name && (
+                <span className="text-red-500 text-sm">{errors.name}</span>
+              )}
             </div>
 
+            {/* Email */}
             <div className="flex flex-col gap-2">
               <label>Email</label>
               <input
@@ -97,8 +122,12 @@ const AddStaff: React.FC<AddStaffProps> = ({ onClose, onSave }) => {
                   setFormData({ ...formData, email: e.target.value })
                 }
               />
+              {errors.email && (
+                <span className="text-red-500 text-sm">{errors.email}</span>
+              )}
             </div>
 
+            {/* DOB */}
             <div className="flex flex-col gap-2">
               <label>Date of Birth</label>
               <input
@@ -109,8 +138,12 @@ const AddStaff: React.FC<AddStaffProps> = ({ onClose, onSave }) => {
                   setFormData({ ...formData, dob: e.target.value })
                 }
               />
+              {errors.dob && (
+                <span className="text-red-500 text-sm">{errors.dob}</span>
+              )}
             </div>
 
+            {/* Gender */}
             <div className="flex flex-col gap-2">
               <label>Gender</label>
               <CustomDropdown
@@ -121,8 +154,12 @@ const AddStaff: React.FC<AddStaffProps> = ({ onClose, onSave }) => {
                 }
                 placeholder="Select Gender"
               />
+              {errors.gender && (
+                <span className="text-red-500 text-sm">{errors.gender}</span>
+              )}
             </div>
 
+            {/* Course */}
             <div className="flex flex-col gap-2">
               <label>Courses</label>
               <CustomDropdown
@@ -132,8 +169,12 @@ const AddStaff: React.FC<AddStaffProps> = ({ onClose, onSave }) => {
                   setFormData({ ...formData, course: value })
                 }
               />
+              {errors.course && (
+                <span className="text-red-500 text-sm">{errors.course}</span>
+              )}
             </div>
 
+            {/* Designation */}
             <div className="flex flex-col gap-2">
               <label>Designation</label>
               <input
@@ -146,6 +187,7 @@ const AddStaff: React.FC<AddStaffProps> = ({ onClose, onSave }) => {
               />
             </div>
 
+            {/* Qualification */}
             <div className="flex flex-col gap-2">
               <label>Qualification</label>
               <input
@@ -158,6 +200,7 @@ const AddStaff: React.FC<AddStaffProps> = ({ onClose, onSave }) => {
               />
             </div>
 
+            {/* State */}
             <div className="flex flex-col gap-2">
               <label>State</label>
               <input
@@ -170,6 +213,7 @@ const AddStaff: React.FC<AddStaffProps> = ({ onClose, onSave }) => {
               />
             </div>
 
+            {/* City */}
             <div className="flex flex-col gap-2">
               <label>City</label>
               <input
@@ -182,6 +226,7 @@ const AddStaff: React.FC<AddStaffProps> = ({ onClose, onSave }) => {
               />
             </div>
 
+            {/* Pin Code */}
             <div className="flex flex-col gap-2">
               <label>Pin Code</label>
               <input
@@ -194,6 +239,7 @@ const AddStaff: React.FC<AddStaffProps> = ({ onClose, onSave }) => {
               />
             </div>
 
+            {/* Address Line 1 */}
             <div className="flex flex-col gap-2">
               <label>Address Line 1</label>
               <textarea
@@ -205,6 +251,7 @@ const AddStaff: React.FC<AddStaffProps> = ({ onClose, onSave }) => {
               />
             </div>
 
+            {/* Address Line 2 */}
             <div className="flex flex-col gap-2">
               <label>Address Line 2</label>
               <textarea
@@ -216,6 +263,7 @@ const AddStaff: React.FC<AddStaffProps> = ({ onClose, onSave }) => {
               />
             </div>
 
+            {/* Phone */}
             <div className="flex flex-col gap-2">
               <label>Phone Number</label>
               <input
@@ -226,8 +274,12 @@ const AddStaff: React.FC<AddStaffProps> = ({ onClose, onSave }) => {
                   setFormData({ ...formData, phone: e.target.value })
                 }
               />
+              {errors.phone && (
+                <span className="text-red-500 text-sm">{errors.phone}</span>
+              )}
             </div>
 
+            {/* Alt Phone */}
             <div className="flex flex-col gap-2">
               <label>Alt Phone Number</label>
               <input
