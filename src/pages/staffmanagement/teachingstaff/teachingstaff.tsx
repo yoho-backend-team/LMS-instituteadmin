@@ -99,7 +99,7 @@ const Teachingstaff = () => {
           {/* Header */}
           <div className="flex flex-col justify-between gap-3">
             <div className="text-[#716F6F]">
-              <h2 className="font-semibold text-xl">Teaching Staff</h2>
+              <h2 className="font-semibold text-2xl">Teaching Staff</h2>
             </div>
 
             {/* Filter and Add Button */}
@@ -123,7 +123,7 @@ const Teachingstaff = () => {
           {showFilter && (
             <div className="flex gap-5 bg-white p-2 rounded-sm">
               <div className="flex-1 p-1 flex flex-col gap-2">
-                <label htmlFor="Status">Status</label>
+                <label htmlFor="Status" className="text-[#716F6F] font-medium">Status</label>
                 <CustomDropdown
                   options={statusfilteroption}
                   value={selectedStatus}
@@ -134,7 +134,7 @@ const Teachingstaff = () => {
               </div>
 
               <div className="flex-1 p-1 flex flex-col gap-2">
-                <label htmlFor="courses">Courses</label>
+                <label htmlFor="courses" className="text-[#716F6F] font-medium">Courses</label>
                 <CustomDropdown
                   options={courseOptions}
                   value={selectedCourse}
@@ -171,14 +171,18 @@ const Teachingstaff = () => {
                       </div>
                     )}
                   </div>
-                  <h4 className="text-lg font-semibold">{staff.name}</h4>
+                  <h4 className="text-lg font-semibold text-[#716F6F]">
+                    {staff.name}
+                  </h4>
                 </div>
-                <div className="flex gap-2 items-center">
-                  <MdEmail size={20} />
-                  <p>{staff.email}</p>
+                <div className="flex gap-2 items-center text-[#716F6F] justify-items-center">
+                  <p className="">
+                    <MdEmail size={20} />
+                  </p>
+                  <p className="font-medium">{staff.email}</p>
                 </div>
                 <div className="flex justify-between items-center text-sm ">
-                  <p className="text-[#555]">Status</p>
+                  <p className="text-[#716F6F] font-medium">Status</p>
                   <div className="">
                     <CustomDropdown
                       options={["Active", "Inactive"]}

@@ -87,7 +87,7 @@ const AddStaff: React.FC<AddStaffProps> = ({ onClose, onSave }) => {
   };
 
   return (
-    <div className="flex justify-end items-center pt-4 pl-4">
+    <div className="flex justify-end items-center pt-4 pl-4 text-[#716F6F] font-medium">
       <div className="bg-white p-4 rounded-sm shadow-lg w-full h-full">
         <div className="flex flex-col w-full h-full gap-5">
           <div className="flex flex-col gap-1">
