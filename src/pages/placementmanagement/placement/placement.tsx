@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { FaEdit, FaPlus, FaTrash } from 'react-icons/fa'
+import { FaEdit, FaEllipsisV, FaPlus, FaTrash } from 'react-icons/fa'
 import AddPlacement from './AddPlacement';
 
 interface Placement {
@@ -14,40 +14,40 @@ interface Placement {
 const initialPlacements: Placement[] = [
   {
     id: 1,
-    studentName: "John Doe",
-    email: "john.doe@example.com",
+    studentName: "Kamaleesh",
+    email: "kamaleesh@example.com",  // Updated email
     companyName: "TechCorp",
     interviewDate: "2023-05-15",
     jobName: "Software Engineer"
   },
   {
     id: 2,
-    studentName: "Jane Smith",
-    email: "jane.smith@example.com",
+    studentName: "Samantha",
+    email: "samantha@example.com",  // Updated email
     companyName: "DataSystems",
     interviewDate: "2023-06-20",
     jobName: "Data Analyst"
   },
   {
     id: 3,
-    studentName: "Mike Johnson",
-    email: "mike.johnson@example.com",
+    studentName: "Vijay",
+    email: "vijay@example.com",  // Updated email
     companyName: "WebSolutions",
     interviewDate: "2023-04-10",
     jobName: "Frontend Developer"
   },
   {
     id: 4,
-    studentName: "Sarah Williams",
-    email: "sarah.williams@example.com",
+    studentName: "Emma Watson",
+    email: "emma.watson@example.com",  // Updated email
     companyName: "CloudTech",
     interviewDate: "2023-07-05",
     jobName: "DevOps Engineer"
   },
   {
     id: 5,
-    studentName: "David Brown",
-    email: "david.brown@example.com",
+    studentName: "Ana de Armas",
+    email: "ana.dearmas@example.com",  // Updated email
     companyName: "AI Innovations",
     interviewDate: "2023-08-12",
     jobName: "Machine Learning Engineer"
@@ -92,11 +92,9 @@ const Placements = () => {
     setShowForm(true);
   };
 
-  const handleDelete = (id: number) => {
-    if (window.confirm('Are you sure you want to delete this placement?')) {
-      setPlacementsList(prev => prev.filter(placement => placement.id !== id));
-    }
-  };
+ const handleDelete = (id: number) => {
+  setPlacementsList(prev => prev.filter(placement => placement.id !== id));
+};
 
   const prepareEditData = (placement: Placement) => {
     return {
@@ -192,22 +190,45 @@ const Placements = () => {
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {placement.jobName}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  <button
-                    onClick={() => handleEdit(placement)}
-                    className="text-blue-500 hover:text-blue-700 mr-4"
-                    title="Edit"
-                  >
-                    <FaEdit />
-                  </button>
-                  <button
-                    onClick={() => handleDelete(placement.id)}
-                    className="text-red-500 hover:text-red-700"
-                    title="Delete"
-                  >
-                    <FaTrash />
-                  </button>
-                </td>
+              <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium relative group">
+  <button
+    className="text-gray-500 hover:text-gray-700 p-1 rounded-full hover:bg-gray-100 focus:outline-none"
+    title="Actions"
+    aria-label="Actions menu"
+    type="button"
+  >
+    <FaEllipsisV />
+  </button>
+  
+<div className="hidden group-hover:block absolute right-0 z-10 mt-2 w-36 origin-top-right rounded-lg bg-white shadow-lg ring-1 ring-gray-200 focus:outline-none overflow-hidden">
+  {/* Edit Button */}
+  <button
+    onClick={(e) => {
+      e.stopPropagation();
+      handleEdit(placement);
+    }}
+    className="flex items-center px-4 py-2 text-sm font-medium text-white bg-pink-600 hover:bg-pink-700 w-full transition-colors duration-150 ease-in-out"
+    aria-label="Edit"
+  >
+    <FaEdit className="mr-2" />
+    <span>Edit</span>
+  </button>
+
+  {/* Delete Button */}
+  <button
+    onClick={(e) => {
+      e.stopPropagation();
+      handleDelete(placement.id);
+    }}
+    className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-700 w-full transition-colors duration-150 ease-in-out border-t border-gray-100"
+    aria-label="Delete"
+  >
+    <FaTrash className="mr-2" />
+    <span>Delete</span>
+  </button>
+</div>
+
+</td>
               </tr>
             ))}
           </tbody>
