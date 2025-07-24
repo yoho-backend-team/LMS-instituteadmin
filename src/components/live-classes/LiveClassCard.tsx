@@ -76,21 +76,21 @@ const LiveClassCard: React.FC = () => {
                   <div className="p-2 absolute right-0 mt-2 w-40 bg-white border  rounded-lg shadow-lg z-50">
                     <button
                       onClick={() => handleView(item.id)}
-                      className="w-full flex items-center gap-2 text-md px-4 py-3 text-#716F6F border-gray-600 rounded-lg hover:bg-[#CA406F] hover:text-white"
+                      className="w-full flex items-center gap-2 text-md px-4 py-3 mt-1 text-#716F6F border border-gray-300 rounded-lg hover:bg-[#CA406F] hover:text-white" 
                     >
                       <FaEye className="w-4 h-4" />
                       View
                     </button>
                     <button
                       onClick={() => handleEdit(item.id)}
-                      className="w-full flex items-center gap-2 text-md px-4 py-3 text-#716F6F border-gray-600 rounded-lg hover:bg-[#CA406F] hover:text-white"
+                      className="w-full flex items-center gap-2 text-md px-4 py-3 mt-1 text-#716F6F border border-gray-300 rounded-lg hover:bg-[#CA406F] hover:text-white"
                     >
                       <MdEditDocument className="w-4 h-4" />
                       Edit
                     </button>
                     <button
                       onClick={() => handleDelete(item.id)}
-                      className="w-full flex items-center gap-2 text-md px-4 py-3 text-#716F6F border-gray-600 rounded-lg hover:bg-[#CA406F] hover:text-white"
+                      className="w-full flex items-center gap-2 text-md px-4 py-3 mt-1 text-#716F6F border border-gray-300 rounded-lg hover:bg-[#CA406F] hover:text-white"
                     >
                       <FaTrashCan className="w-4 h-4" />
                       Delete
