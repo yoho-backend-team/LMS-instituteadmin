@@ -23,9 +23,9 @@ const userActivity = [
 
 const ActivityTab: React.FC = () => {
   return (
-    <div className="px-4 py-6">
-      <div className="bg-white rounded-md shadow-md p-6 relative">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+    <div className="  font-normal text-[#7D7D7D]">
+      <div className="bg-white rounded-md shadow-md p-4 relative">
+        <h2 className="text-2xl font-semibold text-[#716F6F] mb-6">
           User Activity Timeline
         </h2>
 
@@ -41,11 +41,11 @@ const ActivityTab: React.FC = () => {
 
               <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start ml-6">
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-800">
+                  <h3 className="text-lg font-semibold text-[#7D7D7D]">
                     {activity.title}
                   </h3>
                   <div className="absolute left-2 h-full w-0.5 bg-gray-200" />
-                  <p className="text-gray-500 text-sm mt-1">
+                  <p className="text-[#7D7D7D] text-sm mt-1">
                     {activity.description}
                   </p>
                 </div>

@@ -31,10 +31,7 @@ const dummyStudents = [
   },
 ];
 
-const ClassessModal: React.FC<ClassessModalProps> = ({
-  onClose,
-  classData,
-}) => {
+const ClassessModal: React.FC<ClassessModalProps> = ({ onClose }) => {
   return (
     <div className="bg-white p-6 rounded-sm shadow-lg w-full max-w-full mx-auto relative">
       {/* Close Button */}
@@ -47,43 +44,10 @@ const ClassessModal: React.FC<ClassessModalProps> = ({
 
       <h2 className="text-xl font-semibold mb-4">Class Details</h2>
 
-      {/* Class Info Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-        <div className="flex flex-col gap-1">
-          <label htmlFor="title">Course</label>
-          <input
-            type="text"
-            id="title"
-            value={classData.title}
-            readOnly
-            className="border p-2 rounded w-full bg-gray-100"
-          />
-        </div>
-        <div className="flex flex-col gap-1">
-          <label htmlFor="students">Total Students</label>
-          <input
-            type="text"
-            id="students"
-            value={classData.students}
-            readOnly
-            className="border p-2 rounded w-full bg-gray-100"
-          />
-        </div>
-        <div className="flex flex-col gap-1">
-          <label htmlFor="time">Class Time</label>
-          <input
-            type="text"
-            id="time"
-            value={classData.time}
-            readOnly
-            className="border p-2 rounded w-full bg-gray-100"
-          />
-        </div>
-      </div>
-
-      {/* Placeholder Inputs (optional - keep or remove as needed) */}
+      {/* Placeholder Inputs */}
       <form className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
         {[
+          "Course",
           "Batch",
           "Duration",
           "Date",
@@ -91,21 +55,33 @@ const ClassessModal: React.FC<ClassessModalProps> = ({
           "Ended At",
           "Instructor",
           "Class Link",
-        ].map((label, index) => (
-          <div className="flex flex-col gap-1" key={index}>
-            <label htmlFor={label}>{label}</label>
-            <input
-              type="text"
-              id={label}
-              name={label}
-              placeholder={`Enter ${label.toLowerCase()}`}
-              className="border p-2 rounded w-full"
-            />
-          </div>
-        ))}
+        ].map((label, index) => {
+          const safeId = label.toLowerCase().replace(/\s+/g, "-");
+          return (
+            <div className="flex flex-col gap-1" key={index}>
+              <label htmlFor={safeId}>{label}</label>
+              <input
+                type="text"
+                id={safeId}
+                name={safeId}
+                placeholder={`Enter ${label.toLowerCase()}`}
+                className="border p-2 rounded w-full"
+              />
+            </div>
+          );
+        })}
       </form>
 
       {/* Students Table */}
+      <div className="border-t-2" />
+      <div className="mb-4 mt-4 w-full">
+        <input
+          type="search"
+          placeholder="Search Student"
+          className="border w-1/5 p-2 rounded-sm border-[#CA406F]"
+        />
+      </div>
+
       <div className="overflow-x-auto scrollbar-hide">
         <table className="min-w-full border border-gray-200 text-sm">
           <thead>

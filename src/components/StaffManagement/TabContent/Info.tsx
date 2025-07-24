@@ -22,8 +22,8 @@ const InfoTab: React.FC<Props> = ({
   alternativeNumber,
   role,
 }) => (
-  <div className="">
-    <div className="bg-[#CA406F] p-3 rounded-t-sm">
+  <div className=" text-[#7D7D7D] font-normal">
+    <div className="bg-[#CA406F] p-3 rounded-t-sm ">
       <h3 className="text-lg text-white font-semibold ">User Details</h3>
     </div>
 

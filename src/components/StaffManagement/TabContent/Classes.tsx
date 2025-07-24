@@ -52,7 +52,7 @@ const ClassesTab = () => {
   };
 
   return (
-    <div className="p-4 transition-all duration-300">
+    <div className=" transition-all duration-300">
       {showForm && selectedClassIndex !== null ? (
         <ClassessModal
           onClose={handleCloseForm}

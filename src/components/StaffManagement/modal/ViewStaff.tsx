@@ -36,7 +36,7 @@ const ViewStaff: React.FC<ViewStaffProps> = ({ staff, onBack }) => {
   const [activePage, setActivePage] = useState("info");
 
   const tabButtonStyle = (page: string) =>
-    `px-4 py-2 border flex items-center gap-2 rounded-sm transition-all border-[#716F6F]  ${
+    `px-4 py-2 border flex items-center gap-2 rounded-sm transition-all border-[#716F6F] text-lg font-semibold ${
       activePage === page
         ? "bg-green-600 text-white"
         : "bg-tranparent border-2 text-[#716F6F] hover:bg-green-100"
@@ -89,31 +89,31 @@ const ViewStaff: React.FC<ViewStaffProps> = ({ staff, onBack }) => {
           className={tabButtonStyle("info")}
           onClick={() => setActivePage("info")}
         >
-          <IoInformationCircle size={20} /> Info
+          <IoInformationCircle size={25} /> Info
         </button>
         <button
           className={tabButtonStyle("security")}
           onClick={() => setActivePage("security")}
         >
-          <IoShieldCheckmark size={20} /> Security
+          <IoShieldCheckmark size={25} /> Security
         </button>
         <button
           className={tabButtonStyle("classes")}
           onClick={() => setActivePage("classes")}
         >
-          <RiPresentationFill size={20} /> Classes
+          <RiPresentationFill size={25} /> Classes
         </button>
         <button
           className={tabButtonStyle("attendance")}
           onClick={() => setActivePage("attendance")}
         >
-          <LiaUserCheckSolid size={20} /> Attendance
+          <LiaUserCheckSolid size={25} /> Attendance
         </button>
         <button
           className={tabButtonStyle("activity")}
           onClick={() => setActivePage("activity")}
         >
-          <TbGraphFilled size={20} /> Activity
+          <TbGraphFilled size={25} /> Activity
         </button>
       </div>
 
