@@ -36,10 +36,10 @@ const ViewStaff: React.FC<ViewStaffProps> = ({ staff, onBack }) => {
   const [activePage, setActivePage] = useState("info");
 
   const tabButtonStyle = (page: string) =>
-    `px-4 py-2 border flex items-center gap-2 rounded transition-all  ${
+    `px-4 py-2 border flex items-center gap-2 rounded-sm transition-all border-[#716F6F]  ${
       activePage === page
         ? "bg-green-600 text-white"
-        : "bg-tranparent border-2 text-gray-700 hover:bg-green-100"
+        : "bg-tranparent border-2 text-[#716F6F] hover:bg-green-100"
     }`;
   return (
     <div className=" flex flex-col gap-4">
@@ -52,7 +52,7 @@ const ViewStaff: React.FC<ViewStaffProps> = ({ staff, onBack }) => {
 
       {/* Profile Header */}
       <div className="flex gap-4 bg-white rounded-sm shadow-md p-3">
-        <div className="w-32 h-28 rounded-full overflow-hidden border bg-gray-100 flex items-center justify-center text-3xl font-bold text-[#CA406F] uppercase">
+        <div className="w-28 h-24 rounded-full overflow-hidden border bg-gray-100 flex items-center justify-center text-3xl font-bold text-[#CA406F] uppercase">
           {staff.image ? (
             <img
               src={staff.image}
@@ -70,9 +70,9 @@ const ViewStaff: React.FC<ViewStaffProps> = ({ staff, onBack }) => {
         </div>
 
         <div className="flex items-center justify-between w-full">
-          <h2 className="text-xl font-semibold">{staff.name}</h2>
+          <h2 className="text-xl font-semibold text-[#716F6F]">{staff.name}</h2>
           <p
-            className={`px-4 py-1 rounded-sm text-white text-sm font-medium ${
+            className={`px-8 py-2 rounded-sm text-white text-lg font-medium ${
               staff.status.toLowerCase() === "active"
                 ? "bg-green-600"
                 : "bg-red-500"

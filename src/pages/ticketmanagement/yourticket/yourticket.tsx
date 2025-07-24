@@ -85,7 +85,7 @@ const YourTicket = () => {
   };
 
   return (
-    <div className=" relative">
+    <div className=" relative flex flex-col h-fit max-h-fit w-full gap-6">
       {/* Create Ticket Modal */}
       {showPanel && (
         <div
@@ -105,8 +105,8 @@ const YourTicket = () => {
       )}
 
       {/* Header */}
-      <div className="flex items-center justify-between p-3 bg-[#CA406F] shadow rounded ">
-        <h2 className="uppercase text-lg text-white font-bold flex items-center gap-2">
+      <div className="flex items-center justify-between p-3 bg-[#CA406F] shadow rounded  ">
+        <h2 className="uppercase text-lg text-white font-bold flex items-center gap-2 ">
           <FaCalendarCheck size={20} /> Your Ticket
         </h2>
         <button
@@ -118,10 +118,10 @@ const YourTicket = () => {
       </div>
 
       {/* Filter Buttons */}
-      <div className="flex gap-2 mt-4">
+      <div className="flex gap-2 ">
         <button
           onClick={() => setFilter("Open")}
-          className={`p-2 rounded-lg text-sm font-semibold ${
+          className={`p-2 rounded-sm text-sm font-semibold w-32 flex items-center justify-center ${
             filter === "Open"
               ? "bg-[#CA406F] text-white"
               : "bg-gray-200 text-gray-700"
@@ -131,7 +131,7 @@ const YourTicket = () => {
         </button>
         <button
           onClick={() => setFilter("Closed")}
-          className={`p-2 rounded-lg text-sm font-semibold ${
+          className={`p-2 rounded-sm text-sm font-semibold w-32 flex items-center justify-center ${
             filter === "Closed"
               ? "bg-[#CA406F] text-white"
               : "bg-gray-200 text-gray-700"
@@ -142,7 +142,7 @@ const YourTicket = () => {
       </div>
 
       {/* Ticket List or Chat View */}
-      <div className="mt-4">
+      <div className="">
         {selectedTicket ? (
           <ChatTicket
             ticket={selectedTicket}
@@ -153,7 +153,7 @@ const YourTicket = () => {
             {filteredTickets.map((ticket) => (
               <div
                 key={ticket.id}
-                className="bg-white p-4 rounded-2xl shadow-md hover:shadow-lg transition cursor-pointer"
+                className="bg-white p-4 rounded-sm shadow-md hover:shadow-lg transition cursor-pointer"
                 onClick={() => setSelectedTicket(ticket)}
               >
                 <div className="flex items-start justify-between">
@@ -231,7 +231,7 @@ const YourTicket = () => {
                 </div>
 
                 <div className="mt-5">
-                  <div className="flex items-center gap-2 bg-[#FF3B63] text-white px-3 py-2 rounded-xl w-fit shadow-sm">
+                  <div className="flex items-center gap-2 bg-[#FF3B63] text-white px-3 py-2 rounded-sm w-fit shadow-sm">
                     <RiListCheck3 size={18} />
                     <span className="text-sm font-semibold">
                       Priority: {ticket.priority}

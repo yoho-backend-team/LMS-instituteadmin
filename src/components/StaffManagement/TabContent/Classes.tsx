@@ -65,19 +65,22 @@ const ClassesTab = () => {
               key={index}
               className="p-4 bg-white shadow rounded-sm flex flex-col gap-3"
             >
-              <div>
-                <h3 className="text-lg font-semibold">{cls.title}</h3>
-                <p className="text-gray-500 text-sm">
+              <div className="">
+                <h3 className="text-lg font-semibold text-[#716F6F]">{cls.title}</h3>
+               
+              </div>
+              <div className="flex flex-col gap-1">
+                 <p className="text-[#7D7D7D] text-sm font-medium">
                   {cls.students} students in this class
                 </p>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-gray-700">
+                <div className="flex items-center gap-2 text-sm text-gray-700">
                 <FaCalendarAlt />
-                <p>{cls.time}</p>
+                <p className="text-[#7D7D7D] font-medium">{cls.time}</p>
+              </div>
               </div>
               <div className="flex justify-end">
                 <button
-                  className="px-3 py-1 bg-green-500 rounded-sm text-white hover:bg-green-600"
+                  className="px-5 py-2 bg-[#3ABE65] rounded-sm text-white hover:bg-[#3ABE65] "
                   onClick={() => handleOpenForm(index)}
                 >
                   View More

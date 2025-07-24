@@ -51,17 +51,20 @@ const Createticket = ({ onClose, onSubmit }: Props) => {
   };
 
   return (
-    <div className="relative text-[#7D7D7D] p-4 h-full ">
-      <button
+    <div className="relative text-[#7D7D7D] p-2  h-full ">
+     <div className="flex justify-between items-center mb-4">
+      
+      <h2 className="text-xl font-bold  text-[#716F6]">Create Ticket</h2>
+       <button
         onClick={onClose}
-        className="absolute top-2 right-2 text-white bg-gray-500 rounded-full p-1 hover:bg-red-500"
+        className=" text-white bg-gray-500 rounded-full p-1 hover:bg-red-500"
       >
-        <IoMdClose size={16} />
+        <IoMdClose size={12} />
       </button>
-      <h2 className="text-xl font-bold mb-4 text-[#716F6]">Create Ticket</h2>
+     </div>
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-4 mt-6 overflow-y-auto h-[70vh] scrollbar-hide"
+        className="flex flex-col gap-4 mt-2 overflow-y-auto h-[70vh] scrollbar-hide"
       >
         {/* Query */}
         <div className="flex flex-col gap-2">
@@ -114,7 +117,7 @@ const Createticket = ({ onClose, onSubmit }: Props) => {
           onClick={handleUploadClick}
           className="flex items-center gap-2 border p-5 rounded-lg flex-col justify-center cursor-pointer hover:bg-gray-100 transition"
         >
-          <BiSolidCloudUpload size={40} className="text-blue-800" />
+            <BiSolidCloudUpload size={40} className="text-[#0400FF]" />
           <span className="text-gray-600">
             Drop File Here Or Click To Upload
           </span>
@@ -124,14 +127,14 @@ const Createticket = ({ onClose, onSubmit }: Props) => {
         {/* Buttons */}
         <div className="flex justify-end items-center gap-4">
           <button
-            className="bg-gray-300 text-blue-700 border-blue-700 border px-4 py-1 rounded mt-2"
+            className="bg-gray-300 text-[#0400FF] border-[#0400FF] border px-4 py-1 rounded mt-2 font-semibold"
             onClick={onClose}
             type="button"
           >
             Cancel
           </button>
           <button
-            className="bg-[#CA406F] text-white px-4 py-1 rounded mt-2"
+            className="bg-[#CA406F] text-white px-4 py-1 rounded mt-2  font-semibold"
             type="submit"
           >
             Submit

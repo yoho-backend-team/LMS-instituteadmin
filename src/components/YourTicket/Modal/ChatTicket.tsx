@@ -20,7 +20,7 @@ interface ChatTicketProps {
 
 const ChatTicket: React.FC<ChatTicketProps> = ({ ticket, onBack }) => {
   return (
-    <div className="h-screen w-full ">
+    <div className=" ">
       {/* Back Button */}
       <button
         onClick={onBack}
@@ -29,9 +29,9 @@ const ChatTicket: React.FC<ChatTicketProps> = ({ ticket, onBack }) => {
         <IoIosArrowBack size={20} />
       </button>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 h-full">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 ">
         {/* Chat Panel */}
-        <div className="lg:col-span-2 bg-white rounded-xl shadow p-4 flex flex-col h-[90vh]">
+        <div className="lg:col-span-2 bg-white rounded-sm shadow p-4  h-[77vh]">
           {/* Header */}
           <div className="flex items-center gap-3 border-b p-2 mb-3 border rounded-lg shadow-lg">
             <div className="w-12 h-12 rounded-full bg-gray-200 overflow-hidden flex items-center justify-center text-[#CA406F] font-bold text-sm uppercase">
@@ -70,8 +70,9 @@ const ChatTicket: React.FC<ChatTicketProps> = ({ ticket, onBack }) => {
           >
             <div className="flex flex-col gap-4 overflow-y-auto max-h-full flex-1">
               {/* User message */}
-              <div className="flex items-start mb-1">
-                <div className="w-8 h-8 bg-[#0400FF] rounded-lg mr-2 flex items-center justify-center text-white">
+              <div className="flex flex-col items-start mb-1">
+                <div className="flex items-start mb-1">
+                  <div className="w-8 h-8 bg-[#0400FF] rounded-lg mr-2 flex items-center justify-center text-white">
                   <FaUser />
                 </div>
                 <div>
@@ -79,7 +80,17 @@ const ChatTicket: React.FC<ChatTicketProps> = ({ ticket, onBack }) => {
                     Hi there, How are you?
                   </div>
                   <div className="text-[11px] text-[#7D7D7D] mt-1 ml-2">
-                    12:34 PM
+                    12:24 PM
+                  </div>
+                </div>
+                </div>
+                <div className="flex items-start ml-10 flex-col">
+                  <div className="bg-white rounded-lg px-4 py-2 text-sm shadow max-w-[75%]">
+                    Waiting for your reply. As I have to go back soon. I have to
+                    travel long distance.
+                  </div>
+                  <div className="text-[11px] text-[#7D7D7D] mt-1 ml-2">
+                    12:25 PM
                   </div>
                 </div>
               </div>
@@ -91,7 +102,7 @@ const ChatTicket: React.FC<ChatTicketProps> = ({ ticket, onBack }) => {
                     Hi, I am coming there in few minutes. Please wait!! I am in
                     taxi right now.
                   </div>
-                  <div className="text-[11px] ">12:35 PM</div>
+                  <div className="text-[11px] ">12:28 PM</div>
                 </div>
                 <div className="w-8 h-8 bg-[#0400FF] rounded-lg ml-2 flex items-center justify-center text-white">
                   <FaUser />
@@ -108,7 +119,7 @@ const ChatTicket: React.FC<ChatTicketProps> = ({ ticket, onBack }) => {
                     Thank you very much, I am waiting here at Starbucks cafe.
                   </div>
                   <div className="text-[11px] text-[#7D7D7D] mt-1 ml-2">
-                    12:36 PM
+                    12:35 PM
                   </div>
 
                   <div className="flex gap-2 mt-2">
@@ -141,24 +152,36 @@ const ChatTicket: React.FC<ChatTicketProps> = ({ ticket, onBack }) => {
         </div>
 
         {/* Ticket Info */}
-        <div className="bg-white rounded-xl shadow-lg p-4 h-[50vh] ">
-          <h3 className="text-sm font-semibold mb-2 text-[#716F6F]">
+        <div className="bg-white rounded-sm shadow-lg p-4 h-[50vh] flex flex-col gap-4">
+         <div>
+           <h3 className="text-sm font-bold text-[#716F6F]">
             Issue Description:
           </h3>
-          <p className="text-sm text-gray-700 mb-3">{ticket.description}</p>
-
-          <h3 className="text-sm font-semibold mb-2 text-[#716F6F]">
+          <p className="text-sm text-[#7D7D7D] mb-3">{ticket.description}</p>
+         </div>
+          <div>
+            <h3 className="text-sm font-bold  text-[#716F6F]">
             Issue Category:
           </h3>
-          <p className="text-sm text-gray-700 mb-3">Feedback</p>
+          <p className="text-sm text-[#7D7D7D] mb-3">Feedback</p>
+          </div>
 
-          <h3 className="text-sm font-semibold mb-2 text-[#716F6F]">
+          <div>
+            <h3 className="text-sm font-bold  text-[#716F6F]">
             Attachments:
           </h3>
-          <p className="text-sm text-blue-600 underline mb-3 cursor-pointer">
+         <div>
+           <p className="text-sm text-[#7D7D7D] underline  cursor-pointer w-40">
             2bf39530-F04d-4e22-A5ea-2be943f28e9e.jpeg
           </p>
-
+          <p className="text-sm text-[#7D7D7D] mb-3">
+            view
+          </p>
+         </div>
+          </div>
+          <div>
+            <h3 className="text-sm font-bold  text-[#716F6F]">
+             Status: </h3>
           <span
             className={`inline-block px-5 py-2 text-white  font-semibold rounded p-2 ${
               ticket.status === "Open" ? "bg-[#CA406F]" : "bg-[#3ABE65]"
@@ -166,6 +189,7 @@ const ChatTicket: React.FC<ChatTicketProps> = ({ ticket, onBack }) => {
           >
             {ticket.status}
           </span>
+          </div>
         </div>
       </div>
     </div>

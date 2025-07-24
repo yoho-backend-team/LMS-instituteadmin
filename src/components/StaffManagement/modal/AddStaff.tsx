@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import CustomDropdown from "../CustomeDropDown";
 
 interface AddStaffProps {
@@ -20,6 +20,8 @@ const AddStaff: React.FC<AddStaffProps> = ({ onClose, onSave }) => {
     "Blockchain Development",
     "AI & Deep Learning",
   ];
+
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -66,36 +68,69 @@ const AddStaff: React.FC<AddStaffProps> = ({ onClose, onSave }) => {
     onSave(formData);
   };
 
+  const handleImageClick = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormData((prev) => ({
+          ...prev,
+          image: reader.result as string,
+        }));
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex justify-end items-center pt-4 pl-4">
       <div className="bg-white p-4 rounded-sm shadow-lg w-full h-full">
         <div className="flex flex-col w-full h-full gap-5">
           <div className="flex flex-col gap-1">
-            <h2 className="text-xl font-semibold">Add New Staff</h2>
+            <h2 className="text-xl font-bold text-[#716F6F]">Add New Staff</h2>
             <div className="shadow-xl border rounded-sm p-4 flex justify-between items-center">
               <div className="flex items-center gap-4">
-                <div className="border-2 rounded-full w-20 h-20 overflow-hidden scrollbar-hide">
+                <div
+                  className="border-2 rounded-full w-20 h-20 overflow-hidden cursor-pointer"
+                  onClick={handleImageClick}
+                >
                   <img
-                    src=""
+                    src={
+                      formData.image || "https://via.placeholder.com/150"
+                    }
                     alt="Profile"
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div>
+                <div className="flex flex-col justify-between gap-3 h-full">
                   <h3 className="font-medium">Name</h3>
                   <p className="text-sm text-gray-500">
                     Allowed PNG or JPEG. Max size: 800KB.
                   </p>
                 </div>
               </div>
-              <button className="p-2 border-2 rounded-sm bg-green-500 text-white hover:bg-green-600">
+              <button
+                onClick={handleImageClick}
+                className="p-2 border-2 rounded-sm bg-green-500 text-white hover:bg-green-600"
+              >
                 Update Profile Picture
               </button>
+              <input
+                type="file"
+                ref={fileInputRef}
+                accept="image/*"
+                onChange={handleImageChange}
+                className="hidden"
+              />
             </div>
           </div>
 
           <form className="p-2 grid grid-cols-3 gap-6">
-            {/* Name */}
+            {/* Full Name */}
             <div className="flex flex-col gap-2">
               <label>Full Name</label>
               <input
@@ -263,7 +298,7 @@ const AddStaff: React.FC<AddStaffProps> = ({ onClose, onSave }) => {
               />
             </div>
 
-            {/* Phone */}
+            {/* Phone Number */}
             <div className="flex flex-col gap-2">
               <label>Phone Number</label>
               <input
