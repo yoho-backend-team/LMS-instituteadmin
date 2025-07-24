@@ -66,7 +66,7 @@ function AddFaqNotes({ open, onClose }: AddNotesProps) {
           >
             Cancel
           </button>
-          <button className="px-6 ml-6   rounded-md bg-[#ca406f] text-white hover:bg-[#b23561]">
+          <button className="px-6    rounded-md bg-[#ca406f] text-white hover:bg-[#b23561]">
             Submit
           </button>
         </div>

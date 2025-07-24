@@ -28,7 +28,6 @@ interface FAQItem {
 
 const initialData: FAQItem[] = [
   { id: 1, title: "Chennai",category:"", author: "29/1,second floor chennai ", status: "Active" },
-//   { id: 2, title: "Login Issue",category:"", author: "Peater", status: "Active" },
 ];
 
 const Category = () => {
@@ -164,7 +163,7 @@ const handleDeleteConfirm = () => {
       className="absolute top-2 right-2  "
       aria-label="More options"
     >
-      <MoreVertical className="w-5 h-5 text-[#ca406f]" />
+      <MoreVertical className="w-5 h-5 -ml-12 text-[#ca406f]" />
     </button>
   </DropdownMenuTrigger>
 

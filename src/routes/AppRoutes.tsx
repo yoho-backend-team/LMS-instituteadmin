@@ -1,11 +1,8 @@
 
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-
 import { MainLayout } from "@/layout/mainlayout/mainlayout";
 import Dashboard from "@/pages/dashboard/dashboard";
-// import Branchmanagement from "@/pages/branchmanagement/branchmanagement";
 import Community from "@/pages/community/community";
-// import Usermanagement from "@/pages/usermanagement/usermanagement";
 import Users from "@/pages/users/users";
 import Branch from "@/pages/branchmanagement/branch/branch";
 // import  from "@/pages/usermanagement/group/group";
@@ -42,11 +39,19 @@ import StaffTicket from "@/pages/ticketmanagement/staffticket/staffticket";
 import StudentTicket from "@/pages/ticketmanagement/studentticket/studentticket";
 import YourTicket from "@/pages/ticketmanagement/yourticket/yourticket";
 import StaffNotification from "@/pages/notificationmanagement/staffnotification/staffnotification";
+import OfflineAdd from "@/components/classmanagement/offline_add/offline_add";
+import All from "../components/notificationmanagement/overallnotification/all/all"
+import Profile from "@/pages/profile/profile/profile";
+import Settings from "@/pages/profile/settings/settings";
+import Logout from "@/pages/profile/logout/logout";
 import Groupspages from "@/pages/Groupspages/Groupspages";
 import AddGroup from "@/components/groups/addgroup";
 import PermissionManagement from "@/components/groups/view";
-import Edit from "@/components/groups/Edit"
-import StudentAttendance from "@/components/AttendanceManagement/studentAttend";
+import  Edit from "@/components/groups/Edit"
+import ChatPage from "@/components/ticket _management/chat-page";
+import ClosedTicket from "@/components/ticket _management/closechat";
+
+
 
 const Approutes = () => {
   return (
@@ -76,14 +81,12 @@ const Approutes = () => {
           <Route path="Refund_Fees" element={<Refund_Management_Fees />} />
           <Route path="Teachingstaff" element={<Teachingstaff />} />
           <Route path="Studentmanagement" element={<Studentmanagement />} />
-          <Route path="Staffticket" element={< StaffTicket />} />
+          <Route path="Staffticket" element={<StaffTicket />} />
           <Route path="StudentTicket" element={<StudentTicket />} />
           <Route path="Yourticket" element={<YourTicket />} />
           <Route path="Dashboard" element={<Dashboard />} />
-          {/* <Route path="Branch-management" element={<Branchmanagement />} /> */}
           <Route path="Branch" element={<Branch />} />
           <Route path="Community" element={<Community />} />
-          {/* <Route path="User-management" element={<Usermanagement />} /> */}
           <Route path="Group" element={<Groupspages/>} />
           <Route path="Users" element={<Users />} />
           <Route path="categories" element={<Categories />} />
@@ -95,10 +98,20 @@ const Approutes = () => {
           <Route path="/offlineedit" element={<OfflineEdit />} />
           <Route path="/offlineclass" element={<OfflineClass />} />
           <Route path="/offlineviewmore" element={<OfflineView />} />
-          <Route path="/add-group" element={<AddGroup />} />
-          <Route path="/permission-management" element={<PermissionManagement/>}/>
-          <Route path="/Edit" element={<Edit/>}/>
-          <Route path="/student-attend" element={<StudentAttendance />}/>
+          <Route path="/offlineadd" element={<OfflineAdd />} />
+          <Route path="/chat-page" element={<ChatPage/>}/>
+          <Route path="/closed-ticket" element={<ClosedTicket/>}/>
+
+          <Route path="/all" element={<All />} />
+          
+   <Route path="/add-group" element={<AddGroup />} />
+        <Route path="/permission-management" element={< PermissionManagement/>}/>
+        <Route path="/Edit" element={<Edit/>}/>
+
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/settings" element={<Settings />} />
+            <Route path="/logout" element={<Logout />} />
+
         </Route>
 
 
