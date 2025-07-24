@@ -2,8 +2,8 @@ import React from 'react'
 
 function Community() {
   return (
-    <div>Community</div>
+    <div>C</div>
   )
 }
 
-export default Community;
+export default Community

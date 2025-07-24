@@ -60,9 +60,9 @@ const DbChart = () => {
   const color = activeTab === "revenue" ? "#3b82f6" : "#f43f5e";
 
   return (
-    <div className="w-full h-80 rounded-2xl bg-white p-4 shadow-xl">
+    <div className="w-full h-80 rounded-2xl bg-gradient-to-bl from-pink-200 to-blue-200 p-4 shadow-xl">
       {/* Tabs */}
-      <div className="flex justify-center gap-4 mb-3">
+      <div className="flex gap-4 mb-3">
         <button
           onClick={() => setActiveTab("revenue")}
           className={`px-4 py-1.5 rounded-lg shadow-md text-sm ${
@@ -101,7 +101,7 @@ const DbChart = () => {
           />
           <XAxis
             dataKey="name"
-            stroke="#9ca3af"
+            stroke="#374151"
             fontSize={12}
             padding={{ left: 10, right: 10 }}
           />

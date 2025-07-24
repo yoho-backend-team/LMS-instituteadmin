@@ -175,16 +175,17 @@ export default function Dashboard() {
         </div>
 
         {/* Stats + Courses */}
-        <div className="flex flex-col lg:flex-row gap-6 items-start">
+        <div className="flex flex-col lg:flex-row gap-6 items-start mb-3">
           {/* <div className="lg:w-2/3"> */}
           <div className="w-full">
             <StatsCarousal />
           </div>
           <div>
             {/* ✅ Attach courseScrollRef here */}
+
             <div
               ref={courseScrollRef}
-              className="space-y-4 max-h-66 overflow-y-scroll scrollbar-hide"
+              className="space-y-4 max-h-66 overflow-y-scroll scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-blue-100"
             >
               {dummyCourses.map((course, i) => (
                 <div
@@ -210,12 +211,12 @@ export default function Dashboard() {
             </div>
 
             {/* ✅ Trigger scroll on click */}
-            <div
+            {/* <div
               className="text-2xl flex justify-center text-gray-500 cursor-pointer hover:text-[#CA406F] transition-colors duration-300 mt-2"
               onClick={handleCourseScrollDown}
             >
               <MdKeyboardArrowDown />
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -230,14 +231,14 @@ export default function Dashboard() {
             </h3>
             <div
               ref={scrollRef}
-              className="max-h-62 overflow-y-scroll scrollbar-hide space-y-3"
+              className="max-h-62 overflow-y-scroll space-y-3"
             >
               {dummyActivities.map((activity, i) => (
                 <div
                   key={i}
                   className="group flex items-center gap-3 bg-white p-4 rounded-2xl transition-all duration-300 hover:bg-gradient-to-br from-[#BF4B94] to-[#F798D3] hover:text-white shadow-lg"
                 >
-                  <div className="w-8 h-8 bg-[#CA406F] rounded-full flex items-center justify-center transition-all duration-300 group-hover:bg-white" />
+                  <div className="w-9 h-9 bg-[#CA406F] rounded-full flex items-center justify-center transition-all duration-300 group-hover:bg-white" />
                   <div className="flex-1">
                     <p className="font-medium text-sm text-[#716F6F] group-hover:text-white transition-colors duration-300">
                       {activity.action}
@@ -249,12 +250,12 @@ export default function Dashboard() {
                 </div>
               ))}
             </div>
-            <div
+            {/* <div
               className="text-2xl flex justify-center text-gray-500 cursor-pointer hover:text-[#CA406F] transition-colors duration-300 "
               onClick={handleScrollDown}
             >
               <MdKeyboardArrowDown />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

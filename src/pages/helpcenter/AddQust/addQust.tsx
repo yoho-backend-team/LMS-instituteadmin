@@ -24,10 +24,11 @@ const table = [
     videoLink: "https://example.com/video2",
     status: "Classes 12345",
   },
-   {
-    id: 3 ,
+  {
+    id: 3,
     category: "Classes",
-    videoLink: "https://www.youtube.com/watch?v=xeXV1KoX034&pp=ygUNc2FtcGxlIHZpZGVvcw%3D%3D",
+    videoLink:
+      "https://www.youtube.com/watch?v=xeXV1KoX034&pp=ygUNc2FtcGxlIHZpZGVvcw%3D%3D",
     status: "Classes 12345",
   },
 ];
@@ -58,27 +59,27 @@ const AddQust = () => {
       {/* Header Card */}
       <div className="bg-white rounded-lg shadow-md p-5 mb-6 ml-4">
         <Card className="bg-gray-100 rounded-md shadow-sm px-3 py-2">
-  <div className="grid grid-cols-5 items-center text-[#716F6F] font-semibold px-2 py-1">
-    <div>ID</div>
-    <div>Category</div>
-    <div>Video Link</div>
-    <div className="ml-12">Status</div>
-    <div className="text-right">Actions</div>
-  </div>
-</Card>
-
-
+          <div className="grid grid-cols-5 items-center text-[#716F6F] font-semibold px-2 py-1">
+            <div>ID</div>
+            <div>Category</div>
+            <div>Video Link</div>
+            <div className="ml-12">Status</div>
+            <div className="text-right">Actions</div>
+          </div>
+        </Card>
         {/* Cards List */}
         <div className="space-y-2 py-4">
           {table.map((item) => (
             <Card key={item.id} className="shadow-xl rounded-lg relative">
               <CardContent className="grid grid-cols-5 items-center py-1 px-2 text-[#716F6F] relative font-semibold ml-2">
-
                 <div>{item.id}</div>
 
-                <div className="font-semibold text-[#716F6F]">{item.category}</div>
+                <div className="font-semibold text-[#716F6F]">
+                  {item.category}
+                </div>
 
-                <div className=" text-gray-400 break-all">{item.videoLink}
+                <div className=" text-gray-400 break-all">
+                  {item.videoLink}
                   {/* <a
                     href={item.videoLink}
                     target="_blank"
@@ -98,7 +99,10 @@ const AddQust = () => {
                 <div className="flex justify-end">
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <button className="absolute top-2 right-2" aria-label="More options">
+                      <button
+                        className="absolute top-2 right-2"
+                        aria-label="More options"
+                      >
                         <MoreVertical className="w-5 h-5 text-[#ca406f] mt-4 mr-8" />
                       </button>
                     </DropdownMenuTrigger>
@@ -112,9 +116,7 @@ const AddQust = () => {
                         <span>Edit</span>
                       </DropdownMenuItem>
 
-                      <DropdownMenuItem
-                        className="group text-[#716F6F] border border-[#716F6F] text-sm font-medium px-3 py-2 rounded-md flex items-center gap-2 cursor-pointer hover:!bg-[#ca406f] hover:!text-white"
-                      >
+                      <DropdownMenuItem className="group text-[#716F6F] border border-[#716F6F] text-sm font-medium px-3 py-2 rounded-md flex items-center gap-2 cursor-pointer hover:!bg-[#ca406f] hover:!text-white">
                         <Trash2 className="w-4 h-4 hover:text-white" />
                         <span>Delete</span>
                       </DropdownMenuItem>
