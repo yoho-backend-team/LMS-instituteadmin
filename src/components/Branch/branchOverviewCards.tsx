@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import dollar from "../../assets/dollar.png";
 import classimg from "../../assets/classimg (1).png";
@@ -46,7 +46,7 @@ export default function CircularCardCarousel() {
       <div className="relative w-full flex items-center justify-center">
         <button
           onClick={handlePrev}
-          className="absolute -left-2.5 z-40 p-1 rounded-full bg-[#ca406f] text-white shadow "
+          className="absolute left-1 z-40 p-1 rounded-full bg-[#ca406f] text-white shadow "
         >
           <img src={ArrowRight}  />
           
@@ -75,7 +75,7 @@ export default function CircularCardCarousel() {
 
         <button
           onClick={handleNext}
-          className="absolute -right-2.5 z-40 p-1 rounded-full bg-[#ca406f] text-white shadow "
+          className="absolute right-1 z-40 p-1 rounded-full bg-[#ca406f] text-white shadow "
         >
           <img src={ArrowLeft}  />
         </button>

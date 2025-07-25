@@ -20,6 +20,8 @@ import { useState } from "react";
 import EditBatchModal from "./editBatch";
 import { useNavigate } from "react-router-dom";
 import { FONTS } from "@/constants/uiConstants";
+import wave from "../../assets/wave.png"
+import DeleteConfirmationModal from "../FAQCategory/deleteModal";
 
 
 
@@ -45,10 +47,18 @@ export const BatchCard: React.FC<BatchCardProps> = ({
 }) => {
   const [status, setStatus] = useState<string>("");
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   
   
        const openEditModal = () => setIsEditModalOpen(true);
     const closeEditModal = () => setIsEditModalOpen(false);
+ const openDeleteModal = () => setIsDeleteModalOpen(true);
+  const closeDeleteModal = () => setIsDeleteModalOpen(false);
+
+  const handleConfirmDelete = () => {
+    console.log("Deleted:", name);
+  };
+
       const navigate = useNavigate();
   return (
     <Card className="rounded-xl shadow-[0px_0px_12px_rgba(0,0,0,0.08)] w-[auto] bg-white">
@@ -92,7 +102,9 @@ export const BatchCard: React.FC<BatchCardProps> = ({
   <span className="group-hover:text-white">Edit</span>
 </DropdownMenuItem>
 
-    <DropdownMenuItem className="group border border-gray-300 text-black font-medium text-sm rounded-md px-3 py-2 flex items-center gap-2 cursor-pointer hover:bg-[#ca406f]"
+    <DropdownMenuItem
+     onClick={openDeleteModal} 
+      className="group border border-gray-300 text-black font-medium text-sm rounded-md px-3 py-2 flex items-center gap-2 cursor-pointer hover:bg-[#ca406f]"
      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#ca406f")}
   onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "")}>
       <Trash2 className="w-4 h-4 text-black group-hover:text-white" />
@@ -130,7 +142,7 @@ export const BatchCard: React.FC<BatchCardProps> = ({
 
         
        <div className="mt-4 h-[60px] pt-2">
-  <svg
+  {/* <svg
     viewBox="0 0 200 40"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -149,12 +161,15 @@ export const BatchCard: React.FC<BatchCardProps> = ({
       fill="none"
       opacity="0.9"
     />
-  </svg>
+  </svg> */}
+
+<img src={wave}/>
+
 </div>
 
 
       
-        <div className="flex justify-end mt-6">
+        <div className="flex justify-end mt-12">
            <Select onValueChange={(value) => setStatus(value)}>
             <SelectTrigger
               className={`w-[111px] h-[40px] border border-grey px-2 bg-transparent shadow-none ${
@@ -194,6 +209,12 @@ export const BatchCard: React.FC<BatchCardProps> = ({
         </div>
       </CardContent>
        <EditBatchModal isOpen={isEditModalOpen} onClose={closeEditModal} />
+       
+      <DeleteConfirmationModal
+        open={isDeleteModalOpen}
+        onClose={closeDeleteModal}
+        onConfirmDelete={handleConfirmDelete}
+      />
     </Card>
   );
 };
