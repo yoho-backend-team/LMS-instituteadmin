@@ -113,6 +113,8 @@ button:focus-visible {
   }
 } 
 */
+
+
 .topbar{
 background: linear-gradient(90deg, #F6D3E9 0%, #FFFFFF 48.08%, #F6D3E9 100%);
 backdrop-filter: blur(2px);
