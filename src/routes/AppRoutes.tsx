@@ -8,6 +8,8 @@ import Branch from "@/pages/branchmanagement/branch/branch";
 import Group from "@/pages/usermanagement/group/group";
 import Categories from "@/pages/coursemanagement/categories/categories";
 import Courses from "@/pages/courses/courses";
+import ViewCardPage from "@/components/ContentManagement/ViewCardPage"; // <-- Add this import
+
 import StudyMaterials from "@/pages/contentmanagement/studymaterials/studymaterials";
 import Notes from "@/pages/notes/notes";
 import Modules from "@/pages/modules/modules";
@@ -34,10 +36,13 @@ import Placement from "@/pages/placementmanagement/placement/placement";
 import Refund_Management_Fees from "@/pages/refundmanagement/fees/fees";
 import Teachingstaff from "@/pages/staffmanagement/teachingstaff/teachingstaff";
 import Studentmanagement from "@/pages/studentmanagement/studentmanagement";
+import ViewAttendancePage from "@/components/StaffAttendancePage/ViewAttendance";
+
 import StaffTicket from "@/pages/ticketmanagement/staffticket/staffticket";
 import StudentTicket from "@/pages/ticketmanagement/studentticket/studentticket";
 import YourTicket from "@/pages/ticketmanagement/yourticket/yourticket";
 import StaffNotification from "@/pages/notificationmanagement/staffnotification/staffnotification";
+
 import OfflineAdd from "@/components/classmanagement/offline_add/offline_add";
 import All from "../components/notificationmanagement/overallnotification/all/all"
 import Profile from "@/pages/profile/profile/profile";
@@ -84,6 +89,8 @@ const Approutes = () => {
           <Route path="Placement" element={<Placement />} />
           <Route path="Refund_Fees" element={<Refund_Management_Fees />} />
           <Route path="Teachingstaff" element={<Teachingstaff />} />
+          <Route path="/attendance/:id" element={<ViewAttendancePage />} />
+          
           <Route path="Studentmanagement" element={<Studentmanagement />} />
           <Route path="Staffticket" element={< StaffTicket />} />
           <Route path="StudentTicket" element={<StudentTicket />} />
@@ -96,12 +103,16 @@ const Approutes = () => {
           <Route path="categories" element={<Categories />} />
           <Route path="courses" element={<Courses />} />
           <Route path="studymaterial" element={<StudyMaterials />} />
+          <Route path="studymaterial/view" element={<ViewCardPage />} />
+
+
           <Route path="notes" element={<Notes />} />
           <Route path="modules" element={<Modules />} />
           <Route path="offlinemanagement" element={<OfflineClass />} />
           <Route path="/offlineedit" element={<OfflineEdit />} />
           <Route path="/offlineclass" element={<OfflineClass />} />
           <Route path="/offlineviewmore" element={<OfflineView />} />
+         
           <Route path="/offlineadd" element={<OfflineAdd />} />
           <Route path="/all" element={<All />} />
           <Route path="/profile" element={<Profile />} />
@@ -124,6 +135,8 @@ const Approutes = () => {
 
         </Route>
 
+
+        <Route path="*" element={<Navigate to="/dashboard" replace />} />
 
         {/* <Route path="*" element={<Navigate to="/dashboard" replace />} /> */}
       </Routes>
