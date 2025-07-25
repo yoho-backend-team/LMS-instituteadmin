@@ -1,11 +1,10 @@
 "use client"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent } from "../ui/card"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
-import { Badge } from "@/components/ui/badge"
+import { Badge } from "../ui/badge"
 import { Filter, Plus, MoreHorizontal, Eye, Edit, Trash2, Download } from "lucide-react"
 import React, { useState, useRef, useEffect } from "react"
-import clsimg from "@/assets/close.svg" // Make sure this path is correct
 
 interface Student {
   name: string
@@ -61,7 +60,7 @@ const feeData: FeeRecord[] = [
     student: { name: "Elon Musk", email: "musk@gmail.com", avatar: "" },
     amountPaid: 10000,
     issuedDate: "2025-05-07",
-    status: "active",
+    status: "pending",
   },
   {
     id: "#36",
@@ -69,7 +68,7 @@ const feeData: FeeRecord[] = [
     student: { name: "Elon Musk", email: "musk@gmail.com", avatar: "" },
     amountPaid: 10000,
     issuedDate: "2025-05-07",
-    status: "active",
+    status: "inactive",
   },
 ]
 
@@ -147,147 +146,8 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ recordId }) => {
   )
 }
 
-const FeeFormPanel: React.FC<{ onClose: () => void }> = ({ onClose }) => {
-  return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-end items-start z-50 p-4">
-      <div 
-        className="bg-white rounded-[12px] p-4 flex flex-col gap-[30px] w-full max-w-[403px] h-[90vh] overflow-y-auto"
-        style={{
-          boxShadow: '0px 4px 24px rgba(0, 0, 0, 0.15)',
-          fontFamily: "'Poppins', sans-serif"
-        }}
-      >
-        <div className="flex flex-col gap-[30px] w-full">
-          {/* Header */}
-          <div className="flex justify-between items-center w-full h-[36px]">
-            <h2 
-              className="text-[24px] font-semibold text-[#716F6F] capitalize"
-              style={{
-                fontFamily: "'Poppins', sans-serif",
-                fontWeight: 600,
-                fontSize: '24px',
-                lineHeight: '36px'
-              }}
-            >
-              Add Fees
-            </h2>
-            <button 
-              onClick={onClose}
-              className="w-6 h-6 flex items-center justify-center"
-            >
-              <img src={clsimg} alt="Close" className="w-6 h-6" />
-            </button>
-          </div>
-
-          {/* Form Fields */}
-          <div className="flex flex-col gap-[30px]">
-            {[
-              "Select Branch",
-              "Select Course",
-              "Batch",
-              "Student",
-              "Payment Date",
-              "Transaction ID",
-              "Paid Amount",
-              "Balance",
-              "Due Payment Date"
-            ].map((label, index) => (
-              <div key={index} className="flex flex-col gap-2 w-full">
-                <label 
-                  className="text-[16px] font-medium text-[#716F6F] capitalize"
-                  style={{
-                    fontFamily: "'Poppins', sans-serif",
-                    fontWeight: 500,
-                    fontSize: '16px',
-                    lineHeight: '24px'
-                  }}
-                >
-                  {label}
-                </label>
-                <div
-                  className={`flex justify-between items-center w-full h-[48px] px-4 py-3 rounded-[8px] ${
-                    ["Transaction ID", "Paid Amount", "Balance"].includes(label)
-                      ? "border-b border-[#716F6F]"
-                      : "border border-[#716F6F]"
-                  }`}
-                  style={{
-                    boxSizing: 'border-box'
-                  }}
-                >
-                  <span 
-                    className="text-[18px] font-light text-[#716F6F] capitalize"
-                    style={{
-                      fontFamily: "'Poppins', sans-serif",
-                      fontWeight: 300,
-                      fontSize: '18px',
-                      lineHeight: '27px'
-                    }}
-                  >
-                    July
-                  </span>
-                  <div 
-                    className="w-[20px] h-[20px]"
-                    style={{
-                      transform: 'matrix(0, 1, 1, 0, 0, 0)',
-                      borderRight: '2px solid #716F6F',
-                      borderBottom: '2px solid #716F6F'
-                    }}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Buttons */}
-          <div className="flex justify-end gap-[30px] w-full">
-            <button 
-              onClick={onClose}
-              className="flex justify-center items-center px-4 w-[98px] h-[40px] rounded-[8px]"
-              style={{
-                background: 'rgba(4, 0, 255, 0.1)',
-                border: '1px solid #0400FF'
-              }}
-            >
-              <span 
-                className="text-[16px] font-semibold text-[#0400FF] capitalize"
-                style={{
-                  fontFamily: "'Poppins', sans-serif",
-                  fontWeight: 600,
-                  fontSize: '16px',
-                  lineHeight: '24px'
-                }}
-              >
-                Cancel
-              </span>
-            </button>
-            <button 
-              className="flex justify-center items-center px-4 w-[150px] h-[40px] rounded-[8px]"
-              style={{
-                background: '#CA406F'
-              }}
-            >
-              <span 
-                className="text-[16px] font-semibold text-white capitalize"
-                style={{
-                  fontFamily: "'Poppins', sans-serif",
-                  fontWeight: 600,
-                  fontSize: '16px',
-                  lineHeight: '24px'
-                }}
-              >
-                Submit
-              </span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default function Fees() {
+export default function fees() {
   const [showFilters, setShowFilters] = useState(false)
-  const [showAddFeePanel, setShowAddFeePanel] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
   const [batchFilter, setBatchFilter] = useState("")
   const [startDate, setStartDate] = useState("")
@@ -309,31 +169,26 @@ export default function Fees() {
   })
 
   return (
-    <div className="min-h-screen relative">
-      <main className="p-8">
+    <div className="min-h-screen bg-white relative overflow-hidden">
+      <main className="p-8 overflow-auto">
         <div className="max-w-[1278px] mx-auto">
           {/* Header */}
           <div className="mb-8">
             <h1 className="text-2xl font-semibold text-[#716F6F] capitalize mb-8">Fees</h1>
 
             <div className="flex items-center justify-between">
-              <div className="flex gap-4">
-                <Button
-                  className="flex items-center justify-center gap-2 bg-[#CA406F] hover:bg-[#CA406F]/90 text-white px-4 py-2 rounded-lg h-12 w-[153px]"
-                  onClick={() => setShowFilters(!showFilters)}
-                >
-                  <Filter className="w-6 h-6" />
-                  <span className="text-base font-medium">{showFilters ? 'Hide Filter' : 'Show Filter'}</span>
-                </Button>
+              <Button
+                className="flex items-center justify-center gap-2 bg-[#CA406F] hover:bg-[#CA406F]/90 text-white px-4 py-2 rounded-lg h-12 w-[153px]"
+                onClick={() => setShowFilters(!showFilters)}
+              >
+                <Filter className="w-6 h-6" />
+                <span className="text-base font-medium">{showFilters ? 'Hide Filter' : 'Show Filter'}</span>
+              </Button>
 
-                <Button
-                  className="flex items-center justify-center gap-2 bg-[#CA406F] hover:bg-[#CA406F]/90 text-white px-4 py-2 rounded-lg h-12 w-[132px]"
-                  onClick={() => setShowAddFeePanel(true)}
-                >
-                  <Plus className="w-6 h-6" />
-                  <span className="text-base font-medium">Add Fee</span>
-                </Button>
-              </div>
+              <Button className="flex items-center justify-center gap-2 bg-[#CA406F] hover:bg-[#CA406F]/90 text-white px-4 py-2 rounded-lg h-12 w-[132px]">
+                <Plus className="w-6 h-6" />
+                <span className="text-base font-medium">Add Fee</span>
+              </Button>
             </div>
           </div>
 
@@ -344,16 +199,15 @@ export default function Fees() {
                 <div className="flex flex-col gap-6">
                   {/* Search */}
                   <div className="flex flex-col gap-2 w-full">
-                    <label className="text-[#716F6F] font-medium text-base" style={{ fontFamily: "'Poppins', sans-serif" }}>Search</label>
+                    <label className="text-[#716F6F] font-medium text-base font-['Poppins']">Search</label>
                     <div className="flex items-center border border-[#716F6F] rounded-lg p-3 gap-3">
-                      <input
-                        type="text"
-                        placeholder="Search by Status"
-                        className="max-w-[250px] basis-[250px] text-[#716F6F] font-light text-lg outline-none bg-transparent"
-                        style={{ fontFamily: "'Poppins', sans-serif" }}
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                      />
+                     <input
+  type="text"
+  placeholder="Search by Status"
+  className="max-w-[250px] basis-[250px] text-[#716F6F] font-light text-lg font-['Poppins'] outline-none bg-transparent"
+  value={searchTerm}
+  onChange={(e) => setSearchTerm(e.target.value)}
+/>
                     </div>
                   </div>
 
@@ -361,13 +215,12 @@ export default function Fees() {
                   <div className="flex gap-6">
                     {/* Batches */}
                     <div className="flex flex-col gap-2 w-1/3">
-                      <label className="text-[#716F6F] font-medium text-base" style={{ fontFamily: "'Poppins', sans-serif" }}>Batches</label>
+                      <label className="text-[#716F6F] font-medium text-base font-['Poppins']">Batches</label>
                       <div className="flex items-center border border-[#716F6F] rounded-lg p-3 gap-3">
                         <input
                           type="text"
                           placeholder="Search by Batch"
-                          className="flex-1 text-[#716F6F] font-light text-lg outline-none bg-transparent"
-                          style={{ fontFamily: "'Poppins', sans-serif" }}
+                          className="flex-1 text-[#716F6F] font-light text-lg font-['Poppins'] outline-none bg-transparent"
                           value={batchFilter}
                           onChange={(e) => setBatchFilter(e.target.value)}
                         />
@@ -376,12 +229,11 @@ export default function Fees() {
 
                     {/* Start Date */}
                     <div className="flex flex-col gap-2 w-1/3">
-                      <label className="text-[#716F6F] font-medium text-base" style={{ fontFamily: "'Poppins', sans-serif" }}>Start Date</label>
+                      <label className="text-[#716F6F] font-medium text-base font-['Poppins']">Start Date</label>
                       <div className="flex items-center border border-[#716F6F] rounded-lg p-3 gap-3">
                         <input
                           type="date"
-                          className="flex-1 text-[#716F6F] font-light text-lg outline-none bg-transparent"
-                          style={{ fontFamily: "'Poppins', sans-serif" }}
+                          className="flex-1 text-[#716F6F] font-light text-lg font-['Poppins'] outline-none bg-transparent"
                           value={startDate}
                           onChange={(e) => setStartDate(e.target.value)}
                         />
@@ -390,12 +242,11 @@ export default function Fees() {
 
                     {/* End Date */}
                     <div className="flex flex-col gap-2 w-1/3">
-                      <label className="text-[#716F6F] font-medium text-base" style={{ fontFamily: "'Poppins', sans-serif" }}>End Date</label>
+                      <label className="text-[#716F6F] font-medium text-base font-['Poppins']">End Date</label>
                       <div className="flex items-center border border-[#716F6F] rounded-lg p-3 gap-3">
                         <input
                           type="date"
-                          className="flex-1 text-[#716F6F] font-light text-lg outline-none bg-transparent"
-                          style={{ fontFamily: "'Poppins', sans-serif" }}
+                          className="flex-1 text-[#716F6F] font-light text-lg font-['Poppins'] outline-none bg-transparent"
                           value={endDate}
                           onChange={(e) => setEndDate(e.target.value)}
                         />
@@ -478,12 +329,12 @@ export default function Fees() {
 
                       <div className="flex justify-center">
                         <Badge 
-                          className={`rounded-[4px] text-white capitalize font-semibold text-[18px] leading-[27px] flex items-center justify-center ${
+                          className={`px-3 py-1 rounded text-white ${
                             record.status === "active" 
-                              ? "bg-[#3ABE65] w-[58px] h-[27px] hover:bg-[#3ABE65]/90" 
+                              ? "bg-[#3ABE65] hover:bg-[#3ABE65]/90" 
                               : record.status === "pending" 
-                                ? "bg-yellow-500 hover:bg-yellow-500/90 px-3 py-1" 
-                                : "bg-red-500 hover:bg-red-500/90 px-3 py-1"
+                                ? "bg-yellow-500 hover:bg-yellow-500/90" 
+                                : "bg-red-500 hover:bg-red-500/90"
                           }`}
                         >
                           {record.status.charAt(0).toUpperCase() + record.status.slice(1)}
@@ -501,11 +352,6 @@ export default function Fees() {
           </Card>
         </div>
       </main>
-
-      {/* Add Fees Panel */}
-      {showAddFeePanel && (
-        <FeeFormPanel onClose={() => setShowAddFeePanel(false)} />
-      )}
     </div>
   );
 }
