@@ -5,14 +5,14 @@ import Dashboard from "@/pages/dashboard/dashboard";
 import Community from "@/pages/community/community";
 import Users from "@/pages/users/users";
 import Branch from "@/pages/branchmanagement/branch/branch";
-import Group from "@/pages/usermanagement/group/group";
+// import  from "@/pages/usermanagement/group/group";
 import Categories from "@/pages/coursemanagement/categories/categories";
 import Courses from "@/pages/courses/courses";
 import ViewCardPage from "@/components/ContentManagement/ViewCardPage"; // <-- Add this import
 
 import StudyMaterials from "@/pages/contentmanagement/studymaterials/studymaterials";
 import Notes from "@/pages/notes/notes";
-import Modules from "@/pages/modules/modules";
+import Module from "@/pages/modules/modules";
 import OfflineClass from "@/pages/classmanagement/classmanagement";
 import OfflineEdit from "@/components/classmanagement/offline_edit/offline_edit";
 import OfflineView from "@/components/classmanagement/offline_view/offline_view";
@@ -48,6 +48,15 @@ import All from "../components/notificationmanagement/overallnotification/all/al
 import Profile from "@/pages/profile/profile/profile";
 import Settings from "@/pages/profile/settings/settings";
 import Logout from "@/pages/profile/logout/logout";
+import Groupspages from "@/pages/Groupspages/Groupspages";
+import AddGroup from "@/components/groups/addgroup";
+import PermissionManagement from "@/components/groups/view";
+import  Edit from "@/components/groups/Edit"
+import ChatPage from "@/components/ticket _management/chat-page";
+import ClosedTicket from "@/components/ticket _management/closechat";
+
+
+
 import TrackOrder from "@/components/HelpFAQ/TrackOrder";
 import FindMissingOrder from "@/components/HelpFAQ/FindMissingOrder";
 import SecureDelivery from "@/components/HelpFAQ/SecureDelivery";
@@ -92,13 +101,13 @@ const Approutes = () => {
           <Route path="/attendance/:id" element={<ViewAttendancePage />} />
           
           <Route path="Studentmanagement" element={<Studentmanagement />} />
-          <Route path="Staffticket" element={< StaffTicket />} />
+          <Route path="Staffticket" element={<StaffTicket />} />
           <Route path="StudentTicket" element={<StudentTicket />} />
           <Route path="Yourticket" element={<YourTicket />} />
           <Route path="Dashboard" element={<Dashboard />} />
           <Route path="Branch" element={<Branch />} />
           <Route path="Community" element={<Community />} />
-          <Route path="Group" element={<Group />} />
+          <Route path="Group" element={<Groupspages/>} />
           <Route path="Users" element={<Users />} />
           <Route path="categories" element={<Categories />} />
           <Route path="courses" element={<Courses />} />
@@ -107,14 +116,22 @@ const Approutes = () => {
 
 
           <Route path="notes" element={<Notes />} />
-          <Route path="modules" element={<Modules />} />
+          <Route path="modules" element={<Module />} />
           <Route path="offlinemanagement" element={<OfflineClass />} />
           <Route path="/offlineedit" element={<OfflineEdit />} />
           <Route path="/offlineclass" element={<OfflineClass />} />
           <Route path="/offlineviewmore" element={<OfflineView />} />
          
           <Route path="/offlineadd" element={<OfflineAdd />} />
+          <Route path="/chat-page" element={<ChatPage/>}/>
+          <Route path="/closed-ticket" element={<ClosedTicket/>}/>
+
           <Route path="/all" element={<All />} />
+          
+   <Route path="/add-group" element={<AddGroup />} />
+        <Route path="/permission-management" element={< PermissionManagement/>}/>
+        <Route path="/Edit" element={<Edit/>}/>
+
           <Route path="/profile" element={<Profile />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/logout" element={<Logout />} />

@@ -7,4 +7,5 @@ const FQA = () =>{
         </div>
     )
 }
+
 export default FQA;
