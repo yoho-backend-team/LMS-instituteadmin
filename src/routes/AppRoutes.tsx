@@ -26,7 +26,6 @@ import HelpFQA from "@/pages/helpcenter/helpFQA/helpFQA";
 import StaffIdCard from "@/pages/id_cardmanagement/staffidcard/staffidcard";
 import StudentIdCrad from "@/pages/id_cardmanagement/studentidcard/studentidcard";
 import Liveclasses from "@/pages/liveclasses/liveclasses";
-import Allnotification from "@/pages/notificationmanagement/allnotification/allnotification";
 import StudentNotification from "@/pages/notificationmanagement/studentnotification/studentnotification";
 import Fees from "@/pages/paymentmanagement/fees/fees";
 import Salaries from "@/pages/paymentmanagement/salaries/salaries";
@@ -45,6 +44,13 @@ import Profile from "@/pages/profile/profile/profile";
 import Settings from "@/pages/profile/settings/settings";
 import Logout from "@/pages/profile/logout/logout";
 import ProfileEdit from "@/components/profile/edit/edit";
+import Student_Allnotification from "@/components/notificationmanagement/studentnotification/student_all/student_all";
+import StudentNotification_c from "@/components/notificationmanagement/studentnotification/studentnotification_c";
+import StaffNotification_c from "@/components/notificationmanagement/staffnotification/staffnotification";
+import Allnotification from "@/pages/notificationmanagement/allnotification/allnotification";
+import AllNotification_c from "@/components/notificationmanagement/overallnotification/overallnotification";
+import Placementedit from "@/components/placement/edit/edit";
+import Placementadd from "@/components/placement/add/add";
 
 const Approutes = () => {
   return (
@@ -97,10 +103,17 @@ const Approutes = () => {
           <Route path="/settings" element={<Settings />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/profiledit" element={<ProfileEdit />} />
+          <Route path="/studentnotifications" element={<Student_Allnotification />} />
+          <Route path="/overallnotification_c" element={<AllNotification_c />} />
+          <Route path="/staffnotification_c" element={<StaffNotification_c />} />
+          <Route path="/studentnotification_c" element={<StudentNotification_c />} />
+          <Route path="/placememntedit" element={<Placementedit />} />
+          <Route path="/placememntadd" element={<Placementadd />} />
+
         </Route>
 
 
-        <Route path="*" element={<Navigate to="/dashboard" replace />} />
+        {/* <Route path="*" element={<Navigate to="/dashboard" replace />} /> */}
       </Routes>
     </BrowserRouter>
   );

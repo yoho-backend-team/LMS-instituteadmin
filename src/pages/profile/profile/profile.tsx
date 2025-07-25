@@ -7,31 +7,31 @@ import Profile_security from "@/components/profile/security/security";
 import Timeline from "@/components/profile/timeline/timeline";
 
 const Profile = () => {
-    const [activeTab, setActiveTab] = useState("account"); // default tab
+    const [activeTab, setActiveTab] = useState("account"); 
 
     return (
-        <div className="h-screen p-4">
+        <div className="h-screen p-4 ">
             <div className="text-xl font-semibold mb-4">Profile</div>
-            <div className="flex gap-5 h-[calc(100vh-80px)]">
+            <div className="flex gap-5 h-[calc(100vh-80px)] ">
 
                 <div className="bg-white w-72 px-5 py-5 space-y-6 rounded-sm shadow-2xl h-full">
                     <p
                         onClick={() => setActiveTab("account")}
-                        className={`flex items-center cursor-pointer hover:bg-gray-300 px-3 gap-5 h-10 rounded-sm border-2
+                        className={`flex items-center cursor-pointer hover:bg-gray-300 hover:text-black px-3 gap-5 h-10 rounded-sm border-2
                             ${activeTab === "account" ? "bg-[#CA406F] text-white " : "border-gray-300"}`}>
                         <FaRegUser />
                         Account
                     </p>
                     <p
                         onClick={() => setActiveTab("security")}
-                        className={`flex items-center cursor-pointer hover:bg-gray-300 px-3 gap-5 h-10 rounded-sm border-2
+                        className={`flex items-center cursor-pointer hover:bg-gray-300 hover:text-black px-3 gap-5 h-10 rounded-sm border-2
                             ${activeTab === "security" ? "bg-[#CA406F] text-white " : "border-gray-300"}`}>
                         <MdOutlineSecurity />
                         Security
                     </p>
                     <p
                         onClick={() => setActiveTab("timeline")}
-                        className={`flex items-center cursor-pointer hover:bg-gray-300 px-3 gap-5 h-10 rounded-sm border-2
+                        className={`flex items-center cursor-pointer hover:bg-gray-300 hover:text-black px-3 gap-5 h-10 rounded-sm border-2
                             ${activeTab === "timeline" ? "bg-[#CA406F] text-white " : "border-gray-300"}`}>
                         <FaRegUser />
                         Timeline
