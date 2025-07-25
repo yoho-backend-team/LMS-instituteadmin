@@ -5,27 +5,36 @@ export const FONTS = {
 		fontFamily: 'poppins',
 		fontWeight: 400,
 		fontSize: '28px',
-        color:"#716f6f"
-		
+		color: "#716f6f"
+
 	},
 	heading_02: {
 		fontFamily: 'poppins',
 		fontWeight: 400,
 		fontSize: '16px',
-        color:"#ffffff"
-		
+		color: "#ffffff"
+
 	},
 	heading_03: {
 		fontFamily: 'poppins',
-		fontWeight: 600,
+		fontWeight: 400,
 		fontSize: '14px',
-        color:"#716F6F"
-		
+		color: "#716F6F"
+
 	},
-Description: {
+	heading_04: {
+		fontFamily: 'poppins',
+		fontWeight: 600,
+		fontSize: '16px',
+		color: "#716F6F"
+
+	},
+	Description: {
 		fontFamily: 'poppins',
 		fontWeight: 300,
 		fontSize: '14px',
-        color:"#7d7d7d"
-		
-	}}
+		color: "#7d7d7d"
+
+	}
+}
+
