@@ -1,6 +1,11 @@
+import SubsCriptionPlans from "./Plans/SubsCriptionPlans";
+
 const ThreePlans = () =>{
     return(
-        <div>welcome to 3Plans page</div>
+        <div>
+       <SubsCriptionPlans />
+       
+        </div>
     )
 }
 export default ThreePlans;

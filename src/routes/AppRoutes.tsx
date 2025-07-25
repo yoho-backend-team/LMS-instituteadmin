@@ -71,6 +71,7 @@ import AllNotification_c from "@/components/notificationmanagement/overallnotifi
 import Placementedit from "@/components/placement/edit/edit";
 import Placementadd from "@/components/placement/add/add";
 
+
 const Approutes = () => {
   return (
     <BrowserRouter>
@@ -150,10 +151,13 @@ const Approutes = () => {
           <Route path="/placememntedit" element={<Placementedit />} />
           <Route path="/placememntadd" element={<Placementadd />} />
 
+           
         </Route>
 
 
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
+
+         
 
         {/* <Route path="*" element={<Navigate to="/dashboard" replace />} /> */}
       </Routes>

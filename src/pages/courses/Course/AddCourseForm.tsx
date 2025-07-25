@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import card1 from "../../../Assets/card1.png";
 
-// ✅ Add prop type for onBack
+
 type AddCourseFormProps = {
   onBack: () => void;
 };
@@ -206,7 +206,7 @@ const AddCourseForm = ({ onBack }: AddCourseFormProps) => {
               <button
                 type="button"
                 className="px-5 py-2 bg-gray-200 rounded-md font-medium"
-                onClick={onBack} // ✅ calls parent function to go back
+                onClick={onBack} 
               >
                 Back
               </button>
