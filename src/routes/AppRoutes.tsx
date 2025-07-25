@@ -43,6 +43,11 @@ import All from "../components/notificationmanagement/overallnotification/all/al
 import Profile from "@/pages/profile/profile/profile";
 import Settings from "@/pages/profile/settings/settings";
 import Logout from "@/pages/profile/logout/logout";
+import TrackOrder from "@/components/HelpFAQ/TrackOrder";
+import FindMissingOrder from "@/components/HelpFAQ/FindMissingOrder";
+import SecureDelivery from "@/components/HelpFAQ/SecureDelivery";
+import CertificateView from "@/components/CertificateManagement/CertificateView";
+
 import ProfileEdit from "@/components/profile/edit/edit";
 import Student_Allnotification from "@/components/notificationmanagement/studentnotification/student_all/student_all";
 import StudentNotification_c from "@/components/notificationmanagement/studentnotification/studentnotification_c";
@@ -64,7 +69,7 @@ const Approutes = () => {
           <Route path="Liveclasses" element={<Liveclasses />} />
           <Route path="StudentIdCard" element={<StudentIdCrad />} />
           <Route path="StaffIdCard" element={<StaffIdCard />} />
-          <Route path="HelpFQA" element={<HelpFQA />} />
+          <Route path="HelpFQA" element={<FQA />} />
           <Route path="AddQust" element={<AddQust />} />
           <Route path="Category" element={<Category />} />
           <Route path="FQA" element={<FQA />} />
@@ -101,6 +106,13 @@ const Approutes = () => {
           <Route path="/all" element={<All />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/logout" element={<Logout />} />
+          <Route path="/track-order" element={<TrackOrder />} />
+          <Route path="/find-missingpackage" element={<FindMissingOrder />} />
+          <Route path="/secure-delivery" element={<SecureDelivery />} />
+          <Route path="/certificate-view" element={<CertificateView />} />
+
+
           <Route path="/logout" element={<Logout />} />
           <Route path="/profiledit" element={<ProfileEdit />} />
           <Route path="/studentnotifications" element={<Student_Allnotification />} />

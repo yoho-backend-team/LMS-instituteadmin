@@ -1,6 +1,10 @@
+import { CertificateManager } from "@/components/CertificateManagement/Certificate"
+
 const StudentCertificate = () =>{
     return(
-        <div>welcome to student certificate page</div>
+        <div>
+            <CertificateManager />
+        </div>
     )
 }
 export default StudentCertificate
