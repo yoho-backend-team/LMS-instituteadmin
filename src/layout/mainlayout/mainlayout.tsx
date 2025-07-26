@@ -23,7 +23,7 @@ export const MainLayout = () => {
         </div>
 
         <div
-          className="flex-1 relative overflow-auto scrollbar-hide"
+          className="flex-1 p-4 "
           style={{
             marginLeft: `${sidebarWidth}px`,
             transition: 'margin-left 0.3s ease',

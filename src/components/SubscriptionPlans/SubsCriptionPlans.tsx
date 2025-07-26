@@ -44,7 +44,7 @@ const SubscriptionPlans = () => {
     subtitle: "The Plan is for everyone",
     price: "₹2000",
     highlight: true,
-    bgColor: "#FFFFFF", 
+    bgColor: "#CA406F", 
     
   },
   {

@@ -16,13 +16,13 @@ const Header: React.FC<HeaderProps> = ({ showFilter, toggleFilter }) => {
       </div>
       <button
         onClick={toggleFilter}
-        className="bg-white text-green-600 font-semibold px-4 py-1 rounded shadow"
+        className="bg-white text-green-600 font-semibold px-4 py-1 rounded shadow h-9 w-14"
       >
         {showFilter ? (
           <img
             src={closeImage}
             alt="Close"
-            className="w-4 h-4"
+            className="w-4 h-5 object-contain"
           />
         ) : (
           "GO"

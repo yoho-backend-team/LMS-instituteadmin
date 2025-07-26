@@ -86,7 +86,7 @@ const StudyMaterials: React.FC = () => {
 
           <div className="flex flex-wrap gap-4">
             {materials.map((material) => (
-              <div key={material.id} className="bg-white w-80 rounded-xl shadow-md p-4 space-y-2 relative">
+              <div key={material.id} className="bg-white w-80 rounded-xl shadow-md p-4 space-y-2 relative border border-gray-200">
                 <div className="absolute top-3 right-3">
                   <button onClick={() => setMenuOpen(menuOpen === material.id ? null : material.id)}>
                     <MoreVertical className="w-5 h-5 text-[#CA406F] cursor-pointer" />
