@@ -21,7 +21,7 @@ const StaffCard: React.FC<StaffCardProps> = ({
   const navigate = useNavigate();
 
   return (
-    <div className="bg-white p-4 rounded-xl shadow-lg w-full max-w-sm">
+    <div className="bg-white border border-gray-200 p-4 rounded-xl shadow-lg w-full max-w-sm">
       <div className="flex items-center gap-4 mb-3">
         <img src={imageUrl} alt={name} className="w-12 h-12 rounded-full" />
         <div>

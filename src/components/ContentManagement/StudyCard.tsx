@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
 import closeImage from "../../assets/close.png";
 import cloudImage from "../../assets/cloud.png";
-
 interface Props {
   onClose: () => void;
   material: {
