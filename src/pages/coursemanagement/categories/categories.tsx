@@ -8,7 +8,7 @@ import mern from "../../../assets/mern.png"
 import FilterIcon from "../../../assets/Filter.png"
 import DeleteIcon from "../../../assets/delete.png"
 import EditIcon from "../../../assets/edit.png"
-import UploadIcon from "../../../assets/upload.png"
+import UploadIcon from "../../../assets/uload.png"
 
 // Custom Select Component
 type CustomSelectOption = { label: string; value: string }
@@ -377,9 +377,9 @@ const AddEditCategoryModal = ({
               Recommended: 388x300 Pixels Accepted Formats: PNG, JPEG
             </label>
             <label className="flex items-center justify-center px-4 py-3 gap-[10px] w-[181px] h-[48px] bg-[#CA406F] rounded-[12px] cursor-pointer relative hover:bg-[#e0527c] transition-colors">
-              <img src={UploadIcon} alt="Upload" className="w-6 h-6 absolute left-4" />
-              <span className="text-white font-[Poppins] text-[16px] font-medium leading-[24px] capitalize">Upload Image</span>
-              <input 
+              <img src={UploadIcon} alt="Upload" className="w-6 h-6 absolute left-3" />
+ <span className="text-white font-[Poppins] text-[16px] font-medium leading-[24px] capitalize ml-8">Upload Image</span>            
+           <input 
                 type="file" 
                 onChange={handleImageUpload} 
                 className="hidden" 
