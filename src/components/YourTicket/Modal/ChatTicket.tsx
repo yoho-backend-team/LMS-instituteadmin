@@ -33,7 +33,7 @@ const ChatTicket: React.FC<ChatTicketProps> = ({ ticket, onBack }) => {
         {/* Chat Panel */}
         <div className="lg:col-span-2 bg-white rounded-sm shadow p-4  ">
           {/* Header */}
-          <div className="flex items-center gap-3 border-b p-2 border h-20 border rounded-lg shadow-lg">
+          <div className="flex items-center gap-3 border-b p-2 border h-20  rounded-lg shadow-lg">
             <div className="w-12 h-12 rounded-full bg-gray-200 overflow-hidden flex items-center justify-center text-[#CA406F] font-bold text-sm uppercase">
               {ticket.image ? (
                 <img
