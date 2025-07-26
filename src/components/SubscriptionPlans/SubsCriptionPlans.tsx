@@ -1,13 +1,13 @@
 import React from "react";
 import "./SubscriptionPlans.css";
-import back from "../../Assets/back.png";
+
 
 const SubscriptionPlans = () => {
   return (
     <div
       className="plans-wrapper"
       style={{
-        backgroundImage: `url(${back})`,
+        backgroundImage: `url(${""})`,
       }}
     >
      
