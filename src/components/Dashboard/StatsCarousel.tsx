@@ -5,6 +5,7 @@ import TotalEarnings from "../../assets/TotalEarningsicon.png";
 import Instructor from "../../assets/Instructoricon.png";
 import Project from "../../assets/Projects.png";
 
+
 const statCards = [
   {
     title: "Total Earnings",

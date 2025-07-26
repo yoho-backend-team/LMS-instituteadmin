@@ -103,7 +103,7 @@ export default function Dashboard() {
           />
           <DropdownMenu>
             <DropdownMenuTrigger>
-              <button className="border border-gray-300 px-4 py-2 rounded-md font-semibold text-sm bg-[#CA406F] text-white shadow-sm">
+              <button className="h-10 w-32 px-4 py-2 text-sm font-semibold text-white bg-[#CA406F] rounded-md shadow-sm">
                 Choose Period
               </button>
             </DropdownMenuTrigger>
@@ -153,7 +153,7 @@ export default function Dashboard() {
             </span>
             <DropdownMenu>
               <DropdownMenuTrigger>
-                <button className="border border-gray-300 text-white text-sm font-medium rounded-md bg-[#CA406F] h-10 w-32 px-6">
+                <button className="h-10 w-32 px-4 py-2 text-sm font-semibold text-white bg-[#CA406F] rounded-md shadow-sm">
                   Trending
                 </button>
               </DropdownMenuTrigger>
@@ -185,7 +185,7 @@ export default function Dashboard() {
 
             <div
               ref={courseScrollRef}
-              className="space-y-4 max-h-66 overflow-y-scroll scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-blue-100"
+              className="space-y-4 max-h-69 overflow-y-scroll scrollbar-hide p-4 "
             >
               {dummyCourses.map((course, i) => (
                 <div
@@ -211,12 +211,12 @@ export default function Dashboard() {
             </div>
 
             {/* ✅ Trigger scroll on click */}
-            {/* <div
+            <div
               className="text-2xl flex justify-center text-gray-500 cursor-pointer hover:text-[#CA406F] transition-colors duration-300 mt-2"
               onClick={handleCourseScrollDown}
             >
               <MdKeyboardArrowDown />
-            </div> */}
+            </div>
           </div>
         </div>
 
@@ -231,7 +231,7 @@ export default function Dashboard() {
             </h3>
             <div
               ref={scrollRef}
-              className="max-h-62 overflow-y-scroll space-y-3"
+              className="max-h-62 overflow-y-scroll space-y-3 scrollbar-hide"
             >
               {dummyActivities.map((activity, i) => (
                 <div
@@ -250,12 +250,12 @@ export default function Dashboard() {
                 </div>
               ))}
             </div>
-            {/* <div
-              className="text-2xl flex justify-center text-gray-500 cursor-pointer hover:text-[#CA406F] transition-colors duration-300 "
+            <div
+              className="text-2xl flex justify-center text-gray-500 cursor-pointer hover:text-[#CA406F] transition-colors duration-300 mb-4 mt-2"
               onClick={handleScrollDown}
             >
               <MdKeyboardArrowDown />
-            </div> */}
+            </div>
           </div>
         </div>
       </div>
