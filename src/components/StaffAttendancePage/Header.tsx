@@ -1,6 +1,6 @@
 import React from "react";
 import { Calendar } from "lucide-react";
-import closeImage from "../../assets/close.png"
+import closeImage from "../../assets/close.png";
 
 interface HeaderProps {
   showFilter: boolean;
@@ -9,7 +9,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ showFilter, toggleFilter }) => {
   return (
-    <div className="bg-[#c62863] text-white px-4 py-3 flex justify-between items-center rounded-md shadow-md w-345">
+    <div className="w-full bg-[#c62863] text-white px-4 py-3 flex justify-between items-center rounded-md shadow-md">
       <div className="flex items-center gap-2 font-bold">
         <Calendar className="w-5 h-5" />
         <span>STAFF ATTENDANCE</span>

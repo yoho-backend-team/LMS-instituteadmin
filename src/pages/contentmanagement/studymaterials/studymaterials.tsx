@@ -38,32 +38,36 @@ const StudyMaterials: React.FC = () => {
   };
 
   return (
-    <div className="h-screen w-screen flex fixed">
+    <div className="flex flex-col lg:flex-row w-full h-full overflow-hidden">
       <main className="flex-1 flex flex-col mt-5 ml-5">
         <h1 className="text-xl font-semibold mt-4 ml-5 text-[#716F6F]">Study Materials</h1>
 
-        <section className="p-6 space-y-6">
-          <div className="flex items-center gap-4">
-            <button
-              onClick={() => setShowFilter(!showFilter)}
-              className="bg-[#CA406F] text-white px-4 h-12 rounded-md shadow-md flex items-center gap-2"
-            >
-              <img src={filterImage} className="w-6" />
-              {showFilter ? "Hide Filter" : "Show Filter"}
-            </button>
+        <div className="p-6 space-y-6">
+          <div className="flex justify-between items-center flex-wrap gap-4 mb-4 w-full">
+            <div className="flex items-center">
+              <button
+                onClick={() => setShowFilter(!showFilter)}
+                className="bg-[#CA406F] text-white px-4 py-3 rounded-md shadow-md flex items-center gap-2 text-sm sm:text-base w-[150px] justify-center"
+              >
+                <img src={filterImage} className="w-5 sm:w-6" alt="filter" />
+                <span>{showFilter ? "Hide Filter" : "Show Filter"}</span>
+              </button>
+            </div>
 
-            <button
-              onClick={() => setShowAdd(true)}
-              className="bg-[#CA406F] text-white px-5 py-2 ml-240 rounded-md shadow-md flex items-center gap-2"
-            >
-              <span className="text-3xl leading-none">+</span>
-              <span className="text-base">Add Study Material</span>
-            </button>
+            {/* Right: Add Study Material Button */}
+            <div className="flex items-center">
+              <button
+                onClick={() => setShowAdd(true)}
+                className="bg-[#CA406F] text-white px-4 py-2 rounded-md shadow-md flex items-center gap-2 text-sm sm:text-base"
+              >
+                <span className="text-2xl sm:text-3xl leading-none">+</span>
+                <span>Add Study Material</span>
+              </button>
+            </div>
           </div>
-
           {showFilter && (
-            <div className="bg-white shadow rounded-lg p-6 w-330 mt-2">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-315">
+            <div className="bg-white shadow rounded-lg p-6 w-full mt-2">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block mb-1 text-sm font-medium text-gray-700">Status</label>
                   <select className="w-full border border-gray-300 rounded-md px-4 py-2">
@@ -82,6 +86,7 @@ const StudyMaterials: React.FC = () => {
                 </div>
               </div>
             </div>
+
           )}
 
           <div className="flex flex-wrap gap-4">
@@ -171,7 +176,7 @@ const StudyMaterials: React.FC = () => {
               </div>
             ))}
           </div>
-        </section>
+        </div>
       </main>
 
       {showAdd && (
