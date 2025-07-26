@@ -374,4 +374,24 @@ transform: rotate(-158.3deg);
 
 body {
   font-family: 'Poppins', sans-serif;
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+}
+
+* {
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none; 
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; 
 }
