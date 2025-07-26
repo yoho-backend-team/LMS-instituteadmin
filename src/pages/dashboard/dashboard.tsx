@@ -29,24 +29,6 @@ export default function Dashboard() {
         "A comprehensive program covering Python, machine learning, and AI concepts.",
       modules: 8,
     },
-    {
-      title: "MEAN STACK 2024",
-      description:
-        "The MEAN stack is a collection of JavaScript-based technologies for building...",
-      modules: 1,
-    },
-    {
-      title: "Full Stack Development",
-      description:
-        "Learn both frontend and backend technologies including React, Node.js, and MongoDB.",
-      modules: 5,
-    },
-    {
-      title: "Data Science Bootcamp",
-      description:
-        "A comprehensive program covering Python, machine learning, and AI concepts.",
-      modules: 8,
-    },
   ];
 
   const dummyActivities = [
@@ -71,39 +53,39 @@ export default function Dashboard() {
       details: "Node.js Basics Assessment - 5 days ago",
     },
   ];
+
   const scrollRef = useRef<HTMLDivElement>(null);
   const courseScrollRef = useRef<HTMLDivElement>(null);
 
   const handleScrollDown = () => {
     if (scrollRef.current) {
-      scrollRef.current.scrollBy({
-        top: 200,
-        behavior: "smooth",
-      });
+      scrollRef.current.scrollBy({ top: 200, behavior: "smooth" });
     }
   };
 
   const handleCourseScrollDown = () => {
     if (courseScrollRef.current) {
-      courseScrollRef.current.scrollBy({
-        top: 200,
-        behavior: "smooth",
-      });
+      courseScrollRef.current.scrollBy({ top: 200, behavior: "smooth" });
     }
   };
+
   return (
-    <div className="min-h-screen p-6">
-      <div className="max-w-7xl mx-auto space-y-6">
+    <div className="h-full p-4 sm:p-6 w-full">
+      <div className=" mx-auto space-y-6">
         {/* Filters */}
-        <div className="flex items-center w-full gap-40">
-          <input
+        <div className="flex items-center w-full justify-between gap-7">
+          <div className="flex justify-between flex-1">
+           <div className="">
+             <input
             type="text"
             placeholder="Branch"
-            className="bg-white/80 border border-[#CA406F] rounded-lg px-4 py-2 w-full max-w-sm"
+            className="bg-white/80 border border-[#CA406F] rounded-lg px-4 py-2 w-80 max-w-sm"
           />
-          <DropdownMenu>
+           </div>
+          <div className="mr-[15%]">
+            <DropdownMenu>
             <DropdownMenuTrigger>
-              <button className="h-10 w-32 px-4 py-2 text-sm font-semibold text-white bg-[#CA406F] rounded-md shadow-sm">
+              <button className="border border-gray-300 px-4 py-2 rounded-md font-semibold text-sm bg-[#CA406F] text-white shadow-sm">
                 Choose Period
               </button>
             </DropdownMenuTrigger>
@@ -146,14 +128,16 @@ export default function Dashboard() {
               </button>
             </DropdownMenuContent>
           </DropdownMenu>
+          </div>
+          </div>
 
-          <div className="flex gap-30 justify-end ml-auto items-center">
+          <div className="flex gap-30 justify-between ml-auto items-center">
             <span className="text-lg font-bold text-[#CA406F]">
               Popular Course
             </span>
             <DropdownMenu>
               <DropdownMenuTrigger>
-                <button className="h-10 w-32 px-4 py-2 text-sm font-semibold text-white bg-[#CA406F] rounded-md shadow-sm">
+                <button className="border border-gray-300 text-white text-sm font-medium rounded-md bg-[#CA406F] h-10 w-32 px-6  mr-2">
                   Trending
                 </button>
               </DropdownMenuTrigger>
@@ -175,17 +159,14 @@ export default function Dashboard() {
         </div>
 
         {/* Stats + Courses */}
-        <div className="flex flex-col lg:flex-row gap-6 items-start mb-3">
-          {/* <div className="lg:w-2/3"> */}
+        <div className="flex flex-col lg:flex-row gap-6 items-start">
           <div className="w-full">
             <StatsCarousal />
           </div>
-          <div>
-            {/* ✅ Attach courseScrollRef here */}
-
+          <div className="w-full max-w-md lg:max-w-lg">
             <div
               ref={courseScrollRef}
-              className="space-y-4 max-h-69 overflow-y-scroll scrollbar-hide p-4 "
+              className="space-y-4 max-h-[267px] overflow-y-scroll scrollbar-hide p-2"
             >
               {dummyCourses.map((course, i) => (
                 <div
@@ -209,8 +190,6 @@ export default function Dashboard() {
                 </div>
               ))}
             </div>
-
-            {/* ✅ Trigger scroll on click */}
             <div
               className="text-2xl flex justify-center text-gray-500 cursor-pointer hover:text-[#CA406F] transition-colors duration-300 mt-2"
               onClick={handleCourseScrollDown}
@@ -222,21 +201,21 @@ export default function Dashboard() {
 
         {/* Chart + Activity */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 mt-7">
+          <div className="lg:col-span-2 mt-6">
             <DbChart />
           </div>
-          <div className="p-6 rounded-2xl mb-16">
-            <h3 className="text-xl font-bold text-[#CA406F] mb-4">
+          <div className="p-3 mt-3 ">
+            <h3 className="text-xl font-bold text-[#CA406F] mb-3">
               Recent Activities
             </h3>
             <div
               ref={scrollRef}
-              className="max-h-62 overflow-y-scroll space-y-3 scrollbar-hide"
+              className="max-h-[300px] overflow-y-scroll space-y-3 scrollbar-hide"
             >
               {dummyActivities.map((activity, i) => (
                 <div
                   key={i}
-                  className="group flex items-center gap-3 bg-white p-4 rounded-2xl transition-all duration-300 hover:bg-gradient-to-br from-[#BF4B94] to-[#F798D3] hover:text-white shadow-lg"
+                  className="group flex items-center gap-3 bg-white p-4 rounded-2xl transition-all duration-300 hover:bg-gradient-to-br from-[#BF4B94] to-[#F798D3] hover:text-white px-6 py-6 shadow-lg"
                 >
                   <div className="w-9 h-9 bg-[#CA406F] rounded-full flex items-center justify-center transition-all duration-300 group-hover:bg-white" />
                   <div className="flex-1">
@@ -251,7 +230,7 @@ export default function Dashboard() {
               ))}
             </div>
             <div
-              className="text-2xl flex justify-center text-gray-500 cursor-pointer hover:text-[#CA406F] transition-colors duration-300 mb-4 mt-2"
+              className="text-2xl flex justify-center text-gray-500 cursor-pointer hover:text-[#CA406F] transition-colors duration-300 mt-2"
               onClick={handleScrollDown}
             >
               <MdKeyboardArrowDown />

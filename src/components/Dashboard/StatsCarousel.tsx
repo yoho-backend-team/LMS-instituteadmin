@@ -57,65 +57,68 @@ export default function StatsCarousel() {
   };
 
   return (
-    <div className="relative w-full flex items-center justify-center overflow-hidden py-4">
-      <div className="flex gap-6 justify-center relative z-0 min-h-[300px]">
-        <AnimatePresence initial={false} mode="popLayout">
-          {visibleCards.map((card, index) => (
-            <motion.div
-              key={card.title}
-              layout
-              initial={{ opacity: 0, y: 30, scale: 0.9 }}
-              animate={{
-                opacity: 1,
-                y: 0,
-                scale: index === 1 ? 1.1 : 1,
-                zIndex: index === 1 ? 20 : 10,
-              }}
-              exit={{ opacity: 0, y: -30, scale: 0.9 }}
-              transition={{ duration: 0.3 }}
-              className={`flex-shrink-0 ${
-                index === 1
-                  ? "w-[220px] h-[280px] rounded-3xl"
-                  : "w-[200px] h-[250px] rounded-2xl"
-              } bg-gradient-to-br ${card.color} text-white shadow-lg flex items-center justify-between px-6 py-6 relative`}
-            >
-              <div className="flex flex-col justify-between h-full w-full">
-                <div>
-                  <div className="bg-white rounded-xl p-3 mb-2 w-fit shadow-[0_-6px_10px_rgba(255,255,255,0.6)]">
-                    <img
-                      src={card.icon}
-                      alt={card.title}
-                      className="h-10 w-10"
-                    />
-                  </div>
-                  <p className="text-base font-semibold">{card.title}</p>
-                </div>
-                <div>
-                  <p className="text-2xl font-bold">{card.value}</p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </AnimatePresence>
-      </div>
+    <div className="relative w-full py-4">
+  {/* Container with arrows + cards */}
+  <div className="flex items-center justify-start gap-6">
+    {/* Left Arrow */}
+    <button
+      onClick={handlePrev}
+      className="bg-[#CA406F] text-white p-2 rounded-full shadow-md"
+    >
+      <FaChevronLeft />
+    </button>
 
-      {/* Navigation Buttons */}
-      <div className="absolute top-1/2 -translate-y-1/2 left-0 z-30">
-        <button
-          onClick={handlePrev}
-          className="bg-[#CA406F] text-white p-2 rounded-full shadow-md"
-        >
-          <FaChevronLeft />
-        </button>
-      </div>
-      <div className="absolute top-1/2 -translate-y-1/2 right-0 z-30">
-        <button
-          onClick={handleNext}
-          className="bg-[#CA406F] text-white p-2 rounded-full shadow-md"
-        >
-          <FaChevronRight />
-        </button>
-      </div>
+    {/* Cards */}
+    <div className="flex gap-6 justify-center items-center min-h-[280px]">
+      <AnimatePresence initial={false} mode="popLayout">
+        {visibleCards.map((card, index) => (
+          <motion.div
+            key={card.title}
+            layout
+            initial={{ opacity: 0, y: 30, scale: 0.9 }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              scale: index === 1 ? 1.1 : 1,
+              zIndex: index === 1 ? 20 : 10,
+            }}
+            exit={{ opacity: 0, y: -30, scale: 0.9 }}
+            transition={{ duration: 0.3 }}
+            className={`flex-shrink-0 ${
+              index === 1
+                ? "w-[220px] h-[280px] rounded-3xl"
+                : "w-[200px] h-[250px] rounded-2xl"
+            } bg-gradient-to-br ${card.color} text-white shadow-lg flex items-center justify-between px-6 py-6 relative`}
+          >
+            <div className="flex flex-col justify-between h-full w-full">
+              <div>
+                <div className="bg-white rounded-xl p-3 mb-2 w-fit shadow-[0_-6px_10px_rgba(255,255,255,0.6)]">
+                  <img
+                    src={card.icon}
+                    alt={card.title}
+                    className="h-10 w-10"
+                  />
+                </div>
+                <p className="text-base font-semibold">{card.title}</p>
+              </div>
+              <div>
+                <p className="text-2xl font-bold">{card.value}</p>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </AnimatePresence>
     </div>
+
+    {/* Right Arrow */}
+    <button
+      onClick={handleNext}
+      className="bg-[#CA406F] text-white p-2 rounded-full shadow-md"
+    >
+      <FaChevronRight />
+    </button>
+  </div>
+</div>
+
   );
 }
