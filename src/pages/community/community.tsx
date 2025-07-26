@@ -1,9 +1,11 @@
-import React from 'react'
+import CommunityManagement from "@/components/community/Community";
 
-function Community() {
-  return (
-    <div>C</div>
-  )
+const Community=() =>{
+    return(
+        <div>
+            <CommunityManagement />
+        </div>
+    )
 }
 
 export default Community

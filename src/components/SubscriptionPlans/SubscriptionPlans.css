@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  
+  
+}
+
+.plans-wrapper {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 40px 20px;
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+}
+
+.top-container {
+  max-width: 1100px;
+  margin: auto;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.top-container h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #716F6F;
+  font-weight: bold;
+}
+
+.top-container p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.table {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 12px 16px;
+  border-radius: 6px;
+  background-color: #FFFFFF;
+  color: #B4B3B3;
+}
+
+.table-row.header {
+  background-color:#F8F8F8;
+  color: #B4B3B3;
+  font-weight: 600;
+}
+
+.cards-container {
+  margin: 40px auto;
+  max-width: 1200px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.plan-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.plan-card .plan-header {
+  width: 100%;
+  height: 100px;
+  background-color: #FFFFFF;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+.plan-card.highlight {
+  background-color: #CA406F;
+  color: white;
+}
+
+.plan-card.highlight .price {
+  color: white;
+  font-weight: bold;
+  height: 39px;
+}
+
+.plan-card h3 {
+  margin: 5px 0;
+  width:260px ;
+  height: 25px;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.plan-card p {
+    display: flex;
+  font-size: 14px;
+  margin-bottom: 10px;
+  margin-right: 90px;
+  flex-wrap: nowrap;
+}
+
+.plan-card .price {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.plan-card .price span {
+  font-size: 14px;
+}
+
+.features {
+  text-align: left;
+  width: 100%;
+  margin-bottom: 20px;
+  background-color:rgb(243,244,245,0.2 );
+}
+
+.features h4 {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.features li {
+  font-size: 13px;
+  margin-bottom: 5px;
+  position: relative;
+  padding-left: 15px;
+}
+
+.features li::before {
+  content: "✔";
+  color: #CA406F;
+  position: absolute;
+  left: 0;
+  font-size: 12px;
+}
+
+.plan-card.highlight .features li::before {
+  color: white;
+}
+
+.primary-btn {
+  background-color: #FFFFFF;
+  color: #CA406F;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  width: 100%;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.secondary-btn {
+  background-color: transparent;
+  color: #CA406F;
+  border: 2px solid #CA406F;
+  padding: 10px;
+  border-radius: 6px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.white-border {
+  border-color: white;
+  color: white;
+}

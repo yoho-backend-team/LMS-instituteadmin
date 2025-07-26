@@ -1,4 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 @import "tailwindcss";
+
+
+
+
 @import "tw-animate-css";
 
 @keyframes grow-from-dot-on-hover {
@@ -9,6 +15,18 @@
     transform: scale(1);
   }
 }
+no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+
+
 
 
 @layer utilities {
@@ -24,8 +42,16 @@
 
 @custom-variant dark (&:is(.dark *));
 
+.no-scrollbar {
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+}
 
-/*:root {
+.no-scrollbar::-webkit-scrollbar {
+  display: none; 
+}
+/*
+:root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -94,6 +120,8 @@ button:focus-visible {
   }
 } 
 */
+
+
 .topbar{
 background: linear-gradient(90deg, #F6D3E9 0%, #FFFFFF 48.08%, #F6D3E9 100%);
 backdrop-filter: blur(2px);
@@ -332,4 +360,18 @@ transform: rotate(-158.3deg);
   body {
     @apply bg-background text-foreground;
   }
+}
+
+
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none; 
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; 
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
 }

@@ -1,6 +1,9 @@
+import StaffTickets from '../../../components/ticket _management/staff_ticket'
 const StaffTicket = () =>{
     return(
-        <div>welcome to Staff ticket page</div>
+        <div>
+            <StaffTickets />
+        </div>
     )
 }
 export default StaffTicket;

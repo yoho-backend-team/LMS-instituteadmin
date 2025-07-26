@@ -1,6 +1,10 @@
+import RefundManagement from "@/components/RefundManagementFees/RefundManagement";
+
 const Refund_Management_Fees = () =>{
     return(
-        <div>welcome to Refund_Management_Fees page</div>
+        <div>
+            <RefundManagement />
+        </div>
     )
 }
 export default Refund_Management_Fees;

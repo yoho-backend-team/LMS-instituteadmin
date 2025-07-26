@@ -1,6 +1,11 @@
+import HelpFAQ from "@/components/HelpFAQ/HelpFAQ";
+
 const FQA = () =>{
     return(
-        <div>welcome to FQA page</div>
+        <div>
+           <HelpFAQ />
+        </div>
     )
 }
+
 export default FQA;
