@@ -1,6 +1,10 @@
+import SubscriptionPlans from "@/components/SubscriptionPlans/SubsCriptionPlans";
+
 const Subscription = () =>{
     return(
-        <div>welcome to subscription page</div>
+        <div>
+            < SubscriptionPlans />
+        </div>
     )
 }
 export default Subscription;
