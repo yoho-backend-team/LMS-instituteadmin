@@ -20,7 +20,7 @@ interface ChatTicketProps {
 
 const ChatTicket: React.FC<ChatTicketProps> = ({ ticket, onBack }) => {
   return (
-    <div className=" ">
+    <div className=" h-fit flex flex-col overflow-auto">
       {/* Back Button */}
       <button
         onClick={onBack}
@@ -31,9 +31,9 @@ const ChatTicket: React.FC<ChatTicketProps> = ({ ticket, onBack }) => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 ">
         {/* Chat Panel */}
-        <div className="lg:col-span-2 bg-white rounded-sm shadow p-4 h-[77vh] flex flex-col">
+        <div className="lg:col-span-2 bg-white rounded-sm shadow p-4  ">
           {/* Header */}
-          <div className="flex items-center gap-3 border-b p-2 mb-3 border rounded-lg shadow-lg">
+          <div className="flex items-center gap-3 border-b p-2 border h-20 border rounded-lg shadow-lg">
             <div className="w-12 h-12 rounded-full bg-gray-200 overflow-hidden flex items-center justify-center text-[#CA406F] font-bold text-sm uppercase">
               {ticket.image ? (
                 <img
@@ -61,28 +61,28 @@ const ChatTicket: React.FC<ChatTicketProps> = ({ ticket, onBack }) => {
 
           {/* Messages */}
           <div
-            className="flex-1 bg-repeat p-3 rounded-md flex flex-col justify-between"
+            className="flex-1  bg-repeat p-3 rounded-md justify-between flex flex-col"
             style={{
               backgroundImage: `url(${Frame})`,
-              backgroundSize: "cover",
               backgroundPosition: "center",
+              backgroundSize: "cover",
             }}
           >
-            <div className="flex-1 overflow-y-auto flex flex-col gap-4 scrollbar-hide">
+            <div className="flex flex-col gap-4 overflow-y-auto max-h-full flex-1">
               {/* User message */}
               <div className="flex flex-col items-start mb-1">
                 <div className="flex items-start mb-1">
                   <div className="w-8 h-8 bg-[#0400FF] rounded-lg mr-2 flex items-center justify-center text-white">
-                    <FaUser />
+                  <FaUser />
+                </div>
+                <div>
+                  <div className="bg-white rounded-lg px-4 py-2 text-sm shadow max-w-[75%]">
+                    Hi there, How are you?
                   </div>
-                  <div>
-                    <div className="bg-white rounded-lg px-4 py-2 text-sm shadow max-w-[75%]">
-                      Hi there, How are you?
-                    </div>
-                    <div className="text-[11px] text-[#7D7D7D] mt-1 ml-2">
-                      12:24 PM
-                    </div>
+                  <div className="text-[11px] text-[#7D7D7D] mt-1 ml-2">
+                    12:24 PM
                   </div>
+                </div>
                 </div>
                 <div className="flex items-start ml-10 flex-col">
                   <div className="bg-white rounded-lg px-4 py-2 text-sm shadow max-w-[75%]">
@@ -152,38 +152,43 @@ const ChatTicket: React.FC<ChatTicketProps> = ({ ticket, onBack }) => {
         </div>
 
         {/* Ticket Info */}
-        <div className="bg-white rounded-sm shadow-lg p-4 flex flex-col justify-between h-[77vh] overflow-y-auto scrollbar-hide">
-          <div className="flex flex-col  justify-between gap-4 ">
-            <h3 className=" font-bold text-[#716F6F] ">Issue Description:</h3>
-            <p className="text-xl flex-1 text-[#7D7D7D]  border p-2 rounded-xl">
-              {ticket.description}
-            </p>
-          </div>
-          <div className="flex flex-col  justify-between gap-4 border-t">
-            <h3 className=" font-bold  text-[#716F6F]">Issue Category:</h3>
-            <p className="text-xl flex-1 text-[#7D7D7D]  border p-2 rounded-xl">
-              {ticket.description}
-            </p>
+        <div className="bg-white rounded-sm shadow-lg p-4   gap-4 flex flex-col justify-around">
+         <div className=" flex flex-col justify-between gap-3">
+           <h3 className="text-xl font-bold text-[#716F6F]">
+            Issue Description:
+          </h3>
+          <p className="text-lg text-[#7D7D7D] border h-20 p-2 rounded-xl">{ticket.description}</p>
+         </div>
+         < div className=" flex flex-col justify-between gap-3">
+            <h3 className="text-xl font-bold  text-[#716F6F]">
+            Issue Category:
+          </h3>
+          <p className="text-lg text-[#7D7D7D] border h-20 p-2 rounded-xl">{ticket.description}</p>
           </div>
 
-          <div className="flex flex-col  justify-between gap-4">
-            <h3 className=" font-bold  text-[#716F6F]">Attachments:</h3>
-            <div className="text-xl  border p-2 rounded-xl flex gap-4 items-center ">
-              <p className=" text-[#7D7D7D] underline  cursor-pointer flex-1 border-r ">
-                2bf39530-F04d-4e22-A5ea-2be943f28e9e.jpeg
-              </p>
-              <button className=" text-[#7D7D7D] cursor-pointer">view</button>
-            </div>
+          <div className="flex flex-col gap-3">
+            <h3 className="text-xl font-bold  text-[#716F6F]">
+            Attachments:
+          </h3>
+         <div className="flex justify-between border h-20 p-2 rounded-xl items-center " >
+           <p className="text-lg text-[#7D7D7D] underline  cursor-pointer border-r flex-1 ">
+            2bf39530-F04d-4e22-A5ea-2be943f28e9e.jpeg
+          </p>
+          <p className="text-lg text-[#7D7D7D] ">
+            view
+          </p>
+         </div>
           </div>
           <div>
-            <h3 className="text-sm font-bold  text-[#716F6F]">Status: </h3>
-            <span
-              className={`inline-block px-5 py-2 text-white  font-semibold rounded p-2 ${
-                ticket.status === "Open" ? "bg-[#CA406F]" : "bg-[#3ABE65]"
-              }`}
-            >
-              {ticket.status}
-            </span>
+            <h3 className="text-xl font-bold  text-[#716F6F]">
+             Status: </h3>
+          <span
+            className={`inline-block px-5 py-2 text-white  font-semibold rounded p-2 ${
+              ticket.status === "Open" ? "bg-[#CA406F]" : "bg-[#3ABE65]"
+            }`}
+          >
+            {ticket.status}
+          </span>
           </div>
         </div>
       </div>

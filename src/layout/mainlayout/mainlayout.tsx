@@ -6,15 +6,19 @@ import { useState } from 'react';
 
 export const MainLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const sidebarWidth = isSidebarOpen ? 250 : 68;
+
+  
+  const sidebarWidth = isSidebarOpen ? 250 : 68 
 
   return (
     <div className="w-full h-screen flex flex-col">
+      
       <div className="fixed top-0 left-0 w-full z-50">
         <NavBar />
       </div>
 
       <div className="flex flex-1 pt-[64px]">
+       
         <div
           className="fixed top-[64px] left-0 z-40 h-[calc(100vh-64px)] transition-all duration-300"
           style={{ width: `${sidebarWidth}px` }}
@@ -22,30 +26,20 @@ export const MainLayout = () => {
           <SideBar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
         </div>
 
+   
         <div
-          className="flex-1 p-4 "
+          className="flex-1 p-4"
           style={{
             marginLeft: `${sidebarWidth}px`,
+            backgroundImage: `url(${backgroundimage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundAttachment:'fixed',
             transition: 'margin-left 0.3s ease',
           }}
         >
-          {/* Background behind Outlet only */}
-          <div
-            className="absolute inset-0 z-0 "
-            style={{
-              backgroundImage: `url(${backgroundimage})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat',
-              backgroundAttachment: 'fixed',
-              pointerEvents: 'none', 
-            }}
-          />
-          
-          {/* Foreground content */}
-          <div className="relative z-10 p-4 ">
-            <Outlet />
-          </div>
+          <Outlet />
         </div>
       </div>
     </div>
