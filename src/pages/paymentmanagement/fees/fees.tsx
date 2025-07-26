@@ -5,6 +5,8 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Filter, Plus, MoreHorizontal, Eye, Edit, Trash2, Download, X } from "lucide-react"
 import React, { useState, useRef, useEffect } from "react"
+import FilterIcon from "../../../assets/Filter.png"
+
 
 interface Student {
   name: string
@@ -80,6 +82,7 @@ interface ActionMenuProps {
 
 const ActionMenu: React.FC<ActionMenuProps> = ({ record, onView, onEdit }) => {
   const [isOpen, setIsOpen] = useState(false)
+  const [hoveredButton, setHoveredButton] = useState<string | null>(null)
   const menuRef = useRef<HTMLDivElement>(null)
 
   const handleView = () => {
@@ -129,17 +132,64 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ record, onView, onEdit }) => {
       {isOpen && (
         <div className="absolute right-0 z-50 mt-2 w-48 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="flex flex-col p-2 gap-2">
-            <button onClick={handleView} className="flex items-center gap-3 px-4 py-2 text-sm rounded-md bg-[#CA406F] text-white hover:bg-[#CA406F]/90">
-              <Eye className="w-4 h-4" /><span>View</span>
+            {/* View Button */}
+            <button 
+              onClick={handleView} 
+              className={`flex items-center gap-3 px-4 py-2 text-sm rounded-md ${
+                hoveredButton === "view" 
+                  ? "bg-[#CA406F] text-white" 
+                  : "bg-[#CA406F] text-white opacity-90"
+              } transition-colors`}
+              onMouseEnter={() => setHoveredButton("view")}
+              onMouseLeave={() => setHoveredButton(null)}
+            >
+              <Eye className="w-4 h-4" />
+              <span>View</span>
             </button>
-            <button onClick={handleEdit} className="flex items-center gap-3 px-4 py-2 text-sm rounded-md border border-[#716F6F] text-[#716F6F] hover:bg-gray-100">
-              <Edit className="w-4 h-4" /><span>Edit</span>
+            
+            {/* Edit Button */}
+            <button 
+              onClick={handleEdit} 
+              className={`flex items-center gap-3 px-4 py-2 text-sm rounded-md border ${
+                hoveredButton === "edit" 
+                  ? "border-[#CA406F] bg-[#CA406F] text-white" 
+                  : "border-[#716F6F] text-[#716F6F]"
+              } transition-colors`}
+              onMouseEnter={() => setHoveredButton("edit")}
+              onMouseLeave={() => setHoveredButton(null)}
+            >
+              <Edit className="w-4 h-4" />
+              <span>Edit</span>
             </button>
-            <button onClick={handleDelete} className="flex items-center gap-3 px-4 py-2 text-sm rounded-md border border-[#716F6F] text-[#716F6F] hover:bg-gray-100">
-              <Trash2 className="w-4 h-4" /><span>Delete</span>
+            
+            {/* Delete Button */}
+            <button 
+              onClick={handleDelete} 
+              className={`flex items-center gap-3 px-4 py-2 text-sm rounded-md border ${
+                hoveredButton === "delete" 
+                  ? "border-[#CA406F] bg-[#CA406F] text-white" 
+                  : "border-[#716F6F] text-[#716F6F]"
+              } transition-colors`}
+              onMouseEnter={() => setHoveredButton("delete")}
+              onMouseLeave={() => setHoveredButton(null)}
+            >
+              <Trash2 className="w-4 h-4" />
+              <span>Delete</span>
             </button>
-            <button onClick={handleDownload} className="flex items-center gap-3 px-4 py-2 text-sm rounded-md border border-[#716F6F] text-[#716F6F] hover:bg-gray-100">
-              <Download className="w-4 h-4" /><span>Download</span>
+            
+            {/* Download Button */}
+            <button 
+              onClick={handleDownload} 
+              className={`flex items-center gap-3 px-4 py-2 text-sm rounded-md border ${
+                hoveredButton === "download" 
+                  ? "border-[#CA406F] bg-[#CA406F] text-white" 
+                  : "border-[#716F6F] text-[#716F6F]"
+              } transition-colors`}
+              onMouseEnter={() => setHoveredButton("download")}
+              onMouseLeave={() => setHoveredButton(null)}
+            >
+              <Download className="w-4 h-4" />
+              <span>Download</span>
             </button>
           </div>
         </div>
@@ -587,9 +637,9 @@ export default function Fees() {
                 className="flex items-center justify-center gap-2 bg-[#CA406F] hover:bg-[#CA406F]/90 text-white px-4 py-2 rounded-lg h-12 w-[153px]"
                 onClick={() => setShowFilters(!showFilters)}
               >
-                <Filter className="w-6 h-6" />
-                <span className="text-base font-medium">{showFilters ? 'Hide Filter' : 'Show Filter'}</span>
-              </Button>
+                <img src={FilterIcon} alt="Filter" className="w-6 h-6" />
+            <span className="text-sm font-medium">{showFilters ? "Hide" : "Show Filter"}</span>
+          </Button>
 
               <Button 
                 className="flex items-center justify-center gap-2 bg-[#CA406F] hover:bg-[#CA406F]/90 text-white px-4 py-2 rounded-lg h-12 w-[132px]"
