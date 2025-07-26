@@ -42,7 +42,7 @@ const ViewStaff: React.FC<ViewStaffProps> = ({ staff, onBack }) => {
         : "bg-tranparent border-2 text-[#716F6F] hover:bg-green-100"
     }`;
   return (
-    <div className=" flex flex-col gap-4">
+    <div className=" flex flex-col gap-4 ">
       <button
         onClick={onBack}
         className="flex items-center text-gray-600 hover:text-[#CA406F]  rounded-full "

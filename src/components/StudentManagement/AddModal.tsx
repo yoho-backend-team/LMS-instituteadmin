@@ -120,7 +120,7 @@ const AddEditModal: React.FC<AddEditModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/30 backdrop-blur-md">
       <div className="w-full h-[90vh] rounded-lg flex flex-col shadow-xl">
-        <div className="flex-1 overflow-y-auto hide-scrollbar">
+        <div className="flex-1 overflow-y-auto scrollbar-hide">
           {/* Modal Header */}
           <div className="flex items-center justify-between px-6 py-4 rounded-t-2xl border-b bg-white border-gray-200 sticky top-0 z-10">
             <h2 className="text-2xl font-semibold text-[#CA406F]">
