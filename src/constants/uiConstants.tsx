@@ -27,6 +27,27 @@ heading_01: {
 		color: "#716F6F"
 
 	},
+	heading_05: {
+		fontFamily: 'poppins',
+		fontWeight: 600,
+		fontSize: '18px',
+		color: "#716F6F"
+
+	},
+	heading_06: {
+		fontFamily: 'poppins',
+		fontWeight: 400,
+		fontSize: '13px',
+		color: "#FFFFFF"
+
+	},
+		GridRow_1: {
+		fontFamily: 'poppins',
+		fontWeight: 400,
+		fontSize: '13px',
+		color: "#7d7d7d"
+
+	},
 	Description: {
 		fontFamily: 'poppins',
 		fontWeight: 300,
