@@ -41,7 +41,7 @@ const SubscriptionPlansPage: React.FC = () => {
       style={{ backgroundImage: `url(${""})` }}
     >
       <div className="max-w-6xl mx-auto bg-white/90 shadow-xl rounded-xl p-8">
-        <h2 className="text-3xl font-bold text-center mb-2">Subscription Plans</h2>
+        <h2 className="text-3xl text-[#716F6F] font-bold text-center mb-2">Subscription Plans</h2>
         <p className="text-center text-gray-600 mb-6">
           All plans include 40+ advanced tools and features to boost your product.
           <br />
@@ -49,7 +49,7 @@ const SubscriptionPlansPage: React.FC = () => {
         </p>
 
         {/* Table */}
-        <div className="bg-gray-100 rounded-xl p-4 mb-10 border border-blue-400 overflow-x-auto">
+        <div className="bg-gray-100 rounded-xl p-4 mb-10 border border-none-400 overflow-x-auto">
           <table className="w-full text-sm text-left">
             <thead className="text-gray-500">
               <tr>
@@ -63,10 +63,10 @@ const SubscriptionPlansPage: React.FC = () => {
             <tbody>
               <tr className="bg-white">
                 <td className="px-4 py-3 font-semibold text-gray-600">#B4</td>
-                <td className="px-4 py-3">Basic Plan – Free</td>
-                <td className="px-4 py-3">₹0</td>
-                <td className="px-4 py-3">2025-04-07</td>
-                <td className="px-4 py-3">₹0</td>
+                <td className="px-4 py-3 text-[#716F6F]">Basic Plan – Free</td>
+                <td className="px-4 py-3 text-[#716F6F]">₹0</td>
+                <td className="px-4 py-3 text-[#716F6F]">2025-04-07</td>
+                <td className="px-4 py-3 text-[#716F6F]">₹0</td>
               </tr>
             </tbody>
           </table>
