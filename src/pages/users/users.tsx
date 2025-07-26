@@ -6,8 +6,8 @@
 // export default Users;
 // import React, { useState } from 'react';
 import React, { useState, useRef, type ChangeEvent } from 'react';
-import cardimg1 from '../../assets/cardimg3.png';
-// import cardimg1 from '../../assets/card1.png';
+// import cardimg1 from '../../../assets/card1.png';
+import cardimg1 from '../../assets/card1.png';
 import cardimg2 from '../../assets/cardimg2.png';
 import cardimg3 from '../../assets/cardimg3.png';
 import cardimg4 from '../../assets/cardimg4.png';
