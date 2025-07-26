@@ -38,7 +38,7 @@ const SubscriptionPlansPage: React.FC = () => {
   return (
     <div
       className="min-h-screen bg-cover bg-center p-6"
-      style={{ backgroundImage: `url(${back})` }}
+      style={{ backgroundImage: `url(${""})` }}
     >
       <div className="max-w-6xl mx-auto bg-white/90 shadow-xl rounded-xl p-8">
         <h2 className="text-3xl font-bold text-center mb-2">Subscription Plans</h2>
