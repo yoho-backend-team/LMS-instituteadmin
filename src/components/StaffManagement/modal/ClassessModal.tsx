@@ -33,7 +33,7 @@ const dummyStudents = [
 
 const ClassessModal: React.FC<ClassessModalProps> = ({ onClose }) => {
   return (
-    <div className="bg-white p-6 rounded-sm shadow-lg w-full max-w-full mx-auto relative">
+    <div className="bg-white p-6 rounded-sm shadow-lg w-full max-w-full mx-auto relative text-[#7D7D7D]">
       {/* Close Button */}
       <button
         onClick={onClose}
@@ -42,7 +42,7 @@ const ClassessModal: React.FC<ClassessModalProps> = ({ onClose }) => {
         <IoMdClose size={20} />
       </button>
 
-      <h2 className="text-xl font-semibold mb-4">Class Details</h2>
+      <h2 className="text-xl font-semibold mb-4 text-[#716F6F]">Class Details</h2>
 
       {/* Placeholder Inputs */}
       <form className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
@@ -59,7 +59,7 @@ const ClassessModal: React.FC<ClassessModalProps> = ({ onClose }) => {
           const safeId = label.toLowerCase().replace(/\s+/g, "-");
           return (
             <div className="flex flex-col gap-1" key={index}>
-              <label htmlFor={safeId}>{label}</label>
+              <label htmlFor={safeId} className="text-[#716F6F]">{label}</label>
               <input
                 type="text"
                 id={safeId}
@@ -85,7 +85,7 @@ const ClassessModal: React.FC<ClassessModalProps> = ({ onClose }) => {
       <div className="overflow-x-auto scrollbar-hide">
         <table className="min-w-full border border-gray-200 text-sm">
           <thead>
-            <tr className="bg-gray-100 text-left text-gray-700">
+            <tr className="bg-gray-100 text-left text-[#716F6F]">
               <th className="p-3 border">Student ID</th>
               <th className="p-3 border">Student Name</th>
               <th className="p-3 border">City</th>

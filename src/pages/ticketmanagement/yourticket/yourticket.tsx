@@ -11,6 +11,7 @@ export interface Ticket {
   email: string;
   date: string;
   time: string;
+  query?: string;
   priority: string;
   image?: string;
   description: string;
@@ -24,6 +25,7 @@ const initialTickets: Ticket[] = [
     date: "2025-07-22",
     time: "10:30 AM",
     priority: "High",
+    query: "Unable to access payment portal.",
     description: "This ticket was created from the student mobile app.",
     status: "Open",
   },
@@ -34,6 +36,7 @@ const initialTickets: Ticket[] = [
     date: "2025-07-21",
     time: "2:15 PM",
     priority: "Medium",
+    query: "Why is the student login failing after update?",
     description: "Issue with student login.",
     status: "Open",
   },
@@ -44,6 +47,7 @@ const initialTickets: Ticket[] = [
     date: "2025-07-18",
     time: "1:00 PM",
     priority: "Low",
+    query: "Can attendance sync be automated daily?",
     description: "Resolved: Query regarding attendance sync.",
     status: "Closed",
   },
@@ -54,10 +58,12 @@ const initialTickets: Ticket[] = [
     date: "2025-07-17",
     time: "9:45 AM",
     priority: "High",
+    query: "What caused the recent server timeout?",
     description: "Resolved: Server timeout issue reported.",
     status: "Closed",
   },
 ];
+
 
 const YourTicket = () => {
   const [showPanel, setShowPanel] = useState(false);
