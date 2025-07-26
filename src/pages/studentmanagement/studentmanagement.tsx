@@ -1,6 +1,10 @@
+import StudentIndex from "@/components/StudentManagement/StudentIndex";
+
 const Studentmanagement = () =>{
     return(
-        <div>welcome to student management</div>
+        <div>
+           <StudentIndex />
+        </div>
     )
 }
 export default Studentmanagement;

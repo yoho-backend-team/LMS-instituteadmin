@@ -1,6 +1,7 @@
+import Module from "../../components/modules/module";
 const Modules=() =>{
     return(
-        <div>Modules</div>
+        <div><Module /></div>
     )
 }
 export default Modules;

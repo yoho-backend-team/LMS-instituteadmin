@@ -1,6 +1,11 @@
+import FilterSection from "./Filter/FilterSection";
+
 const Courses=() =>{
+    
     return(
-        <div>Courses</div>
+        <div>
+            <FilterSection/>
+        </div>
     )
 }
 export default Courses;

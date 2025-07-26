@@ -1,6 +1,10 @@
+import NotesManagement from "@/components/Notes/Notes";
+
 const Notes=() =>{
     return(
-        <div>Notes</div>
+        <div>
+            <NotesManagement />
+        </div>
     )
 }
 export default Notes;

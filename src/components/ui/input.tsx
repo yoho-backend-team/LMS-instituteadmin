@@ -5,7 +5,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Filter, Plus, MoreHorizontal, Eye, Edit, Trash2, Download } from "lucide-react"
 import React, { useState, useRef, useEffect } from "react"
-import clsimg from "@/assets/close.svg" // Make sure this path is correct
+import clsimg from "../../assets/closeimg.png"; // Make sure this path is correct
 
 interface Student {
   name: string
