@@ -43,7 +43,7 @@ export const MainLayout = () => {
           />
           
           {/* Foreground content */}
-          <div className="relative z-10 p-4">
+          <div className="relative z-10 p-4 ">
             <Outlet />
           </div>
         </div>
