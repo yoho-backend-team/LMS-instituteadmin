@@ -5,6 +5,9 @@ import Maskgroup2 from "@/assets/icons/Mask group_2.png"
 // import StudentAddnotification from "@/components/notificationmanagement/studentnotification/studentaddnotification/studentaddnotification";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { IoMdAdd } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
+
 
 const Studentnotification = () => {
 
@@ -44,16 +47,28 @@ const Studentnotification = () => {
 
     const [showForm, setShowForm] = useState(false);
 
+     const navigate = useNavigate();
+
     return (
 
 
         <div className="p-2">
             <div className=" rounded-lg  p-4">
                 <p>student</p>
+                <div className="py-3 flex justify-end">
 
-                <div className="grid grid-cols-4 h-52   gap-10">
+                        <button
+                            onClick={() => navigate("/OfflineAdd")}
+                            className="bg-[#CA406F] w-44 h-10 gap-2 text-white rounded-sm flex items-center justify-center text-sm"
+                        >
+                            <IoMdAdd size={20} />
+                            Add Offline Classes
+                        </button>
+                    </div>
+
+                <div className="grid grid-cols-3 h-52   gap-10">
                     <Link to="/studentnotification_c" className="block py-5">
-                        <div className="bg-red-200 p-3 bg-gradient-to-br from-[#DB558D] to-[#7A69FE] rounded-lg hover:scale-115 cursor-pointer">
+                        <div className="bg-red-200 p-3 bg-gradient-to-br from-[#DB558D] to-[#7A69FE] rounded-lg  txt cursor-pointer">
                             <img
                                 className="w-16 h-14 p-2 bg-white rounded-sm shadow-2xl shadow-white"
                                 src={Maskgroup}
@@ -64,7 +79,7 @@ const Studentnotification = () => {
                     </Link>
 
                     <Link to="/studentnotification_c" className="block py-5">
-                        <div className="bg-red-200 p-3 bg-gradient-to-br from-[#7EE74F] to-[#3EDFEB] rounded-lg hover:scale-125 cursor-pointer">
+                        <div className="bg-red-200 p-3 bg-gradient-to-br from-[#7EE74F] to-[#3EDFEB] rounded-lg  txt cursor-pointer">
                             <img
                                 className="w-16 h-14 p-2 bg-white rounded-sm shadow-2xl shadow-white"
                                 src={Maskgroup1}
@@ -75,7 +90,7 @@ const Studentnotification = () => {
                     </Link>
 
                     <Link to="/studentnotification_c" className="block py-5">
-                        <div className="bg-red-200 p-3 bg-gradient-to-br from-[#E3418F] to-[#E6F321] rounded-lg hover:scale-125 cursor-pointer">
+                        <div className="bg-red-200 p-3 bg-gradient-to-br from-[#E3418F] to-[#E6F321] rounded-lg  txt cursor-pointer">
                             <img
                                 className="w-16 h-14 p-2 bg-white rounded-sm shadow-2xl shadow-white"
                                 src={Maskgroup2}
@@ -84,14 +99,6 @@ const Studentnotification = () => {
                             <p className="relative top-2 font-bold text-white text-2xl">0</p>
                         </div>
                     </Link>
-
-                    <div className="py-3">
-                        <button
-                            onClick={() => setShowForm(true)}
-                            className="bg-[#CA406F] text-white w-28 h-8 text-sm text-center py-1 rounded-sm absolute left-298  ">
-                            Add Notification
-                        </button>
-                    </div>
                 </div>
 
                 {showForm && (
@@ -223,7 +230,7 @@ const Studentnotification = () => {
 
                                         <div className="mt-4">
                                             <h3 className="text-md font-bold">{person.title}</h3>
-                                            <p className="text-xs text-gray-600 mt-1">{person.description}</p>
+                                            <p className="text-xs line-clamp-2 text-gray-600 mt-1">{person.description}</p>
                                         </div>
                                     </div>
 

@@ -33,7 +33,7 @@ const Placement = () => {
             <div className="py-5 flex justify-end">
                 <Link
                     to={"/placememntadd"}
-                    className="bg-[#CA406F] w-34 h-8 gap-2 rounded-sm flex items-center justify-center text-white text-sm"
+                    className="bg-[#CA406F] w-38 h-10 gap-2 rounded-sm flex items-center justify-center text-white text-sm"
                 >
                     <IoMdAdd size={20} />
                     Add Placement

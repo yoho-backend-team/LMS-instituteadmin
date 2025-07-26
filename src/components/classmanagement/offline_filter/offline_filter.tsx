@@ -52,7 +52,7 @@ const OfflineFilter = () => {
                             value={selectedState}
                             readOnly
                             onClick={() => setShowStates(!showStates)}
-                            className="border-black/40 px-2 border rounded-sm placeholder:px-3 placeholder:text-gray-400 cursor-pointer pr-7"
+                            className="border-black/40 px-2 h-9 border rounded-sm placeholder:px-3 placeholder:text-gray-400 cursor-pointer pr-7"
                         />
                         <div className="absolute right-2 top-9 text-gray-500 cursor-pointer">
                             {showStates ? (
@@ -89,7 +89,7 @@ const OfflineFilter = () => {
                             value={selectedBatch}
                             readOnly
                             onClick={() => setShowBatches(!showBatches)}
-                            className="border-black/40 px-2 border rounded-sm placeholder:px-3 placeholder:text-gray-400 cursor-pointer pr-7"
+                            className="border-black/40 px-2 h-9 border rounded-sm placeholder:px-3 placeholder:text-gray-400 cursor-pointer pr-7"
                         />
                         <div className="absolute right-2 top-9 text-gray-500 cursor-pointer">
                             {showBatches ? (
@@ -123,7 +123,7 @@ const OfflineFilter = () => {
                             type="text"
                             // placeholder="Search Class......"
                             name="class"
-                            className="border-black/40 px-2 border rounded-sm placeholder:px-3 placeholder:text-gray-400"
+                            className="border-black/40 px-2 h-9 border rounded-sm placeholder:px-3 placeholder:text-gray-400"
                         />
                     </div>
                 </form>

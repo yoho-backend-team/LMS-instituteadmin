@@ -1,9 +1,6 @@
 import { FaClock } from "react-icons/fa";
 import { useNavigate } from "react-router";
 
-
-
-
 const OfflineEdit = () => {
 
     const navigate = useNavigate();

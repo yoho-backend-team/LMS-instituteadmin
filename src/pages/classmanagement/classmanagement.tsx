@@ -45,7 +45,7 @@ const OfflineClassPage = () => {
                 <div>
                     <button
                         onClick={toggleFilter}
-                        className="bg-[#CA406F] w-28 h-8 rounded-sm flex items-center justify-center gap-2 text-sm text-white"
+                        className="bg-[#CA406F] w-28 h-10 rounded-sm flex items-center justify-center gap-2 text-sm text-white"
                     >
                         <IoMdAdd size={20} />
                         {showFilter ? "Hide Filter" : "Show Filter"}
@@ -56,7 +56,7 @@ const OfflineClassPage = () => {
 
                     <button
                         onClick={() => navigate("/OfflineAdd")}
-                        className="bg-[#CA406F] w-44 h-8 gap-2 rounded-sm flex items-center justify-center text-sm"
+                        className="bg-[#CA406F] w-44 h-10 gap-2 rounded-sm flex items-center justify-center text-sm"
                     >
                         <IoMdAdd size={20} />
                         Add Offline Classes
@@ -71,7 +71,9 @@ const OfflineClassPage = () => {
                 </div>
             )}
 
-            <div className="grid grid-cols-3 gap-2 w-full py-5">
+            
+
+            <div className="grid grid-cols-3 gap-2 w-[87%] py-5">
                 {Tablecontent.map((item, index) => (
                     <div
                         key={index}
@@ -104,22 +106,26 @@ const OfflineClassPage = () => {
                         <div className="text-sm text-gray-600 mt-2">
                             <div className="flex gap-2">
                                 <FaCalendarAlt size={20} />
-                                <div className="text-sm">
+                                <div className="text-sm line-clamp-1">
                                     {item.day} {item.date} | {item.time}
                                 </div>
                             </div>
                         </div>
 
-                        <div className=" mt-3 relative px-50">
+
+                        
+                        <div className="mt-4 mr-2 flex justify-end">
                             <button
                                 onClick={() => {
                                     setActiveMenuIndex(null);
                                     navigate("/offlineviewmore");
                                 }}
-                                className="bg-green-500 px-1 py-1 w-24 h-8 rounded-sm text-white text-sm">
+                                className="bg-green-500 px-1 py-1 w-24 h-8 rounded-sm text-white text-sm"
+                            >
                                 View More
                             </button>
                         </div>
+
 
                         {activeMenuIndex === index && (
                             <div className="absolute top-10 right-3 mt-2 w-28 bg-white border rounded-lg shadow-lg z-10">
@@ -135,7 +141,6 @@ const OfflineClassPage = () => {
                                 <button
                                     onClick={() => {
                                         setActiveMenuIndex(null);
-
                                         alert(`Delete clicked for ${item.title}`);
                                     }}
                                     className="w-full text-left px-4 py-2 hover:bg-gray-100"
@@ -147,6 +152,7 @@ const OfflineClassPage = () => {
                     </div>
                 ))}
             </div>
+
         </div>
     );
 };

@@ -85,7 +85,7 @@ const OfflineView = () => {
                 </div>
             </div>
 
-            <div className="flex items-start gap-5 mb-15">
+            <div className="flex items-start justify-between gap-5 mb-15">
                 <div className="grid grid-row-3 gap-2 w-72 mt-5  ">
                     <p className="text-lg px-6 font-semibold">Faculty & Co-ordinates</p>
                     {Instructor.map((item, index) => (

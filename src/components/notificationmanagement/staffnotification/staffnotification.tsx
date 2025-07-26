@@ -14,11 +14,11 @@ const StaffNotification_c = () => {
     const renderContent = () => {
         switch (activeTab) {
             case "all":
-                return <div><Staff_All/></div>;
+                return <div><Staff_All /></div>;
             case "read":
-                return <div><Staff_Read/></div>;
+                return <div><Staff_Read /></div>;
             case "unread":
-                return <div><Staff_Unread/></div>;
+                return <div><Staff_Unread /></div>;
             default:
                 return null;
         }
@@ -26,36 +26,33 @@ const StaffNotification_c = () => {
 
     return (
         <div className="px-5">
-           <Link to="/Staffnotification">
-  <MdKeyboardArrowLeft />
-</Link>
-            
+            <Link to="/Staffnotification">
+                <MdKeyboardArrowLeft />
+            </Link>
+
             <div className="mb-5 text-lg font-bold">
                 STAFF NOTIFICATION
             </div>
 
-            
+
             <div className="flex gap-3 mb-4">
                 <button
-                    className={`px-3 py-1 rounded-sm text-sm text-center ${
-                        activeTab === "all" ? "bg-[#CA406F] text-white" : "bg-gray-200"
-                    }`}
+                    className={`px-3 py-1 rounded-sm text-sm text-center ${activeTab === "all" ? "bg-[#CA406F] text-white" : "bg-gray-200"
+                        }`}
                     onClick={() => setActiveTab("all")}
                 >
                     All Notification
                 </button>
                 <button
-                    className={`px-3 py-1 rounded-sm text-sm text-center ${
-                        activeTab === "read" ? "bg-[#CA406F] text-white" : "bg-gray-200"
-                    }`}
+                    className={`px-3 py-1 rounded-sm text-sm text-center ${activeTab === "read" ? "bg-[#CA406F] text-white" : "bg-gray-200"
+                        }`}
                     onClick={() => setActiveTab("read")}
                 >
                     Read
                 </button>
                 <button
-                    className={`px-3 py-1 rounded-sm text-sm text-center ${
-                        activeTab === "unread" ? "bg-[#CA406F] text-white" : "bg-gray-200"
-                    }`}
+                    className={`px-3 py-1 rounded-sm text-sm text-center ${activeTab === "unread" ? "bg-[#CA406F] text-white" : "bg-gray-200"
+                        }`}
                     onClick={() => setActiveTab("unread")}
                 >
                     Unread
