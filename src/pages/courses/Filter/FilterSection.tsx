@@ -10,7 +10,9 @@ import card2 from "../../../Assets/card2.png";
 
 const FilterSection = () => {
   const [showFilter, setShowFilter] = useState(false);
-  const [showAddCourse, setShowAddCourse] = useState<false | "original" | "new">(false);
+  const [showAddCourse, setShowAddCourse] = useState<
+    false | "original" | "new"
+  >(false);
   const [selectedCourse, setSelectedCourse] = useState<any>(null);
 
   const handleViewCourse = (course: any) => {
@@ -59,9 +61,8 @@ const FilterSection = () => {
   ];
 
   return (
-    <div className="w-full px-4 sm:px-6 lg:px-8">
-
-      <h2 className="text-lg sm:text-xl font-semibold text-[#716F6F] mb-6">
+    <div className="w-full px-0">
+      <h2 className="text-lg sm:text-xl font-semibold mr-60 text-[#716F6F] mb-6">
         Course Categories
       </h2>
 
@@ -132,8 +133,12 @@ const FilterSection = () => {
       )}
 
       {/* Add Course Forms */}
-      {showAddCourse === "original" && <AddCourseForm onBack={handleBackToList} />}
-      {showAddCourse === "new" && <AddCourseNewForm onCancel={handleBackToList} />}
+      {showAddCourse === "original" && (
+        <AddCourseForm onBack={handleBackToList} />
+      )}
+      {showAddCourse === "new" && (
+        <AddCourseNewForm onCancel={handleBackToList} />
+      )}
 
       {/* Course Detail View */}
       {selectedCourse && showAddCourse !== "new" && (
