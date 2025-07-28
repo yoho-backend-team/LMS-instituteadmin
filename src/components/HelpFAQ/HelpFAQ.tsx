@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 import React, {  } from "react";
 import { IoMdCall } from "react-icons/io";
 import { IoMdMail } from "react-icons/io";
 // import TrackOrder from "./TrackOrder";
+=======
+import React, { use } from "react";
+import { IoMdCall } from "react-icons/io";
+import { IoMdMail } from "react-icons/io";
+import TrackOrder from "./TrackOrder";
+>>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
 import { useNavigate } from "react-router";
 
 const HelpFAQ = () => {
@@ -35,7 +42,11 @@ const HelpFAQ = () => {
           <option value="/secure-delivery">Secure Delivery</option>
         </select>
 
+<<<<<<< HEAD
         <div className="flex  grid-cols-3 mt-10">
+=======
+        <div className="flex grid grid-cols-3 mt-10">
+>>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
           <div className="flex flex-col text-[#716F6F] gap-4">
             <span className="text-lg text-[#CA406F] font-semibold">
               For assistance related to your orders

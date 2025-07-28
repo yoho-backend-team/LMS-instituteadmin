@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import  { useState } from "react";
+=======
+import React, { useState } from "react";
+>>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
 import AddCourseForm from "../Course/AddCourseForm";
 import AddCourseNewForm from "../Editcourse/AddCourseNewForm";
 import CourseCard from "../CourseCard/CourseCard";
@@ -45,6 +49,7 @@ const FilterSection = () => {
       price: "₹3,999",
       status: "Active",
     },
+<<<<<<< HEAD
     {
       id: 3,
       title: "Frontend Development",
@@ -67,6 +72,16 @@ const FilterSection = () => {
         {/* Show Filter button on left */}
         <button
           className="flex items-center mr-10 gap-2 px-4 py-2 bg-[#e00076] text-white font-semibold rounded-md text-base"
+=======
+  ];
+
+  return (
+    <div className="max-w-6xl px-4">
+      {/* Top Buttons */}
+      <div className="flex justify-between items-center gap-5 mb-6">
+        <button
+          className="flex items-center gap-2 px-4 py-2 bg-[#e00076] text-white font-semibold rounded-md text-base"
+>>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
           onClick={() => {
             setShowFilter(!showFilter);
             setShowAddCourse(false);
@@ -77,6 +92,7 @@ const FilterSection = () => {
           {showFilter ? "Hide" : "Show Filter"}
         </button>
 
+<<<<<<< HEAD
         {/* Add Course button on right */}
         <button
           className="flex items-center gap-2 px-4 py-2 bg-[#e00076] text-white font-semibold rounded-md text-base"
@@ -89,6 +105,21 @@ const FilterSection = () => {
           <span className="text-2xl font-light leading-none">+</span>
           Add Course
         </button>
+=======
+        <div className="flex gap-4">
+          <button
+            className="flex items-center gap-2 px-4 py-2 bg-[#e00076] text-white font-semibold rounded-md text-base"
+            onClick={() => {
+              setShowAddCourse("original");
+              setShowFilter(false);
+              setSelectedCourse(null);
+            }}
+          >
+            <span className="text-2xl font-light leading-none">+</span>
+            Add Course
+          </button>
+        </div>
+>>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
       </div>
 
       {/* Filter Inputs */}
@@ -98,7 +129,11 @@ const FilterSection = () => {
             <input
               type="text"
               placeholder="Search Course"
+<<<<<<< HEAD
               className="w-full max-w-sm px-4 py-2 border border-[#ca406f] rounded-md text-sm"
+=======
+              className="w-[298px] px-4 py-2 border border-[#ca406f] rounded-md text-sm"
+>>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
             />
           </div>
 
@@ -148,7 +183,11 @@ const FilterSection = () => {
 
       {/* Course List */}
       {!showAddCourse && !selectedCourse && (
+<<<<<<< HEAD
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  mr-15 gap-6 mt-4 justify-between">
+=======
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4 justify-start">
+>>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
           {courses.map((course) => (
             <CourseCard
               key={course.id}

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import  { useState } from "react";
+=======
+import React, { useState } from "react";
+>>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
 import { Card, CardContent } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import bg from "../../../src/assets/Backdrop Image.png";

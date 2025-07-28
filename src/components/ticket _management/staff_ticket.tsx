@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 // import React from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MoreVertical} from "lucide-react";
+=======
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { MoreVertical, BadgeAlert } from "lucide-react";
+>>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
 import {
   DropdownMenu,
   DropdownMenuTrigger,

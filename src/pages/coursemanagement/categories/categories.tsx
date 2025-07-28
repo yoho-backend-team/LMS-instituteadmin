@@ -8,7 +8,7 @@ import mern from "../../../assets/mern.png"
 import FilterIcon from "../../../assets/Filter.png"
 import DeleteIcon from "../../../assets/delete.png"
 import EditIcon from "../../../assets/edit.png"
-import UploadIcon from "../../../assets/upload.png"
+import UploadIcon from "../../../assets/uload.png"
 
 // Custom Select Component
 type CustomSelectOption = { label: string; value: string }
@@ -324,9 +324,9 @@ const AddEditCategoryModal = ({
   }
 
   return (
-    <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50 overflow-y-auto py-8">
       <div 
-        className="w-[608px] bg-white rounded-xl shadow-[0px_4px_24px_rgba(0,0,0,0.15)] p-4 flex flex-col gap-[30px] relative"
+        className="w-[608px] bg-white rounded-xl shadow-[0px_4px_24px_rgba(0,0,0,0.15)] p-6 flex flex-col gap-[30px] relative my-8"
         ref={modalRef}
       >
         <button className="absolute top-4 right-4" onClick={onClose}>
@@ -334,7 +334,7 @@ const AddEditCategoryModal = ({
         </button>
 
         <div className="flex flex-col gap-[30px] w-full items-start">
-          <div className="flex flex-col gap-3 w-[468px]">
+          <div className="flex flex-col gap-3 w-full">
             <h2 className="text-[20px] font-semibold text-[#7D7D7D] capitalize">
               {mode === "add" ? "Add" : "Edit"} Category
             </h2>
@@ -345,20 +345,22 @@ const AddEditCategoryModal = ({
 
           <div className="w-full border border-[#BDC2C7BF]" />
 
-          {previewImage && !imageError ? (
-            <div className="w-full h-[200px] rounded-xl overflow-hidden">
-              <img 
-                src={previewImage} 
-                alt="Preview" 
-                className="w-full h-full object-cover"
-                onError={handleImageError}
-              />
-            </div>
-          ) : (
-            <div className="w-full h-[200px] rounded-xl overflow-hidden bg-gray-100 flex items-center justify-center">
-              <span className="text-gray-500">No image or image failed to load</span>
-            </div>
-          )}
+          <div className="w-full flex flex-col items-center">
+            {previewImage && !imageError ? (
+              <div className="w-full h-[200px] rounded-xl overflow-hidden">
+                <img 
+                  src={previewImage} 
+                  alt="Preview" 
+                  className="w-full h-full object-cover"
+                  onError={handleImageError}
+                />
+              </div>
+            ) : (
+              <div className="w-full h-[200px] rounded-xl overflow-hidden bg-gray-100 flex items-center justify-center">
+                <span className="text-gray-500">No image or image failed to load</span>
+              </div>
+            )}
+          </div>
 
           <div className="flex flex-col gap-[12px] w-full">
             <label className="text-[#716F6F] text-[16px] font-medium capitalize">Category Name</label>
@@ -372,13 +374,15 @@ const AddEditCategoryModal = ({
             />
           </div>
 
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3 w-full">
             <label className="text-[14px] text-[#7D7D7D] capitalize">
               Recommended: 388x300 Pixels Accepted Formats: PNG, JPEG
             </label>
-            <label className="flex items-center justify-center px-4 py-3 gap-[10px] w-[181px] h-[48px] bg-[#CA406F] rounded-[12px] cursor-pointer relative hover:bg-[#e0527c] transition-colors">
-              <img src={UploadIcon} alt="Upload" className="w-6 h-6 absolute left-4" />
-              <span className="text-white font-[Poppins] text-[16px] font-medium leading-[24px] capitalize">Upload Image</span>
+            <label className="relative flex items-center justify-center px-4 py-3 w-[181px] h-[48px] bg-[#CA406F] rounded-[12px] cursor-pointer hover:bg-[#e0527c] transition-colors">
+              <img src={UploadIcon} alt="Upload" className="w-6 h-6 absolute left-3" />
+              <span className="text-white font-[Poppins] text-[16px] font-medium leading-[24px] capitalize ml-8">
+                Upload Image
+              </span>
               <input 
                 type="file" 
                 onChange={handleImageUpload} 
@@ -460,8 +464,6 @@ const Categories = () => {
         image: category.image,
       })
       setShowModal(true)
-      setEditId(null)
-      setShowFilters(false)
     }
   }
 
@@ -479,7 +481,7 @@ const Categories = () => {
       const newCategory = {
         id: Math.max(...categories.map((c) => c.id), 0) + 1,
         title: data.name,
-        image: data.image ? URL.createObjectURL(data.image) : null,
+        image: data.image ? URL.createObjectURL(data.image) : Image,
         status: "active",
       }
       setCategories([...categories, newCategory])
@@ -496,22 +498,17 @@ const Categories = () => {
         ),
       )
     }
-    setEditId(null)
+    setShowModal(false)
   }
 
   const toggleFilters = () => {
     setShowFilters(!showFilters)
     setEditId(null)
-    if (!showFilters) {
-      setShowModal(false)
-    }
   }
 
   const handleOpenEditDropdown = (id: number, e: React.MouseEvent) => {
     e.stopPropagation()
     setEditId(editId === id ? null : id)
-    setShowFilters(false)
-    setShowModal(false)
   }
 
   const handleImageError = (id: number) => {
@@ -522,43 +519,41 @@ const Categories = () => {
 
   return (
     <div className="relative min-h-screen mx-auto w-full" ref={pageRef}>
-      <div className="absolute w-full h-full" />
+      <main className="w-full p-4 z-10 max-w-[1800px] mx-auto">
+        <h1 className="text-2xl font-semibold text-[#716F6F] mb-4">Course Categories</h1>
 
-      <main className="absolute left-[32px] w-[calc(100%-64px)] p-6 z-10">
-        <h1 className="text-2xl font-semibold text-[#716F6F] mb-6">Course Categories</h1>
-
-        <div className="flex justify-between items-center mb-8">
+        <div className="flex justify-between items-center mb-6">
           <button
             onClick={toggleFilters}
-            className="bg-[#CA406F] text-white px-4 py-3 rounded-lg flex items-center gap-2 h-12 hover:bg-[#e0527c] transition-colors"
+            className="bg-[#CA406F] text-white px-4 py-2 rounded-lg flex items-center gap-2 h-12 hover:bg-[#e0527c] transition-colors"
           >
-            <img src={FilterIcon} alt="Filter" className="w-6 h-6" />
-            <span className="text-sm font-medium">{showFilters ? "Hide" : "Show Filter"}</span>
+            <img src={FilterIcon} alt="Filter" className="w-5 h-5" />
+            <span className="text-sm font-medium">{showFilters ? "Hide" : "Show"} Filter</span>
           </button>
 
           <button
             onClick={handleAddCategory}
-            className="bg-[#CA406F] text-white px-4 py-3 rounded-lg flex items-center gap-2 h-12 hover:bg-[#e0527c] transition-colors right-0"
+            className="bg-[#CA406F] text-white px-4 py-2 rounded-lg flex items-center gap-2 h-12 hover:bg-[#e0527c] transition-colors"
           >
-            <Plus size={20} />
+            <Plus size={18} />
             <span className="text-sm font-medium">Add New Category</span>
           </button>
         </div>
 
         {showFilters && (
-          <div className="mb-8">
-            <div className="relative w-[360px] h-12 border-2 border-[#CA406F] rounded-lg bg-gradient-to-b from-white/20 to-white/0 backdrop-blur-sm">
+          <div className="mb-6">
+            <div className="relative w-[320px] h-12 border-2 border-[#CA406F] rounded-lg bg-gradient-to-b from-white/20 to-white/0 backdrop-blur-sm">
               <input
                 type="text"
                 placeholder="Search Categories"
-                className="w-full h-full bg-transparent px-4 py-3 text-[#6C6C6C] placeholder-[#6C6C6C] focus:outline-none"
+                className="w-full h-full bg-transparent px-4 py-2 text-[#6C6C6C] placeholder-[#6C6C6C] focus:outline-none"
               />
             </div>
 
-            <div className="w-full bg-white p-6 rounded-xl shadow-lg mt-4">
-              <div className="flex gap-8">
+            <div className="w-full bg-white p-4 rounded-xl shadow-lg mt-3">
+              <div className="flex gap-4">
                 <div className="w-1/2">
-                  <label className="block text-[#716F6F] text-sm font-medium mb-2">Status</label>
+                  <label className="block text-[#716F6F] text-sm font-medium mb-1">Status</label>
                   <CustomSelect
                     selected={statusFilter}
                     setSelected={setStatusFilter}
@@ -567,12 +562,11 @@ const Categories = () => {
                       { label: "Filter by Status", value: "" },
                       { label: "Active", value: "active" },
                       { label: "Inactive", value: "inactive" },
-                      { label: "Draft", value: "draft" },
                     ]}
                   />
                 </div>
                 <div className="w-1/2">
-                  <label className="block text-[#716F6F] text-sm font-medium mb-2">Course</label>
+                  <label className="block text-[#716F6F] text-sm font-medium mb-1">Course</label>
                   <CustomSelect
                     selected={courseFilter}
                     setSelected={setCourseFilter}
@@ -580,8 +574,7 @@ const Categories = () => {
                     options={[
                       { label: "Filter by Course", value: "" },
                       { label: "React", value: "react" },
-                      { label: "Advanced CSS", value: "css" },
-                      { label: "JavaScript", value: "js" },
+                      { label: "Mern", value: "mern" },
                     ]}
                   />
                 </div>
@@ -590,27 +583,27 @@ const Categories = () => {
           </div>
         )}
 
-        <div className="flex flex-wrap justify-start gap-8 pl-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {categories.map((card) => (
             <div
               key={card.id}
-              className="w-[400px] bg-white rounded-xl shadow-md p-4 relative transition-transform hover:scale-105 duration-200"
+              className="bg-white rounded-lg shadow-sm p-3 relative transition-transform hover:scale-[1.02] duration-200"
             >
               {card.image ? (
                 <img
                   src={card.image}
                   alt={card.title}
-                  className="w-full h-40 object-cover rounded-lg"
+                  className="w-full h-[150px] object-cover rounded-md"
                   onError={() => handleImageError(card.id)}
                 />
               ) : (
-                <div className="w-full h-40 bg-gray-100 rounded-lg flex items-center justify-center">
-                  <span className="text-gray-500">No image available</span>
+                <div className="w-full h-[150px] bg-gray-100 rounded-md flex items-center justify-center">
+                  <span className="text-gray-500 text-sm">No image available</span>
                 </div>
               )}
 
-              <div className="mt-4 flex items-start justify-between relative">
-                <h3 className="text-[#CA406F] font-semibold text-lg">{card.title}</h3>
+              <div className="mt-3 flex items-start justify-between relative">
+                <h3 className="text-[#CA406F] font-semibold text-base">{card.title}</h3>
                 <div className="relative">
                   <MoreVertical
                     className="text-gray-500 cursor-pointer hover:text-[#CA406F] transition-colors"
@@ -626,11 +619,11 @@ const Categories = () => {
                 </div>
               </div>
 
-              <div className="mt-4">
+              <div className="mt-3">
                 <StatusDropdown 
                   value={card.status} 
                   onChange={(value) => handleStatusChange(card.id, value)}
-                  disabled={showFilters || showModal || editId !== null}
+                  disabled={editId === card.id}
                 />
               </div>
             </div>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // import React, { useState } from "react";
 // import Chat from "./Chat";
 import CommunityChat from "./Batches";
@@ -9,6 +10,19 @@ import backdrop from "../../assets/Backdrop Image.jpg";
 //   batch: string;
 //   image: string;
 // }
+=======
+import React, { useState } from "react";
+import Chat from "./Chat";
+import CommunityChat from "./Batches";
+import backdrop from "../../assets/Backdrop Image.jpg";
+
+interface Batch {
+  id: number;
+  name: string;
+  batch: string;
+  image: string;
+}
+>>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
 
 const CommunityManagement = () => {
 

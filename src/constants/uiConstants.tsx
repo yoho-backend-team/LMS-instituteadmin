@@ -27,6 +27,7 @@ heading_01: {
 		color: "#716F6F"
 
 	},
+<<<<<<< HEAD
 	heading_05: {
 		fontFamily: 'poppins',
 		fontWeight: 600,
@@ -48,6 +49,8 @@ heading_01: {
 		color: "#7d7d7d"
 
 	},
+=======
+>>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
 	Description: {
 		fontFamily: 'poppins',
 		fontWeight: 300,

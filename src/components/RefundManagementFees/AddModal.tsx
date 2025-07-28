@@ -37,8 +37,13 @@ export const RefundModal: React.FC<RefundModalProps> = ({
   isEditing,
   formData,
   setFormData,
+<<<<<<< HEAD
   // uploadedFile,
   // setUploadedFile,
+=======
+  uploadedFile,
+  setUploadedFile,
+>>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
   onSubmit,
 }) => {
   if (!showModal) return null;
