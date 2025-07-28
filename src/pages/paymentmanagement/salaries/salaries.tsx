@@ -438,7 +438,7 @@ const Salaries: React.FC = () => {
                                 <div className="flex items-center justify-start px-4">{record.paymentDate}</div>
                                 <div className="flex items-center justify-start px-4">
                                     <span
-                                        className={`px-2 py-1 rounded-4 text-xs font-medium flex items-center justify-start px-4 ${record.status === 'Active'
+                                        className={` py-1 rounded-4 text-xs font-medium flex items-center justify-start px-4 ${record.status === 'Active'
                                             ? 'text-white text-[14px]'
                                             : 'bg-red-100 text-red-700'
                                             }`}

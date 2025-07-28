@@ -102,7 +102,7 @@ const Users: React.FC = () => {
                                     className="border-3 border-pink-500 rounded-lg px-4 py-2  min-h-[38px] min-w-[360px] md:w-1/3 "
                                 />
                             </div>
-                            <div className="bg-white p-4 shadow-[0_4px_10px_3px_rgba(0,0,0,0.10)] p-4 bg-white border-t border-gray-100 rounded-md mb-6 text-gray-700">
+                            <div className=" shadow-[0_4px_10px_3px_rgba(0,0,0,0.10)] p-4 bg-white border-t border-gray-100 rounded-md mb-6 text-gray-700">
                                 <div className="flex flex-col sm:flex-row gap-2">
                                     {/* First select + label */}
                                     <div className="flex flex-col w-full sm:w-1/2">
@@ -157,19 +157,19 @@ const Users: React.FC = () => {
 
                                 <form className="space-y-2">
                                     <option style={{ fontSize: '16px', color: '#716F6F', fontWeight: 400, fontFamily: 'Poppins, sans-serif', }}>Branch</option>
-                                    <select className="w-full border border-[1px] border-[#716F6F] rounded-[8px] px-3 py-2 min-h-[48px] min-w-[371px]">
+                                    <select className="w-full border-[1px] border-[#716F6F] rounded-[8px] px-3 py-2 min-h-[48px] min-w-[371px]">
 
                                     </select>
                                     <option style={{ fontSize: '16px', color: '#716F6F', fontWeight: 400, fontFamily: 'Poppins, sans-serif', }}>First Name</option>
-                                    <input type="text" placeholder="" className="w-full border border-[1px] border-[#716F6F] rounded-[8px] px-3 py-2 min-h-[48px] min-w-[371px]" />
+                                    <input type="text" placeholder="" className="w-full border-[1px] border-[#716F6F] rounded-[8px] px-3 py-2 min-h-[48px] min-w-[371px]" />
                                     <option style={{ fontSize: '16px', color: '#716F6F', fontWeight: 400, fontFamily: 'Poppins, sans-serif', }}>Last Name</option>
-                                    <input type="text" placeholder="" className="w-full border border-[1px] border-[#716F6F] rounded-[8px] px-3 py-2 min-h-[48px] min-w-[371px]" />
+                                    <input type="text" placeholder="" className="w-full border-[1px] border-[#716F6F] rounded-[8px] px-3 py-2 min-h-[48px] min-w-[371px]" />
                                     <option style={{ fontSize: '16px', color: '#716F6F', fontWeight: 400, fontFamily: 'Poppins, sans-serif', }}>Email</option>
-                                    <input type="email" placeholder="" className="w-full border border-[1px] border-[#716F6F] rounded-[8px] px-3 py-2 min-h-[48px] min-w-[371px]" />
+                                    <input type="email" placeholder="" className="w-full border-[1px] border-[#716F6F] rounded-[8px] px-3 py-2 min-h-[48px] min-w-[371px]" />
                                     <option style={{ fontSize: '16px', color: '#716F6F', fontWeight: 400, fontFamily: 'Poppins, sans-serif', }}>Contact</option>
-                                    <input type="text" placeholder="" className="w-full border border-[1px] border-[#716F6F] rounded-[8px] px-3 py-2 min-h-[48px] min-w-[371px]" />
+                                    <input type="text" placeholder="" className="w-full border-[1px] border-[#716F6F] rounded-[8px] px-3 py-2 min-h-[48px] min-w-[371px]" />
                                     <option style={{ fontSize: '16px', color: '#716F6F', fontWeight: 400, fontFamily: 'Poppins, sans-serif', }}>Designation</option>
-                                    <input type="text" placeholder="" className="w-full border border-[1px] border-[#716F6F] rounded-[8px] px-3 py-2 min-h-[48px] min-w-[371px]" />
+                                    <input type="text" placeholder="" className="w-full border-[1px] border-[#716F6F] rounded-[8px] px-3 py-2 min-h-[48px] min-w-[371px]" />
                                     <div className="flex justify-end pt-2 space-x-2">
                                         <button
                                             type="button"

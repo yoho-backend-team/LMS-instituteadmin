@@ -24,7 +24,7 @@ import StudentCertificate from "@/pages/certificatemanagement/studentcertificate
 import FQA from "@/pages/FQAcategory/FQA/FQA";
 import Category from "@/pages/FQAcategory/category/category";
 import AddQust from "@/pages/helpcenter/AddQust/addQust";
-import HelpFQA from "@/pages/helpcenter/helpFQA/helpFQA";
+// import HelpFQA from "@/pages/helpcenter/helpFQA/helpFQA";
 import StaffIdCard from "@/pages/id_cardmanagement/staffidcard/staffidcard";
 import StudentIdCrad from "@/pages/id_cardmanagement/studentidcard/studentidcard";
 import Liveclasses from "@/pages/liveclasses/liveclasses";
