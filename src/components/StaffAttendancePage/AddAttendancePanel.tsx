@@ -3,7 +3,7 @@ import closeImage from "../../assets/close.png";
 
 interface AddAttendancePanelProps {
   onClose: () => void;
-  onAddDate: (date: number, status: string) => void; // updated
+  onAddDate: (date: string, status: string) => void;
 }
 
 const AddAttendancePanel: React.FC<AddAttendancePanelProps> = ({ onClose, onAddDate }) => {
@@ -11,9 +11,8 @@ const AddAttendancePanel: React.FC<AddAttendancePanelProps> = ({ onClose, onAddD
   const [attendanceDate, setAttendanceDate] = useState("2025-09-19");
 
   const handleAdd = () => {
-    const day = new Date(attendanceDate).getDate();
-    if (!isNaN(day) && attendanceStatus) {
-      onAddDate(day, attendanceStatus); // send both day and status
+    if (attendanceStatus && attendanceDate) {
+      onAddDate(attendanceDate, attendanceStatus);
       setAttendanceStatus("");
       setAttendanceDate("2025-09-19");
     }
@@ -37,11 +36,7 @@ const AddAttendancePanel: React.FC<AddAttendancePanelProps> = ({ onClose, onAddD
       </div>
 
       <div className="flex flex-col items-center mb-4">
-        <img
-          src="https://i.pravatar.cc/150?img=1"
-          alt="Profile"
-          className="w-20 h-20 rounded-full"
-        />
+        <img src="https://i.pravatar.cc/150?img=1" alt="Profile" className="w-20 h-20 rounded-full" />
         <h3 className="mt-2 font-semibold">Elon Musk</h3>
         <p className="text-sm text-gray-500">elonmusk@gmail.com</p>
       </div>
