@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import DbChart from "../../components/Dashboard/DbChart";
 import {
   DropdownMenu,
@@ -6,8 +7,9 @@ import {
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 import StatsCarousal from "@/components/Dashboard/StatsCarousel";
-import { MdKeyboardArrowDown } from "react-icons/md";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+import { useDispatch } from 'react-redux'
+import { getAdminProfileThunk } from "@/features/Profile/reducers/thunks";
 
 export default function Dashboard() {
   const dummyCourses = [
@@ -73,6 +75,12 @@ export default function Dashboard() {
   ];
   const scrollRef = useRef<HTMLDivElement>(null);
   const courseScrollRef = useRef<HTMLDivElement>(null);
+
+  const dispatch = useDispatch<any>()
+
+  useEffect(() => {
+    dispatch(getAdminProfileThunk())
+  }, [dispatch]);
 
   const handleScrollDown = () => {
     if (scrollRef.current) {

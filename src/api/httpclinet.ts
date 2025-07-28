@@ -12,10 +12,10 @@ const Axios = axios.create({
 
 
 Axios.interceptors.request.use((config) => {
-    const token = GetLocalStorage("token");
-    if (token) {
-        config.headers["Authorization"] = `Token ${token ? token : ""}`;
-    }
+    // const token = GetLocalStorage("token");
+    // if (token) {
+    config.headers["Authorization"] = 'Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNoYW5kcmFuMUBnbWFpbC5jb20iLCJyb2xlIjoiNjdhMDY4ODU0MDBmZmFlMmQyMDZhYmZiIiwiaW5zdGl0dXRlX2lkIjoiNjdmM2EyNmRmNGIyYzUzMGFjZDE2NDE5IiwidXVpZCI6Ijg3MjcyMjVkLWM5ZDUtNGQ0MC1hYjAyLTZhYzUyOGEyM2Q1MiIsInVzZXJfdHlwZSI6Imluc3RpdHV0ZSIsImlhdCI6MTc1MzY4MTc4NSwiZXhwIjoxNzUzNzY4MTg1fQ.oeWE9ukAN_5ArkoAIJxhW-7o9vRjiN6Kscjqu-Xa4II';
+    // }
     return config;
 });
 

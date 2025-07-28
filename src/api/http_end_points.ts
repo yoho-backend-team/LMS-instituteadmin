@@ -3,11 +3,9 @@ import { GetLocalStorage } from "@/utils/helper";
 import secureLocalStorage from "react-secure-storage";
 
 
-const backEndUrl = process.env.REACT_APP_PUBLIC_API_URL;
-
 const getInstituteDetails = () => {
     if (typeof (secureLocalStorage) !== "undefined") {
-        const institute: any = GetLocalStorage("institute")
+        const institute: any = GetLocalStorage("instituteId")
         return JSON.parse(institute)
     } else {
         return undefined
@@ -22,10 +20,8 @@ const getSelectedBranchId = () => {
 }
 
 const generateEndpoints = () => {
-    const institute = getInstituteDetails();
+    const instituteId = getInstituteDetails();
     const branchId = getSelectedBranchId()
-
-    const instituteId = institute ? institute?.uuid : ""
 
     return {
         admin: {
@@ -77,8 +73,8 @@ const generateEndpoints = () => {
             delete: `/api/institutes/faq/category/delete/:uuid`
         },
         course: {
-            get: `${backEndUrl}/api/institutes/${instituteId}/branches/`,
-            update: `${backEndUrl}/api/institutes/${instituteId}/categories/`,
+            get: `/api/institutes/${instituteId}/branches/`,
+            update: `/api/institutes/${instituteId}/categories/`,
             withBranch: `/api/institutes/${instituteId}/branches/`,
             add: `/api/institutes/${instituteId}/categories/`,
             template: `/api/institutes/${instituteId}/branches/${branchId}/course-template`
@@ -117,7 +113,7 @@ const generateEndpoints = () => {
             delete: `/api/institutes/class/offline/`
         },
         file: {
-            upload: `${backEndUrl}/api/upload/`
+            upload: `/api/upload/`
         },
         users: {
             valiateOtp: `/api/institutes/auth/admin/verify-otp/`,
