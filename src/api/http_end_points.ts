@@ -1,22 +1,24 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { GetLocalStorage } from "@/utils/helper";
-import secureLocalStorage from "react-secure-storage";
+// import { GetLocalStorage } from "@/utils/helper";
+// import secureLocalStorage from "react-secure-storage";
 
 
 const getInstituteDetails = () => {
-    if (typeof (secureLocalStorage) !== "undefined") {
-        const institute: any = GetLocalStorage("instituteId")
-        return institute
-    } else {
-        return undefined
-    }
+    // if (typeof (secureLocalStorage) !== "undefined") {
+    //     const institute: any = GetLocalStorage("instituteId")
+    //     return institute
+    // } else {
+    //     return undefined
+    // }
+    return '973195c0-66ed-47c2-b098-d8989d3e4529'
 }
 
 const getSelectedBranchId = () => {
-    if (typeof (secureLocalStorage) !== "undefined") {
-        const branch: any = GetLocalStorage("selectedBranchId")
-        return branch ? branch.replace(/^"|"$/g, '') : branch
-    }
+    // if (typeof (secureLocalStorage) !== "undefined") {
+    //     const branch: any = GetLocalStorage("selectedBranchId")
+    //     return branch ? branch.replace(/^"|"$/g, '') : branch
+    // }
+    return '90c93163-01cf-4f80-b88b-4bc5a5dd8ee4'
 }
 
 const generateEndpoints = () => {
@@ -206,7 +208,7 @@ const generateEndpoints = () => {
             get: "/api/institutes/user/activities/",
         },
         reports: {
-            get: `/api/institutes/${instituteId}/report/`
+            get: `/api/institutes/${instituteId}/report/${branchId}`
         },
         placements: {
             create: `/api/placements/create`,

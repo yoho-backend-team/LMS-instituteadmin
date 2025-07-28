@@ -10,6 +10,7 @@ import StatsCarousal from "@/components/Dashboard/StatsCarousel";
 import { useEffect, useRef } from "react";
 import { useDispatch } from 'react-redux'
 import { getAdminProfileThunk } from "@/features/Profile/reducers/thunks";
+import { getDashBoardReports } from "@/features/Dashboard/reducers/thunks";
 
 export default function Dashboard() {
   const dummyCourses = [
@@ -79,6 +80,7 @@ export default function Dashboard() {
   const dispatch = useDispatch<any>()
 
   useEffect(() => {
+    dispatch(getDashBoardReports())
     dispatch(getAdminProfileThunk())
   }, [dispatch]);
 

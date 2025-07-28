@@ -211,7 +211,7 @@ class Client {
     get: (query: any) => HttpClient.get(HTTP_END_POINTS.activity.get, query)
   };
   reports = {
-    get: (query: any) => HttpClient.get(HTTP_END_POINTS.reports.get + query?.branch, query)
+    get: (query: any) => HttpClient.get(HTTP_END_POINTS.reports.get, query)
   };
   placements = {
     getAll: (data: any) => httpclinet.get(HTTP_END_POINTS.placements.getAll, data),
