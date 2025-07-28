@@ -8,7 +8,7 @@ import Branch from "@/pages/branchManagment/branchPage";
 import Group from "@/pages/usermanagement/group/group";
 import Categories from "@/pages/coursemanagement/categories/categories";
 import Courses from "@/pages/courses/courses";
-import ViewCardPage from "@/components/ContentManagement/ViewCardPage"; // <-- Add this import
+import ViewCardPage from "@/components/ContentManagement/ViewCardPage"; 
 
 import StudyMaterials from "@/pages/contentmanagement/studymaterials/studymaterials";
 import Notes from "@/pages/notes/notes";
@@ -53,9 +53,9 @@ import ChatPage from "@/components/StudentTicket/chatPage";
 import ClosedTicket from "@/components/StudentTicket/closeTicket";
 import StudentIDCard from "@/pages/id_cardmanagement/studentidcard/studentidcard";
 import Groupspages from "@/pages/Groupspages/Groupspages";
-import AddGroup from "@/components/groups/addgroup";
-import PermissionManagement from "@/components/groups/view";
-import  Edit from "@/components/groups/Edit"
+// import AddGroup from "@/components/groups/addgroup";
+// import PermissionManagement from "@/components/groups/view";
+// import  Edit from "@/components/groups/Edit"
 
 
 

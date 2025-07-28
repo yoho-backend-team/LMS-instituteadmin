@@ -1,10 +1,10 @@
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { DialogFooter, DialogClose } from "@/components/ui/dialog";
 import { FONTS } from "@/constants/uiConstants";
+import { Input } from "../ui/input";
 
 interface BranchFormProps {
   onSubmitSuccess: () => void;
