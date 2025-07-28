@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import editIcon from "../../../Assets/editIcon.png";
 import Dropleft from "../../../Assets/Dropleft.png";
+import AddNotes from "./Notes/AddNotes";
+import AddStudyMaterial from "./Study/AddStudyMarerial";
 
 interface CourseDetailProps {
   course: {
@@ -19,16 +21,27 @@ const CourseDetail: React.FC<CourseDetailProps> = ({
   onEdit,
 }) => {
   const [isDeleted, setIsDeleted] = useState(false);
+  const [showNotesForm, setShowNotesForm] = useState(false);
+  const [showStudyForm, setShowStudyForm] = useState(false);
 
-  
   const handleDelete = () => {
     setIsDeleted(true);
+  };
+
+  const handleNotesSubmit = (data: any) => {
+    console.log("Notes submitted:", data);
+    setShowNotesForm(false);
+  };
+
+  const handleStudyMaterialSubmit = (data: any) => {
+    console.log("Study Material submitted:", data);
+    setShowStudyForm(false);
   };
 
   if (isDeleted) {
     return (
       <div className="w-full max-w-4xl text-center mt-10">
-        <p className="text-xl text-gray-500"> This course has been deleted.</p>
+        <p className="text-xl text-gray-500">This course has been deleted.</p>
         <button
           onClick={onBack}
           className="mt-4 text-[#e00076] underline font-semibold"
@@ -40,7 +53,7 @@ const CourseDetail: React.FC<CourseDetailProps> = ({
   }
 
   return (
-    <div className="w-full max-w-4xl">
+    <div className="w-full max-w-4xl relative">
       {/* Back Button */}
       <div className="mb-4">
         <button
@@ -96,14 +109,36 @@ const CourseDetail: React.FC<CourseDetailProps> = ({
       {/* Tab Section */}
       <div className="bg-white rounded-xl shadow-md mt-4 p-2">
         <div className="flex w-full">
-          <button className="flex-1 bg-green-500 text-white font-semibold py-2 rounded-l-md">
+          <button
+            className="flex-1 bg-green-500 text-white font-semibold py-2 rounded-l-md"
+            onClick={() => setShowStudyForm(true)}
+          >
             Study Materials
           </button>
-          <button className="flex-1 text-gray-700 font-semibold py-2 bg-white rounded-r-md">
+          <button
+            className="flex-1 text-gray-700 font-semibold py-2 bg-white rounded-r-md"
+            onClick={() => setShowNotesForm(true)}
+          >
             Notes
           </button>
         </div>
       </div>
+
+      {/* AddNotes Panel */}
+      {showNotesForm && (
+        <AddNotes
+          onClose={() => setShowNotesForm(false)}
+          onSubmit={handleNotesSubmit}
+        />
+      )}
+
+      {/* AddStudyMaterial Panel */}
+      {showStudyForm && (
+        <AddStudyMaterial
+          onClose={() => setShowStudyForm(false)}
+          onSubmit={handleStudyMaterialSubmit}
+        />
+      )}
     </div>
   );
 };

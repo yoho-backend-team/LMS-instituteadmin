@@ -10,7 +10,9 @@ import card2 from "../../../Assets/card2.png";
 
 const FilterSection = () => {
   const [showFilter, setShowFilter] = useState(false);
-  const [showAddCourse, setShowAddCourse] = useState<false | "original" | "new">(false);
+  const [showAddCourse, setShowAddCourse] = useState<
+    false | "original" | "new"
+  >(false);
   const [selectedCourse, setSelectedCourse] = useState<any>(null);
 
   const handleViewCourse = (course: any) => {
@@ -59,14 +61,15 @@ const FilterSection = () => {
   ];
 
   return (
-    <div className="w-full px-4 max-w-[1200px]  mx-auto">
-      <h2 className="text-xl font-semibold text-[#716F6F] mb-6">Course Categories</h2>
+    <div className="w-full px-0">
+      <h2 className="text-lg sm:text-xl font-semibold mr-60 text-[#716F6F] mb-6">
+        Course Categories
+      </h2>
 
-      
-      <div className="flex justify-between items-center flex-wrap gap-3 mb-6 w-full">
-        {/* Show Filter button on left */}
+      {/* Buttons */}
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6 w-full">
         <button
-          className="flex items-center mr-10 gap-2 px-4 py-2 bg-[#e00076] text-white font-semibold rounded-md text-base"
+          className="flex items-center  gap-2 px-4 py-2 bg-[#e00076] text-white   font-semibold rounded-md text-base"
           onClick={() => {
             setShowFilter(!showFilter);
             setShowAddCourse(false);
@@ -77,9 +80,8 @@ const FilterSection = () => {
           {showFilter ? "Hide" : "Show Filter"}
         </button>
 
-        {/* Add Course button on right */}
         <button
-          className="flex items-center gap-2 px-4 py-2 bg-[#e00076] text-white font-semibold rounded-md text-base"
+          className="flex items-center gap-2 px-4 py-2 bg-[#e00076] text-white ml-200   font-semibold rounded-md text-base"
           onClick={() => {
             setShowAddCourse("original");
             setShowFilter(false);
@@ -104,7 +106,7 @@ const FilterSection = () => {
 
           <div className="bg-white rounded-xl p-5 mt-5 shadow-md">
             <div className="flex flex-wrap gap-5">
-              <div className="flex flex-col min-w-[250px] flex-1">
+              <div className="flex flex-col min-w-[250px] w-full flex-1">
                 <label className="text-sm font-medium mb-1 text-gray-800">
                   Status
                 </label>
@@ -115,7 +117,7 @@ const FilterSection = () => {
                 </select>
               </div>
 
-              <div className="flex flex-col min-w-[250px] flex-1">
+              <div className="flex flex-col min-w-[250px] w-full flex-1">
                 <label className="text-sm font-medium mb-1 text-gray-800">
                   Category
                 </label>
@@ -131,10 +133,14 @@ const FilterSection = () => {
       )}
 
       {/* Add Course Forms */}
-      {showAddCourse === "original" && <AddCourseForm onBack={handleBackToList} />}
-      {showAddCourse === "new" && <AddCourseNewForm onCancel={handleBackToList} />}
+      {showAddCourse === "original" && (
+        <AddCourseForm onBack={handleBackToList} />
+      )}
+      {showAddCourse === "new" && (
+        <AddCourseNewForm onCancel={handleBackToList} />
+      )}
 
-      {/* Course Detail */}
+      {/* Course Detail View */}
       {selectedCourse && showAddCourse !== "new" && (
         <CourseDetail
           course={selectedCourse}
@@ -148,7 +154,7 @@ const FilterSection = () => {
 
       {/* Course List */}
       {!showAddCourse && !selectedCourse && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  mr-15 gap-6 mt-4 justify-between">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-20 mt-4">
           {courses.map((course) => (
             <CourseCard
               key={course.id}
