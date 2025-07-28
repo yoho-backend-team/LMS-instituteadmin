@@ -12,7 +12,7 @@ import '../../index.css';
 
 const Users: React.FC = () => {
 
-    const [showFilter, setShowFilter] = useState(true);
+    const [showFilter, setShowFilter] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
 

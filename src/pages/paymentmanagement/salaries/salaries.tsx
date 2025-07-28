@@ -1,10 +1,3 @@
-// const Salaries = () =>{
-//     return(
-//         <div>welcome to salary page</div>
-//     )
-// }
-// export default Salaries;
-
 import React, { useState } from 'react';
 import Filterimg from '../../../assets/Filter.png';
 import plusimg from '../../../assets/Plusimg.png';
@@ -63,7 +56,7 @@ const Salaries: React.FC = () => {
 
     return (
         <div
-            className="relative text-gray-500 no-scrollbar">
+            className="relative text-gray-500 no-scrollbar  ">
             <div className="mx-auto px-4">
 
                 {/* Title + Buttons Section ---> Start*/}
@@ -114,7 +107,7 @@ const Salaries: React.FC = () => {
                             {/* First Row: Search */}
                             <div className="mb-4" style={{ ...FONTS.heading_03 }}>
                                 <label className="text-sm font-medium text-[#6C6C6C] mb-1 block">Search</label>
-                                <input type="text" placeholder="Search by Status" className="border border-[#D1D5DB] rounded-lg px-4 py-2 min-h-[40px] w-full sm:w-[557px]" />
+                                <input type="text" placeholder="Search by Status" className="border border-[#D1D5DB] rounded-lg px-4 py-2 min-h-[40px] w-full sm:w-[527px]" />
                             </div>
 
                             {/* Second Row: Batches, Start Date, End Date */}
@@ -395,10 +388,10 @@ const Salaries: React.FC = () => {
                 {/* Edit Salaries Modal ---> End */}
 
                 {/* Grid - View records  ---> Start */}
-                <div className="bg-white p-4 rounded-lg bg-gray-200 shadow-[0_4px_10px_3px_rgba(0,0,0,0.10)] mb-6 min-w-full w-full min-h-[264px]">
+                <div className="absolute bg-white p-6 right-4 left-4 rounded-lg bg-gray-200 shadow-[0_4px_10px_3px_rgba(0,0,0,0.10)] mb-2 min-h-full ">
                     {/* Salary Table */}
-                    <div className="overflow-x-auto" style={{ ...FONTS.heading_06 }}>
-                        <div className="grid grid-cols-7 font-semibold grid-cols-[40px_160px_250px_157px_151px_105px_89px] gap-x-[0px] p-[10px] text-gray-700  border-b bg-gray-100 rounded-md h-[48px]"
+                    <div style={{ ...FONTS.heading_06 }}>
+                        <div className="grid grid-cols-7 font-semibold grid-cols-[40px_140px_250px_157px_151px_105px_89px] gap-x-[0px] p-[10px] text-gray-700  border-b bg-gray-100 rounded-md h-[48px]"
                             style={{
                                 gridTemplateColumns: '0.5fr 1fr 1.5fr 0.9fr 0.9fr 0.7fr 0.5fr'
                             }}
@@ -415,7 +408,7 @@ const Salaries: React.FC = () => {
                         {salaryData.map((record, index) => (
                             <div
                                 key={record.id}
-                                className="grid grid-cols-7 grid-cols-[40px_160px_250px_157px_151px_105px_89px] gap-x-[0px] p-[10px] gap-4 items-center py-2  relative"
+                                className="grid grid-cols-7 grid-cols-[40px_140px_250px_157px_151px_105px_89px] gap-x-[0px] p-[10px] gap-4 items-center py-2  relative"
                                 style={{
                                     ...FONTS.GridRow_1,
                                     gridTemplateColumns: '0.5fr 1fr 1.5fr 0.9fr 0.9fr 0.7fr 0.5fr ',
