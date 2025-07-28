@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import AddCourseForm from "../Course/AddCourseForm";
 import AddCourseNewForm from "../Editcourse/AddCourseNewForm";
 import CourseCard from "../CourseCard/CourseCard";
@@ -45,14 +45,28 @@ const FilterSection = () => {
       price: "₹3,999",
       status: "Active",
     },
+    {
+      id: 3,
+      title: "Frontend Development",
+      tag: "React",
+      image: card1,
+      category: "Programming",
+      mode: "Online",
+      modules: 12,
+      price: "₹4,999",
+      status: "Active",
+    },
   ];
 
   return (
-    <div className="max-w-6xl px-4">
-      {/* Top Buttons */}
-      <div className="flex justify-between items-center gap-5 mb-6">
+    <div className="w-full px-4 max-w-[1200px]  mx-auto">
+      <h2 className="text-xl font-semibold text-[#716F6F] mb-6">Course Categories</h2>
+
+      
+      <div className="flex justify-between items-center flex-wrap gap-3 mb-6 w-full">
+        {/* Show Filter button on left */}
         <button
-          className="flex items-center gap-2 px-4 py-2 bg-[#e00076] text-white font-semibold rounded-md text-base"
+          className="flex items-center mr-10 gap-2 px-4 py-2 bg-[#e00076] text-white font-semibold rounded-md text-base"
           onClick={() => {
             setShowFilter(!showFilter);
             setShowAddCourse(false);
@@ -63,19 +77,18 @@ const FilterSection = () => {
           {showFilter ? "Hide" : "Show Filter"}
         </button>
 
-        <div className="flex gap-4">
-          <button
-            className="flex items-center gap-2 px-4 py-2 bg-[#e00076] text-white font-semibold rounded-md text-base"
-            onClick={() => {
-              setShowAddCourse("original");
-              setShowFilter(false);
-              setSelectedCourse(null);
-            }}
-          >
-            <span className="text-2xl font-light leading-none">+</span>
-            Add Course
-          </button>
-        </div>
+        {/* Add Course button on right */}
+        <button
+          className="flex items-center gap-2 px-4 py-2 bg-[#e00076] text-white font-semibold rounded-md text-base"
+          onClick={() => {
+            setShowAddCourse("original");
+            setShowFilter(false);
+            setSelectedCourse(null);
+          }}
+        >
+          <span className="text-2xl font-light leading-none">+</span>
+          Add Course
+        </button>
       </div>
 
       {/* Filter Inputs */}
@@ -85,7 +98,7 @@ const FilterSection = () => {
             <input
               type="text"
               placeholder="Search Course"
-              className="w-[298px] px-4 py-2 border border-[#ca406f] rounded-md text-sm"
+              className="w-full max-w-sm px-4 py-2 border border-[#ca406f] rounded-md text-sm"
             />
           </div>
 
@@ -135,7 +148,7 @@ const FilterSection = () => {
 
       {/* Course List */}
       {!showAddCourse && !selectedCourse && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4 justify-start">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  mr-15 gap-6 mt-4 justify-between">
           {courses.map((course) => (
             <CourseCard
               key={course.id}

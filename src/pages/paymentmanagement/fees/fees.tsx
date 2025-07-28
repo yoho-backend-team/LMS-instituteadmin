@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
-import { Filter, Plus, MoreHorizontal, Eye, Edit, Trash2, Download, X } from "lucide-react"
+import { Plus, MoreHorizontal, Eye, Edit, Trash2, Download, X } from "lucide-react"
 import React, { useState, useRef, useEffect } from "react"
 import FilterIcon from "../../../assets/Filter.png"
 

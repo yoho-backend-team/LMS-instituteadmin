@@ -10,7 +10,7 @@ interface AttendanceEntry {
 }
 
 const ViewAttendancePage: React.FC = () => {
-  const { id } = useParams();
+  const {  } = useParams();
   const [showPanel, setShowPanel] = useState(false);
   const [attendanceDates, setAttendanceDates] = useState<AttendanceEntry[]>([]);
   const [activeView, setActiveView] = useState<"Monthly" | "Week" | "Day" | "List">("Monthly");

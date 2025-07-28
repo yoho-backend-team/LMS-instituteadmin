@@ -118,7 +118,7 @@
 
 
 
-import React, { useState } from "react";
+import  { useState } from "react";
 import CourseIcon from "../../assets/profileion1.png";
 import BatchIcon from "../../assets/Frame 5825blue.png";
 import DurationIcon from "../../assets/Profileion1.png";

@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import { MdCancel } from "react-icons/md";
 
 export default function AddQyestion({ onClose }: { onClose: () => void }) {

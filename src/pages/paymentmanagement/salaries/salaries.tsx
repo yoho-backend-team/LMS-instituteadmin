@@ -24,7 +24,7 @@ const Salaries: React.FC = () => {
     const [showModal, setShowModal] = useState(false);
     const [viewShowModal, setviewShowModal] = useState(false);
     const [editShowModal, seteditShowModal] = useState(false);
-    const [showrid, setShowGrid] = useState(false);
+    // const [showrid, setShowGrid] = useState(false);
     const [menuOpenIndex, setMenuOpenIndex] = useState<number | null>(null);
 
 
@@ -52,9 +52,6 @@ const Salaries: React.FC = () => {
         setMenuOpenIndex(prev => (prev == index ? null : index));
     };
 
-    const handleEdit = () => {
-        console.log("Edit clicked");
-    };
 
     const handleDelete = () => {
         console.log("Delete clicked");
