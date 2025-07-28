@@ -1,11 +1,11 @@
-import React from "react";
+// import React from "react";
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import uploadimg from '../../assets/fileupload.png';
+// import uploadimg from '../../assets/fileupload.png';
 import {FONTS} from '../../constants/uiConstants'
 interface EditModulesProps {
   open: boolean;

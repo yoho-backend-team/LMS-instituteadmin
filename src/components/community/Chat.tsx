@@ -40,7 +40,7 @@ interface ChatProps {
   setSelectedBatch: (batch: Batch | null) => void;
 }
 
-const Chat: React.FC<ChatProps> = ({ selectedBatch, setSelectedBatch }) => {
+const Chat: React.FC<ChatProps> = ({ selectedBatch,}) => {
   const [messagesByBatch, setMessagesByBatch] = useState<
     Record<number, Message[]>
   >({});

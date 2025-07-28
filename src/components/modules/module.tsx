@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import bg from "../../../src/assets/Backdrop Image.png";
 import { MoreVertical, Eye, Pencil, Trash2 } from "lucide-react";
 import {  DropdownMenu,DropdownMenuTrigger,DropdownMenuContent,DropdownMenuItem,} from "@/components/ui/dropdown-menu";

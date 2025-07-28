@@ -6,7 +6,7 @@ import {
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 import StatsCarousal from "@/components/Dashboard/StatsCarousel";
-import { MdKeyboardArrowDown } from "react-icons/md";
+// import { MdKeyboardArrowDown } from "react-icons/md";
 import { useRef } from "react";
 
 export default function Dashboard() {
@@ -74,23 +74,7 @@ export default function Dashboard() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const courseScrollRef = useRef<HTMLDivElement>(null);
 
-  const handleScrollDown = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({
-        top: 200,
-        behavior: "smooth",
-      });
-    }
-  };
 
-  const handleCourseScrollDown = () => {
-    if (courseScrollRef.current) {
-      courseScrollRef.current.scrollBy({
-        top: 200,
-        behavior: "smooth",
-      });
-    }
-  };
   return (
     <div className="min-h-screen p-6">
       <div className="max-w-7xl mx-auto space-y-6">

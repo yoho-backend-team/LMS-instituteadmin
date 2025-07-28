@@ -31,7 +31,7 @@ const initialData: FAQItem[] = [
 ];
 
 const Category = () => {
-  const [search, setSearch] = useState("");
+  const [search,] = useState("");
    const [openAddNotes, setOpenAddNotes] = useState(false);
    const [showFilter, setShowFilter] = useState(false);
    const [openEditModules, setOpenEditModules] = useState(false);

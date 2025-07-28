@@ -185,7 +185,7 @@ import AttendanceManage from '../../assets/Attendence management.png';
 import Time from '../../assets/Time.png';
 import studentattendance from '../../assets/Mask group.png';
 import Cancel from '../../assets/Cancel.png';
-import React, { useState } from "react";
+import  { useState } from "react";
 import CourseDetails from './viewattendance';
 import bg from "../../../src/assets/Backdrop Image.png";
 import { FONTS } from '../../constants/uiConstants';

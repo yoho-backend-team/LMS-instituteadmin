@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import back from "../../../Assets/back.png";
+// import back from "../../../Assets/back.png";
 import check from "../../../Assets/check.png";
 import close from "../../../Assets/close.png";
 

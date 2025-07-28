@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { HiOutlinePlus } from "react-icons/hi";
 import { MoreVertical, Pencil, Trash2 } from "lucide-react";
 import AddQyestion from "../../../components/helpcenter/AddQyestion";
