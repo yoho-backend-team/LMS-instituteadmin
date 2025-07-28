@@ -1,6 +1,10 @@
+import StudentAttend from "../../../components/AttendanceManagement/studentAttend";
+
 const StudentAttendence = () =>{
     return(
-        <div>welcome to student attendence</div>
+        <div>
+            <StudentAttend />
+        </div>
     )
 }
 export default StudentAttendence;

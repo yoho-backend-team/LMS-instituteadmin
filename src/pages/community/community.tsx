@@ -1,6 +1,11 @@
+import CommunityManagement from "@/components/community/Community";
+
 const Community=() =>{
     return(
-        <div>Community</div>
+        <div>
+            <CommunityManagement />
+        </div>
     )
 }
-export default Community;
+
+export default Community
