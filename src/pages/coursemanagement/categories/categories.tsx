@@ -324,9 +324,9 @@ const AddEditCategoryModal = ({
   }
 
   return (
-    <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50 overflow-y-auto py-8">
       <div 
-        className="w-[608px] bg-white rounded-xl shadow-[0px_4px_24px_rgba(0,0,0,0.15)] p-4 flex flex-col gap-[30px] relative"
+        className="w-[608px] bg-white rounded-xl shadow-[0px_4px_24px_rgba(0,0,0,0.15)] p-6 flex flex-col gap-[30px] relative my-8"
         ref={modalRef}
       >
         <button className="absolute top-4 right-4" onClick={onClose}>
@@ -334,7 +334,7 @@ const AddEditCategoryModal = ({
         </button>
 
         <div className="flex flex-col gap-[30px] w-full items-start">
-          <div className="flex flex-col gap-3 w-[468px]">
+          <div className="flex flex-col gap-3 w-full">
             <h2 className="text-[20px] font-semibold text-[#7D7D7D] capitalize">
               {mode === "add" ? "Add" : "Edit"} Category
             </h2>
@@ -345,20 +345,22 @@ const AddEditCategoryModal = ({
 
           <div className="w-full border border-[#BDC2C7BF]" />
 
-          {previewImage && !imageError ? (
-            <div className="w-full h-[200px] rounded-xl overflow-hidden">
-              <img 
-                src={previewImage} 
-                alt="Preview" 
-                className="w-full h-full object-cover"
-                onError={handleImageError}
-              />
-            </div>
-          ) : (
-            <div className="w-full h-[200px] rounded-xl overflow-hidden bg-gray-100 flex items-center justify-center">
-              <span className="text-gray-500">No image or image failed to load</span>
-            </div>
-          )}
+          <div className="w-full flex flex-col items-center">
+            {previewImage && !imageError ? (
+              <div className="w-full h-[200px] rounded-xl overflow-hidden">
+                <img 
+                  src={previewImage} 
+                  alt="Preview" 
+                  className="w-full h-full object-cover"
+                  onError={handleImageError}
+                />
+              </div>
+            ) : (
+              <div className="w-full h-[200px] rounded-xl overflow-hidden bg-gray-100 flex items-center justify-center">
+                <span className="text-gray-500">No image or image failed to load</span>
+              </div>
+            )}
+          </div>
 
           <div className="flex flex-col gap-[12px] w-full">
             <label className="text-[#716F6F] text-[16px] font-medium capitalize">Category Name</label>
@@ -372,14 +374,16 @@ const AddEditCategoryModal = ({
             />
           </div>
 
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3 w-full">
             <label className="text-[14px] text-[#7D7D7D] capitalize">
               Recommended: 388x300 Pixels Accepted Formats: PNG, JPEG
             </label>
-            <label className="flex items-center justify-center px-4 py-3 gap-[10px] w-[181px] h-[48px] bg-[#CA406F] rounded-[12px] cursor-pointer relative hover:bg-[#e0527c] transition-colors">
+            <label className="relative flex items-center justify-center px-4 py-3 w-[181px] h-[48px] bg-[#CA406F] rounded-[12px] cursor-pointer hover:bg-[#e0527c] transition-colors">
               <img src={UploadIcon} alt="Upload" className="w-6 h-6 absolute left-3" />
- <span className="text-white font-[Poppins] text-[16px] font-medium leading-[24px] capitalize ml-8">Upload Image</span>            
-           <input 
+              <span className="text-white font-[Poppins] text-[16px] font-medium leading-[24px] capitalize ml-8">
+                Upload Image
+              </span>
+              <input 
                 type="file" 
                 onChange={handleImageUpload} 
                 className="hidden" 

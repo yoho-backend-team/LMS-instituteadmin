@@ -3,10 +3,9 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
-import {  Plus, MoreHorizontal, Eye, Edit, Trash2, Download, X } from "lucide-react"
+import { Plus, MoreHorizontal, Eye, Edit, Trash2, Download, X } from "lucide-react"
 import React, { useState, useRef, useEffect } from "react"
 import FilterIcon from "../../../assets/Filter.png"
-
 
 interface Student {
   name: string
@@ -484,7 +483,6 @@ const AddFeeModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   );
 };
 
-
 const EditFeeModal: React.FC<{ onClose: () => void; record: FeeRecord }> = ({ onClose, record }) => {
   const [formData, setFormData] = useState({
     transactionId: record.transactionId || '',
@@ -604,6 +602,22 @@ export default function Fees() {
   const [viewingRecord, setViewingRecord] = useState<FeeRecord | null>(null)
   const [editingRecord, setEditingRecord] = useState<FeeRecord | null>(null)
 
+  // Fix scrollbar layout shift to stop background image moving
+  useEffect(() => {
+    if (showFilters) {
+      // Always show scrollbar when filter panel is open
+      document.body.style.overflowY = "scroll"
+    } else {
+      // Reset overflow to default when filter panel is closed
+      document.body.style.overflowY = "auto"
+    }
+
+    // Clean up on unmount
+    return () => {
+      document.body.style.overflowY = "auto"
+    }
+  }, [showFilters])
+
   const filteredData = feeData.filter(record => {
     const matchesSearch = record.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
       (record.transactionId && record.transactionId.toLowerCase().includes(searchTerm.toLowerCase())) ||
@@ -624,22 +638,22 @@ export default function Fees() {
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className="relative min-h-screen mx-auto w-full">
       
-      <main className="p-8 overflow-auto">
+      <main className="w-full p-4 z-10 max-w-[1800px] mx-auto">
         <div className="max-w-[1278px] mx-auto">
           {/* Header */}
           <div className="mb-8">
             <h1 className="text-2xl font-semibold text-[#716F6F] capitalize mb-8">Fees</h1>
 
-            <div className="flex items-center justify-between">
+            <div className="flex justify-between items-center mb-6">
               <Button
-                className="flex items-center justify-center gap-2 bg-[#CA406F] hover:bg-[#CA406F]/90 text-white px-4 py-2 rounded-lg h-12 w-[153px]"
+                className="bg-[#CA406F] text-white px-4 py-2 rounded-lg flex items-center gap-2 h-12 hover:bg-[#e0527c] transition-colors"
                 onClick={() => setShowFilters(!showFilters)}
               >
                 <img src={FilterIcon} alt="Filter" className="w-6 h-6" />
-            <span className="text-sm font-medium">{showFilters ? "Hide" : "Show Filter"}</span>
-          </Button>
+                <span className="text-sm font-medium">{showFilters ? "Hide" : "Show Filter"}</span>
+              </Button>
 
               <Button 
                 className="flex items-center justify-center gap-2 bg-[#CA406F] hover:bg-[#CA406F]/90 text-white px-4 py-2 rounded-lg h-12 w-[132px]"
