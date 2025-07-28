@@ -1,23 +1,13 @@
-<<<<<<< HEAD
 // import React from "react";
 import "./SubscriptionPlans.css";
 
-=======
-import React from "react";
-import "./SubscriptionPlans.css";
-import back from "../../Assets/back.png";
->>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
 
 const SubscriptionPlans = () => {
   return (
     <div
       className="plans-wrapper"
       style={{
-<<<<<<< HEAD
         backgroundImage: `url(${""})`,
-=======
-        backgroundImage: `url(${back})`,
->>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
       }}
     >
      

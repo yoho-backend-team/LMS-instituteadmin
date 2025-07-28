@@ -20,19 +20,9 @@ const CourseDetail: React.FC<CourseDetailProps> = ({
 }) => {
   const [isDeleted, setIsDeleted] = useState(false);
 
-<<<<<<< HEAD
   
   const handleDelete = () => {
     setIsDeleted(true);
-=======
-  const handleDelete = () => {
-    const confirmDelete = window.confirm(
-      "Are you sure you want to delete this course?"
-    );
-    if (confirmDelete) {
-      setIsDeleted(true);
-    }
->>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
   };
 
   if (isDeleted) {

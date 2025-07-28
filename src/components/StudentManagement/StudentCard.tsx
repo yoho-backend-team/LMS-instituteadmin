@@ -14,13 +14,8 @@ interface StudentCardProps {
 
 const StudentCard: React.FC<StudentCardProps> = ({
   student,
-<<<<<<< HEAD
   // onEdit,
   // onDelete,
-=======
-  onEdit,
-  onDelete,
->>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
 }) => {
   return (
     <div className="bg-white rounded-2xl p-4 shadow-xl relative flex flex-col">

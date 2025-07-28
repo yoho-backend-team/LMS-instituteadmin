@@ -1,19 +1,11 @@
-<<<<<<< HEAD
 // import React from "react";
-=======
-import React from "react";
->>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-<<<<<<< HEAD
 // import uploadimg from '../../assets/fileupload.png';
-=======
-import uploadimg from '../../assets/fileupload.png';
->>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
 import {FONTS} from '../../constants/uiConstants'
 interface EditModulesProps {
   open: boolean;

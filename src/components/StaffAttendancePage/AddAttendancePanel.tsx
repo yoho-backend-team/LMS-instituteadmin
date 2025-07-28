@@ -3,11 +3,7 @@ import closeImage from "../../assets/close.png";
 
 interface AddAttendancePanelProps {
   onClose: () => void;
-<<<<<<< HEAD
   onAddDate: (date: number, status: string) => void; // updated
-=======
-  onAddDate: (date: number) => void;
->>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
 }
 
 const AddAttendancePanel: React.FC<AddAttendancePanelProps> = ({ onClose, onAddDate }) => {
@@ -16,14 +12,8 @@ const AddAttendancePanel: React.FC<AddAttendancePanelProps> = ({ onClose, onAddD
 
   const handleAdd = () => {
     const day = new Date(attendanceDate).getDate();
-<<<<<<< HEAD
     if (!isNaN(day) && attendanceStatus) {
       onAddDate(day, attendanceStatus); // send both day and status
-=======
-    if (!isNaN(day)) {
-      onAddDate(day);
-      // Reset form if needed
->>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
       setAttendanceStatus("");
       setAttendanceDate("2025-09-19");
     }
@@ -35,12 +25,7 @@ const AddAttendancePanel: React.FC<AddAttendancePanelProps> = ({ onClose, onAddD
   };
 
   return (
-<<<<<<< HEAD
     <div className="fixed top-0 mt-3 right-0 w-[350px] h-[675px] bg-white shadow-lg z-50 p-6 overflow-y-auto">
-=======
-    <div className="fixed top-0 right-0 w-[350px] h-full bg-white shadow-lg z-50 p-6 overflow-y-auto">
-      {/* Header */}
->>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg font-semibold">Add Attendance</h2>
         <img
@@ -51,10 +36,6 @@ const AddAttendancePanel: React.FC<AddAttendancePanelProps> = ({ onClose, onAddD
         />
       </div>
 
-<<<<<<< HEAD
-=======
-      {/* Profile Info */}
->>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
       <div className="flex flex-col items-center mb-4">
         <img
           src="https://i.pravatar.cc/150?img=1"
@@ -65,10 +46,6 @@ const AddAttendancePanel: React.FC<AddAttendancePanelProps> = ({ onClose, onAddD
         <p className="text-sm text-gray-500">elonmusk@gmail.com</p>
       </div>
 
-<<<<<<< HEAD
-=======
-      {/* Attendance Dropdown */}
->>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
       <label className="block mb-2 text-sm font-medium text-gray-700">Attendance</label>
       <select
         value={attendanceStatus}
@@ -80,10 +57,6 @@ const AddAttendancePanel: React.FC<AddAttendancePanelProps> = ({ onClose, onAddD
         <option value="absent">Absent</option>
       </select>
 
-<<<<<<< HEAD
-=======
-      {/* Date Picker */}
->>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
       <label className="block mb-2 text-sm font-medium text-gray-700">Attendance Date</label>
       <input
         type="date"
@@ -92,10 +65,6 @@ const AddAttendancePanel: React.FC<AddAttendancePanelProps> = ({ onClose, onAddD
         onChange={(e) => setAttendanceDate(e.target.value)}
       />
 
-<<<<<<< HEAD
-=======
-      {/* Actions */}
->>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
       <div className="flex justify-between">
         <button
           onClick={handleReset}

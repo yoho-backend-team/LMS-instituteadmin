@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 // import React from "react";
 import { Button } from "@/components/ui/button";
 // import { CalendarIcon, ClockIcon } from "lucide-react";
-=======
-import React from "react";
-import { Button } from "@/components/ui/button";
-import { CalendarIcon, ClockIcon } from "lucide-react";
->>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
 import human from "../../assets/Frame 6135.png"
 import chattheme from "../../assets/WhatsApp Image 2025-07-22 at 11.03.34_96cf8c1d.jpg";
 import cancel from "../../assets/greencancel.png"

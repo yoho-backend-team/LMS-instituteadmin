@@ -38,7 +38,6 @@ const StudyMaterials: React.FC = () => {
   };
 
   return (
-<<<<<<< HEAD
     <div className="flex flex-col lg:flex-row w-full h-full overflow-hidden">
       <main className="flex-1 flex flex-col mt-5 ml-5">
         <h1 className="text-xl font-semibold mt-4 ml-5 text-[#716F6F]">Study Materials</h1>
@@ -69,34 +68,6 @@ const StudyMaterials: React.FC = () => {
           {showFilter && (
             <div className="bg-white shadow rounded-lg p-6 w-full mt-2">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-=======
-    <div className="h-screen w-screen flex fixed">
-      <main className="flex-1 flex flex-col mt-5 ml-5">
-        <h1 className="text-xl font-semibold mt-4 ml-5 text-[#716F6F]">Study Materials</h1>
-
-        <section className="p-6 space-y-6">
-          <div className="flex items-center gap-4">
-            <button
-              onClick={() => setShowFilter(!showFilter)}
-              className="bg-[#CA406F] text-white px-4 h-12 rounded-md shadow-md flex items-center gap-2"
-            >
-              <img src={filterImage} className="w-6" />
-              {showFilter ? "Hide Filter" : "Show Filter"}
-            </button>
-
-            <button
-              onClick={() => setShowAdd(true)}
-              className="bg-[#CA406F] text-white px-5 py-2 ml-240 rounded-md shadow-md flex items-center gap-2"
-            >
-              <span className="text-3xl leading-none">+</span>
-              <span className="text-base">Add Study Material</span>
-            </button>
-          </div>
-
-          {showFilter && (
-            <div className="bg-white shadow rounded-lg p-6 w-330 mt-2">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-315">
->>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
                 <div>
                   <label className="block mb-1 text-sm font-medium text-gray-700">Status</label>
                   <select className="w-full border border-gray-300 rounded-md px-4 py-2">
@@ -115,10 +86,6 @@ const StudyMaterials: React.FC = () => {
                 </div>
               </div>
             </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
           )}
 
           <div className="flex flex-wrap gap-4">
@@ -208,11 +175,7 @@ const StudyMaterials: React.FC = () => {
               </div>
             ))}
           </div>
-<<<<<<< HEAD
         </div>
-=======
-        </section>
->>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
       </main>
 
       {showAdd && (

@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-<<<<<<< HEAD
 // import back from "../../../Assets/back.png";
-=======
-import back from "../../../Assets/back.png";
->>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
 import check from "../../../Assets/check.png";
 import close from "../../../Assets/close.png";
 
@@ -17,11 +13,7 @@ const PremiumPage: React.FC<Props> = ({ goBackToSubscription }) => {
   return (
     <div
       className="min-h-screen bg-cover bg-center p-8"
-<<<<<<< HEAD
       style={{ backgroundImage: `url(${""})` }}
-=======
-      style={{ backgroundImage: `url(${back})` }}
->>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
     >
       {!showDetail ? (
         <>

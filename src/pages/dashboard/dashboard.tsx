@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 /* eslint-disable @typescript-eslint/no-explicit-any */
-=======
->>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
 import DbChart from "../../components/Dashboard/DbChart";
 import {
   DropdownMenu,
@@ -10,15 +7,10 @@ import {
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 import StatsCarousal from "@/components/Dashboard/StatsCarousel";
-<<<<<<< HEAD
 import { useEffect, useRef } from "react";
 import { useDispatch } from 'react-redux'
 import { getAdminProfileThunk } from "@/features/Profile/reducers/thunks";
 import { getDashBoardReports } from "@/features/Dashboard/reducers/thunks";
-=======
-import { MdKeyboardArrowDown } from "react-icons/md";
-import { useRef } from "react";
->>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
 
 export default function Dashboard() {
   const dummyCourses = [
@@ -85,7 +77,6 @@ export default function Dashboard() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const courseScrollRef = useRef<HTMLDivElement>(null);
 
-<<<<<<< HEAD
   const dispatch = useDispatch<any>()
 
   useEffect(() => {
@@ -93,8 +84,6 @@ export default function Dashboard() {
     dispatch(getAdminProfileThunk())
   }, [dispatch]);
 
-=======
->>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
   const handleScrollDown = () => {
     if (scrollRef.current) {
       scrollRef.current.scrollBy({

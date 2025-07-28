@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 // import React from "react";
-=======
-import React from "react";
->>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
 import { MoreVertical,Eye,Pencil,Trash2 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";

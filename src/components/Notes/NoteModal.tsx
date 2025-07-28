@@ -24,11 +24,7 @@ interface NoteModalProps {
 export const NoteModal: React.FC<NoteModalProps> = ({
   isOpen,
   isEditing,
-<<<<<<< HEAD
   // formData,
-=======
-  formData,
->>>>>>> 79421b6fcac107775c63e274ee1cb14246877e57
   uploadedFile,
   uploadIcon,
   onClose,
