@@ -1,4 +1,4 @@
-import { Input } from "@/components/ui/input";
+
 import { Card } from "@/components/ui/card";
 import { Search } from "lucide-react";
 import call from "../../assets/call.png";
@@ -116,7 +116,7 @@ export default function StudentDashboardMain() {
 
      
       <div className="relative max-w-md mb-6">
-        <Input
+        <input
           type="text"
           placeholder="Search Student"
           className="border border-pink-400 pl-10 rounded-md "style={{...FONTS.input_section}}

@@ -8,9 +8,11 @@ import Branch from "@/pages/branchManagment/branchPage";
 import Group from "@/pages/usermanagement/group/group";
 import Categories from "@/pages/coursemanagement/categories/categories";
 import Courses from "@/pages/courses/courses";
+import ViewCardPage from "@/components/ContentManagement/ViewCardPage"; // <-- Add this import
+
 import StudyMaterials from "@/pages/contentmanagement/studymaterials/studymaterials";
 import Notes from "@/pages/notes/notes";
-import Modules from "@/pages/modules/modules";
+import Module from "@/pages/modules/modules";
 import OfflineClass from "@/pages/classmanagement/classmanagement";
 import OfflineEdit from "@/components/classmanagement/offline_edit/offline_edit";
 import OfflineView from "@/components/classmanagement/offline_view/offline_view";
@@ -24,7 +26,6 @@ import AddQust from "@/pages/helpcenter/AddQust/addQust";
 import HelpFQA from "@/pages/helpcenter/helpFQA/helpFQA";
 import StaffIdCard from "@/pages/id_cardmanagement/staffidcard/staffidcard";
 import Liveclasses from "@/pages/liveclasses/liveclasses";
-import Allnotification from "@/pages/notificationmanagement/allnotification/allnotification";
 import StudentNotification from "@/pages/notificationmanagement/studentnotification/studentnotification";
 import Fees from "@/pages/paymentmanagement/fees/fees";
 import Salaries from "@/pages/paymentmanagement/salaries/salaries";
@@ -33,10 +34,13 @@ import Placement from "@/pages/placementmanagement/placement/placement";
 import Refund_Management_Fees from "@/pages/refundmanagement/fees/fees";
 import Teachingstaff from "@/pages/staffmanagement/teachingstaff/teachingstaff";
 import Studentmanagement from "@/pages/studentmanagement/studentmanagement";
+import ViewAttendancePage from "@/components/StaffAttendancePage/ViewAttendance";
+
 import StaffTicket from "@/pages/ticketmanagement/staffticket/staffticket";
 import StudentTicket from "@/pages/ticketmanagement/studentticket/studentticket";
 import YourTicket from "@/pages/ticketmanagement/yourticket/yourticket";
 import StaffNotification from "@/pages/notificationmanagement/staffnotification/staffnotification";
+
 import OfflineAdd from "@/components/classmanagement/offline_add/offline_add";
 import All from "../components/notificationmanagement/overallnotification/all/all"
 import Profile from "@/pages/profile/profile/profile";
@@ -55,12 +59,12 @@ const Approutes = () => {
           <Route path="/" element={<MainLayout />}>
           <Route index element={<Navigate to="/Dashboard" />} />
           <Route path="Staffnotification" element={<StaffNotification />} />
-          <Route path="Allnotification" element={<Allnotification />} />
+          {/* <Route path="Allnotification" element={<Allnotification />} /> */}
           <Route path="Studentnotification" element={<StudentNotification />} />
           <Route path="Liveclasses" element={<Liveclasses />} />
           <Route path="StudentIdCard" element={<StudentIDCard />} />
           <Route path="StaffIdCard" element={<StaffIdCard />} />
-          <Route path="HelpFQA" element={<HelpFQA />} />
+          <Route path="HelpFQA" element={<FQA />} />
           <Route path="AddQust" element={<AddQust />} />
           <Route path="Category" element={<Category />} />
           <Route path="FQA" element={<FQA />} />
@@ -75,26 +79,40 @@ const Approutes = () => {
           <Route path="Placement" element={<Placement />} />
           <Route path="Refund_Fees" element={<Refund_Management_Fees />} />
           <Route path="Teachingstaff" element={<Teachingstaff />} />
+          <Route path="/attendance/:id" element={<ViewAttendancePage />} />
+          
           <Route path="Studentmanagement" element={<Studentmanagement />} />
-          <Route path="Staffticket" element={< StaffTicket />} />
+          <Route path="Staffticket" element={<StaffTicket />} />
           <Route path="StudentTicket" element={<StudentTicket />} />
           <Route path="Yourticket" element={<YourTicket />} />
           <Route path="Dashboard" element={<Dashboard />} />
           <Route path="Branch" element={<Branch />} />
           <Route path="Community" element={<Community />} />
-          <Route path="Group" element={<Group />} />
+          {/* <Route path="Group" element={<Groupspages/>} /> */}
           <Route path="Users" element={<Users />} />
           <Route path="categories" element={<Categories />} />
           <Route path="courses" element={<Courses />} />
           <Route path="studymaterial" element={<StudyMaterials />} />
+          <Route path="studymaterial/view" element={<ViewCardPage />} />
+
+
           <Route path="notes" element={<Notes />} />
-          <Route path="modules" element={<Modules />} />
+          <Route path="modules" element={<Module />} />
           <Route path="offlinemanagement" element={<OfflineClass />} />
           <Route path="/offlineedit" element={<OfflineEdit />} />
           <Route path="/offlineclass" element={<OfflineClass />} />
           <Route path="/offlineviewmore" element={<OfflineView />} />
+         
           <Route path="/offlineadd" element={<OfflineAdd />} />
+          <Route path="/chat-page" element={<ChatPage/>}/>
+          <Route path="/closed-ticket" element={<ClosedTicket/>}/>
+
           <Route path="/all" element={<All />} />
+          
+   {/* <Route path="/add-group" element={<AddGroup />} />
+        <Route path="/permission-management" element={< PermissionManagement/>}/>
+        <Route path="/Edit" element={<Edit/>}/> */}
+
           <Route path="/profile" element={<Profile />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/logout" element={<Logout />} />

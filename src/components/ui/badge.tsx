@@ -44,3 +44,5 @@ function Badge({
 }
 
 export { Badge, badgeVariants }
+
+// (Removed duplicate Badge implementation)

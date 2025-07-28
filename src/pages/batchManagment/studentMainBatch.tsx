@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BatchCard } from "../../components/Batch/batchCard";
 import { Button } from "@/components/ui/button";
-import bg from "../../assets/bg.png";
+// import bg from "../../assets/bg.png";
 import filter from "../../assets/filter.png";
 import plus from "../../assets/Add.png";
 import { CreateBatchModal } from "@/components/Batch/createBatch";
@@ -14,7 +14,7 @@ export default function StudentDashboard() {
   return (
     <div
       className="min-h-screen bg-cover bg-no-repeat bg-center p-4"
-      style={{ backgroundImage: `url(${bg})` }}
+      // style={{ backgroundImage: `url(${bg})` }}
     >
       <div className="mb-8">
         <h2 className=" mb-6" style={{...FONTS.heading_01}}>Student</h2>

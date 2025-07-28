@@ -1,6 +1,5 @@
-
-
 export const FONTS = {
+
 heading_01: {
 		fontFamily: 'poppins',
 		fontWeight: 600,
@@ -123,7 +122,5 @@ text1:{
 topic:{
 	fontfamily:"poppins"
 }
-
-
 }
 

@@ -1,126 +1,192 @@
-import { FaUsers, FaLayerGroup, FaUserCheck, FaUserSlash } from 'react-icons/fa';
-import notifyImage from '../../../assets/Notifications.png';
-import userImage from '../../../assets/userimg.jpg';
-import img1 from '../../../assets/img1.png';
-import img2 from '../../../assets/img2.png';
-import img3 from '../../../assets/img3.png';
-import img4 from '../../../assets/img4.png';
-import img5 from '../../../assets/img5.png';
-import img6 from '../../../assets/img6.png';
-import img7 from '../../../assets/img7.png';
-import img8 from '../../../assets/img8.png';
-import img9 from '../../../assets/img9.png';
+// import React, { useState } from 'react';
+import React, { useState, useRef, type ChangeEvent } from 'react';
+import cardimg1 from '../../../assets/card1.png';
+import cardimg2 from '../../../assets/cardimg2.png';
+import cardimg3 from '../../../assets/cardimg3.png';
+import cardimg4 from '../../../assets/cardimg4.png';
+import Filterimg from '../../../assets/Filter.png';
+import adduserimg from '../../../assets/adduserimg.jpg';
+import bgimg from '../../../assets/Backgroundimg.png';
+import plusimg from '../../../assets/Plusimg.png';
+import clsimg from '../../../assets/closeimg.png';
 
 const Dashboard: React.FC = () => {
+
+    const [showFilter, setShowFilter] = useState(true);
+    const [showModal, setShowModal] = useState(false);
+    const fileInputRef = useRef<HTMLInputElement>(null);
+
+    const handleUploadClick = () => {
+        fileInputRef.current?.click();
+    };
+
+    const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            console.log('Selected file:', file);
+            e.target.value = '';
+        }
+    };
+
     const cards = [
-        { label: 'Total Users', count: 0, color: 'bg-red-500', icon: <FaUsers /> },
-        { label: 'Total Groups', count: 0, color: 'bg-purple-600', icon: <FaLayerGroup /> },
-        { label: 'Active Users', count: 0, color: 'bg-cyan-600', icon: <FaUserCheck /> },
-        { label: 'Blocked Users', count: 0, color: 'bg-green-600', icon: <FaUserSlash /> },
+        { label: 'Total Users', count: 0, color: 'bg-gradient-to-r from-[#EA745F] to-[#B53018]', image: cardimg3 },
+        { label: 'Total Groups', count: 0, color: 'bg-gradient-to-r from-[#6454E2] to-[#1A0E7A]', image: cardimg2 },
+        { label: 'Active Users', count: 0, color: 'bg-gradient-to-r from-[#39D1CB] to-[#0E7874]', image: cardimg1 },
+        { label: 'Blocked Users', count: 0, color: 'bg-gradient-to-r from-[#58D436] to-[#267E0E]', image: cardimg4 }
     ];
 
     return (
-        <div className="relative h-screen w-screen bg-pink-100 text-gray-500 ">
+        <div className="relative bg-white text-gray-500  font-poppins"
+            style={{
+                backgroundImage: `url(${bgimg})`,
+                backgroundSize: '1440px 1024px',
+                backgroundRepeat: 'no-repeat'
+            }}>
+            <div className="min-w-[1440px] w-full min-h-[900px]">
+                <div className="flex-1 p-6">
+                    <div className="bg-white p-4 rounded-lg shadow-[0_4px_10px_3px_rgba(0,0,0,0.10)] mb-6 min-w-[1278px] w-full min-h-[264px]">
+                        <h2 className="text-[22px] font-semibold mb-4 font-poppins">Admin User</h2>
 
-            <div className="absolute top-0 left-0 w-[1270px] h-[70px] flex flex-col items-start px-[30px] py-[21px] gap-[10px] bg-white shadow z-10 topbar">
+                        {/* Status Cards */}
+                        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 ">
+                            {cards.map((card, idx) => (
+                                <div
+                                    key={idx}
+                                    className={`relative flex flex-col p-4 rounded-lg shadow ${card.color} text-white min-h-[166px] min-w-[293px] `}
+                                >
+                                    {/* Image - Top Left */}
+                                    <div className="absolute top-1 left-1">
+                                        <img
+                                            src={card.image}
+                                            alt={card.label}
+                                            className="w-[90px] h-[90px] object-contain"
+                                        />
+                                    </div>
 
-                <div className="flex justify-between items-center mb-6">
+                                    {/* Label - Top Right (aligned with image) */}
+                                    <div className="ml-18 mt-5 text-[22px] font-normal mb-4 font-poppins text-white leading-[24px]">{card.label}</div>
 
-                    <div className="flex items-center space-x-4">
-                        <div className="relative">
-                            <img
-                                src={notifyImage}
-                                alt="User"
-                                className="w-8 h-8 rounded-full border"
-                            />
-                        </div>
-                        <img
-                            src={userImage}
-                            alt="User"
-                            className="w-8 h-8 rounded-full border"
-                        />
-                    </div>
-                </div>
-            </div>
+                                    {/* Count - Bottom Right */}
+                                    <div className="absolute right-6 bottom-1 text-right">
+                                        <div className="text-[32px] font-semibold mb-4 font-poppins">{card.count}</div>
+                                    </div>
 
-
-            <div className="flex h-full pt-[70px]">
-
-                <aside className="w-16 bg-pink-300 flex flex-col items-center py-4 space-y-6 text-white">
-
-                    <img
-                        src={img9}
-                        alt="img1"
-                        className="w-8 h-8 rounded-full border"
-                    />
-                    <img
-                        src={img1}
-                        alt="img1"
-                        className="w-8 h-8 rounded-full border"
-                    />
-                    <img
-                        src={img2}
-                        alt="img2"
-                        className="w-6 h-6 "
-                    />
-                    <img
-                        src={img3}
-                        alt="img3"
-                        className="w-6 h-6 "
-                    />
-                    <img
-                        src={img4}
-                        alt="img4"
-                        className="w-6 h-6 "
-                    />
-
-                    <img
-                        src={img5}
-                        alt="img5"
-                        className="w-6 h-6 "
-                    />
-                    <img
-                        src={img6}
-                        alt="img5"
-                        className="w-6 h-6 "
-                    />
-                    <img
-                        src={img7}
-                        alt="img5"
-                        className="w-6 h-6 "
-                    />
-                    <img
-                        src={img8}
-                        alt="img5"
-                        className="w-6 h-6 "
-                    />
-
-                </aside>
-
-
-                <div className="flex-1 p-6 ">
-                    <h2 className="text-lg font-bold">Admin User</h2>
-
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-                        {cards.map((card, idx) => (
-                            <div
-                                key={idx}
-                                className={`flex items-center justify-between p-4 rounded-lg shadow ${card.color} text-white`}
-                            >
-                                <div className="space-y-1">
-                                    <div className="text-sm">{card.label}</div>
-                                    <div className="text-xl font-bold">{card.count}</div>
                                 </div>
-                                <div>{card.icon}</div>
+                            ))}
+                        </div>
+                    </div>
+                    {/* Buttons */}
+                    <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-4 ">
+                        <button
+                            onClick={() => setShowFilter(!showFilter)}
+                            className="flex items-center bg-[#CA406F] hover:bg-[#CA406F] text-white px-4 py-2 rounded-lg mb-4 md:mb-0 min-h-[48px] min-w-[105px] text-[16px] font-poppins"
+                        >
+                            <span className="mr-2"><img src={Filterimg} /></span>
+
+                            <span className="text-[16px] font-semibold font-poppins">
+                                {showFilter ? 'Hide' : 'Show Filter'}</span>
+                        </button>
+                        <button
+                            onClick={() => setShowModal(true)}
+                            className="bg-[#CA406F] hover:bg-[#CA406F] text-white px-4 py-2 rounded-lg md:ml-4 min-h-[48px] min-w-[105px] text-[16px]"
+                        ><span className="flex items-center text-[16px] font-medium font-poppins">
+                                <img src={plusimg} alt="plus icon" className="mr-2" />
+                                Add User
+                            </span>
+                        </button>
+                    </div>
+
+                    {/* Search and Filters */}
+                    {showFilter && (
+                        <>
+                            <div className="mb-4 text-[18px] text-[#6C6C6C] font-medium font-poppins">
+                                <input
+                                    type="text"
+                                    placeholder="Search Admin User"
+                                    className="border-3 border-pink-500 rounded-lg px-4 py-2  min-h-[48px] min-w-[360px] md:w-1/3 "
+                                />
                             </div>
-                        ))}
-                    </div>
+                            <div className="bg-white p-4 shadow-[0_4px_10px_3px_rgba(0,0,0,0.10)] p-6 bg-white border-t border-gray-100 rounded-md mb-6 text-gray-700">
+                                <div className="flex flex-col sm:flex-row gap-4">
+                                    {/* First select + label */}
+                                    <div className="flex flex-col w-full sm:w-1/2">
+                                        <label className="text-[16px] font-medium font-poppins text-[#716F6F] mb-1">Status</label>
+                                        <select className="border border-[#716F6F] min-h-[48px] rounded-[8px] px-4 py-2 w-full">
 
+                                        </select>
+                                    </div>
 
-                    <div className="flex items-center space-x-4">
-                        <button className="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded">Show Filter</button>
-                        <button className="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded">+ Add User</button>
-                    </div>
+                                    {/* Second select + label */}
+                                    <div className="flex flex-col w-full sm:w-1/2">
+                                        <label className="text-[16px] font-medium font-poppins text-[#716F6F] mb-1">Status</label>
+                                        <select className="border border-[#716F6F] min-h-[48px] rounded-[8px] px-4 py-2 w-full">
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </>
+                    )}
+
+                    {/* Add User Modal */}
+                    {showModal && (
+                        <div className="absolute top-[0px] right-0 w-full max-w-sm h-full bg-white shadow-lg z-40 p-6 overflow-y-auto min-w-[403px]">
+                            <div className="flex justify-between items-center mb-4">
+                                <h2 className="text-[24px] text-[#716F6F] font-semibold font-poppins">Add User</h2>
+                                <button onClick={() => setShowModal(false)} className="text-xl font-bold text-gray-600 hover:text-black">
+                                    <img src={clsimg} />
+                                </button>
+                            </div>
+
+                            <div className="flex flex-col items-center mb-4">
+                                <img
+                                    src={adduserimg}
+                                    alt="Profile"
+                                    className="w-24 h-24 rounded-full object-cover min-h-[100px] min-w-[100px]"
+                                />
+                                <span onClick={handleUploadClick} className="text-green-600 font-poppins font-bold text-[12px] mt-2 cursor-pointer">Upload</span>
+                                <input
+                                    type="file"
+                                    ref={fileInputRef}
+                                    onChange={handleFileChange}
+                                    className="hidden"
+                                    accept="image/*"
+                                />
+                            </div>
+
+                            <form className="space-y-3">
+                                <option style={{ fontSize: '16px', color: '#716F6F', fontWeight: 400, fontFamily: 'Poppins, sans-serif', }}>Branch</option>
+                                <select className="w-full border border-[1px] border-[#716F6F] rounded-[8px] px-3 py-2 min-h-[48px] min-w-[371px]">
+
+                                </select>
+                                <option style={{ fontSize: '16px', color: '#716F6F', fontWeight: 400, fontFamily: 'Poppins, sans-serif', }}>First Name</option>
+                                <input type="text" placeholder="" className="w-full border border-[1px] border-[#716F6F] rounded-[8px] px-3 py-2 min-h-[48px] min-w-[371px]" />
+                                <option style={{ fontSize: '16px', color: '#716F6F', fontWeight: 400, fontFamily: 'Poppins, sans-serif', }}>Last Name</option>
+                                <input type="text" placeholder="" className="w-full border border-[1px] border-[#716F6F] rounded-[8px] px-3 py-2 min-h-[48px] min-w-[371px]" />
+                                <option style={{ fontSize: '16px', color: '#716F6F', fontWeight: 400, fontFamily: 'Poppins, sans-serif', }}>Email</option>
+                                <input type="email" placeholder="" className="w-full border border-[1px] border-[#716F6F] rounded-[8px] px-3 py-2 min-h-[48px] min-w-[371px]" />
+                                <option style={{ fontSize: '16px', color: '#716F6F', fontWeight: 400, fontFamily: 'Poppins, sans-serif', }}>Contact</option>
+                                <input type="text" placeholder="" className="w-full border border-[1px] border-[#716F6F] rounded-[8px] px-3 py-2 min-h-[48px] min-w-[371px]" />
+                                <option style={{ fontSize: '16px', color: '#716F6F', fontWeight: 400, fontFamily: 'Poppins, sans-serif', }}>Designation</option>
+                                <input type="text" placeholder="" className="w-full border border-[1px] border-[#716F6F] rounded-[8px] px-3 py-2 min-h-[48px] min-w-[371px]" />
+                                <div className="flex justify-end pt-2 space-x-2">
+                                    <button
+                                        type="button"
+                                        onClick={() => setShowModal(false)}
+                                        className="px-4 py-2 text-[16px] border border-[#716F6F] min-h-[40px] min-w-[98px] rounded-[8px] text-[#0400FF] bg-blue-100 font-semibold hover:bg-blue-100 font-poppins"
+                                    >
+                                        Cancel
+                                    </button>&nbsp;&nbsp;
+                                    <button
+                                        type="submit"
+                                        className="px-4 py-2 text-[16px] bg-[#CA406F] border-[#716F6F] min-h-[40px] min-w-[98px] text-[#FFF] rounded-[8px] hover:bg-[#CA406F] font-poppins"
+                                    >
+                                        Submit
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
