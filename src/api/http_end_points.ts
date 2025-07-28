@@ -6,7 +6,7 @@ import secureLocalStorage from "react-secure-storage";
 const getInstituteDetails = () => {
     if (typeof (secureLocalStorage) !== "undefined") {
         const institute: any = GetLocalStorage("instituteId")
-        return JSON.parse(institute)
+        return institute
     } else {
         return undefined
     }
