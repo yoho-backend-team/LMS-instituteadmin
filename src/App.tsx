@@ -1,4 +1,6 @@
 import Approutes from "./routes/AppRoutes";
+import dotenv from 'dotenv'
+dotenv.config()
 
 function App() {
   return (
