@@ -28,7 +28,7 @@ export const MainLayout = () => {
 
    
         <div
-          className="flex-1 p-4"
+          className="flex-1 p-4 "
           style={{
             marginLeft: `${sidebarWidth}px`,
             backgroundImage: `url(${backgroundimage})`,

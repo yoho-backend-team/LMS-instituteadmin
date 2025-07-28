@@ -52,6 +52,29 @@ import StudentDashboardMain from "@/components/Batch/viewBatch";
 import ChatPage from "@/components/StudentTicket/chatPage";
 import ClosedTicket from "@/components/StudentTicket/closeTicket";
 import StudentIDCard from "@/pages/id_cardmanagement/studentidcard/studentidcard";
+import Groupspages from "@/pages/Groupspages/Groupspages";
+import AddGroup from "@/components/groups/addgroup";
+import PermissionManagement from "@/components/groups/view";
+import  Edit from "@/components/groups/Edit"
+
+
+
+
+import TrackOrder from "@/components/HelpFAQ/TrackOrder";
+import FindMissingOrder from "@/components/HelpFAQ/FindMissingOrder";
+import SecureDelivery from "@/components/HelpFAQ/SecureDelivery";
+import CertificateView from "@/components/CertificateManagement/CertificateView";
+
+import ProfileEdit from "@/components/profile/edit/edit";
+import Student_Allnotification from "@/components/notificationmanagement/studentnotification/student_all/student_all";
+import StudentNotification_c from "@/components/notificationmanagement/studentnotification/studentnotification_c";
+import StaffNotification_c from "@/components/notificationmanagement/staffnotification/staffnotification";
+import Allnotification from "@/pages/notificationmanagement/allnotification/allnotification";
+import AllNotification_c from "@/components/notificationmanagement/overallnotification/overallnotification";
+import Placementedit from "@/components/placement/edit/edit";
+import Placementadd from "@/components/placement/add/add";
+
+
 const Approutes = () => {
   return (
     <BrowserRouter>
@@ -120,8 +143,33 @@ const Approutes = () => {
           <Route path="/view-page" element={<StudentDashboardMain/>}/>
           <Route path="/chat-page" element={<ChatPage/>}/>
            <Route path="/closed-ticket" element={<ClosedTicket/>}/>
-          </Route>
+          {/* End of nested routes under MainLayout */}
+  
           <Route path="*" element={<Navigate to="/dashboard" replace />} />
+          <Route path="/track-order" element={<TrackOrder />} />
+          <Route path="/find-missingpackage" element={<FindMissingOrder />} />
+          <Route path="/secure-delivery" element={<SecureDelivery />} />
+          <Route path="/certificate-view" element={<CertificateView />} />
+
+
+          <Route path="/logout" element={<Logout />} />
+          <Route path="/profiledit" element={<ProfileEdit />} />
+          <Route path="/studentnotifications" element={<Student_Allnotification />} />
+          <Route path="/overallnotification_c" element={<AllNotification_c />} />
+          <Route path="/staffnotification_c" element={<StaffNotification_c />} />
+          <Route path="/studentnotification_c" element={<StudentNotification_c />} />
+          <Route path="/placememntedit" element={<Placementedit />} />
+          <Route path="/placememntadd" element={<Placementadd />} />
+
+           
+        </Route>
+
+
+        <Route path="*" element={<Navigate to="/dashboard" replace />} />
+
+         
+
+        {/* <Route path="*" element={<Navigate to="/dashboard" replace />} /> */}
       </Routes>
     </BrowserRouter>
   );

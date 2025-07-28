@@ -15,7 +15,9 @@ import Editimg3 from '../../../assets/Maskdelete.png';
 import Editimg4 from '../../../assets/Maskdoenload.png';
 import clsimg from '../../../assets/closeimg.png';
 import adduserimg from '../../../assets/adduserimg.jpg';
+import viewimg from '../../../assets/viewimggray.png';
 import { FONTS } from '@/constants/uiConstants';
+import '../../../index.css';
 
 const Salaries: React.FC = () => {
     const [showFilter, setShowFilter] = useState(false);
@@ -24,6 +26,7 @@ const Salaries: React.FC = () => {
     const [editShowModal, seteditShowModal] = useState(false);
     const [showrid, setShowGrid] = useState(false);
     const [menuOpenIndex, setMenuOpenIndex] = useState<number | null>(null);
+
 
     interface SalaryRecord {
         id: string;
@@ -54,22 +57,22 @@ const Salaries: React.FC = () => {
     };
 
     const handleDelete = () => {
-        console.log("Delete clicked");  
+        console.log("Delete clicked");
     };
 
     const handleDownload = () => {
-        console.log("Download clicked"); 
+        console.log("Download clicked");
     };
 
     return (
         <div
-            className="relative text-gray-500">
+            className="relative text-gray-500 no-scrollbar">
             <div className="mx-auto px-4">
 
                 {/* Title + Buttons Section ---> Start*/}
-                <div className="flex flex-col mt-5 mb-4">
-                    <div className="mb-2 " 
-                    style={{...FONTS.heading_01}}
+                <div className="flex flex-col mt-0 mb-4">
+                    <div className="mb-2 "
+                        style={{ ...FONTS.heading_05 }}
                     >
                         <span className="ml-1">
                             Salaries
@@ -80,22 +83,23 @@ const Salaries: React.FC = () => {
                         {/* Filter Button */}
                         <button
                             onClick={() => setShowFilter(!showFilter)}
-                            className="flex items-center bg-[#CA406F] hover:bg-[#CA406F] text-white px-4 py-2 rounded-lg mb-4 md:mb-0 min-h-[48px] min-w-[105px] text-[16px]"
+                            className="flex items-center bg-[#CA406F] hover:bg-[#CA406F] text-white px-4 py-2 rounded-lg mb-4 md:mb-0 min-h-[38px] min-w-[105px] text-[16px]"
                         >
                             <img src={Filterimg} alt="filter icon" className="mr-2" />
-                            <span className="text-[16px]"  style={{...FONTS.heading_02}}>
+                            <span className="text-[12px]" style={{ ...FONTS.heading_06 }}>
                                 {showFilter ? 'Hide' : 'Show Filter'}
                             </span>
                         </button>
 
                         {/* Add User Button */}
                         <button
-                            onClick={() => {setShowModal(true);
+                            onClick={() => {
+                                setShowModal(true);
                                 setMenuOpenIndex(null);
                             }}
-                            className="bg-[#CA406F] hover:bg-[#CA406F] text-white px-4 py-2 rounded-lg min-h-[48px] min-w-[105px] text-[16px]"
+                            className="bg-[#CA406F] hover:bg-[#CA406F] text-white px-4 py-2 rounded-lg min-h-[38px] min-w-[105px] text-[16px]"
                         >
-                            <span className="flex items-center"  style={{...FONTS.heading_02}}>
+                            <span className="flex items-center" style={{ ...FONTS.heading_06 }}>
                                 <img src={plusimg} alt="plus icon" className="mr-2" />
                                 Add Salaries
                             </span>
@@ -111,28 +115,28 @@ const Salaries: React.FC = () => {
                         <div className="bg-white p-6 shadow-[0_4px_10px_3px_rgba(0,0,0,0.10)] border-t border-gray-100 rounded-md mb-6 text-gray-700">
 
                             {/* First Row: Search */}
-                            <div className="mb-4"  style={{...FONTS.heading_03}}>
+                            <div className="mb-4" style={{ ...FONTS.heading_03 }}>
                                 <label className="text-sm font-medium text-[#6C6C6C] mb-1 block">Search</label>
-                                <input type="text" placeholder="Search by Status" className="border border-[#D1D5DB] rounded-lg px-4 py-2 min-h-[40px] w-full sm:w-[557px]"/>
+                                <input type="text" placeholder="Search by Status" className="border border-[#D1D5DB] rounded-lg px-4 py-2 min-h-[40px] w-full sm:w-[557px]" />
                             </div>
 
                             {/* Second Row: Batches, Start Date, End Date */}
                             <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-4">
                                 {/* Batches */}
-                                <div className="flex flex-col"  style={{...FONTS.heading_03}}>
+                                <div className="flex flex-col" style={{ ...FONTS.heading_03 }}>
                                     <label className="text-sm font-medium text-[#6C6C6C] mb-1">Batches</label>
                                     <select className="border border-[#D1D5DB] rounded-lg px-4 py-2 min-h-[40px] w-full">
                                     </select>
                                 </div>
 
                                 {/* Start Date */}
-                                <div className="flex flex-col"  style={{...FONTS.heading_03}}>
+                                <div className="flex flex-col" style={{ ...FONTS.heading_03 }}>
                                     <label className="text-sm font-medium text-[#6C6C6C] mb-1">Start Date</label>
                                     <input type="" className="border border-[#D1D5DB] rounded-lg px-4 py-2 min-h-[40px] w-full" />
                                 </div>
 
                                 {/* End Date */}
-                                <div className="flex flex-col"  style={{...FONTS.heading_03}}>
+                                <div className="flex flex-col" style={{ ...FONTS.heading_03 }}>
                                     <label className="text-sm font-medium text-[#6C6C6C] mb-1">End Date</label>
                                     <input type="" className="border border-[#D1D5DB] rounded-lg px-4 py-2 min-h-[40px] w-full" />
                                 </div>
@@ -144,251 +148,264 @@ const Salaries: React.FC = () => {
                 {/* Show and Hide Filters Section ---> End */}
 
                 {/* Add Salaries Modal ---> Start */}
-                {showModal && (
-                    <div className="absolute top-0 right-0 w-full max-w-sm h-full bg-white shadow-lg z-40 p-6 overflow-y-auto min-w-[403px]">
-                        {/* Header */}
-                        <div className="flex justify-between items-center mb-4"  style={{...FONTS.heading_03}}>
-                            <h2 className="text-[20px] text-[#3B3B3B] font-semibold font-poppins">Add Salaries</h2>
-                            <button
-                                onClick={() => setShowModal(false)
-                                }
+                {
+                    showModal && (
+                        <div className="fixed inset-0 z-30 mt-22">
+                            <div className="absolute top-0 right-0 w-full max-w-sm min-w-[403px] h-full overflow-auto p-6 rounded-lg bg-white shadow-lg z-40 no-scrollbar">
 
-                                className="text-xl font-bold text-gray-600 hover:text-black"
-                            >
-                                <img src={clsimg} alt="Close" />
-                            </button>
-                        </div>
+                                {/* Header */}
+                                <div className="flex justify-between items-center mb-4" style={{ ...FONTS.heading_03 }}>
+                                    <h2 className="text-[20px] text-[#3B3B3B] font-semibold font-poppins">Add Salaries</h2>
+                                    <button
+                                        onClick={() => setShowModal(false)
+                                        }
 
-                        {/* Form */}
-                        <form className="space-y-3 font-poppins text-[#716F6F] text-[16px]"  style={{...FONTS.heading_03}}>
-                            {/* Branch */}
-                            <label>Select Branch</label>
-                            <select className="w-full border border-[#716F6F] rounded-[8px] px-3 py-2 min-h-[48px]">
-                            </select>
+                                        className="text-xl font-bold text-gray-600 hover:text-black"
+                                    >
+                                        <img src={clsimg} alt="Close" />
+                                    </button>
+                                </div>
 
-                            {/* Staff Type */}
-                            <label>Select Staff Type</label>
-                            <select className="w-full border border-[#716F6F] rounded-[8px] px-3 py-2 min-h-[48px]">
-                            </select>
+                                {/* Form */}
+                                <form className="space-y-3 font-poppins text-[#716F6F] text-[16px]" style={{ ...FONTS.heading_03 }}>
+                                    {/* Branch */}
+                                    <label>Select Branch</label>
+                                    <select className="w-full border border-[#716F6F] rounded-[8px] px-3 py-2 min-h-[48px]">
+                                    </select>
 
-                            {/* Staff */}
-                            <label>Select Staff</label>
-                            <input type="text" className="w-full border border-[#716F6F] rounded-[8px] px-3 py-2 min-h-[48px]"/>
+                                    {/* Staff Type */}
+                                    <label>Select Staff Type</label>
+                                    <select className="w-full border border-[#716F6F] rounded-[8px] px-3 py-2 min-h-[48px]">
+                                    </select>
 
-                            {/* Payment Date */}
-                            <label>Payment Date</label>
-                            <input type="" className="w-full border border-[#716F6F] rounded-[8px] px-3 py-2 min-h-[48px]"/>
+                                    {/* Staff */}
+                                    <label>Select Staff</label>
+                                    <input type="text" className="w-full border border-[#716F6F] rounded-[8px] px-3 py-2 min-h-[48px]" />
 
-                            {/* Transaction ID */}
-                            <label>Transaction ID</label>
-                            <input type="text" placeholder="" className="w-full border border-[#716F6F] rounded-[8px] px-3 py-2 min-h-[48px]"/>
+                                    {/* Payment Date */}
+                                    <label>Payment Date</label>
+                                    <input type="" className="w-full border border-[#716F6F] rounded-[8px] px-3 py-2 min-h-[48px]" />
 
-                            {/* Salary Amount */}
-                            <label>Salary Amount</label>
-                            <input type="text" placeholder="" className="w-full border border-[#716F6F] rounded-[8px] px-3 py-2 min-h-[48px]"/>
+                                    {/* Transaction ID */}
+                                    <label>Transaction ID</label>
+                                    <input type="text" placeholder="" className="w-full border border-[#716F6F] rounded-[8px] px-3 py-2 min-h-[48px]" />
 
-                            {/* Balance */}
-                            <label>Balance</label>
-                            <input type="text" placeholder="" className="w-full border border-[#716F6F] rounded-[8px] px-3 py-2 min-h-[48px]"/>
+                                    {/* Salary Amount */}
+                                    <label>Salary Amount</label>
+                                    <input type="text" placeholder="" className="w-full border border-[#716F6F] rounded-[8px] px-3 py-2 min-h-[48px]" />
 
-                            {/* Action Buttons */}
-                            <div className="flex justify-end pt-4 space-x-4">
-                                <button
-                                    type="button"
-                                    onClick={() => setShowModal(false)}
-                                    className="px-4 py-2 text-[16px] border border-[#716F6F] text-[#0400FF] bg-blue-100 min-w-[98px] rounded-[8px] font-semibold">
-                                    Cancel
-                                </button>
-                                <button
-                                    type="submit"
-                                    className="px-4 py-2 text-[16px] bg-[#CA406F] text-white min-w-[98px] rounded-[8px] font-semibold">
-                                    Submit
-                                </button>
+                                    {/* Balance */}
+                                    <label>Balance</label>
+                                    <input type="text" placeholder="" className="w-full border border-[#716F6F] rounded-[8px] px-3 py-2 min-h-[48px]" />
+
+                                    {/* Action Buttons */}
+                                    <div className="flex justify-end pt-4 space-x-4">
+                                        <button
+                                            type="button"
+                                            onClick={() => setShowModal(false)}
+                                            className="px-4 py-2 text-[16px] border border-[#716F6F] text-[#0400FF] bg-blue-100 min-w-[98px] rounded-[8px] font-semibold">
+                                            Cancel
+                                        </button>
+                                        <button
+                                            type="submit"
+                                            className="px-4 py-2 text-[16px] bg-[#CA406F] text-white min-w-[98px] rounded-[8px] font-semibold">
+                                            Submit
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
-                        </form>
-                    </div>
-                )}
+                        </div>
+                    )}
                 {/* Add Salaries Modal ---> End */}
 
                 {/* View Salaries Modal ---> Start */}
                 {viewShowModal && (
-                    <div className="absolute top-0 right-0 w-full max-w-sm h-full bg-white shadow-lg z-40 p-6 overflow-y-auto min-w-[403px]">
-                        {/* Header */}
-                        <div className="flex justify-between items-center mb-4"  style={{...FONTS.heading_03}}>
-                            <h2 className="text-[20px] text-[#3B3B3B] font-semibold font-poppins">Salary Details</h2>
-                            <button onClick={() => setviewShowModal(false)} className="text-xl font-bold text-gray-600 hover:text-black">
-                                <img src={clsimg} alt="Close" />
-                            </button>
-                        </div>
+                    <div className="fixed inset-0 z-30 mt-22">
+                        <div className="absolute top-0 right-0 w-full max-w-sm min-w-[403px] h-full overflow-auto p-6 rounded-lg bg-white shadow-lg z-40 no-scrollbar">
 
-                        {/* Profile Section */}
-                        <div className="flex flex-col items-center mb-6">
-                            <img
-                                src={adduserimg}
-                                alt="Profile"
-                                className="w-24 h-24 rounded-full object-cover"
-                            />
-                            <p className="mt-2 font-semibold text-[16px] text-[#3B3B3B] font-poppins"  style={{...FONTS.heading_03}}>Elon Musk</p>
-                            <p className="text-[12px] text-[#A0A0A0] font-poppins">BHA-TR-SF002</p>
-                        </div>
-
-                        {/* Form */}
-                        <form className="space-y-4 font-poppins text-[#3B3B3B] text-[14px]">
-                            <h3 className="text-[16px] font-semibold mb-2"  style={{...FONTS.heading_03}}>Staff Details:</h3>
-
-                            {/* Transaction ID */}
-                            <div>
-                                <label className="block mb-1"  style={{...FONTS.heading_03}}>Transaction ID</label>
-                                <input
-                                    type="text"
-                                    placeholder=""
-                                    className="w-full border border-[#D1D5DB] rounded-lg px-3 py-2"
-                                />
-                            </div>
-
-                            {/* Staff ID */}
-                            <div>
-                                <label className="block mb-1"  style={{...FONTS.heading_03}}>Staff ID</label>
-                                <input
-                                    type="text"
-                                    placeholder=""
-                                    className="w-full border border-[#D1D5DB] rounded-lg px-3 py-2"
-                                />
-                            </div>
-
-                            {/* Staff Name */}
-                            <div>
-                                <label className="block mb-1"  style={{...FONTS.heading_03}}>Staff Name</label>
-                                <input
-                                    type="text"
-                                    placeholder=""
-                                    className="w-full border border-[#D1D5DB] rounded-lg px-3 py-2"
-                                />
-                            </div>
-
-                            {/* Staff Email */}
-                            <div>
-                                <label className="block mb-1"  style={{...FONTS.heading_03}}>Staff Email</label>
-                                <input
-                                    type="email"
-                                    placeholder=""
-                                    className="w-full border border-[#D1D5DB] rounded-lg px-3 py-2"
-                                />
-                            </div>
-
-                            {/* Staff Amount */}
-                            <div>
-                                <label className="block mb-1"  style={{...FONTS.heading_03}}>Staff Amount</label>
-                                <input
-                                    type="text"
-                                    placeholder=""
-                                    className="w-full border border-[#D1D5DB] rounded-lg px-3 py-2"
-                                />
-                            </div>
-
-                            {/* Paid Date */}
-                            <div>
-                                <label className="block mb-1"  style={{...FONTS.heading_03}}>Paid Date</label>
-                                <input
-                                    type=""
-                                    className="w-full border border-[#D1D5DB] rounded-lg px-3 py-2"
-                                />
-                            </div>
-
-                            {/* Buttons */}
-                            <div className="flex justify-end pt-4 space-x-4">
-                                <button
-                                    type="button"
-                                    onClick={() => setviewShowModal(false)}
-                                    className="px-4 py-2 text-[14px] border border-[#716F6F] text-[#0400FF] bg-blue-100 rounded-lg font-semibold"
-                                >
-                                    Cancel
-                                </button>
-                                <button
-                                    type="submit"
-                                    className="px-4 py-2 text-[14px] bg-[#CA406F] text-white rounded-lg font-semibold"
-                                >
-                                    Submit
+                            {/* Header */}
+                            <div className="flex justify-between items-center mb-4" style={{ ...FONTS.heading_03 }}>
+                                <h2 className="text-[20px] text-[#3B3B3B] font-semibold font-poppins">Salary Details</h2>
+                                <button onClick={() => setviewShowModal(false)} className="text-xl font-bold text-gray-600 hover:text-black">
+                                    <img src={clsimg} alt="Close" />
                                 </button>
                             </div>
-                        </form>
+
+                            {/* Profile Section */}
+                            <div className="flex flex-col items-center mb-6">
+                                <img
+                                    src={adduserimg}
+                                    alt="Profile"
+                                    className="w-24 h-24 rounded-full object-cover"
+                                />
+                                <p className="mt-2 font-semibold text-[16px] text-[#3B3B3B] font-poppins" style={{ ...FONTS.heading_03 }}>Elon Musk</p>
+                                <p className="text-[12px] text-[#A0A0A0] font-poppins">BHA-TR-SF002</p>
+                            </div>
+
+                            {/* Form */}
+                            <form className="space-y-4 font-poppins text-[#3B3B3B] text-[14px]">
+                                <h3 className="font-semibold mb-2" style={{ ...FONTS.heading_04 }}>Staff Details:</h3>
+
+                                {/* Transaction ID */}
+                                <div>
+                                    <label className="block mb-1" style={{ ...FONTS.heading_03 }}>Transaction ID</label>
+                                    <input
+                                        type="text"
+                                        placeholder=""
+                                        className="w-full border border-[#D1D5DB] rounded-lg px-3 py-2"
+                                    />
+                                </div>
+
+                                {/* Staff ID */}
+                                <div>
+                                    <label className="block mb-1" style={{ ...FONTS.heading_03 }}>Staff ID</label>
+                                    <input
+                                        type="text"
+                                        placeholder=""
+                                        className="w-full border border-[#D1D5DB] rounded-lg px-3 py-2"
+                                    />
+                                </div>
+
+                                {/* Staff Name */}
+                                <div>
+                                    <label className="block mb-1" style={{ ...FONTS.heading_03 }}>Staff Name</label>
+                                    <input
+                                        type="text"
+                                        placeholder=""
+                                        className="w-full border border-[#D1D5DB] rounded-lg px-3 py-2"
+                                    />
+                                </div>
+
+                                {/* Staff Email */}
+                                <div>
+                                    <label className="block mb-1" style={{ ...FONTS.heading_03 }}>Staff Email</label>
+                                    <input
+                                        type="email"
+                                        placeholder=""
+                                        className="w-full border border-[#D1D5DB] rounded-lg px-3 py-2"
+                                    />
+                                </div>
+
+                                {/* Staff Amount */}
+                                <div>
+                                    <label className="block mb-1" style={{ ...FONTS.heading_03 }}>Staff Amount</label>
+                                    <input
+                                        type="text"
+                                        placeholder=""
+                                        className="w-full border border-[#D1D5DB] rounded-lg px-3 py-2"
+                                    />
+                                </div>
+
+                                {/* Paid Date */}
+                                <div>
+                                    <label className="block mb-1" style={{ ...FONTS.heading_03 }}>Paid Date</label>
+                                    <input
+                                        type=""
+                                        className="w-full border border-[#D1D5DB] rounded-lg px-3 py-2"
+                                    />
+                                </div>
+
+                                {/* Buttons */}
+                                <div className="flex justify-end pt-4 space-x-4">
+                                    <button
+                                        type="button"
+                                        onClick={() => setviewShowModal(false)}
+                                        className="px-4 py-2 text-[14px] border border-[#716F6F] text-[#0400FF] bg-blue-100 rounded-lg font-semibold"
+                                    >
+                                        Cancel
+                                    </button>
+                                    <button
+                                        type="submit"
+                                        className="px-4 py-2 text-[14px] bg-[#CA406F] text-white rounded-lg font-semibold"
+                                    >
+                                        Submit
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 )}
                 {/* View Salaries Modal ---> End */}
 
                 {/* Edit Salaries Modal ---> Start */}
                 {editShowModal && (
-                    <div className="absolute top-0 right-0 w-full max-w-sm h-full bg-white shadow-lg z-40 p-6 overflow-y-auto min-w-[403px]">
-                        {/* Header */}
-                        <div className="flex justify-between items-center mb-4" style={{...FONTS.heading_03}}>
-                            <h2 className="text-[20px] text-[#3B3B3B] font-semibold font-poppins">Edit Salaries</h2>
-                            <button onClick={() => seteditShowModal(false)} className="text-xl font-bold text-gray-600 hover:text-black">
-                                <img src={clsimg} alt="Close" />
-                            </button>
-                        </div>
+                    <div className="fixed inset-0 z-30 mt-22">
+                        <div className="absolute top-0 right-0 w-full max-w-sm min-w-[403px] h-full overflow-auto p-6 rounded-lg bg-white shadow-lg z-40 no-scrollbar">
 
-                        {/* Profile Section */}
-                        <div className="flex flex-col items-center mb-6">
-                            <img
-                                src={adduserimg}
-                                alt="Profile"
-                                className="w-24 h-24 rounded-full object-cover"
-                            />
-                            <p className="mt-2 font-semibold text-[16px] text-[#3B3B3B] font-poppins" style={{...FONTS.heading_03}}>Elon Musk</p>
-                            <p className="text-[12px] text-[#A0A0A0] font-poppins">BHA-TR-SF002</p>
-                        </div>
-
-                        {/* Form */}
-                        <form className="space-y-4 font-poppins text-[#3B3B3B] text-[14px]">
-                           
-
-                            {/* Transaction ID */}
-                            <div>
-                                <label className="block mb-1" style={{...FONTS.heading_03}}>Transaction ID</label>
-                                <input
-                                    type="text"
-                                    placeholder=""
-                                    className="w-full border border-[#D1D5DB] rounded-lg px-3 py-2"
-                                />
-                            </div>
-
-                            {/* Salary Amount */}
-                            <div>
-                                <label className="block mb-1" style={{...FONTS.heading_03}}>Salary Amount</label>
-                                <input
-                                    type="text"
-                                    placeholder=""
-                                    className="w-full border border-[#D1D5DB] rounded-lg px-3 py-2"
-                                />
-                            </div>
-
-                            {/* Buttons */}
-                            <div className="flex justify-end pt-4 space-x-4">
-                                <button
-                                    type="button"
-                                    onClick={() => seteditShowModal(false)}
-                                    className="px-4 py-2 text-[16px] border border-[#716F6F] text-[#0400FF] bg-blue-100 rounded-lg font-semibold font-poppins"
-                                >
-                                    Cancel
-                                </button>
-                                <button
-                                    type="submit"
-                                    className="px-4 py-2 text-[16px] bg-[#CA406F] text-white rounded-lg font-semibold font-poppins"
-                                >
-                                    Submit
+                            {/* Header */}
+                            <div className="flex justify-between items-center mb-4" style={{ ...FONTS.heading_03 }}>
+                                <h2 className="text-[20px] text-[#3B3B3B] font-semibold font-poppins">Edit Salaries</h2>
+                                <button onClick={() => seteditShowModal(false)} className="text-xl font-bold text-gray-600 hover:text-black">
+                                    <img src={clsimg} alt="Close" />
                                 </button>
                             </div>
-                        </form>
+
+                            {/* Profile Section */}
+                            <div className="flex flex-col items-center mb-6">
+                                <img
+                                    src={adduserimg}
+                                    alt="Profile"
+                                    className="w-24 h-24 rounded-full object-cover"
+                                />
+                                <p className="mt-2 font-semibold text-[16px] text-[#3B3B3B] font-poppins" style={{ ...FONTS.heading_03 }}>Elon Musk</p>
+                                <p className="text-[12px] text-[#A0A0A0] font-poppins">BHA-TR-SF002</p>
+                            </div>
+
+                            {/* Form */}
+                            <form className="space-y-4 font-poppins text-[#3B3B3B] text-[14px]">
+
+
+                                {/* Transaction ID */}
+                                <div>
+                                    <label className="block mb-1" style={{ ...FONTS.heading_03 }}>Transaction ID</label>
+                                    <input
+                                        type="text"
+                                        placeholder=""
+                                        className="w-full border border-[#D1D5DB] rounded-lg px-3 py-2"
+                                    />
+                                </div>
+
+                                {/* Salary Amount */}
+                                <div>
+                                    <label className="block mb-1" style={{ ...FONTS.heading_03 }}>Salary Amount</label>
+                                    <input
+                                        type="text"
+                                        placeholder=""
+                                        className="w-full border border-[#D1D5DB] rounded-lg px-3 py-2"
+                                    />
+                                </div>
+
+                                {/* Buttons */}
+                                <div className="flex justify-end pt-4 space-x-4">
+                                    <button
+                                        type="button"
+                                        onClick={() => seteditShowModal(false)}
+                                        className="px-4 py-2 text-[16px] border border-[#716F6F] text-[#0400FF] bg-blue-100 rounded-lg font-semibold font-poppins"
+                                    >
+                                        Cancel
+                                    </button>
+                                    <button
+                                        type="submit"
+                                        className="px-4 py-2 text-[16px] bg-[#CA406F] text-white rounded-lg font-semibold font-poppins"
+                                    >
+                                        Submit
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 )}
                 {/* Edit Salaries Modal ---> End */}
 
-
                 {/* Grid - View records  ---> Start */}
-                <div className="bg-white p-4 rounded-lg bg-gray-200 shadow-[0_4px_10px_3px_rgba(0,0,0,0.10)] mb-6 min-w-[1200px] w-full min-h-[264px]">
+                <div className="bg-white p-4 rounded-lg bg-gray-200 shadow-[0_4px_10px_3px_rgba(0,0,0,0.10)] mb-6 min-w-full w-full min-h-[264px]">
                     {/* Salary Table */}
-                    <div className="overflow-x-auto"  style={{...FONTS.heading_03}}>
-                        <div className="grid grid-cols-7 font-semibold grid-cols-[80px_160px_250px_157px_151px_105px_89px] gap-x-[20px] p-[10px] text-gray-700 text-sm border-b bg-gray-100 rounded-md h-[68px]">
+                    <div className="overflow-x-auto" style={{ ...FONTS.heading_06 }}>
+                        <div className="grid grid-cols-7 font-semibold grid-cols-[40px_160px_250px_157px_151px_105px_89px] gap-x-[0px] p-[10px] text-gray-700  border-b bg-gray-100 rounded-md h-[48px]"
+                            style={{
+                                gridTemplateColumns: '0.5fr 1fr 1.5fr 0.9fr 0.9fr 0.7fr 0.5fr'
+                            }}
+                        >
                             <div className="flex items-center justify-start px-4 font-poppins">ID</div>
                             <div className="flex items-center justify-start px-4 font-poppins">Transaction ID</div>
                             <div className="flex items-center justify-start px-4 font-poppins">Staff</div>
@@ -401,7 +418,12 @@ const Salaries: React.FC = () => {
                         {salaryData.map((record, index) => (
                             <div
                                 key={record.id}
-                                className="grid grid-cols-7 grid-cols-[80px_160px_250px_157px_151px_105px_89px] gap-x-[20px] p-[10px] gap-4 items-center  py-2  relative" style={{...FONTS.heading_03}}
+                                className="grid grid-cols-7 grid-cols-[40px_160px_250px_157px_151px_105px_89px] gap-x-[0px] p-[10px] gap-4 items-center py-2  relative"
+                                style={{
+                                    ...FONTS.GridRow_1,
+                                    gridTemplateColumns: '0.5fr 1fr 1.5fr 0.9fr 0.9fr 0.7fr 0.5fr ',
+
+                                }}
                             >
                                 <div className="flex items-center justify-start px-4">{record.id}</div>
                                 <div className="flex items-center justify-start px-4">{record.transactionId}</div>
@@ -420,7 +442,7 @@ const Salaries: React.FC = () => {
                                 <div className="flex items-center justify-start px-4">
                                     <span
                                         className={`px-2 py-1 rounded-4 text-xs font-medium flex items-center justify-start px-4 ${record.status === 'Active'
-                                            ? 'text-white text-[18px]'
+                                            ? 'text-white text-[14px]'
                                             : 'bg-red-100 text-red-700'
                                             }`}
                                         style={record.status === 'Active' ? { backgroundColor: '#3ABE65' } : {}}
@@ -428,27 +450,39 @@ const Salaries: React.FC = () => {
                                         {record.status}
                                     </span>
                                 </div>
-                                <div className="flex items-center justify-end px-4">
+                                <div className="flex items-left  px-4">
                                     <button
                                         onClick={() => handleMenuToggle(index)}
-                                        className="text-xl hover:text-black"
+                                        className="text-xl hover:text-black "
                                     >
                                         ⋮
                                     </button>
                                     {menuOpenIndex === index && (
-                                        <div className="absolute mr-5 top-0 w-[160px] h-[242px] p-4 flex flex-col gap-[30px] bg-white rounded-[12px] shadow-lg z-50">
+                                        <div className="absolute mr-5 top-0 right-25 w-[160px] h-[242px] p-4 flex flex-col gap-[30px] bg-white rounded-[12px] shadow-lg z-50">
                                             <div className="w-[112px] h-[210px] flex flex-col gap-[10px]">
                                                 {/* View Button */}
                                                 <button
                                                     onClick={() => {
                                                         setMenuOpenIndex(null); // Close dropdown menu
-                                                        setviewShowModal(true); // Open the modal
+                                                        setviewShowModal(true); // Open modal
                                                     }}
-                                                    className="w-[132px] h-[48px] bg-[#CA406F] rounded-[8px] flex items-center px-3 gap-2"
+                                                    className="group w-[132px] h-[48px] rounded-[8px] flex items-center px-3 gap-2 transition-colors duration-200 
+        border border-[#716F6F] text-[#716F6F] hover:bg-[#CA406F] hover:text-white"
                                                 >
-                                                    {/* <div className="w-6 h-6 bg-[url(`{Editimg1})]"></div> */}
-                                                    <img src={Editimg1} alt="Edit Icon" className="w-6 h-6" />
-                                                    <span className="text-white text-[16px] font-medium leading-6">View</span>
+                                                    {/* Default icon (shown when not hovered) */}
+                                                    <img
+                                                        src={viewimg}
+                                                        alt="View Icon"
+                                                        className="w-6 h-6 block group-hover:hidden"
+                                                    />
+
+                                                    {/* Hover icon (shown when hovered) */}
+                                                    <img
+                                                        src={Editimg1}
+                                                        alt="View Icon Hover"
+                                                        className="w-6 h-6 hidden group-hover:block"
+                                                    />
+                                                    <span className="text-[16px] font-medium leading-6">View</span>
                                                 </button>
 
                                                 {/* Edit Button */}
@@ -457,31 +491,33 @@ const Salaries: React.FC = () => {
                                                         setMenuOpenIndex(null); // Close dropdown menu
                                                         seteditShowModal(true); // Open the modal
                                                     }}
-                                                    className="w-[132px] h-[48px] border border-[#716F6F] rounded-[8px] flex items-center px-3 gap-2"
-                                                >
+                                                    // className="w-[132px] h-[48px] border border-[#716F6F] rounded-[8px] flex items-center px-3 gap-2">
+                                                    className="w-[132px] h-[48px] rounded-[8px] flex items-center px-3 gap-2 transition-colors duration-200 
+               border border-[#716F6F] text-[#716F6F] hover:bg-[#CA406F] hover:text-white">
                                                     {/* <div className="w-6 h-6 bg-[url('/edit (2).png')]"></div> */}
                                                     <img src={Editimg2} alt="Edit Icon" className="w-6 h-6" />
-                                                    <span className="text-[#716F6F]  text-[16px] font-medium leading-6">Edit</span>
+                                                    <span className="text-[16px] font-medium leading-6">Edit</span>
                                                 </button>
 
                                                 {/* Delete Button */}
                                                 <button
                                                     onClick={handleDelete}
-                                                    className="w-[132px] h-[48px] border border-[#716F6F] rounded-[8px] flex items-center px-3 gap-2"
+                                                    className="w-[132px] h-[48px] rounded-[8px] flex items-center px-3 gap-2 transition-colors duration-200 
+               border border-[#716F6F] text-[#716F6F] hover:bg-[#CA406F] hover:text-white"
                                                 >
                                                     {/* <div className="w-6 h-6 bg-[url('/trash-bin.png')]"></div> */}
                                                     <img src={Editimg3} alt="Edit Icon" className="w-6 h-6" />
-                                                    <span className="text-[#716F6F] text-[16px] font-medium leading-6">Delete</span>
+                                                    <span className=" text-[16px] font-medium leading-6">Delete</span>
                                                 </button>
 
                                                 {/* Download Button */}
                                                 <button
                                                     onClick={handleDownload}
-                                                    className="w-[132px] h-[48px] border border-[#716F6F] rounded-[8px] flex items-center px-3 gap-2"
-                                                >
+                                                    className="w-[132px] h-[48px] rounded-[8px] flex items-center px-3 gap-2 transition-colors duration-200 
+               border border-[#716F6F] text-[#716F6F] hover:bg-[#CA406F] hover:text-white">
                                                     {/* <div className="w-6 h-6 bg-[url('/image.png')]"></div> */}
                                                     <img src={Editimg4} alt="Edit Icon" className="w-6 h-6" />
-                                                    <span className="text-[#716F6F] text-[16px] font-medium leading-6">Download</span>
+                                                    <span className=" text-[16px] font-medium leading-6">Download</span>
                                                 </button>
                                             </div>
                                         </div>

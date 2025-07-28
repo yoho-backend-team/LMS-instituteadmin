@@ -5,7 +5,6 @@ import { MoreVertical, X, Plus, ChevronRight } from "lucide-react"
 
 import Image from "../../../assets/image.png"
 import mern from "../../../assets/mern.png"
-import backdropImg from "../../../assets/backdropimage.png"
 import FilterIcon from "../../../assets/Filter.png"
 import DeleteIcon from "../../../assets/delete.png"
 import EditIcon from "../../../assets/edit.png"
@@ -195,32 +194,32 @@ const EditCategoryOptions = ({
     >
       <div className="flex flex-col items-start gap-3 w-[144px] h-[104px]">
         {/* Edit Button */}
-<div className="flex flex-col items-start w-[144px] h-[44px]">
-  <button
-    className={`flex flex-row items-center px-3 py-2 gap-2 w-full h-full rounded-[8px] border ${
-      hoveredButton === "edit" 
-        ? "bg-[#CA406F] border-transparent text-white" 
-        : "border-[#716F6F] bg-white text-[#716F6F]"
-    } transition-colors`}
-    onClick={onEdit}
-    onMouseEnter={() => setHoveredButton("edit")}
-    onMouseLeave={() => setHoveredButton(null)}
-  >
-    <img 
-      src={EditIcon} 
-      alt="Edit" 
-      className="w-5 h-5" 
-      style={{ 
-        filter: hoveredButton === "edit" 
-          ? "brightness(0) invert(1)" 
-          : "brightness(0) invert(0)" 
-      }}
-    />
-    <span className="font-[Poppins] text-[15px] font-medium leading-[22px]">
-      Edit
-    </span>
-  </button>
-</div>
+        <div className="flex flex-col items-start w-[144px] h-[44px]">
+          <button
+            className={`flex flex-row items-center px-3 py-2 gap-2 w-full h-full rounded-[8px] border ${
+              hoveredButton === "edit" 
+                ? "bg-[#CA406F] border-transparent text-white" 
+                : "border-[#716F6F] bg-white text-[#716F6F]"
+            } transition-colors`}
+            onClick={onEdit}
+            onMouseEnter={() => setHoveredButton("edit")}
+            onMouseLeave={() => setHoveredButton(null)}
+          >
+            <img 
+              src={EditIcon} 
+              alt="Edit" 
+              className="w-5 h-5" 
+              style={{ 
+                filter: hoveredButton === "edit" 
+                  ? "brightness(0) invert(1)" 
+                  : "brightness(0) invert(0)" 
+              }}
+            />
+            <span className="font-[Poppins] text-[15px] font-medium leading-[22px]">
+              Edit
+            </span>
+          </button>
+        </div>
 
         {/* Delete Button */}
         <div className="flex flex-col items-start w-[144px] h-[44px]">
@@ -310,12 +309,10 @@ const AddEditCategoryModal = ({
 
   const handleSave = () => {
     if (!categoryName.trim()) {
-      alert("Please enter a category name")
       return
     }
 
     if (imageError) {
-      alert("Please upload a valid image")
       return
     }
 
@@ -426,6 +423,7 @@ const Categories = () => {
   const [categories, setCategories] = useState([
     { id: 1, title: "Mern", image: Image, status: "active" },
     { id: 2, title: "Mern", image: mern, status: "active" },
+    { id: 3, title: "React", image: Image, status: "inactive" },
   ])
   const pageRef = useRef<HTMLDivElement>(null)
 
@@ -523,19 +521,10 @@ const Categories = () => {
   }
 
   return (
-    <div className="relative w-full min-h-screen bg-white overflow-hidden" ref={pageRef}>
-      <div
-        className="absolute w-full h-full"
-        style={{
-          backgroundImage: `url(${backdropImg})`,
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-          zIndex: 0,
-        }}
-      />
+    <div className="relative min-h-screen mx-auto w-full" ref={pageRef}>
+      <div className="absolute w-full h-full" />
 
-      <main className="absolute left-[32px] top-[40px] w-[calc(100%-64px)] p-6 z-10">
+      <main className="absolute left-[32px] w-[calc(100%-64px)] p-6 z-10">
         <h1 className="text-2xl font-semibold text-[#716F6F] mb-6">Course Categories</h1>
 
         <div className="flex justify-between items-center mb-8">
@@ -549,7 +538,7 @@ const Categories = () => {
 
           <button
             onClick={handleAddCategory}
-            className="bg-[#CA406F] text-white px-4 py-3 rounded-lg flex items-center gap-2 h-12 hover:bg-[#e0527c] transition-colors"
+            className="bg-[#CA406F] text-white px-4 py-3 rounded-lg flex items-center gap-2 h-12 hover:bg-[#e0527c] transition-colors right-0"
           >
             <Plus size={20} />
             <span className="text-sm font-medium">Add New Category</span>
