@@ -131,7 +131,7 @@ button:focus-visible {
 */
 
 
-.topbar{
+/* .topbar{
 background: linear-gradient(90deg, #F6D3E9 0%, #FFFFFF 48.08%, #F6D3E9 100%);
 backdrop-filter: blur(2px);
 }
@@ -145,8 +145,8 @@ top: 285px;
 
 background: linear-gradient(180deg, #FCF3F6 0%, #F6D3E9 100%);
 transform: rotate(-158.3deg);
-}
-.backgroundimg2{
+} */
+/* .backgroundimg2{
   position: absolute;
 width: 1224.98px;
 height: 705.9px;
@@ -156,7 +156,7 @@ top: 285px;
 background: linear-gradient(180deg, #FCF3F6 0%, #F6D3E9 100%);
 transform: rotate(-158.3deg);
 
-}
+} */
 @theme inline {
 
   --radius-sm: calc(var(--radius) - 4px);

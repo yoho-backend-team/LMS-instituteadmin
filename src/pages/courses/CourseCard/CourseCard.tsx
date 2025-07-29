@@ -34,7 +34,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
   };
 
   return (
-    <div className="rounded-2xl p-5 shadow-lg w-[300px] flex flex-col gap-3 bg-white bg-cover bg-center relative">
+    <div className="rounded-2xl p-5 shadow-lg w-[410px] flex flex-col gap-3 bg-white bg-cover bg-center relative">
       <div className="flex justify-between mt-5">
         <span className="px-3 py-1 rounded-lg text-xs font-normal text-[#b4004e] bg-[#f1c9d7]">
           {category}
@@ -44,7 +44,11 @@ const CourseCard: React.FC<CourseCardProps> = ({
         </span>
       </div>
 
-      <img src={image} alt={title} className="w-full h-40 object-cover rounded-xl" />
+      <img
+        src={image}
+        alt={title}
+        className="w-full h-40 object-cover rounded-xl"
+      />
 
       <h3 className="text-[#d2005a] text-base font-semibold">{title}</h3>
 
